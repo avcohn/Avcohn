@@ -1,62 +1,205 @@
-
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>קצובות לינה - מהדורה 22</title>
-<style>
-body { font-family: Arial; direction: rtl; margin: 20px; background:#f5f5f5;}
-h1 { text-align:center; }
-table { border-collapse: collapse; width: 100%; background:white; }
-th, td { border:1px solid #ddd; padding:8px; text-align:center;}
-th { background:#2c3e50; color:white;}
-tr:nth-child(even){background:#f2f2f2;}
-input { width:100%; padding:10px; margin-bottom:10px; font-size:16px;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>קצובות לינה מעודכנות</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #102033;
+      --muted: #5d6b82;
+      --line: #d9e2ef;
+      --head: #17324d;
+      --accent: #2b6cb0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef4fb 0%, #f8fbff 100%);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(20,40,80,0.06);
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+    }
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr 170px;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 16px;
+      background: #fff;
+    }
+    .stats {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .table-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(20,40,80,0.06);
+    }
+    .table-wrap {
+      overflow: auto;
+      max-height: 72vh;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--head);
+      color: #fff;
+      font-size: 15px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    tbody td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      font-size: 15px;
+    }
+    tbody tr:nth-child(even) {
+      background: #fafcff;
+    }
+    tbody tr:hover {
+      background: #eef6ff;
+    }
+    .footer-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      h1 { font-size: 24px; }
+      .toolbar { grid-template-columns: 1fr; }
+      thead th, tbody td { font-size: 14px; padding: 10px 8px; }
+      .hero { padding: 18px; border-radius: 16px; }
+      .table-card { border-radius: 16px; }
+    }
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>קצובות לינה מעודכנות</h1>
+      <p class="sub">כל המדינות והערים מתוך הקובץ שהועלה. אפשר לחפש לפי מדינה, עיר או מטבע.</p>
 
-<h1>קצובות לינה - מהדורה 22</h1>
-<input type="text" id="search" placeholder="חפש מדינה או עיר..." onkeyup="filterTable()">
+      <div class="toolbar">
+        <input id="searchInput" type="text" placeholder="חפש מדינה, עיר או מטבע..." />
+        <select id="currencyFilter">
+          <option value="">כל המטבעות</option>
+        </select>
+      </div>
 
-<table id="table">
-<tr>
-<th>מדינה</th>
-<th>עיר</th>
-<th>מטבע</th>
-<th>קצובה</th>
-</tr>
+      <div class="stats">
+        מוצגים <span id="visibleCount">0</span> מתוך <span id="totalCount">179</span> יעדים
+      </div>
+    </div>
 
-<tr><td>France</td><td>Paris</td><td>EUR</td><td>320</td></tr>
-<tr><td>Italy</td><td>כל המדינה</td><td>EUR</td><td>295</td></tr>
-<tr><td>Spain</td><td>כל המדינה</td><td>EUR</td><td>270</td></tr>
-<tr><td>USA</td><td>New York</td><td>USD</td><td>520</td></tr>
-<tr><td>Germany</td><td>כל המדינה</td><td>EUR</td><td>180</td></tr>
+    <div class="table-card">
+      <div class="table-wrap">
+        <table id="ratesTable">
+          <thead>
+            <tr>
+              <th>מדינה</th>
+              <th>עיר</th>
+              <th>מטבע לינה</th>
+              <th>קצובת לינה מעודכנת</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Albania</td><td>כל המדינה</td><td>EUR</td><td>150</td></tr><tr><td>Angola</td><td>כל המדינה</td><td>USD</td><td>325</td></tr><tr><td>Antigua and Barbuda</td><td>כל המדינה</td><td>USD</td><td>445</td></tr><tr><td>Argentina</td><td>כל המדינה</td><td>USD</td><td>205</td></tr><tr><td>Armenia</td><td>כל המדינה</td><td>USD</td><td>135</td></tr><tr><td>Australia</td><td>Sydney</td><td>AUD</td><td>345</td></tr><tr><td>Australia</td><td>יתר המדינה</td><td>AUD</td><td>250</td></tr><tr><td>Austria</td><td>כל המדינה</td><td>EUR</td><td>180</td></tr><tr><td>Azerbaijan</td><td>כל המדינה</td><td>USD</td><td>145</td></tr><tr><td>Bahamas</td><td>כל המדינה</td><td>USD</td><td>415</td></tr><tr><td>Bahrain</td><td>כל המדינה</td><td>USD</td><td>165</td></tr><tr><td>Barbados</td><td>כל המדינה</td><td>USD</td><td>365</td></tr><tr><td>Belarus</td><td>כל המדינה</td><td>USD</td><td>140</td></tr><tr><td>Belgium</td><td>כל המדינה</td><td>EUR</td><td>235</td></tr><tr><td>Belize</td><td>כל המדינה</td><td>USD</td><td>195</td></tr><tr><td>Benin</td><td>כל המדינה</td><td>USD</td><td>170</td></tr><tr><td>Bolivia</td><td>כל המדינה</td><td>USD</td><td>125</td></tr><tr><td>Bosnia</td><td>כל המדינה</td><td>USD</td><td>105</td></tr><tr><td>Botswana</td><td>כל המדינה</td><td>USD</td><td>135</td></tr><tr><td>Brazil</td><td>כל המדינה</td><td>USD</td><td>135</td></tr><tr><td>Brunei</td><td>כל המדינה</td><td>USD</td><td>140</td></tr><tr><td>Bulgaria</td><td>כל המדינה</td><td>EUR</td><td>140</td></tr><tr><td>Burkina Faso</td><td>כל המדינה</td><td>USD</td><td>155</td></tr><tr><td>Burundi</td><td>כל המדינה</td><td>USD</td><td>145</td></tr><tr><td>Cambodia</td><td>כל המדינה</td><td>USD</td><td>120</td></tr><tr><td>Cameroon</td><td>כל המדינה</td><td>USD</td><td>200</td></tr><tr><td>Canada</td><td>כל המדינה</td><td>CAD</td><td>340</td></tr><tr><td>Central African Republic</td><td>כל המדינה</td><td>USD</td><td>125</td></tr><tr><td>Chad</td><td>כל המדינה</td><td>USD</td><td>230</td></tr><tr><td>Chile</td><td>כל המדינה</td><td>USD</td><td>185</td></tr><tr><td>China</td><td>כל המדינה</td><td>CNY</td><td>1065</td></tr><tr><td>Colombia</td><td>כל המדינה</td><td>USD</td><td>185</td></tr><tr><td>Congo</td><td>כל המדינה</td><td>USD</td><td>240</td></tr><tr><td>Cook Islands</td><td>כל המדינה</td><td>NZD</td><td>495</td></tr><tr><td>Costa Rica</td><td>כל המדינה</td><td>USD</td><td>195</td></tr><tr><td>Cote d&#x27;Ivoire</td><td>כל המדינה</td><td>EUR</td><td>185</td></tr><tr><td>Croatia</td><td>כל המדינה</td><td>EUR</td><td>120</td></tr><tr><td>Cuba</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Cyprus</td><td>כל המדינה</td><td>EUR</td><td>165</td></tr><tr><td>Czech Republic</td><td>כל המדינה</td><td>EUR</td><td>140</td></tr><tr><td>Democratic Republic of the Congo</td><td>כל המדינה</td><td>USD</td><td>225</td></tr><tr><td>Denmark</td><td>כל המדינה</td><td>DKK</td><td>1690</td></tr><tr><td>Djibouti</td><td>כל המדינה</td><td>USD</td><td>230</td></tr><tr><td>Dominican Republic</td><td>כל המדינה</td><td>USD</td><td>205</td></tr><tr><td>East Timor</td><td>כל המדינה</td><td>USD</td><td>140</td></tr><tr><td>Ecuador</td><td>כל המדינה</td><td>USD</td><td>220</td></tr><tr><td>Egypt</td><td>כל המדינה</td><td>USD</td><td>190</td></tr><tr><td>El Salvador</td><td>כל המדינה</td><td>USD</td><td>185</td></tr><tr><td>Equatorial Guinea</td><td>כל המדינה</td><td>USD</td><td>195</td></tr><tr><td>Eritrea</td><td>כל המדינה</td><td>USD</td><td>165</td></tr><tr><td>Estonia</td><td>כל המדינה</td><td>EUR</td><td>140</td></tr><tr><td>Ethiopia</td><td>כל המדינה</td><td>USD</td><td>140</td></tr><tr><td>Fiji</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Finland</td><td>כל המדינה</td><td>EUR</td><td>175</td></tr><tr><td>France</td><td>Paris</td><td>EUR</td><td>320</td></tr><tr><td>France</td><td>יתר המדינה</td><td>EUR</td><td>220</td></tr><tr><td>Gabon</td><td>כל המדינה</td><td>USD</td><td>225</td></tr><tr><td>Georgia</td><td>כל המדינה</td><td>USD</td><td>175</td></tr><tr><td>Germany</td><td>כל המדינה</td><td>EUR</td><td>180</td></tr><tr><td>Ghana</td><td>כל המדינה</td><td>USD</td><td>225</td></tr><tr><td>Greece</td><td>כל המדינה</td><td>EUR</td><td>180</td></tr><tr><td>Guatemala</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Guinea</td><td>כל המדינה</td><td>EUR</td><td>160</td></tr><tr><td>Guyana</td><td>כל המדינה</td><td>USD</td><td>170</td></tr><tr><td>Haiti</td><td>כל המדינה</td><td>USD</td><td>185</td></tr><tr><td>Honduras</td><td>כל המדינה</td><td>USD</td><td>185</td></tr><tr><td>Hong Kong</td><td>כל המדינה</td><td>HKD</td><td>1815</td></tr><tr><td>Hungary</td><td>כל המדינה</td><td>EUR</td><td>150</td></tr><tr><td>Iceland</td><td>כל המדינה</td><td>USD</td><td>280</td></tr><tr><td>India</td><td>כל המדינה</td><td>USD</td><td>190</td></tr><tr><td>Indonesia</td><td>כל המדינה</td><td>USD</td><td>125</td></tr><tr><td>Irish Republic</td><td>כל המדינה</td><td>EUR</td><td>230</td></tr><tr><td>Italy</td><td>כל המדינה</td><td>EUR</td><td>295</td></tr><tr><td>Jamaica</td><td>כל המדינה</td><td>USD</td><td>280</td></tr><tr><td>Japan</td><td>Tokyo</td><td>JPY</td><td>37120</td></tr><tr><td>Japan</td><td>יתר המדינה</td><td>JPY</td><td>21025</td></tr><tr><td>Jordan</td><td>כל המדינה</td><td>JOD</td><td>90</td></tr><tr><td>Kazakhstan</td><td>כל המדינה</td><td>USD</td><td>130</td></tr><tr><td>Kenya</td><td>כל המדינה</td><td>USD</td><td>210</td></tr><tr><td>Korea Republic</td><td>כל המדינה</td><td>USD</td><td>180</td></tr><tr><td>Kosovo</td><td>כל המדינה</td><td>EUR</td><td>95</td></tr><tr><td>Kyrgyzstan</td><td>כל המדינה</td><td>USD</td><td>130</td></tr><tr><td>Laos</td><td>כל המדינה</td><td>USD</td><td>120</td></tr><tr><td>Latvia</td><td>כל המדינה</td><td>EUR</td><td>95</td></tr><tr><td>Lesotho</td><td>כל המדינה</td><td>USD</td><td>110</td></tr><tr><td>Liberia</td><td>כל המדינה</td><td>USD</td><td>225</td></tr><tr><td>Lithuania</td><td>כל המדינה</td><td>EUR</td><td>105</td></tr><tr><td>Luxembourg</td><td>כל המדינה</td><td>EUR</td><td>235</td></tr><tr><td>Macau</td><td>כל המדינה</td><td>USD</td><td>190</td></tr><tr><td>Macedonia</td><td>כל המדינה</td><td>EUR</td><td>95</td></tr><tr><td>Madagascar</td><td>כל המדינה</td><td>EUR</td><td>120</td></tr><tr><td>Malawi</td><td>כל המדינה</td><td>USD</td><td>165</td></tr><tr><td>Malaysia</td><td>כל המדינה</td><td>USD</td><td>110</td></tr><tr><td>Maldives</td><td>כל המדינה</td><td>USD</td><td>300</td></tr><tr><td>Mali</td><td>כל המדינה</td><td>USD</td><td>165</td></tr><tr><td>Malta</td><td>כל המדינה</td><td>EUR</td><td>140</td></tr><tr><td>Mauritania</td><td>כל המדינה</td><td>EUR</td><td>135</td></tr><tr><td>Mauritius</td><td>כל המדינה</td><td>USD</td><td>315</td></tr><tr><td>Mexico</td><td>כל המדינה</td><td>USD</td><td>165</td></tr><tr><td>Moldova</td><td>כל המדינה</td><td>EUR</td><td>150</td></tr><tr><td>Monaco</td><td>כל המדינה</td><td>EUR</td><td>325</td></tr><tr><td>Mongolia</td><td>כל המדינה</td><td>USD</td><td>135</td></tr><tr><td>Montenegro</td><td>כל המדינה</td><td>EUR</td><td>90</td></tr><tr><td>Morocco</td><td>כל המדינה</td><td>USD</td><td>180</td></tr><tr><td>Mozambique</td><td>כל המדינה</td><td>USD</td><td>170</td></tr><tr><td>Myanmar</td><td>כל המדינה</td><td>USD</td><td>100</td></tr><tr><td>Namibia</td><td>כל המדינה</td><td>USD</td><td>140</td></tr><tr><td>Nepal</td><td>כל המדינה</td><td>USD</td><td>180</td></tr><tr><td>Netherlands</td><td>Amsterdam</td><td>EUR</td><td>260</td></tr><tr><td>Netherlands</td><td>יתר המדינה</td><td>EUR</td><td>155</td></tr><tr><td>New Zealand</td><td>Niue</td><td>USD</td><td>445</td></tr><tr><td>New Zealand</td><td>יתר המדינה</td><td>NZD</td><td>280</td></tr><tr><td>Nicaragua</td><td>כל המדינה</td><td>USD</td><td>155</td></tr><tr><td>Niger</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Nigeria</td><td>כל המדינה</td><td>USD</td><td>205</td></tr><tr><td>Norway</td><td>כל המדינה</td><td>NOK</td><td>1815</td></tr><tr><td>Oman</td><td>כל המדינה</td><td>USD</td><td>245</td></tr><tr><td>Panama</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Papua New Guinea</td><td>כל המדינה</td><td>USD</td><td>175</td></tr><tr><td>Paraguay</td><td>כל המדינה</td><td>USD</td><td>120</td></tr><tr><td>Peru</td><td>כל המדינה</td><td>USD</td><td>170</td></tr><tr><td>Philippines</td><td>כל המדינה</td><td>USD</td><td>155</td></tr><tr><td>Poland</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Portugal</td><td>כל המדינה</td><td>EUR</td><td>165</td></tr><tr><td>Puerto Rico</td><td>כל המדינה</td><td>USD</td><td>355</td></tr><tr><td>Qatar</td><td>כל המדינה</td><td>USD</td><td>155</td></tr><tr><td>Romania</td><td>כל המדינה</td><td>EUR</td><td>130</td></tr><tr><td>Russia</td><td>Moscow</td><td>RUB</td><td>17,500</td></tr><tr><td>Russia</td><td>יתר המדינה</td><td>RUB</td><td>15,300</td></tr><tr><td>Rwanda</td><td>כל המדינה</td><td>USD</td><td>155</td></tr><tr><td>Samoa</td><td>כל המדינה</td><td>USD</td><td>250</td></tr><tr><td>Saudi Arabia</td><td>כל המדינה</td><td>SAR</td><td>735</td></tr><tr><td>Senegal</td><td>כל המדינה</td><td>USD</td><td>210</td></tr><tr><td>Serbia</td><td>כל המדינה</td><td>EUR</td><td>125</td></tr><tr><td>Seychelles</td><td>כל המדינה</td><td>EUR</td><td>250</td></tr><tr><td>Sierra Leone</td><td>כל המדינה</td><td>USD</td><td>180</td></tr><tr><td>Singapore</td><td>כל המדינה</td><td>SGD</td><td>410</td></tr><tr><td>Slovakia</td><td>כל המדינה</td><td>EUR</td><td>130</td></tr><tr><td>Slovenia</td><td>כל המדינה</td><td>EUR</td><td>135</td></tr><tr><td>South Africa</td><td>כל המדינה</td><td>USD</td><td>120</td></tr><tr><td>Spain</td><td>כל המדינה</td><td>EUR</td><td>270</td></tr><tr><td>Sri Lanka</td><td>כל המדינה</td><td>USD</td><td>180</td></tr><tr><td>Sudan</td><td>כל המדינה</td><td>USD</td><td>215</td></tr><tr><td>Surinam</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Sweden</td><td>כל המדינה</td><td>SEK</td><td>1935</td></tr><tr><td>Switzerland</td><td>Geneva</td><td>CHF</td><td>300</td></tr><tr><td>Switzerland</td><td>Zurich</td><td>CHF</td><td>320</td></tr><tr><td>Switzerland</td><td>יתר המדינה</td><td>CHF</td><td>220</td></tr><tr><td>Taiwan</td><td>כל המדינה</td><td>USD</td><td>165</td></tr><tr><td>Tajikistan</td><td>כל המדינה</td><td>USD</td><td>140</td></tr><tr><td>Tanzania</td><td>כל המדינה</td><td>USD</td><td>165</td></tr><tr><td>Thailand</td><td>כל המדינה</td><td>USD</td><td>130</td></tr><tr><td>Togo</td><td>כל המדינה</td><td>EUR</td><td>125</td></tr><tr><td>Tonga</td><td>כל המדינה</td><td>USD</td><td>160</td></tr><tr><td>Trinidad and Tobago</td><td>כל המדינה</td><td>USD</td><td>230</td></tr><tr><td>Tunisia</td><td>כל המדינה</td><td>EUR</td><td>115</td></tr><tr><td>Turkey</td><td>כל המדינה</td><td>EUR</td><td>150</td></tr><tr><td>Turkmenistan</td><td>כל המדינה</td><td>USD</td><td>180</td></tr><tr><td>Uganda</td><td>כל המדינה</td><td>USD</td><td>215</td></tr><tr><td>Ukraine</td><td>כל המדינה</td><td>USD</td><td>130</td></tr><tr><td>United Arab Emirates</td><td>כל המדינה</td><td>USD</td><td>235</td></tr><tr><td>United Kingdom</td><td>Central London</td><td>GBP</td><td>270</td></tr><tr><td>United Kingdom</td><td>יתר המדינה</td><td>GBP</td><td>145</td></tr><tr><td>United States of America</td><td>Atlanta GA</td><td>USD</td><td>255</td></tr><tr><td>United States of America</td><td>Boston MA</td><td>USD</td><td>300</td></tr><tr><td>United States of America</td><td>Chicago IL</td><td>USD</td><td>270</td></tr><tr><td>United States of America</td><td>Houston TX</td><td>USD</td><td>275</td></tr><tr><td>United States of America</td><td>Los Angeles CA</td><td>USD</td><td>290</td></tr><tr><td>United States of America</td><td>Miami FL</td><td>USD</td><td>255</td></tr><tr><td>United States of America</td><td>New York NY</td><td>USD</td><td>520</td></tr><tr><td>United States of America</td><td>San Francisco CA</td><td>USD</td><td>295</td></tr><tr><td>United States of America</td><td>Washington DC</td><td>USD</td><td>415</td></tr><tr><td>United States of America</td><td>יתר המדינה</td><td>USD</td><td>255</td></tr><tr><td>Uruguay</td><td>Montevideo</td><td>USD</td><td>180</td></tr><tr><td>Uzbekistan</td><td>Tashkent</td><td>USD</td><td>150</td></tr><tr><td>Venezuela</td><td>Caracas</td><td>USD</td><td>160</td></tr><tr><td>Vietnam</td><td>Hanoi</td><td>USD</td><td>150</td></tr><tr><td>Zambia</td><td>Lusaka</td><td>USD</td><td>205</td></tr><tr><td>Zimbabwe</td><td>Harare</td><td>USD</td><td>180</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-</table>
+    <div class="footer-note">
+      נבנה מתוך קובץ המקור המעודכן.
+    </div>
+  </div>
 
-<script>
-function filterTable() {
-  var input = document.getElementById("search");
-  var filter = input.value.toUpperCase();
-  var table = document.getElementById("table");
-  var tr = table.getElementsByTagName("tr");
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const currencyFilter = document.getElementById('currencyFilter');
+    const table = document.getElementById('ratesTable');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    const visibleCount = document.getElementById('visibleCount');
 
-  for (var i = 1; i < tr.length; i++) {
-    var td1 = tr[i].getElementsByTagName("td")[0];
-    var td2 = tr[i].getElementsByTagName("td")[1];
-    if (td1 || td2) {
-      var txtValue = td1.textContent || td1.innerText;
-      var txtValue2 = td2.textContent || td2.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+    function populateCurrencies() {
+      const currencies = [...new Set(rows.map(row => row.children[2].textContent.trim()))].sort();
+      currencies.forEach(currency => {
+        const option = document.createElement('option');
+        option.value = currency;
+        option.textContent = currency;
+        currencyFilter.appendChild(option);
+      });
     }
-  }
-}
-</script>
 
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      const currency = currencyFilter.value;
+
+      let shown = 0;
+
+      rows.forEach(row => {
+        const country = row.children[0].textContent.toLowerCase();
+        const city = row.children[1].textContent.toLowerCase();
+        const curr = row.children[2].textContent.trim();
+
+        const matchesText = !q || country.includes(q) || city.includes(q) || curr.toLowerCase().includes(q);
+        const matchesCurrency = !currency || curr === currency;
+
+        const show = matchesText && matchesCurrency;
+        row.style.display = show ? '' : 'none';
+        if (show) shown += 1;
+      });
+
+      visibleCount.textContent = shown;
+    }
+
+    populateCurrencies();
+    applyFilters();
+
+    searchInput.addEventListener('input', applyFilters);
+    currencyFilter.addEventListener('change', applyFilters);
+  </script>
 </body>
 </html>
