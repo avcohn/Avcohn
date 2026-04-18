@@ -4,18 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>קצובות לינה בעולם</title>
-  <meta name="description" content="מיני־סייט פרימיום לחיפוש קצובות לינה לפי מדינה, עיר ומטבע" />
+  <meta name="description" content="מיני־סייט פרימיום מלא לקצובות לינה בעולם" />
   <style>
     :root {
-      --bg: #07111f;
-      --bg-soft: #0f1b2d;
-      --card: rgba(255,255,255,0.08);
-      --card-strong: rgba(255,255,255,0.12);
+      --bg1: #07111f;
+      --bg2: #0b1628;
+      --panel: rgba(255,255,255,0.08);
+      --panel-2: rgba(255,255,255,0.05);
       --line: rgba(255,255,255,0.12);
       --text: #f4f7fb;
       --muted: #b8c2d3;
-      --accent: #8ec5ff;
-      --accent-2: #d9efff;
       --success: #8ff0b3;
       --shadow: 0 20px 60px rgba(0,0,0,0.35);
     }
@@ -28,9 +26,9 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top right, rgba(110,168,255,0.22), transparent 30%),
-        radial-gradient(circle at top left, rgba(173,216,255,0.14), transparent 22%),
-        linear-gradient(180deg, #08111e 0%, #0b1628 48%, #09111c 100%);
+        radial-gradient(circle at top right, rgba(110,168,255,0.2), transparent 30%),
+        radial-gradient(circle at top left, rgba(173,216,255,0.12), transparent 22%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 48%, #09111c 100%);
       min-height: 100vh;
     }
 
@@ -41,23 +39,14 @@
     }
 
     .hero {
-      position: relative;
-      overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 34px;
+      border-radius: 32px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05)),
+        linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)),
         linear-gradient(135deg, #0c1830, #12233d 55%, #0b1829);
       box-shadow: var(--shadow);
-      padding: 34px;
+      padding: 30px;
       margin-bottom: 22px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.85fr;
-      gap: 24px;
-      align-items: center;
     }
 
     .eyebrow {
@@ -68,39 +57,41 @@
       border-radius: 999px;
       background: rgba(255,255,255,0.09);
       border: 1px solid rgba(255,255,255,0.12);
-      color: var(--accent-2);
+      color: #d9efff;
       font-size: 13px;
       margin-bottom: 14px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(32px, 5vw, 58px);
+      font-size: clamp(32px, 5vw, 56px);
       line-height: 1.02;
       letter-spacing: -0.03em;
+      text-align: center;
     }
 
     .hero p {
       color: var(--muted);
       font-size: 16px;
       line-height: 1.8;
-      margin: 14px 0 0;
-      max-width: 760px;
+      margin: 14px auto 0;
+      max-width: 840px;
+      text-align: center;
     }
 
     .hero-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin-top: 26px;
+      margin-top: 24px;
     }
 
     .stat {
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.11);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px;
-      backdrop-filter: blur(8px);
+      text-align: center;
     }
 
     .stat .label {
@@ -117,43 +108,9 @@
       letter-spacing: -0.02em;
     }
 
-    .hero-panel {
-      background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.06));
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 28px;
-      padding: 20px;
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-panel h2 {
-      margin: 0 0 8px;
-      font-size: 20px;
-    }
-
-    .hero-panel p {
-      margin: 0 0 14px;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-tags span {
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 13px;
-      color: #e8f1ff;
-    }
-
     .toolbar {
       display: grid;
-      grid-template-columns: 1.5fr repeat(3, minmax(0, 0.6fr));
+      grid-template-columns: 1.4fr repeat(4, minmax(0, 0.6fr));
       gap: 14px;
       margin-bottom: 18px;
     }
@@ -166,7 +123,7 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 0 16px;
-      min-height: 60px;
+      min-height: 58px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
@@ -201,7 +158,6 @@
       border: 1px solid var(--line);
       border-radius: 28px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
       overflow: hidden;
     }
 
@@ -229,25 +185,22 @@
       padding: 14px;
       display: grid;
       gap: 14px;
-      max-height: 920px;
+      max-height: 980px;
       overflow: auto;
     }
 
     .city-card {
-      position: relative;
       overflow: hidden;
       border-radius: 22px;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s ease, border-color 0.18s ease;
       cursor: pointer;
     }
 
-    .city-card:hover,
-    .city-card.active {
+    .city-card:hover, .city-card.active {
       transform: translateY(-2px);
       border-color: rgba(142,197,255,0.45);
-      background: rgba(255,255,255,0.1);
     }
 
     .city-media {
@@ -257,30 +210,18 @@
       background: linear-gradient(135deg, #23395d, #101c2f 55%, #0f172a);
     }
 
-    .city-media::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.16), transparent 25%),
-        radial-gradient(circle at 80% 30%, rgba(142,197,255,0.22), transparent 30%),
-        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.08), transparent 28%);
+    .city-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .city-media::after {
-      content: attr(data-city);
+      content: "";
       position: absolute;
-      left: 18px;
-      bottom: 14px;
-      font-size: 24px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.22);
-      letter-spacing: 0.03em;
-      pointer-events: none;
-      max-width: 70%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.45));
     }
 
     .city-flag {
@@ -291,12 +232,10 @@
       height: 48px;
       border-radius: 50%;
       background: rgba(7,17,31,0.72);
-      backdrop-filter: blur(8px);
       display: grid;
       place-items: center;
       font-size: 24px;
       border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.28);
       z-index: 1;
     }
 
@@ -311,6 +250,16 @@
       font-size: 12px;
       color: #eff6ff;
       z-index: 1;
+    }
+
+    .city-caption {
+      position: absolute;
+      right: 16px;
+      bottom: 14px;
+      z-index: 1;
+      font-size: 22px;
+      font-weight: 700;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.55);
     }
 
     .city-body { padding: 16px; }
@@ -383,9 +332,9 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 900px;
-      overflow: hidden;
+      min-width: 960px;
       border-radius: 18px;
+      overflow: hidden;
     }
 
     thead th {
@@ -465,58 +414,46 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid, .toolbar { grid-template-columns: 1fr; }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 760px) {
       .shell { width: min(100% - 18px, 100%); padding-top: 14px; }
       .hero { padding: 22px; border-radius: 26px; }
-      .hero-stats { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
       .cards { grid-template-columns: 1fr; }
       .panel, .table-panel { border-radius: 22px; }
+      .toolbar { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="shell">
     <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">✦ מיני־סייט פרימיום · כל היעדים בקובץ אחד</div>
-          <h1>קצובות לינה<br />ברחבי העולם</h1>
-          <p>
-            חיפוש חכם לפי מדינה, עיר, מטבע או סכום, עם חוויית גלישה פרימיום,
-            דגלים אוטומטיים, כרטיסי יעד מודגשים, סינון ומיון מהיר.
-          </p>
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="label">סה״כ יעדים</span>
-              <span class="value" id="totalDestinations">0</span>
-            </div>
-            <div class="stat">
-              <span class="label">מדינות במאגר</span>
-              <span class="value" id="totalCountries">0</span>
-            </div>
-            <div class="stat">
-              <span class="label">מטבעות שונים</span>
-              <span class="value" id="totalCurrencies">0</span>
-            </div>
-          </div>
-        </div>
+      <div class="eyebrow">✦ גרסת פרימיום מלאה · כל הרשימה בפנים</div>
+      <h1>קצובות לינה ברחבי העולם</h1>
+      <p>
+        כל היעדים, חיפוש חכם, סינון לפי מדינה ומטבע, מיון לפי סכום, דגלים לכל מדינה
+        וכרטיסי יעד עם תמונות חיות. מוכן ל־GitHub Pages.
+      </p>
 
-        <div class="hero-panel">
-          <h2>מה יש בגרסה הזאת?</h2>
-          <p>
-            כל הרשימה המלאה נמצאת בתוך הקובץ, בלי לקצר ובלי להשאיר רק כמה דוגמאות.
-            זה מוכן ל־GitHub Pages ויפה גם בדסקטופ וגם במובייל.
-          </p>
-          <div class="hero-tags">
-            <span>כל היעדים</span>
-            <span>דגל לכל מדינה</span>
-            <span>כרטיסי יעד</span>
-            <span>סינון ומיון</span>
-            <span>מוכן להעלאה</span>
-          </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="label">סה״כ יעדים</span>
+          <span class="value" id="totalDestinations">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">מדינות במאגר</span>
+          <span class="value" id="totalCountries">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">מטבעות שונים</span>
+          <span class="value" id="totalCurrencies">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">תוצאות מוצגות</span>
+          <span class="value" id="visibleResults">0</span>
         </div>
       </div>
     </section>
@@ -548,6 +485,14 @@
           <option value="city-asc">עיר א׳-ת׳</option>
         </select>
       </label>
+      <label class="control">
+        <span>🖼️</span>
+        <select id="cardLimit">
+          <option value="18">18 כרטיסים</option>
+          <option value="30">30 כרטיסים</option>
+          <option value="50">50 כרטיסים</option>
+        </select>
+      </label>
     </section>
 
     <section class="layout">
@@ -555,7 +500,7 @@
         <div class="panel-head">
           <div>
             <h3>יעדים מודגשים</h3>
-            <small>כרטיסי תצוגה מהירה</small>
+            <small>עם תמונה ודגל</small>
           </div>
           <small id="cardCount">0 תוצאות</small>
         </div>
@@ -590,13 +535,13 @@
           </table>
           <div class="no-results" id="noResults">
             <strong>לא נמצאו תוצאות</strong>
-            נסה לשנות את שורת החיפוש או לבחור מסננים אחרים.
+            נסה לשנות את החיפוש או לבחור מסננים אחרים.
           </div>
         </div>
       </section>
     </section>
 
-    <p class="footer-note">גרסת קובץ מלאה עם כל היעדים מתוך הקוד ששלחת.</p>
+    <p class="footer-note">גרסה מלאה עם כל הרשימה שהעברת.</p>
   </div>
 
   <script>
@@ -824,11 +769,13 @@
     const selectedText = document.getElementById("selectedText");
     const cardCount = document.getElementById("cardCount");
     const noResults = document.getElementById("noResults");
+    const visibleResults = document.getElementById("visibleResults");
 
     const searchInput = document.getElementById("searchInput");
     const countryFilter = document.getElementById("countryFilter");
     const currencyFilter = document.getElementById("currencyFilter");
     const sortFilter = document.getElementById("sortFilter");
+    const cardLimit = document.getElementById("cardLimit");
 
     let selectedKey = "";
 
@@ -846,6 +793,13 @@
 
     function getCurrencyList() {
       return [...new Set(data.map(item => item.currency))].sort((a, b) => a.localeCompare(b));
+    }
+
+    function getImageUrl(item) {
+      const location = (item.city === "כל המדינה" || item.city === "יתר המדינה")
+        ? item.country
+        : `${item.city} ${item.country}`;
+      return `https://source.unsplash.com/800x500/?${encodeURIComponent(location + " city skyline travel")}`;
     }
 
     function populateFilters() {
@@ -885,7 +839,6 @@
 
         const matchesCountry = !selectedCountry || item.country === selectedCountry;
         const matchesCurrency = !selectedCurrency || item.currency === selectedCurrency;
-
         return matchesSearch && matchesCountry && matchesCurrency;
       });
 
@@ -904,7 +857,8 @@
 
     function renderCards(rows) {
       cardsContainer.innerHTML = "";
-      const cardsData = rows.slice(0, 18);
+      const limit = Number(cardLimit.value || 18);
+      const cardsData = rows.slice(0, limit);
       cardCount.textContent = `${rows.length} תוצאות`;
 
       cardsData.forEach(item => {
@@ -912,9 +866,11 @@
         const card = document.createElement("article");
         card.className = `city-card ${selectedKey === key ? "active" : ""}`;
         card.innerHTML = `
-          <div class="city-media" data-city="${item.city}">
+          <div class="city-media">
+            <img src="${getImageUrl(item)}" alt="${item.city} ${item.country}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80';">
             <div class="city-flag">${getFlag(item.country)}</div>
             <div class="city-badge">${item.currency} · ${item.amount}</div>
+            <div class="city-caption">${item.city}</div>
           </div>
           <div class="city-body">
             <div class="city-title">
@@ -927,7 +883,7 @@
             <div class="city-meta">
               <span>מטבע: ${item.currency}</span>
               <span>דגל: ${getFlag(item.country)}</span>
-              <span>יעד: ${item.city === "כל המדינה" ? "כל המדינה" : item.city}</span>
+              <span>${item.country}</span>
             </div>
           </div>
         `;
@@ -961,6 +917,7 @@
       });
 
       statsText.textContent = `סה״כ תוצאות: ${rows.length}`;
+      visibleResults.textContent = rows.length;
       summaryText.textContent = rows.length === data.length
         ? "המערכת מציגה את כל היעדים כרגע"
         : `מוצגות ${rows.length} תוצאות לאחר סינון`;
@@ -987,7 +944,7 @@
       renderTable(tableRows);
     }
 
-    [searchInput, countryFilter, currencyFilter, sortFilter].forEach(control => {
+    [searchInput, countryFilter, currencyFilter, sortFilter, cardLimit].forEach(control => {
       control.addEventListener("input", renderAll);
       control.addEventListener("change", renderAll);
     });
