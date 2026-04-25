@@ -8,135 +8,40 @@
 
 <style>
 *{box-sizing:border-box}
-body{
-margin:0;
-font-family:Heebo,Arial,sans-serif;
-background:#07111f;
-color:white;
-overflow-x:hidden;
-}
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px 20px;
-background:
-radial-gradient(circle at 20% 20%,#7c3aed55,transparent 30%),
-radial-gradient(circle at 80% 30%,#f59e0b55,transparent 30%),
-linear-gradient(135deg,#07111f,#14213d);
-animation:bgMove 8s infinite alternate;
-}
-@keyframes bgMove{
-from{background-position:0 0}
-to{background-position:100px 80px}
-}
-.hero h1{
-font-size:clamp(45px,9vw,95px);
-line-height:.9;
-margin:0;
-font-weight:900;
-animation:pop 1s ease;
-}
-@keyframes pop{
-from{opacity:0;transform:scale(.8) translateY(40px)}
-to{opacity:1;transform:scale(1) translateY(0)}
-}
-.subtitle{
-font-size:22px;
-max-width:800px;
-margin:25px auto;
-line-height:1.7;
-color:#dbeafe;
-}
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:16px 28px;
-border-radius:999px;
-background:linear-gradient(135deg,#f59e0b,#ec4899);
-color:white;
-font-weight:900;
-text-decoration:none;
-box-shadow:0 0 30px #ec489977;
-transition:.25s;
-}
+body{margin:0;font-family:Heebo,Arial,sans-serif;background:#07111f;color:white;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.7)),url("https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1600&q=80") center/cover;animation:zoomHero 10s infinite alternate}
+@keyframes zoomHero{from{background-size:100%}to{background-size:112%}}
+.hero h1{font-size:clamp(45px,9vw,95px);line-height:.9;margin:0;font-weight:900;animation:pop 1s ease}
+@keyframes pop{from{opacity:0;transform:scale(.8) translateY(40px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.subtitle{font-size:22px;max-width:820px;margin:25px auto;line-height:1.7;color:#dbeafe}
+.btn{display:inline-block;margin-top:20px;padding:16px 28px;border-radius:999px;background:linear-gradient(135deg,#f59e0b,#ec4899);color:white;font-weight:900;text-decoration:none;box-shadow:0 0 30px #ec489977;transition:.25s}
 .btn:hover{transform:scale(1.08)}
 section{padding:70px 20px}
 .container{max-width:1150px;margin:auto}
 h2{font-size:42px;margin:0 0 30px}
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:24px;
-}
-.card{
-position:relative;
-min-height:330px;
-border-radius:28px;
-padding:26px;
-overflow:hidden;
-background:linear-gradient(135deg,#1d4ed8,#7c3aed);
-box-shadow:0 20px 50px #0008;
-transition:.35s;
-}
-.card:hover{
-transform:translateY(-10px) rotate(-1deg);
-box-shadow:0 30px 70px #000;
-}
-.card:nth-child(2){background:linear-gradient(135deg,#059669,#0ea5e9)}
-.card:nth-child(3){background:linear-gradient(135deg,#f97316,#db2777)}
-.card:nth-child(4){background:linear-gradient(135deg,#16a34a,#65a30d)}
-.card:before{
-content:"";
-position:absolute;
-width:220px;
-height:220px;
-border-radius:50%;
-background:rgba(255,255,255,.16);
-top:-60px;
-left:-60px;
-}
-.date{
-display:inline-block;
-background:rgba(255,255,255,.2);
-padding:8px 14px;
-border-radius:999px;
-font-weight:900;
-margin-bottom:18px;
-}
-.card h3{
-font-size:31px;
-margin:0 0 15px;
-}
-.card p,.card li{
-font-size:17px;
-line-height:1.8;
-color:#eef2ff;
-}
-.icon{
-position:absolute;
-bottom:20px;
-left:25px;
-font-size:70px;
-opacity:.28;
-}
-.transfer{
-border-radius:30px;
-padding:35px;
-background:linear-gradient(135deg,#0f172a,#2563eb);
-box-shadow:0 20px 50px #0008;
-}
-.footer{
-text-align:center;
-padding:40px 20px;
-color:#94a3b8;
-}
-@media(max-width:800px){
-.grid{grid-template-columns:1fr}
-.hero h1{font-size:52px}
-}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{position:relative;min-height:360px;border-radius:28px;padding:26px;overflow:hidden;box-shadow:0 20px 50px #0008;transition:.35s;background-size:cover;background-position:center}
+.card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.78),rgba(124,58,237,.45));z-index:0}
+.card>*{position:relative;z-index:1}
+.card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 30px 70px #000}
+.date{display:inline-block;background:rgba(255,255,255,.22);padding:8px 14px;border-radius:999px;font-weight:900;margin-bottom:18px}
+.card h3{font-size:31px;margin:0 0 15px}
+.card p,.card li{font-size:17px;line-height:1.8;color:#eef2ff}
+.icon{position:absolute;bottom:20px;left:25px;font-size:72px;opacity:.32}
+.transfer{border-radius:30px;padding:35px;background:linear-gradient(135deg,#0f172a,#2563eb);box-shadow:0 20px 50px #0008}
+.footer{text-align:center;padding:40px 20px;color:#94a3b8}
+
+/* תמונות */
+.demel{background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/Demel_Wien_Kohlmarkt.jpg")}
+.zoom{background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/MuseumsQuartier_Wien.jpg")}
+.nasch{background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/Naschmarkt_Wien.jpg")}
+.zoo{background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/Tiergarten_Sch%C3%B6nbrunn_Eingang.jpg")}
+.bud1{background-image:url("https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=1400&q=80")}
+.bud2{background-image:url("https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1400&q=80")}
+.bud3{background-image:url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1400&q=80")}
+.airport{background-image:url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=80")}
+
+@media(max-width:800px){.grid{grid-template-columns:1fr}.hero h1{font-size:52px}.card{min-height:340px}}
 </style>
 </head>
 
@@ -147,7 +52,7 @@ color:#94a3b8;
 <h1>וינה & בודפשט<br>2026</h1>
 <div class="subtitle">
 טיול משפחתי לאבי, אלינור, אלמה ואליאנה · 20–27 באוגוסט ·  
-אירופה קלאסית, ילדים, שווקים, גן חיות, שיט, שופינג ו־EZRider.
+אירופה קלאסית, ZOOM, שווקים, גן חיות, שיט, שופינג ו־EZRider.
 </div>
 <a class="btn" href="#trip">יאללה למסלול ✨</a>
 </div>
@@ -159,7 +64,7 @@ color:#94a3b8;
 
 <div class="grid">
 
-<div class="card">
+<div class="card demel">
 <span class="date">20.8 · יום 1</span>
 <h3>נחיתה + Demel</h3>
 <p>פתיחה רגועה בוינה אחרי טיסה מוקדמת.</p>
@@ -171,7 +76,7 @@ color:#94a3b8;
 <div class="icon">🍰</div>
 </div>
 
-<div class="card">
+<div class="card zoom">
 <span class="date">21.8 · יום 2</span>
 <h3>ZOOM + פראטר</h3>
 <p>יום ילדים מושלם, לפי סלוטים שתזמין באתר ZOOM.</p>
@@ -183,7 +88,7 @@ color:#94a3b8;
 <div class="icon">🎡</div>
 </div>
 
-<div class="card">
+<div class="card nasch">
 <span class="date">22.8 · יום 3</span>
 <h3>Naschmarkt + מרכז קלאסי</h3>
 <p>שוק סופ״ש ואז וינה האלגנטית ברגל.</p>
@@ -195,7 +100,7 @@ color:#94a3b8;
 <div class="icon">🛍️</div>
 </div>
 
-<div class="card">
+<div class="card zoo">
 <span class="date">23.8 · יום 4</span>
 <h3>גן חיות + שנברון</h3>
 <p>יום משפחתי חזק במתחם שנברון.</p>
@@ -226,28 +131,28 @@ color:#94a3b8;
 
 <div class="grid">
 
-<div class="card">
+<div class="card bud1">
 <span class="date">24.8 · יום 5</span>
 <h3>ערב ראשון</h3>
 <p>צ׳ק אין, התאקלמות וסיבוב ערב ליד הדנובה.</p>
 <div class="icon">🌉</div>
 </div>
 
-<div class="card">
+<div class="card bud2">
 <span class="date">25.8 · יום 6</span>
 <h3>בודפשט הקלאסית</h3>
 <p>פרלמנט, בודה, מצודת הדייגים ושיט ערב בדנובה.</p>
 <div class="icon">🚤</div>
 </div>
 
-<div class="card">
+<div class="card bud3">
 <span class="date">26.8 · יום 7</span>
 <h3>שופינג + EZRider</h3>
 <p>חצי יום שופינג, מנוחה, ובערב סיור EZRider.</p>
 <div class="icon">🛴</div>
 </div>
 
-<div class="card">
+<div class="card airport">
 <span class="date">27.8 · יום 8</span>
 <h3>חזרה</h3>
 <p>טיסה חזרה מבודפשט ב־09:20.</p>
