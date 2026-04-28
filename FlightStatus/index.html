@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סטטוס חברות תעופה בישראל</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --active-bg: #d4edda;
+            --active-text: #155724;
+            --pending-bg: #fff3cd;
+            --pending-text: #856404;
+            --suspended-bg: #f8d7da;
+            --suspended-text: #721c24;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #fbfbfb;
+        }
+
+        .iata-code {
+            color: #888;
+            font-size: 0.85em;
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .status.active { background-color: var(--active-bg); color: var(--active-text); }
+        .status.pending { background-color: var(--pending-bg); color: var(--pending-text); }
+        .status.suspended { background-color: var(--suspended-bg); color: var(--suspended-text); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 10px; font-size: 0.9rem; }
+            .iata-code { display: block; margin-top: 5px; margin-right: 0; width: max-content; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>לוח טיסות: סטטוס חברות תעופה</h1>
+        <p>מעודכן לתאריך: 27/04 בשעה 09:15</p>
+    </header>
+
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="חפש חברת תעופה (לדוגמה: אל על, Wizz)...">
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">🇮🇱 חברות ישראליות</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>חברה</th>
+                        <th>סטטוס</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>אל על <span class="iata-code">LY</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>ישראייר <span class="iata-code">6H</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>ארקיע <span class="iata-code">IZ</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>אייר חיפה <span class="iata-code">E2</span></td><td><span class="status active">פעילה (נתב"ג ללרנקה ואתונה)</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">✈️ חברות זרות פעילות</h2>
+            <table class="data-table">
+                <thead>
+                    <tr><th>חברה</th><th>סטטוס</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>אוזבקיסטן איירווייז <span class="iata-code">HY</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>איתיחאד <span class="iata-code">EY</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>אתיופיאן איירליינס <span class="iata-code">ET</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>בלאביה <span class="iata-code">B2</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>בלו בירד <span class="iata-code">BZ</span></td><td><span class="status active">פעילה בנתב"ג ומטאבה</span></td></tr>
+                    <tr><td>היי-סקיי (HISKY) <span class="iata-code">H4</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>טוס איירווייז <span class="iata-code">U8</span></td><td><span class="status active">פעילה בנתב"ג ומטאבה</span></td></tr>
+                    <tr><td>סייפרוס איירווייז <span class="iata-code">CY</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>סקיי אקספרס <span class="iata-code">GQ</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>פליי דובאי <span class="iata-code">FZ</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                    <tr><td>רד ווינגס <span class="iata-code">WZ</span></td><td><span class="status active">פעילה בנתב"ג</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">⏳ תחדשנה פעילות בקרוב</h2>
+            <table class="data-table">
+                <thead>
+                    <tr><th>חברה</th><th>תאריך חזרה</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>אג'יאן איירליינס <span class="iata-code">A3</span></td><td><span class="status pending">תחדש ב-28/04</span></td></tr>
+                    <tr><td>פליי וואן <span class="iata-code">5F</span></td><td><span class="status pending">תחדש ב-30/04</span></td></tr>
+                    <tr><td>אייר סיישל <span class="iata-code">HM</span></td><td><span class="status pending">תחדש ב-01/05</span></td></tr>
+                    <tr><td>סקיי אפ <span class="iata-code">PQ</span></td><td><span class="status pending">תחדש ב-03/05</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">🛑 השהיית פעילות (זמני)</h2>
+            <table class="data-table">
+                <thead>
+                    <tr><th>חברה</th><th>תאריך חזרה משוער</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>אזימוט <span class="iata-code">A4</span></td><td><span class="status suspended">עד ה-26/04</span></td></tr>
+                    <tr><td>אזרבייג'ן איירליינס <span class="iata-code">J2</span></td><td><span class="status suspended">עד ה-01/05</span></td></tr>
+                    <tr><td>טארום <span class="iata-code">RO</span></td><td><span class="status suspended">עד ה-02/05</span></td></tr>
+                    <tr><td>אייר פראנס <span class="iata-code">AF</span></td><td><span class="status suspended">עד ה-03/05</span></td></tr>
+                    <tr><td>צנטרום אייר <span class="iata-code">C6</span></td><td><span class="status suspended">עד ה-03/05</span></td></tr>
+                    <tr><td>היינאן איירליינס <span class="iata-code">HU</span></td><td><span class="status suspended">עד ה-07/05</span></td></tr>
+                    <tr><td>יורווינגס <span class="iata-code">EW</span></td><td><span class="status suspended">עד ה-11/05</span></td></tr>
+                    <tr><td>וויז אייר <span class="iata-code">W6</span></td><td><span class="status suspended">עד ה-12/05</span></td></tr>
+                    <tr><td>בולגריה אייר <span class="iata-code">FB</span></td><td><span class="status suspended">עד ה-14/05</span></td></tr>
+                    <tr><td>סמארטווינגס <span class="iata-code">QS</span></td><td><span class="status suspended">עד ה-16/05</span></td></tr>
+                    <tr><td>קלמ (KLM) <span class="iata-code">KL</span></td><td><span class="status suspended">עד ה-17/05</span></td></tr>
+                    <tr><td>ג'אורג'יאן איירווייז <span class="iata-code">A9</span></td><td><span class="status suspended">עד ה-20/05</span></td></tr>
+                    <tr><td>אוסטריאן איירליינס <span class="iata-code">OS</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>אייר אינדיה <span class="iata-code">AI</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>אייר אירופה <span class="iata-code">UX</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>אייר בלטיק <span class="iata-code">BT</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>בראסלס איירליינס <span class="iata-code">SN</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>לוט (LOT) <span class="iata-code">LO</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>לופטהנזה <span class="iata-code">LH</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>סוויס (SWISS) <span class="iata-code">LX</span></td><td><span class="status suspended">עד ה-31/05</span></td></tr>
+                    <tr><td>איטה (ITA Airways) <span class="iata-code">AZ</span></td><td><span class="status suspended">עד ה-01/06</span></td></tr>
+                    <tr><td>סקנדינביאן (SAS) <span class="iata-code">SK</span></td><td><span class="status suspended">עד ה-02/06</span></td></tr>
+                    <tr><td>איבריה <span class="iata-code">IB</span></td><td><span class="status suspended">עד ה-01/07</span></td></tr>
+                    <tr><td>בריטיש איירווייז <span class="iata-code">BA</span></td><td><span class="status suspended">עד ה-01/07</span></td></tr>
+                    <tr><td>טראנסאוויה צרפת <span class="iata-code">TO</span></td><td><span class="status suspended">עד ה-05/07</span></td></tr>
+                    <tr><td>אנימה ווינגס <span class="iata-code">A2</span></td><td><span class="status suspended">עד ה-10/08</span></td></tr>
+                    <tr><td>דלתא איירליינס <span class="iata-code">DL</span></td><td><span class="status suspended">עד ה-05/09</span></td></tr>
+                    <tr><td>אייר קנדה <span class="iata-code">AC</span></td><td><span class="status suspended">עד ה-07/09</span></td></tr>
+                    <tr><td>יונייטד <span class="iata-code">UA</span></td><td><span class="status suspended">עד ה-07/09</span></td></tr>
+                    <tr><td>נאוס <span class="iata-code">NO</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">❌ לא פעילות מ-7.10.23</h2>
+            <table class="data-table">
+                <thead>
+                    <tr><th>חברה</th><th>סטטוס</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>קונדור <span class="iata-code">DE</span></td><td><span class="status pending">צפויה לחדש ב-11/05</span></td></tr>
+                    <tr><td>טאפ אייר פורטוגל <span class="iata-code">TP</span></td><td><span class="status pending">צפויה לחדש ב-31/05</span></td></tr>
+                    <tr><td>אמריקן איירליינס <span class="iata-code">AA</span></td><td><span class="status pending">צפויה לחדש ב-08/09</span></td></tr>
+                    <tr><td>איזיג'ט <span class="iata-code">U2</span></td><td><span class="status pending">צפויה לחדש ב-25/10</span></td></tr>
+                    <tr><td>נורווג'יאן אייר <span class="iata-code">DY</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>אייר סרביה <span class="iata-code">JU</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>אמירייטס <span class="iata-code">EK</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>גאלף אייר <span class="iata-code">GF</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>וויולינג <span class="iata-code">VY</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>פינאייר <span class="iata-code">AY</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>קוריאן אייר <span class="iata-code">KE</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>קתאי פסיפיק <span class="iata-code">CX</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>רויאל אייר מארוק <span class="iata-code">AT</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>רויאל ג'ורדניאן <span class="iata-code">RJ</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                    <tr><td>ריינאייר <span class="iata-code">FR</span></td><td><span class="status suspended">השהתה טיסות</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function filterTable() {
+            // קבלת ערך החיפוש
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toUpperCase();
+            
+            // מעבר על כל הטבלאות
+            let tables = document.querySelectorAll(".data-table");
+            
+            tables.forEach(table => {
+                let tr = table.getElementsByTagName("tr");
+                let tableHasVisibleRows = false;
+                
+                // מעבר על השורות בטבלה (מתחילים מ-1 כדי לדלג על הכותרת)
+                for (let i = 1; i < tr.length; i++) {
+                    let tdCompany = tr[i].getElementsByTagName("td")[0];
+                    let tdIATA = tr[i].getElementsByTagName("td")[0].querySelector('.iata-code');
+                    
+                    if (tdCompany) {
+                        let textValue = tdCompany.textContent || tdCompany.innerText;
+                        
+                        // בדיקה אם טקסט החיפוש קיים בשם החברה או בקוד
+                        if (textValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            tableHasVisibleRows = true;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+                
+                // הסתרת הכרטיסייה כולה אם אין בה שורות תואמות
+                let sectionCard = table.closest('.section-card');
+                if (!tableHasVisibleRows && filter !== "") {
+                    sectionCard.style.display = "none";
+                } else {
+                    sectionCard.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
