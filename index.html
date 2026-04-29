@@ -6,6 +6,7 @@
 <title>קיץ 2026 | וינה ובודפשט - מסלול משפחתי</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 <style>
 :root{
   --navy:#0f2240;--navy-mid:#1a3a6b;--navy-light:#2a4d85;--gold:#c8963c;--gold-light:#e2b057;--gold-pale:#fdf8ee;
@@ -19,12 +20,17 @@ body{font-family:'Assistant',sans-serif;background:var(--bg);color:var(--text);l
 /* Progress Bar */
 #pb{position:fixed;top:0;right:0;width:4px;height:0%;background:linear-gradient(to bottom, var(--gold-light), var(--gold));z-index:9999;border-radius:0 0 2px 2px}
 
-/* Nav */
+/* Nav & Weather */
 .nav{position:sticky;top:0;z-index:100;background:rgba(15,34,64,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,150,60,.15);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
 .nav-in{max-width:1200px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
 .nav-brand{color:var(--gold);font-weight:800;font-size:17px;letter-spacing:.5px;text-decoration:none;display:flex;align-items:center;gap:6px}
-.nav-links{display:flex;gap:6px}
-.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:14.5px;font-weight:600;padding:8px 16px;border-radius:999px;transition:var(--transition)}
+.nav-brand i {font-size: 20px;}
+.nav-center {display:flex; gap:15px; font-size:13.5px; color:rgba(255,255,255,0.8); font-weight:500;}
+.w-item {display:flex; align-items:center; gap:6px; background:rgba(0,0,0,0.25); padding:4px 12px; border-radius:999px;}
+.w-item i {color:var(--gold-light); font-size:16px;}
+.nav-links{display:flex; gap:6px}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:14.5px;font-weight:600;padding:8px 16px;border-radius:999px;transition:var(--transition);display:flex;align-items:center;gap:6px;}
+.nav-links a i {font-size:16px;}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
 .nav-links a.active{color:var(--navy);background:var(--gold);box-shadow:inset 0 2px 4px rgba(0,0,0,0.1)}
 
@@ -40,72 +46,75 @@ h1 span::after{content:'';position:absolute;bottom:10px;right:0;width:100%;heigh
 .hero-sub{font-size:22px;color:rgba(255,255,255,.85);font-weight:300;max-width:650px;margin:0 auto 40px;line-height:1.6}
 .hero-sub strong{color:#fff;font-weight:700}
 .flight-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:48px}
-.fchip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;padding:12px 20px;border-radius:14px;font-size:14.5px;font-weight:500;backdrop-filter:blur(5px);box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:var(--transition)}
-.fchip:hover{border-color:var(--gold);transform:translateY(-2px)}
-.fchip strong{color:var(--gold-light);font-weight:700}
+.fchip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;padding:12px 20px;border-radius:14px;font-size:14.5px;font-weight:500;backdrop-filter:blur(5px);box-shadow:0 4px 6px rgba(0,0,0,0.1);display:flex;align-items:center;gap:8px;}
+.fchip i{color:var(--gold-light);font-size:18px;}
 .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:var(--transition);border:2px solid transparent;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
-.btn-g{background:var(--gold);color:var(--navy)}.btn-g:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 6px 20px rgba(200,150,60,0.4)}
+.btn-g{background:var(--gold);color:var(--navy)}.btn-g:hover{background:var(--gold-light);transform:translateY(-3px)}
 .btn-o{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}.btn-o:hover{background:rgba(255,255,255,.08);border-color:#fff;transform:translateY(-3px)}
+
+/* Floating Action Button (Documents) */
+.fab {position:fixed;bottom:24px;left:24px;width:60px;height:60px;background:var(--navy-light);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);text-decoration:none;border:2px solid rgba(255,255,255,0.1);}
+.fab:hover {transform:scale(1.1) translateY(-4px);background:var(--cv);box-shadow:0 8px 25px rgba(74,127,193,0.5);}
 
 /* Time Strip */
 .tstrip{background:var(--navy);overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.05)}
 .tstrip::-webkit-scrollbar{display:none}
-.tstrip-in{max-width:1200px;margin:auto;padding:0 20px;display:flex;position:relative}
+.tstrip-in{max-width:1200px;margin:auto;padding:0 20px;display:flex;}
 .ts{flex:1;min-width:90px;padding:16px 10px;text-align:center;color:rgba(255,255,255,.45);font-size:12.5px;font-weight:600;border-top:3px solid transparent;margin-top:-1px;text-decoration:none;transition:var(--transition)}
 .ts:hover{color:#fff;background:rgba(255,255,255,.03)}
-.ts.v{border-top-color:rgba(74, 127, 193, 0.4)}
-.ts.v:hover, .ts.v.active_sec{border-top-color:var(--cv);color:#fff}
-.ts.tr{border-top-color:rgba(200, 150, 60, 0.4);color:rgba(200, 150, 60, 0.7)}
-.ts.tr:hover, .ts.tr.active_sec{border-top-color:var(--gold);color:var(--gold-light)}
-.ts.b{border-top-color:rgba(212, 97, 122, 0.4)}
-.ts.b:hover, .ts.b.active_sec{border-top-color:var(--cb);color:#fff}
+.ts.v.active_sec{border-top-color:var(--cv);color:#fff}
+.ts.tr.active_sec{border-top-color:var(--gold);color:var(--gold-light)}
+.ts.b.active_sec{border-top-color:var(--cb);color:#fff}
 .ts small{display:block;font-size:11px;opacity:.7;margin-top:3px;font-weight:400}
 
-/* Main Content */
+/* Main Content & Cards */
 .wrap{max-width:1200px;margin:auto;padding:90px 24px}
 .sec-hdr{margin-bottom:56px;text-align:center;display:flex;flex-direction:column;align-items:center}
-.clbl{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+.clbl{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.clbl i {font-size: 16px;}
 .clbl.v{background:#e8f0fc;color:var(--cv)}.clbl.b{background:#fce8ec;color:var(--cb)}
 .sec-title{font-family:'Playfair Display',serif;font-size:clamp(38px,6vw,56px);font-weight:900;color:var(--navy);line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
 .sec-desc{font-size:19px;color:var(--muted);max-width:700px;line-height:1.7;font-weight:300}
-
-/* Grid & Cards */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
 .card{background:#fff;border-radius:var(--rl);border:1px solid var(--border);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;box-shadow:0 4px 6px rgba(0,0,0,0.02)}
-.card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(15,34,64,0.12);border-color:transparent}
+.card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(15,34,64,0.12)}
 .cimg-w{position:relative;height:280px;overflow:hidden;background:#e2e8f0}
-.cimg-w img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)}
+.cimg-w img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)}
 .card:hover .cimg-w img{transform:scale(1.08)}
 .cov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,34,64,0.7) 0%,rgba(15,34,64,0.2) 50%,transparent 100%);pointer-events:none}
-.dtag{position:absolute;top:20px;right:20px;background:var(--white);color:var(--navy);padding:10px 16px;border-radius:12px;font-size:13.5px;font-weight:800;line-height:1.2;box-shadow:0 4px 15px rgba(0,0,0,0.15);z-index:2;border:1px solid var(--border)}
-.dtag small{display:block;font-weight:500;font-size:11.5px;color:var(--muted);margin-top:1px}
+.dtag{position:absolute;top:20px;right:20px;background:var(--white);color:var(--navy);padding:10px 16px;border-radius:12px;font-size:13.5px;font-weight:800;line-height:1.2;box-shadow:0 4px 15px rgba(0,0,0,0.15);z-index:2}
+.dtag small{display:block;font-weight:500;font-size:11.5px;color:var(--muted)}
 .cbody{padding:30px;flex-grow:1;display:flex;flex-direction:column}
 .cbody h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:var(--navy);margin-bottom:10px;line-height:1.2;letter-spacing:-0.5px}
-.cbody > p{font-size:15.5px;color:var(--muted);line-height:1.7;margin-bottom:22px;font-weight:400}
-.acts{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+.cbody > p{font-size:15.5px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.acts{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:20px}
 .acts li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--text);line-height:1.5}
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px;position:relative}
 .dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:inherit;opacity:0.3}
 .dot.v{background:var(--cv)}.dot.b{background:var(--cb)}.dot.n{background:var(--gold)}
-.hl{margin-top:auto;padding:16px 20px;background:var(--gold-pale);border-right:4px solid var(--gold);border-radius:8px 0 0 8px;font-size:14.5px;font-weight:600;color:#7a5a1a;line-height:1.5;display:flex;align-items:start;gap:10px}
-.hl-ico{margin-top:2px}
 
-/* Map Block */
+/* Missions for Kids */
+.mission {background:#fffdf7; border:1px dashed var(--gold-light); border-radius:12px; padding:14px 18px; margin-bottom:24px; display:flex; gap:12px; align-items:flex-start;}
+.mission i {color:var(--gold); font-size:24px; flex-shrink:0; margin-top:2px;}
+.mission div {font-size:14.5px; color:#5c4716; line-height:1.5;}
+.mission strong {display:block; color:var(--gold); font-weight:700; margin-bottom:2px; font-size:13px; text-transform:uppercase; letter-spacing:0.5px;}
+
+.hl{margin-top:auto;padding:16px 20px;background:var(--gold-pale);border-right:4px solid var(--gold);border-radius:8px 0 0 8px;font-size:14.5px;font-weight:600;color:#7a5a1a;line-height:1.5;display:flex;align-items:start;gap:10px}
+.hl i {font-size: 20px; color: var(--gold); margin-top: 2px;}
 .map-block{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
-.map-frame{width:100%;height:250px;border:0;border-radius:14px;display:block;background:#f1f5f9;box-shadow:inset 0 2px 4px rgba(0,0,0,0.05)}
+.map-frame{width:100%;height:250px;border:0;border-radius:14px;background:#f1f5f9;box-shadow:inset 0 2px 4px rgba(0,0,0,0.05)}
 .map-btn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:12px 24px;border-radius:999px;background:var(--navy);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:var(--transition);box-shadow:0 3px 6px rgba(0,0,0,0.1)}
-.map-btn:hover{background:var(--navy-mid);transform:translateX(-4px);box-shadow:0 5px 12px rgba(0,0,0,0.15)}
+.map-btn i {font-size:18px;}
+.map-btn:hover{background:var(--navy-mid);transform:translateX(-4px)}
 
 /* Transfer */
 .xfer-wrap{background:linear-gradient(135deg, #112951 0%, #080f1e 100%);position:relative;overflow:hidden}
-.xfer-wrap::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="%23fff" fill-opacity="0.03" fill-rule="evenodd"><circle cx="3" cy="3" r="3"/><circle cx="13" cy="13" r="3"/></g></svg>');opacity:0.5}
 .xfer-in{max-width:1120px;margin:auto;padding:80px 24px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;position:relative;z-index:1}
-.xfer-ico{width:100px;height:100px;background:rgba(200,150,60,.1);border:1px solid rgba(200,150,60,.25);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:48px;flex-shrink:0;box-shadow:0 8px 20px rgba(0,0,0,0.2);animation:trainShake 4s infinite ease-in-out}
+.xfer-ico{width:100px;height:100px;background:rgba(200,150,60,.1);border:1px solid rgba(200,150,60,.25);border-radius:24px;display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-size:48px;flex-shrink:0;box-shadow:0 8px 20px rgba(0,0,0,0.2);animation:trainShake 4s infinite ease-in-out}
 @keyframes trainShake {0%,100%{transform:rotate(0)}25%{transform:rotate(-3deg) translateY(-2px)}75%{transform:rotate(3deg) translateY(2px)}}
-.xfer-info h2{font-family:'Playfair Display',serif;font-size:36px;color:#fff;margin-bottom:12px;letter-spacing:-1px}
+.xfer-info h2{font-family:'Playfair Display',serif;font-size:36px;color:#fff;margin-bottom:12px;}
 .xfer-info p{font-size:18px;color:rgba(255,255,255,.8);line-height:1.7;max-width:720px;font-weight:300}
-.xfer-info p strong{color:var(--gold-light);font-weight:600}
 
 /* Tips */
 .tips-wrap{background:var(--navy);padding:100px 0;position:relative}
@@ -114,68 +123,51 @@ h1 span::after{content:'';position:absolute;bottom:10px;right:0;width:100%;heigh
 .tips-in .sec-title{color:#fff}.tips-in .sec-desc{color:rgba(255,255,255,.65)}
 .tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
 .tip{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);padding:30px;transition:var(--transition);display:flex;flex-direction:column;gap:15px}
-.tip:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15);transform:translateY(-5px)}
+.tip:hover{background:rgba(255,255,255,.07);transform:translateY(-5px)}
 .tip-top{display:flex;align-items:center;gap:14px}
-.tip-ico{font-size:28px;width:50px;height:50px;background:rgba(255,255,255,.06);border-radius:12px;display:flex;align-items:center;justify-content:center}
-.tip h3{font-size:19px;font-weight:700;color:#fff;letter-spacing:-0.3px}
-.tip p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;font-weight:400}
+.tip-ico{font-size:28px;width:50px;height:50px;background:rgba(255,255,255,.06);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--gold-light);}
+.tip h3{font-size:19px;font-weight:700;color:#fff;}
+.tip p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;}
 
 /* Footer */
-footer{background:#060b14;padding:50px 24px;text-align:center;color:rgba(255,255,255,.35);font-size:14px;line-height:1.8;border-top:1px solid rgba(255,255,255,.03)}
+footer{background:#060b14;padding:50px 24px;text-align:center;color:rgba(255,255,255,.35);font-size:14px;line-height:1.8}
 footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
-footer .credits{margin-top:10px;opacity:.5;font-size:12.5px;font-weight:300}
-
-/* Animations */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.credits{margin-top:10px;opacity:.5;font-size:12.5px;font-weight:300}
 
 /* Media Queries */
-@media(max-width:1000px){
-  .grid{gap:20px}.tips-grid{grid-template-columns:repeat(2,1fr)}
-  .cimg-w{height:220px}.cbody{padding:22px}
-}
 @media(max-width:860px){
-  .grid{grid-template-columns:1fr}
-  .xfer-in{grid-template-columns:1fr;text-align:center;justify-items:center;gap:25px}
-  .nav-links a{font-size:13px;padding:7px 12px}
-  .ts{min-width:75px;font-size:11.5px;padding:14px 6px}
+  .grid{grid-template-columns:1fr} .xfer-in{grid-template-columns:1fr;text-align:center;justify-items:center;gap:25px}
+  .nav-center {display:none;} /* Hide weather on small screens to save space */
 }
 @media(max-width:600px){
-  html{font-size:15px}
-  .nav-in{padding:0 15px} .nav-brand{font-size:15px} .nav-links{gap:2px} .nav-links a{padding:6px 9px; font-size:12px}
-  .eyebrow{padding:6px 16px; font-size:12px}
-  h1{letter-spacing:-1.5px}
-  .flight-row{gap:8px}.fchip{padding:10px 16px; font-size:13px; border-radius:10px}
-  .btns{gap:10px}.btn{padding:14px 24px; font-size:15px}
-  .wrap{padding:60px 16px}
-  .ts{min-width:65px; font-size:11px}
-  .tips-grid{grid-template-columns:1fr; gap:16px}
+  .wrap{padding:60px 16px} .tips-grid{grid-template-columns:1fr}
+  .fab {width:50px; height:50px; font-size:22px; bottom:16px; left:16px;}
 }
-@media(max-width:480px){
-  .nav-links{display:none} /* Hide nav links on very small screens for UX */
-  .nav-in{justify-content:center}
-  .cimg-w{height:190px}
-}
-@media print{
-  .nav,#pb,.btns,.map-block,footer,.tstrip{display:none!important}
-  .hero{min-height:auto;height:250px;background:#fff;color:var(--navy)}
-  .hero-bg{display:none} .hero-in, h1, .hero-sub, .fchip{color:var(--navy)!important; text-shadow:none!important}
-  .card{break-inside:avoid;margin-bottom:20px;border:1px solid #ccc!important;box-shadow:none!important}
-  body{background:#fff} .wrap{padding:20px 0}
-}
+@media(max-width:480px){.nav-links{display:none} .nav-in{justify-content:center}}
 </style>
 </head>
 <body>
+
+<a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" class="fab" title="מסמכים חשובים">
+  <i class="ph ph-folder-open"></i>
+</a>
+
 <div id="pb"></div>
 
 <nav class="nav">
   <div class="nav-in">
-    <a href="#" class="nav-brand"><span>✈</span> קיץ 2026</a>
+    <a href="#" class="nav-brand"><i class="ph ph-airplane-takeoff"></i> קיץ 2026</a>
+    
+    <div class="nav-center">
+      <div class="w-item" id="weather-vienna"><i class="ph ph-thermometer"></i> <span>וינה: טוען...</span></div>
+      <div class="w-item" id="weather-budapest"><i class="ph ph-thermometer"></i> <span>בודפשט: טוען...</span></div>
+    </div>
+
     <div class="nav-links">
-      <a href="#vienna">🇦🇹 וינה</a>
-      <a href="#transfer">🚄 מעבר</a>
-      <a href="#budapest">🇭🇺 בודפשט</a>
-      <a href="#tips">💡 טיפים</a>
+      <a href="#vienna"><i class="ph ph-map-pin"></i> וינה</a>
+      <a href="#transfer"><i class="ph ph-train"></i> מעבר</a>
+      <a href="#budapest"><i class="ph ph-map-pin"></i> בודפשט</a>
+      <a href="#tips"><i class="ph ph-lightbulb"></i> טיפים</a>
     </div>
   </div>
 </nav>
@@ -183,17 +175,17 @@ footer .credits{margin-top:10px;opacity:.5;font-size:12.5px;font-weight:300}
 <header class="hero">
   <div class="hero-bg"></div>
   <div class="hero-in">
-    <div class="eyebrow reveal">☀ קיץ 2026 · טיול משפחתי</div>
+    <div class="eyebrow reveal"><i class="ph ph-sun"></i> קיץ 2026 · טיול משפחתי</div>
     <h1 class="reveal">וינה & <span>בודפשט</span></h1>
     <p class="hero-sub reveal"><strong>20–27 באוגוסט 2026</strong><br>אבי, אלינור, אלמה ואליאנה</p>
     <div class="flight-row reveal">
-      <div class="fchip">✈ <strong>20.8</strong> טיסה לוינה 06:20</div>
-      <div class="fchip">🚄 <strong>24.8</strong> רכבת לבודפשט 11:40</div>
-      <div class="fchip">✈ <strong>27.8</strong> חזרה מבודפשט 09:20</div>
+      <div class="fchip"><i class="ph ph-airplane-tilt"></i> <strong>20.8</strong> טיסה לוינה 06:20</div>
+      <div class="fchip"><i class="ph ph-train"></i> <strong>24.8</strong> רכבת לבודפשט 11:40</div>
+      <div class="fchip"><i class="ph ph-airplane-landing"></i> <strong>27.8</strong> חזרה מבודפשט 09:20</div>
     </div>
     <div class="btns reveal">
-      <a class="btn btn-g" href="#vienna">🏔 גלו את וינה</a>
-      <a class="btn btn-o" href="#budapest">🏰 גלו את בודפשט</a>
+      <a class="btn btn-g" href="#vienna"><i class="ph ph-mountains"></i> גלו את וינה</a>
+      <a class="btn btn-o" href="#budapest"><i class="ph ph-castle-turret"></i> גלו את בודפשט</a>
     </div>
   </div>
 </header>
@@ -215,7 +207,7 @@ footer .credits{margin-top:10px;opacity:.5;font-size:12.5px;font-weight:300}
 <section id="vienna">
   <div class="wrap">
     <div class="sec-hdr reveal">
-      <div class="clbl v">🇦🇹 אוסטריה · 4 ימים</div>
+      <div class="clbl v"><i class="ph ph-flag"></i> אוסטריה · 4 ימים</div>
       <h2 class="sec-title">וינה הקלאסית</h2>
       <p class="sec-desc">Demel, ZOOM, Naschmarkt וגן החיות של שנברון — ארבעה ימים בקצב מחושב.</p>
     </div>
@@ -223,8 +215,7 @@ footer .credits{margin-top:10px;opacity:.5;font-size:12.5px;font-weight:300}
 
       <div class="card reveal" id="day1">
         <div class="cimg-w">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Demel_Wien_Kohlmarkt.jpg/1280px-Demel_Wien_Kohlmarkt.jpg"
-               onerror="this.src='https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80'" alt="Demel Vienna" loading="lazy">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Demel_Wien_Kohlmarkt.jpg/1280px-Demel_Wien_Kohlmarkt.jpg" alt="Demel Vienna" loading="lazy">
           <div class="cov"></div>
           <div class="dtag">יום 1<small>20 באוגוסט</small></div>
         </div>
@@ -237,10 +228,174 @@ footer .credits{margin-top:10px;opacity:.5;font-size:12.5px;font-weight:300}
             <li><span class="dot v"></span>סיור רגלי ב-Stephansplatz ורחוב Graben</li>
             <li><span class="dot v"></span>עצירת חובה לקפה ועוגה ב-Demel המפורסם</li>
           </ul>
-          <div class="hl">
-            <span class="hl-ico">🍰</span>
-            <span>פתיחה וינאית קלאסית עם קפה משובח, עוגות מדהימות ואווירה אימפריאלית.</span>
+          
+          <div class="mission">
+            <i class="ph ph-magnifying-glass"></i>
+            <div>
+              <strong>משימה לאלמה ואליאנה:</strong>
+              כשנהיה בקונדיטוריית Demel, הסתכלו טוב על חלון הראווה – נסו למצוא את העוגה שהכי מזכירה צורה של פרח!
+            </div>
           </div>
+
+          <div class="hl"><i class="ph ph-coffee"></i> <span>פתיחה וינאית קלאסית עם קפה משובח ועוגות.</span></div>
           <div class="map-block">
-            <iframe class="map-frame" loading="lazy" allowfullscreen
-              src="
+            <iframe class="map-frame" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Demel%20Vienna&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+            <a class="map-btn" target="_blank" href="https://goo.gl/maps/demel"><i class="ph ph-navigation-arrow"></i> ניווט מסלול יום 1</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" id="day2">
+        <div class="cimg-w">
+          <img src="https://images.unsplash.com/photo-1599818817411-ae5d10d05779?auto=format&fit=crop&w=1280&q=80" alt="Prater Vienna Riesenrad" loading="lazy">
+          <div class="cov"></div>
+          <div class="dtag">יום 2<small>21 באוגוסט</small></div>
+        </div>
+        <div class="cbody">
+          <h3>מוזיאון ZOOM + פראטר</h3>
+          <p>בוקר אינטראקטיבי ומעשיר, וערב מלא אדרנלין בפארק השעשועים האגדי.</p>
+          <ul class="acts">
+            <li><span class="dot v"></span>ZOOM Children's Museum (להזמין מראש!)</li>
+            <li><span class="dot v"></span>צהריים נינוחים במתחם MuseumsQuartier</li>
+            <li><span class="dot v"></span>מנוחת צהריים חיונית במלון</li>
+            <li><span class="dot v"></span>אחה"צ וערב: פראטר + נסיעה בגלגל הענק</li>
+          </ul>
+
+          <div class="mission">
+            <i class="ph ph-binoculars"></i>
+            <div>
+              <strong>משימה לאלמה ואליאנה:</strong>
+              בפארק השעשועים פראטר נמצא גלגל הענק המפורסם. נסו לספור כמה קרונות אדומים יש לו בסך הכל (רמז: זה מעל 10!).
+            </div>
+          </div>
+
+          <div class="hl"><i class="ph ph-ferris-wheel"></i> <span>למידה חוויתית בבוקר, וכיף טהור משחרר בערב.</span></div>
+          <div class="map-block">
+            <iframe class="map-frame" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Prater%20Vienna&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+            <a class="map-btn" target="_blank" href="https://goo.gl/maps/prater"><i class="ph ph-navigation-arrow"></i> ניווט יום 2</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" id="day3">
+        <div class="cimg-w">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Naschmarkt_Wien.jpg/1280px-Naschmarkt_Wien.jpg" alt="Naschmarkt Vienna" loading="lazy">
+          <div class="cov"></div>
+          <div class="dtag">יום 3<small>22 באוגוסט</small></div>
+        </div>
+        <div class="cbody">
+          <h3>Naschmarkt + וינה האימפריאלית</h3>
+          <p>שוק תוסס בבוקר ולאחריו צלילה לאלגנטיות של רובע ההופבורג.</p>
+          <ul class="acts">
+            <li><span class="dot v"></span>בוקר: Naschmarkt + שוק פשפשים (שבת)</li>
+            <li><span class="dot v"></span>הליכה נינוחה לכיוון בית האופרה</li>
+            <li><span class="dot v"></span>מתחם Hofburg וחצרותיו</li>
+            <li><span class="dot v"></span>סיום מתוק בגלידה / קפה ברחוב Graben</li>
+          </ul>
+
+          <div class="mission">
+            <i class="ph ph-basket"></i>
+            <div>
+              <strong>משימה לאלמה ואליאנה:</strong>
+              בשוק ה-Naschmarkt יש המון דוכנים צבעוניים. מי מכן מצליחה למצוא ראשונה דוכן שמוכר פלפל חריף בצורת כוכב או פרי מוזר שמעולם לא ראיתן?
+            </div>
+          </div>
+
+          <div class="hl"><i class="ph ph-shopping-bag"></i> <span>טעימות מקומיות אותנטיות + הזוהר של הקיסר.</span></div>
+          <div class="map-block">
+            <iframe class="map-frame" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Naschmarkt%20Vienna&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+            <a class="map-btn" target="_blank" href="https://goo.gl/maps/naschmarkt"><i class="ph ph-navigation-arrow"></i> ניווט יום 3</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" id="day4">
+        <div class="cimg-w">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Tiergarten_Sch%C3%B6nbrunn_Eingang.jpg/1280px-Tiergarten_Sch%C3%B6nbrunn_Eingang.jpg" alt="Tiergarten Schonbrunn" loading="lazy">
+          <div class="cov"></div>
+          <div class="dtag">יום 4<small>23 באוגוסט</small></div>
+        </div>
+        <div class="cbody">
+          <h3>גן חיות שנברון + גנים מלכותיים</h3>
+          <p>ביקור בגן החיות העתיק בעולם הממוקם בתוך מתחם הארמון, וטיול גנים קיסרי.</p>
+          <ul class="acts">
+            <li><span class="dot v"></span>יציאה מוקדמת ל-Tiergarten Schönbrunn</li>
+            <li><span class="dot v"></span>סיור במתחמים המודרניים בקצב רגוע</li>
+            <li><span class="dot v"></span>צהריים קליל באחת המסעדות בתוך המתחם</li>
+            <li><span class="dot v"></span>טיול בגנים ההיסטוריים ותצפית מהגלורייט</li>
+          </ul>
+
+          <div class="mission">
+            <i class="ph ph-paw-print"></i>
+            <div>
+              <strong>משימה לאלמה ואליאנה:</strong>
+              גן החיות הזה קיים כבר מאות שנים! נסו לחפש את הפנדות – האם הן ערות ואוכלות במבוק, או ששוב הלכו לישון?
+            </div>
+          </div>
+
+          <div class="hl"><i class="ph ph-tree"></i> <span>חווית חיות ייחודית על רקע ארמון קיסרי.</span></div>
+          <div class="map-block">
+            <iframe class="map-frame" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Tiergarten%20Sch%C3%B6nbrunn&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+            <a class="map-btn" target="_blank" href="https://goo.gl/maps/zoo"><i class="ph ph-navigation-arrow"></i> ניווט לגן החיות</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="transfer" class="xfer-wrap">
+  <div class="xfer-in">
+    <div class="xfer-ico"><i class="ph ph-train-regional"></i></div>
+    <div class="xfer-info reveal">
+      <h2>יום המעבר לבודפשט</h2>
+      <p><strong>24 באוגוסט, 11:40</strong> — נפרדים לשלום מוינה ועולים על הרכבת. מחכה לנו נסיעה נוחה ומרגיעה של כשעתיים וחצי. הגעה לבודפשט, צ'ק-אין במלון סביב 16:00, והתארגנות לסיבוב ערב ראשון על הדנובה.</p>
+    </div>
+  </div>
+</div>
+
+<section id="budapest" style="background:var(--bg-b)">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="clbl b"><i class="ph ph-flag"></i> הונגריה · 3 ימים</div>
+      <h2 class="sec-title">בודפשט התוססת</h2>
+      <p class="sec-desc">דנובה מוארת, Arena Mall, EZRaider, מצודת הדייגים והרובע היהודי.</p>
+    </div>
+    <div class="grid">
+
+      <div class="card reveal" id="day5">
+        <div class="cimg-w">
+          <img src="https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=900&q=80" alt="Budapest Danube" loading="lazy">
+          <div class="cov"></div>
+          <div class="dtag">יום 5<small>24 באוגוסט</small></div>
+        </div>
+        <div class="cbody">
+          <h3>הגעה + ערב ראשון על הדנובה</h3>
+          <p>אחרי ההתארגנות — סיבוב ערב רגוע ויפהפה לאורך טיילת הדנובה.</p>
+          <ul class="acts">
+            <li><span class="dot b"></span>יציאה מהמלון לטיילת הדנובה (Dunakorzó)</li>
+            <li><span class="dot b"></span>הליכה נינוחה לכיוון גשר השלשלאות המואר</li>
+            <li><span class="dot b"></span>כיכר Vörösmarty ורחוב Váci Street</li>
+            <li><span class="dot b"></span>ארוחת ערב מקומית וחזרה למלון לסיום רגוע</li>
+          </ul>
+
+          <div class="mission">
+            <i class="ph ph-bridge"></i>
+            <div>
+              <strong>משימה לאלמה ואליאנה:</strong>
+              כשאתן הולכות לאורך נהר הדנובה בערב, נסו לספור - כמה גשרים גדולים ומוארים אתן מצליחות לראות במבט אחד?
+            </div>
+          </div>
+
+          <div class="hl"><i class="ph ph-moon-stars"></i> <span>הכירו את בודפשט המוארת והקסומה.</span></div>
+          <div class="map-block">
+            <iframe class="map-frame" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Dunakorz%C3%B3%20Budapest&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+            <a class="map-btn" target="_blank" href="https://goo.gl/maps/danube"><i class="ph ph-navigation-arrow"></i> ניווט מסלול ערב</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" id="day6">
+        <div class="cimg-w">
+          <img src="
