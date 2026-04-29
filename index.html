@@ -8,21 +8,22 @@
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
 margin:0;
 font-family:Heebo,Arial,sans-serif;
 background:
-radial-gradient(circle at top right, rgba(95,127,255,.20), transparent 24%),
+radial-gradient(circle at top right, rgba(95,127,255,.22), transparent 24%),
 radial-gradient(circle at top left, rgba(245,196,81,.18), transparent 20%),
 linear-gradient(180deg,#eef3ff 0%,#f7f9fc 45%,#f5f7fb 100%);
 color:#172033;
 }
-.container{width:min(1100px,calc(100% - 30px));margin:auto}
+.container{width:min(1120px,calc(100% - 30px));margin:auto}
 
 .hero{
 min-height:88vh;
 background:
-linear-gradient(rgba(0,0,0,.30),rgba(0,0,0,.62)),
+linear-gradient(rgba(0,0,0,.30),rgba(0,0,0,.65)),
 url("https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1600&q=80");
 background-size:cover;
 background-position:center;
@@ -30,29 +31,42 @@ display:flex;
 align-items:center;
 color:white;
 }
-h1{font-size:clamp(40px,7vw,75px);margin:0 0 15px;line-height:.95;font-weight:800}
-.subtitle{font-size:20px;max-width:760px;line-height:1.7}
+h1{font-size:clamp(42px,7vw,78px);margin:0 0 15px;line-height:.95;font-weight:800}
+.subtitle{font-size:20px;max-width:800px;line-height:1.75}
 .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.badge{background:rgba(255,255,255,.20);padding:10px 14px;border-radius:999px;font-weight:700}
+.badge{background:rgba(255,255,255,.22);padding:10px 14px;border-radius:999px;font-weight:700;backdrop-filter:blur(6px)}
 
-section{padding:60px 0}
-h2{font-size:38px;margin:0 0 12px}
-.desc{color:#60708c;font-size:18px;line-height:1.7;margin-bottom:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-btn{
+display:inline-block;
+padding:13px 20px;
+border-radius:999px;
+background:white;
+color:#172033;
+font-weight:800;
+text-decoration:none;
+box-shadow:0 10px 28px rgba(0,0,0,.20);
+}
+.hero-btn.alt{background:rgba(255,255,255,.18);color:white;border:1px solid rgba(255,255,255,.25)}
+
+section{padding:64px 0}
+h2{font-size:40px;margin:0 0 12px}
+.desc{color:#60708c;font-size:18px;line-height:1.8;margin-bottom:30px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 
 .card{
 background:white;
-border-radius:24px;
+border-radius:26px;
 overflow:hidden;
 box-shadow:0 14px 34px rgba(20,30,55,.13);
 transition:.35s ease;
 }
 .card:hover{transform:translateY(-8px);box-shadow:0 22px 46px rgba(20,30,55,.20)}
 
-.img{height:270px;position:relative;overflow:hidden;background:linear-gradient(135deg,#dbeafe,#fde68a)}
+.img{height:275px;position:relative;overflow:hidden;background:linear-gradient(135deg,#dbeafe,#fde68a)}
 .img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease, filter .65s ease}
 .card:hover .img img{transform:scale(1.09);filter:saturate(1.08) contrast(1.04)}
-.img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.18));pointer-events:none}
+.img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.22));pointer-events:none}
 
 .tag{
 position:absolute;
@@ -65,8 +79,9 @@ font-weight:800;
 box-shadow:0 6px 18px rgba(0,0,0,.14);
 z-index:2;
 }
-.content{padding:22px}
-h3{margin:0 0 10px;font-size:25px}
+.content{padding:23px}
+h3{margin:0 0 10px;font-size:26px}
+
 .city{
 display:inline-block;
 background:#eef2ff;
@@ -80,18 +95,15 @@ p{color:#60708c;line-height:1.75}
 .list{display:grid;gap:8px;margin:15px 0}
 .item{display:flex;gap:8px;line-height:1.65}
 .dot{width:8px;height:8px;background:#2750d8;border-radius:50%;margin-top:9px;flex:0 0 8px}
-.highlight{background:#ecfdf3;padding:13px 14px;border-radius:14px;font-weight:800;color:#1f6b37;line-height:1.7}
 
-.transfer{
-background:linear-gradient(135deg,#233b86,#315dff);
-color:white;
-border-radius:28px;
-padding:30px;
-box-shadow:0 14px 34px rgba(20,30,55,.16);
-transition:.35s ease;
+.highlight{
+background:#ecfdf3;
+padding:13px 14px;
+border-radius:14px;
+font-weight:800;
+color:#1f6b37;
+line-height:1.7;
 }
-.transfer:hover{transform:translateY(-5px);box-shadow:0 22px 46px rgba(20,30,55,.22)}
-.transfer p{color:rgba(255,255,255,.92)}
 
 .map-frame{
 width:100%;
@@ -114,15 +126,27 @@ transition:.3s;
 }
 .map-btn:hover{transform:scale(1.05);box-shadow:0 10px 25px rgba(0,0,0,.2)}
 
+.transfer{
+background:linear-gradient(135deg,#233b86,#315dff);
+color:white;
+border-radius:28px;
+padding:32px;
+box-shadow:0 14px 34px rgba(20,30,55,.16);
+transition:.35s ease;
+}
+.transfer:hover{transform:translateY(-5px);box-shadow:0 22px 46px rgba(20,30,55,.22)}
+.transfer p{color:rgba(255,255,255,.92)}
+
 .tips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .tip{background:white;border-radius:22px;padding:22px;box-shadow:0 12px 28px rgba(20,30,55,.10);transition:.3s ease}
 .tip:hover{transform:translateY(-6px)}
-footer{text-align:center;padding:35px;color:#60708c}
+footer{text-align:center;padding:38px;color:#60708c}
 
 @media(max-width:850px){
 .grid,.tips{grid-template-columns:1fr}
 .hero{min-height:74vh}
 .img{height:235px}
+.subtitle{font-size:18px}
 }
 </style>
 </head>
@@ -136,18 +160,24 @@ footer{text-align:center;padding:35px;color:#60708c}
 <div class="subtitle">
 20–27 באוגוסט 2026 · אבי, אלינור, אלמה ואליאנה · Demel, ZOOM, Naschmarkt, גן החיות ושנברון, רכבת לבודפשט, שופינג, EZRaider, בודה והרובע היהודי.
 </div>
+
 <div class="badges">
 <div class="badge">✈️ 20.8 טיסה לוינה 06:20</div>
 <div class="badge">🚄 24.8 רכבת לבודפשט 11:40</div>
 <div class="badge">✈️ 27.8 חזרה מבודפשט 09:20</div>
 </div>
+
+<div class="hero-actions">
+<a class="hero-btn" href="#vienna">🇦🇹 וינה</a>
+<a class="hero-btn alt" href="#budapest">🇭🇺 בודפשט</a>
+</div>
 </div>
 </header>
 
-<section>
+<section id="vienna">
 <div class="container">
 <h2>🇦🇹 וינה</h2>
-<div class="desc">ארבעה ימים מסודרים: יום הגעה עם Demel, יום ZOOM ופראטר, יום Naschmarkt ומרכז קלאסי, ויום גן חיות ושנברון.</div>
+<div class="desc">ארבעה ימים מסודרים: יום הגעה עם Demel ומרכז העיר, יום ZOOM ופראטר, יום Naschmarkt ומרכז קלאסי, ויום גן חיות ושנברון.</div>
 
 <div class="grid">
 
@@ -167,12 +197,15 @@ footer{text-align:center;padding:35px;color:#60708c}
 <div class="item"><span class="dot"></span><span>עצירה מתוקה ב־Demel</span></div>
 </div>
 <div class="highlight">🍰 היילייט: פתיחה וינאית קלאסית עם קפה, עוגות ואווירה.</div>
+
+<a class="map-btn" href="https://www.google.com/maps/dir/?api=1&origin=Stephansplatz+Vienna&destination=Stephansplatz+Vienna&travelmode=walking&waypoints=Graben+Vienna|Demel+Vienna" target="_blank">🗺️ ניווט למסלול יום 1</a>
+<iframe class="map-frame" src="https://www.google.com/maps?q=Stephansplatz%20Vienna%20to%20Graben%20Vienna%20to%20Demel%20Vienna%20to%20Stephansplatz%20Vienna&output=embed" allowfullscreen="" loading="lazy"></iframe>
 </div>
 </div>
 
 <div class="card">
 <div class="img">
-<img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1400&q=80" alt="Prater Vienna">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Wiener_Riesenrad_2017.jpg/1280px-Wiener_Riesenrad_2017.jpg" alt="Prater Vienna Ferris Wheel" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1400&q=80';">
 <div class="tag">21.8 · יום 2</div>
 </div>
 <div class="content">
@@ -185,19 +218,19 @@ footer{text-align:center;padding:35px;color:#60708c}
 <div class="item"><span class="dot"></span><span>מנוחה במלון</span></div>
 <div class="item"><span class="dot"></span><span>ערב בפראטר והגלגל הענק</span></div>
 </div>
-<div class="highlight">🎨 היילייט: יום חכם, חווייתי ולא עמוס לילדות.</div>
+<div class="highlight">🎡 היילייט: יום חכם, חווייתי ולא עמוס לילדות.</div>
 </div>
 </div>
 
 <div class="card">
 <div class="img">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Naschmarkt_Wien.jpg/1280px-Naschmarkt_Wien.jpg" alt="Naschmarkt Vienna" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=1400&q=80';">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Naschmarkt_Wien.jpg/1280px-Naschmarkt_Wien.jpg" alt="Naschmarkt Vienna Farmers Market" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=1400&q=80';">
 <div class="tag">22.8 · יום 3</div>
 </div>
 <div class="content">
 <span class="city">וינה 🇦🇹</span>
 <h3>Naschmarkt + מרכז קלאסי</h3>
-<p>שוק סופ״ש כיפי ואז הליכה דרך וינה האלגנטית: אופרה, Hofburg, Graben ו־Stephansplatz.</p>
+<p>שוק איכרים/שוק סופ״ש כיפי ואז הליכה דרך וינה האלגנטית: אופרה, Hofburg, Graben ו־Stephansplatz.</p>
 <div class="list">
 <div class="item"><span class="dot"></span><span>בוקר ב־Naschmarkt ושוק הפשפשים</span></div>
 <div class="item"><span class="dot"></span><span>הליכה לכיוון האופרה של וינה</span></div>
@@ -240,7 +273,7 @@ footer{text-align:center;padding:35px;color:#60708c}
 </div>
 </section>
 
-<section>
+<section id="budapest">
 <div class="container">
 <h2>🇭🇺 בודפשט</h2>
 <div class="desc">שלושה ימים בקצב נכון: ערב ראשון ליד הדנובה, יום שופינג ו־EZRaider, ויום סיום רגוע עם בודה והרובע היהודי — חזרה מוקדמת לאריזות.</div>
