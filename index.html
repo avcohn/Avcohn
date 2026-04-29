@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>קיץ 2026 | וינה ובודפשט</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
-
 body{
 margin:0;
 font-family:Heebo,Arial,sans-serif;
@@ -19,7 +17,6 @@ radial-gradient(circle at top left, rgba(245,196,81,.18), transparent 20%),
 linear-gradient(180deg,#eef3ff 0%,#f7f9fc 45%,#f5f7fb 100%);
 color:#172033;
 }
-
 .container{width:min(1100px,calc(100% - 30px));margin:auto}
 
 .hero{
@@ -33,7 +30,6 @@ display:flex;
 align-items:center;
 color:white;
 }
-
 h1{font-size:clamp(40px,7vw,75px);margin:0 0 15px;line-height:.95;font-weight:800}
 .subtitle{font-size:20px;max-width:760px;line-height:1.7}
 .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
@@ -42,7 +38,6 @@ h1{font-size:clamp(40px,7vw,75px);margin:0 0 15px;line-height:.95;font-weight:80
 section{padding:60px 0}
 h2{font-size:38px;margin:0 0 12px}
 .desc{color:#60708c;font-size:18px;line-height:1.7;margin-bottom:28px}
-
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 
 .card{
@@ -52,39 +47,12 @@ overflow:hidden;
 box-shadow:0 14px 34px rgba(20,30,55,.13);
 transition:.35s ease;
 }
+.card:hover{transform:translateY(-8px);box-shadow:0 22px 46px rgba(20,30,55,.20)}
 
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 22px 46px rgba(20,30,55,.20);
-}
-
-.img{
-height:270px;
-position:relative;
-overflow:hidden;
-background:linear-gradient(135deg,#dbeafe,#fde68a);
-}
-
-.img img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-transition:transform .65s ease, filter .65s ease;
-}
-
-.card:hover .img img{
-transform:scale(1.09);
-filter:saturate(1.08) contrast(1.04);
-}
-
-.img:after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.18));
-pointer-events:none;
-}
+.img{height:270px;position:relative;overflow:hidden;background:linear-gradient(135deg,#dbeafe,#fde68a)}
+.img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease, filter .65s ease}
+.card:hover .img img{transform:scale(1.09);filter:saturate(1.08) contrast(1.04)}
+.img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.18));pointer-events:none}
 
 .tag{
 position:absolute;
@@ -97,10 +65,8 @@ font-weight:800;
 box-shadow:0 6px 18px rgba(0,0,0,.14);
 z-index:2;
 }
-
 .content{padding:22px}
 h3{margin:0 0 10px;font-size:25px}
-
 .city{
 display:inline-block;
 background:#eef2ff;
@@ -110,20 +76,11 @@ border-radius:999px;
 font-weight:800;
 margin-bottom:10px;
 }
-
 p{color:#60708c;line-height:1.75}
 .list{display:grid;gap:8px;margin:15px 0}
 .item{display:flex;gap:8px;line-height:1.65}
 .dot{width:8px;height:8px;background:#2750d8;border-radius:50%;margin-top:9px;flex:0 0 8px}
-
-.highlight{
-background:#ecfdf3;
-padding:13px 14px;
-border-radius:14px;
-font-weight:800;
-color:#1f6b37;
-line-height:1.7;
-}
+.highlight{background:#ecfdf3;padding:13px 14px;border-radius:14px;font-weight:800;color:#1f6b37;line-height:1.7}
 
 .transfer{
 background:linear-gradient(135deg,#233b86,#315dff);
@@ -133,18 +90,33 @@ padding:30px;
 box-shadow:0 14px 34px rgba(20,30,55,.16);
 transition:.35s ease;
 }
-
-.transfer:hover{
-transform:translateY(-5px);
-box-shadow:0 22px 46px rgba(20,30,55,.22);
-}
-
+.transfer:hover{transform:translateY(-5px);box-shadow:0 22px 46px rgba(20,30,55,.22)}
 .transfer p{color:rgba(255,255,255,.92)}
+
+.map-frame{
+width:100%;
+height:320px;
+border:0;
+border-radius:18px;
+margin-top:16px;
+box-shadow:0 10px 26px rgba(20,30,55,.16);
+}
+.map-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 18px;
+border-radius:999px;
+background:linear-gradient(135deg,#3b82f6,#06b6d4);
+color:white;
+font-weight:800;
+text-decoration:none;
+transition:.3s;
+}
+.map-btn:hover{transform:scale(1.05);box-shadow:0 10px 25px rgba(0,0,0,.2)}
 
 .tips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .tip{background:white;border-radius:22px;padding:22px;box-shadow:0 12px 28px rgba(20,30,55,.10);transition:.3s ease}
 .tip:hover{transform:translateY(-6px)}
-
 footer{text-align:center;padding:35px;color:#60708c}
 
 @media(max-width:850px){
@@ -162,9 +134,8 @@ footer{text-align:center;padding:35px;color:#60708c}
 <div class="badge">☀️ קיץ 2026 · טיול משפחתי</div>
 <h1>וינה & בודפשט</h1>
 <div class="subtitle">
-20–27 באוגוסט 2026 · אבי, אלינור, אלמה ואליאנה · Demel, מוזיאון ZOOM, Naschmarkt, גן החיות ושנברון, רכבת לבודפשט, שיט, שופינג ו־EZRider.
+20–27 באוגוסט 2026 · אבי, אלינור, אלמה ואליאנה · Demel, ZOOM, Naschmarkt, גן החיות ושנברון, רכבת לבודפשט, שופינג, EZRaider, בודה והרובע היהודי.
 </div>
-
 <div class="badges">
 <div class="badge">✈️ 20.8 טיסה לוינה 06:20</div>
 <div class="badge">🚄 24.8 רכבת לבודפשט 11:40</div>
@@ -176,9 +147,7 @@ footer{text-align:center;padding:35px;color:#60708c}
 <section>
 <div class="container">
 <h2>🇦🇹 וינה</h2>
-<div class="desc">
-ארבעה ימים מסודרים: יום הגעה עם Demel, יום ZOOM ופראטר, יום Naschmarkt ומרכז קלאסי, ויום גן חיות ושנברון.
-</div>
+<div class="desc">ארבעה ימים מסודרים: יום הגעה עם Demel, יום ZOOM ופראטר, יום Naschmarkt ומרכז קלאסי, ויום גן חיות ושנברון.</div>
 
 <div class="grid">
 
@@ -266,7 +235,7 @@ footer{text-align:center;padding:35px;color:#60708c}
 <div class="container">
 <div class="transfer">
 <h2>🚄 מעבר לבודפשט · 24.8</h2>
-<p>בוקר רגוע בוינה, רכבת ב־11:40 לבודפשט, הגעה למלון וסיבוב ערב ראשון באזור המרכז או הדנובה.</p>
+<p>רכבת מוינה לבודפשט בשעה 11:40. הגעה למלון אחה״צ סביב 16:00, התארגנות קצרה ויציאה לסיבוב ערב מעגלי מה־Marriott.</p>
 </div>
 </div>
 </section>
@@ -274,9 +243,7 @@ footer{text-align:center;padding:35px;color:#60708c}
 <section>
 <div class="container">
 <h2>🇭🇺 בודפשט</h2>
-<div class="desc">
-שלושה ימים עם אווירה אחרת: נהר, תצפיות, שיט ערב, שופינג וסיור EZRider לסיום.
-</div>
+<div class="desc">שלושה ימים בקצב נכון: ערב ראשון ליד הדנובה, יום שופינג ו־EZRaider, ויום סיום רגוע עם בודה והרובע היהודי — חזרה מוקדמת לאריזות.</div>
 
 <div class="grid">
 
@@ -287,35 +254,55 @@ footer{text-align:center;padding:35px;color:#60708c}
 </div>
 <div class="content">
 <span class="city">בודפשט 🇭🇺</span>
-<h3>הגעה וערב ראשון</h3>
-<p>צ׳ק אין, התאקלמות וסיבוב ערב קליל ליד הדנובה.</p>
-<div class="highlight">🌉 היילייט: בודפשט בערב הראשון.</div>
+<h3>הגעה + סיור ערב מעגלי מהמלון</h3>
+<p>אחרי צ׳ק אין ב־Budapest Marriott: סיבוב ערב רגוע, יפה ולא מתיש — דנובה, גשר השלשלאות, Vörösmarty Square ו־Váci Street.</p>
+<div class="list">
+<div class="item"><span class="dot"></span><span>יציאה מהמלון לטיילת הדנובה</span></div>
+<div class="item"><span class="dot"></span><span>הליכה לכיוון Chain Bridge</span></div>
+<div class="item"><span class="dot"></span><span>חזרה דרך Vörösmarty Square ו־Váci Street</span></div>
+<div class="item"><span class="dot"></span><span>סיום חזרה במלון</span></div>
 </div>
-</div>
-
-<div class="card">
-<div class="img">
-<img src="https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1400&q=80" alt="Budapest Parliament">
-<div class="tag">25.8 · יום 6</div>
-</div>
-<div class="content">
-<span class="city">בודפשט 🇭🇺</span>
-<h3>בודפשט הקלאסית + שיט ערב</h3>
-<p>פרלמנט, אזור בודה, מצודת הדייגים, גשר השלשלאות ושיט ערב בדנובה.</p>
-<div class="highlight">🚤 היילייט: התמונות הכי יפות של הטיול.</div>
+<div class="highlight">🌉 היילייט: בודפשט בלילה כבר בערב הראשון.</div>
+<a class="map-btn" href="https://www.google.com/maps/dir/?api=1&origin=Budapest+Marriott+Hotel&destination=Budapest+Marriott+Hotel&travelmode=walking&waypoints=Chain+Bridge+Budapest|V%C3%B6r%C3%B6smarty+Square|V%C3%A1ci+Street" target="_blank">🗺️ פתח ניווט בגוגל</a>
+<iframe class="map-frame" src="https://www.google.com/maps?q=Budapest%20Marriott%20Hotel%20to%20Chain%20Bridge%20to%20V%C3%B6r%C3%B6smarty%20Square%20to%20V%C3%A1ci%20Street%20to%20Budapest%20Marriott%20Hotel&output=embed" allowfullscreen="" loading="lazy"></iframe>
 </div>
 </div>
 
 <div class="card">
 <div class="img">
 <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1400&q=80" alt="Shopping">
+<div class="tag">25.8 · יום 6</div>
+</div>
+<div class="content">
+<span class="city">בודפשט 🇭🇺</span>
+<h3>Primark + Arena Mall + EZRaider</h3>
+<p>יום קליל וכיפי: בוקר שופינג ב־Arena Mall ו־Primark, חזרה למלון למנוחה, ובאחה״צ/ערב סיור EZRaider.</p>
+<div class="list">
+<div class="item"><span class="dot"></span><span>10:00–13:30 Arena Mall + Primark</span></div>
+<div class="item"><span class="dot"></span><span>צהריים קליל בקניון</span></div>
+<div class="item"><span class="dot"></span><span>חזרה למלון ומנוחה</span></div>
+<div class="item"><span class="dot"></span><span>17:30–19:00 סיור EZRaider</span></div>
+</div>
+<div class="highlight">🛴 היילייט: שופינג בבוקר, אקשן בערב.</div>
+</div>
+</div>
+
+<div class="card">
+<div class="img">
+<img src="https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1400&q=80" alt="Budapest Parliament">
 <div class="tag">26.8 · יום 7</div>
 </div>
 <div class="content">
 <span class="city">בודפשט 🇭🇺</span>
-<h3>חצי יום שופינג + EZRider</h3>
-<p>בוקר שופינג ב־WestEnd או Váci Street, מנוחה בצהריים, ובערב סיור EZRider בעיר המוארת.</p>
-<div class="highlight">🛴 היילייט: שופינג בבוקר, אקשן בלילה.</div>
+<h3>בודה + הרובע היהודי + ערב מוקדם</h3>
+<p>יום אחרון רגוע: בוקר באזור בודה והתצפיות, אחה״צ קצר ברובע היהודי, ואז חזרה מוקדמת למלון לאריזות.</p>
+<div class="list">
+<div class="item"><span class="dot"></span><span>בוקר: Fisherman’s Bastion, Matthias Church ו־Buda Castle</span></div>
+<div class="item"><span class="dot"></span><span>צהריים קליל וחזרה למנוחה</span></div>
+<div class="item"><span class="dot"></span><span>אחה״צ: סיור רגוע ברובע היהודי — Dohány, Gozsdu ואווירת הרחובות</span></div>
+<div class="item"><span class="dot"></span><span>19:30–20:00 חזרה למלון לאריזות ושינה מוקדמת</span></div>
+</div>
+<div class="highlight">✡️ היילייט: מסיימים עם עומק, אבל בלי להעמיס לפני טיסה מוקדמת.</div>
 </div>
 </div>
 
@@ -342,7 +329,7 @@ footer{text-align:center;padding:35px;color:#60708c}
 <div class="tips">
 <div class="tip"><h3>🎒 קצב רגוע</h3><p>לא לדחוס יותר מדי. בוקר טוב, מנוחה וערב יפה — זה הסוד.</p></div>
 <div class="tip"><h3>🚄 יום מעבר קל</h3><p>ב־24.8 לא להעמיס. רכבת, מלון וסיבוב ערב בלבד.</p></div>
-<div class="tip"><h3>🛍️ שופינג בבודפשט</h3><p>בודפשט מתאימה יותר לקניות, לכן זה יושב טוב ביום האחרון המלא.</p></div>
+<div class="tip"><h3>🧳 ערב אחרון מוקדם</h3><p>ב־26.8 חוזרים למלון מוקדם לאריזות ושינה, כי הטיסה בבוקר.</p></div>
 </div>
 </div>
 </section>
