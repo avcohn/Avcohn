@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>קיץ 2026 | וינה وبודפשט | משפחת X</title>
+<title>קיץ 2026 | וינה ובודפשט | משפחת X</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* --- משתני עיצוב (CSS Variables) - קל לשנות צבעים מכאן --- */
 :root {
-  --primary: #1a365d; /* כחול כהה עמוק */
-  --accent: #d4a373; /* צבע קאמל/זהב עדין */
+  --primary: #1a365d; 
+  --accent: #d4a373; 
   --accent-light: #fefae0;
   --text-main: #2d3748;
   --text-muted: #718096;
@@ -20,19 +19,19 @@
   --transition: all 0.3s ease;
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-body{
-margin:0;
-font-family: 'Heebo', sans-serif;
-background-color: var(--bg-light);
-color: var(--text-main);
-line-height: 1.6;
-overflow-x: hidden;
+body {
+  margin: 0;
+  font-family: 'Heebo', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* --- ניווט דביק (Sticky Nav) - שיפור UX משמעותי --- */
+/* Nav */
 .main-nav {
   position: sticky;
   top: 0;
@@ -65,210 +64,225 @@ overflow-x: hidden;
   color: white;
 }
 
-.container{width:min(1120px,calc(100% - 30px));margin:auto}
+.container { width: min(1120px, calc(100% - 30px)); margin: auto; }
 
-/* --- הדר (Hero) משופר --- */
-.hero{
-min-height: 80vh; /* קצת פחות גבוה כדי לראות שיש תוכן בהמשך */
-background:
-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
-url("https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1600&q=80");
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-color:white;
-text-align: center;
+/* Hero */
+.hero {
+  min-height: 80vh; 
+  background:
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
 .hero .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-h1{font-size:clamp(48px, 8vw, 86px);margin: 10px 0 20px;line-height:.9;font-weight:900; letter-spacing: -2px;}
-.subtitle{font-size: 22px;max-width:700px;line-height: 1.6; font-weight: 300; opacity: 0.9;}
+h1 { font-size: clamp(48px, 8vw, 86px); margin: 10px 0 20px; line-height: 0.9; font-weight: 900; letter-spacing: -2px; }
+.subtitle { font-size: 22px; max-width: 700px; line-height: 1.6; font-weight: 300; opacity: 0.9; }
 
 .main-badge {
-    background-color: var(--accent);
-    color: var(--primary);
-    padding: 8px 20px;
-    border-radius: 999px;
-    font-weight: 800;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+  background-color: var(--accent);
+  color: var(--primary);
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
 }
 
-.flight-badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px; justify-content: center;}
-.f-badge{
-background:rgba(255,255,255,0.15);
-padding:12px 18px;
-border-radius:12px;
-font-weight:500;
-backdrop-filter:blur(10px);
-border: 1px solid rgba(255,255,255,0.2);
-font-size: 15px;
+.flight-badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; justify-content: center; }
+.f-badge {
+  background: rgba(255,255,255,0.15);
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 15px;
 }
-.f-badge strong { font-weight: 800; color: var(--accent-light);}
+.f-badge strong { font-weight: 800; color: var(--accent-light); }
 
-.hero-actions{display:flex;flex-wrap:wrap;gap:15px;margin-top:40px}
-.hero-btn{
-display:inline-block;
-padding:15px 30px;
-border-radius:999px;
-background: white;
-color: var(--primary);
-font-weight: 800;
-text-decoration:none;
-box-shadow: var(--shadow-lg);
-transition: var(--transition);
-font-size: 18px;
+.hero-actions { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 40px; }
+.hero-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 999px;
+  background: white;
+  color: var(--primary);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  font-size: 18px;
 }
-.hero-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.3);}
-.hero-btn.alt{background:transparent; color:white; border:2px solid white;}
+.hero-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+.hero-btn.alt { background: transparent; color: white; border: 2px solid white; }
 .hero-btn.alt:hover { background: white; color: var(--primary); }
 
-section{padding: 80px 0}
-h2{font-size: 48px;margin:0 0 15px; font-weight: 900; color: var(--primary); letter-spacing: -1px;}
-.desc{color: var(--text-muted);font-size: 20px;line-height: 1.6;max-width: 800px;margin-bottom: 50px}
+section { padding: 80px 0; }
+h2 { font-size: 48px; margin: 0 0 15px; font-weight: 900; color: var(--primary); letter-spacing: -1px; }
+.desc { color: var(--text-muted); font-size: 20px; line-height: 1.6; max-width: 800px; margin-bottom: 50px; }
 
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap: 30px}
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
 
-/* --- כרטיסים (Cards) משופרים --- */
-.card{
-background:white;
-border-radius: 24px;
-overflow:hidden;
-box-shadow: var(--shadow-md);
-transition: var(--transition);
-display: flex;
-flex-direction: column;
-border: 1px solid #edf2f7;
+/* Cards */
+.card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #edf2f7;
 }
-.card:hover{transform:translateY(-10px);box-shadow: var(--shadow-lg);}
+.card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
 
-.img-wrapper{height:280px;position:relative;overflow:hidden;}
-.img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition: transform 0.6s ease;}
-.card:hover .img-wrapper img{transform:scale(1.05);}
+.img-wrapper { height: 280px; position: relative; overflow: hidden; }
+.img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.card:hover .img-wrapper img { transform: scale(1.05); }
 
-/* תגית יום משופרת */
-.day-tag{
-position:absolute;
-top: 20px;
-right: 20px;
-background: var(--primary);
-color: white;
-padding: 10px 18px;
-border-radius: 12px;
-font-weight: 800;
-font-size: 16px;
-z-index: 2;
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.card-content{padding: 30px; flex-grow: 1; display: flex; flex-direction: column;}
-h3{margin:0 0 15px;font-size: 28px; font-weight: 800; line-height: 1.2; color: var(--primary);}
-
-.city-badge{
-display:inline-block;
-background: var(--accent-light);
-color: #976738; /* גוון כהה יותר של אקסנט לניגודיות */
-padding: 6px 14px;
-border-radius: 999px;
-font-weight: 700;
-font-size: 14px;
-margin-bottom: 15px;
-}
-.card-text{color: var(--text-muted);line-height: 1.7; margin-bottom: 20px; font-size: 16px;}
-
-.list{display:grid;gap: 12px;margin: 0 0 25px 0; padding: 0;}
-.item{display:flex;align-items: flex-start; gap: 12px;line-height:1.6; color: var(--text-main);}
-.icon-dot{
-    width: 10px; height: 10px;
-    background-color: var(--accent);
-    border-radius: 50%;
-    margin-top: 8px;
-    flex-shrink: 0;
+.day-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 16px;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.highlight-box{
-background: #fdfaf0;
-padding: 20px;
-border-radius: 16px;
-font-weight: 600;
-color: #976738;
-line-height: 1.6;
-margin-top: auto; /* דוחף לתחתית הכרטיס */
-border-right: 4px solid var(--accent);
+.card-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+h3 { margin: 0 0 15px; font-size: 28px; font-weight: 800; line-height: 1.2; color: var(--primary); }
+
+.city-badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: #976738;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 15px;
+  align-self: flex-start;
+}
+.card-text { color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-size: 16px; }
+
+.list { display: grid; gap: 12px; margin: 0 0 25px 0; padding: 0; }
+.item { display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; color: var(--text-main); }
+.icon-dot {
+  width: 10px; height: 10px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
 }
 
-/* --- מפות וניווט משופרים --- */
+.highlight-box {
+  background: #fdfaf0;
+  padding: 20px;
+  border-radius: 16px;
+  font-weight: 600;
+  color: #976738;
+  line-height: 1.6;
+  margin-top: auto; 
+  border-right: 4px solid var(--accent);
+}
+
+/* Maps */
 .map-section { margin-top: 25px; padding-top: 25px; border-top: 1px solid #edf2f7; }
-.map-frame{
-width:100%;
-height: 250px;
-border:0;
-border-radius: 16px;
-margin-bottom: 15px;
-box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-background-color: #eee; /* צבע טעינה */
+.map-frame {
+  width: 100%;
+  height: 250px;
+  border: 0;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  background-color: #f1f5f9; 
 }
-.map-btn{
-display: inline-flex;
-align-items: center;
-gap: 8px;
-padding: 12px 20px;
-border-radius: 999px;
-background: var(--primary);
-color: white;
-font-weight: 700;
-text-decoration:none;
-transition: var(--transition);
-font-size: 15px;
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 15px;
 }
-.map-btn:hover{background: #2a5288; transform: translateX(-5px);}
+.map-btn:hover { background: #2a5288; transform: translateX(-5px); }
 
-/* --- אזור מעבר (Transfer) --- */
-.transfer-banner{
-background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-color:white;
-border-radius: 24px;
-padding: 50px;
-box-shadow: var(--shadow-lg);
-display: flex;
-align-items: center;
-gap: 30px;
+/* Transfer */
+.transfer-banner {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: white;
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
-.transfer-banner h2 { color: white; margin: 0 0 10px 0; font-size: 36px;}
-.transfer-banner p { margin: 0; font-size: 18px; opacity: 0.9; line-height: 1.7;}
+.transfer-banner h2 { color: white; margin: 0 0 10px 0; font-size: 36px; }
+.transfer-banner p { margin: 0; font-size: 18px; opacity: 0.9; line-height: 1.7; }
 .transfer-icon { font-size: 60px; }
 
-/* --- טיפים --- */
-.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap: 25px}
-.tip-card{
-background:white;
-border-radius: 20px;
-padding: 30px;
-box-shadow: var(--shadow-md);
-transition: var(--transition);
-border: 1px solid #edf2f7;
+/* Tips */
+.tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.tip-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 1px solid #edf2f7;
 }
-.tip-card:hover{transform: translateY(-5px); box-shadow: var(--shadow-lg);}
-.tip-card h3 { font-size: 22px; margin-bottom: 10px;}
-.tip-card p { color: var(--text-muted); margin: 0; font-size: 16px;}
+.tip-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.tip-card h3 { font-size: 22px; margin-bottom: 10px; color: var(--primary); }
+.tip-card p { color: var(--text-muted); margin: 0; font-size: 16px; }
 
-footer{
-text-align:center;
-padding: 50px;
-color: var(--text-muted);
-background-color: white;
-border-top: 1px solid #edf2f7;
-margin-top: 50px;
-font-weight: 500;
+footer {
+  text-align: center;
+  padding: 50px;
+  color: var(--text-muted);
+  background-color: white;
+  border-top: 1px solid #edf2f7;
+  margin-top: 50px;
+  font-weight: 500;
 }
 
-/* --- רספונסיביות משופרת --- */
-@media(max-width:900px){
-.grid, .tips-grid{grid-template-columns:1fr}
-h2 {
+/* Responsive */
+@media(max-width: 900px) {
+  .grid, .tips-grid { grid-template-columns: 1fr; }
+  h2 { font-size: 36px; }
+  .hero { min-height: 70vh; }
+  .transfer-banner { flex-direction: column; text-align: center; padding: 30px; }
+  .nav-link { padding: 8px 10px; font-size: 14px; }
+}
+
+@media(max-width: 600px) {
+  h1 { font-size: 40px; }
+  .subtitle { font-size: 18px; }
+  .card-content { padding: 20px; }
+  .img-wrapper { height: 200px; }
+  .nav-container { gap: 5px; flex-wrap: wrap; }
+}
+
+/* Print */
+@media print {
+  .main-nav,
