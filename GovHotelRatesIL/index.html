@@ -48,6 +48,9 @@ tbody tr:hover{background:rgba(255,255,255,.05)}
 .country-cell{display:flex;align-items:center;gap:10px;font-weight:700}
 .flag-chip{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:16px;flex:0 0 auto}
 .amount{color:#9df5c6;font-weight:800}
+.usd-equivalent{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:rgba(110,168,255,.12);border:1px solid rgba(110,168,255,.22);color:#dbeafe;font-weight:800;white-space:nowrap}
+.usd-equivalent small{font-weight:600;color:var(--muted)}
+.usd-missing{color:var(--muted);font-size:12px}
 .no-results{display:none;padding:40px 20px 48px;text-align:center;color:var(--muted)}
 .no-results strong{display:block;font-size:20px;color:var(--text);margin-bottom:8px}
 .mobile-list{display:none;padding:12px;gap:12px}
@@ -57,6 +60,19 @@ tbody tr:hover{background:rgba(255,255,255,.05)}
 .mobile-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .mobile-tags span{padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:12px;color:#e2e8f0}
 .footer-note{color:#9eb0c9;text-align:center;font-size:12px;margin-top:16px}
+
+.boi-rate{margin:18px auto 0;max-width:780px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;text-align:right;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.boi-rate strong{display:block;font-size:15px;color:#fff;margin-bottom:4px}
+.boi-rate span{display:block;color:var(--muted);font-size:12px;line-height:1.55}
+.boi-rate a{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#06111f;background:#eaf6ff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:10px 14px;font-weight:800;font-size:13px;white-space:nowrap}
+.currency-mark{display:inline-flex;align-items:center;gap:6px;font-weight:800}
+.currency-symbol{display:inline-grid;place-items:center;min-width:30px;height:30px;padding:0 8px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff}
+.allowance-scale{min-width:180px}
+.scale-label{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px;margin-bottom:6px}
+.scale-track{height:10px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.10);overflow:hidden}
+.scale-fill{height:100%;border-radius:999px;background:linear-gradient(90deg, rgba(143,240,179,.65), rgba(255,214,102,.9), rgba(255,118,118,.9))}
+.scale-level{margin-top:5px;font-size:11px;color:#dce8f7}
+
 @media (max-width:1180px){.layout{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr));max-height:none}}
 @media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.toolbar-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:680px){.wrap{width:min(100% - 14px,100%);padding-top:10px}.hero{padding:18px 14px;border-radius:22px}.stats{grid-template-columns:repeat(2,1fr);gap:8px}.stat{padding:12px 8px}.stat .value{font-size:21px}.toolbar{top:8px;border-radius:20px;padding:10px}.toolbar-grid{grid-template-columns:1fr}.control{min-height:52px;border-radius:16px}.panel{border-radius:22px}.cards{grid-template-columns:1fr}.summary-bar{font-size:12px;flex-direction:column;align-items:flex-start}.desktop-table{display:none}.mobile-list{display:grid}.cards-panel{display:none}.hero p{font-size:14px}}
@@ -73,6 +89,14 @@ tbody tr:hover{background:rgba(255,255,255,.05)}
 <div class="stat"><span class="label">מדינות</span><span class="value" id="totalCountries">0</span></div>
 <div class="stat"><span class="label">מטבעות</span><span class="value" id="totalCurrencies">0</span></div>
 <div class="stat"><span class="label">תוצאות</span><span class="value" id="visibleResults">0</span></div>
+</div>
+
+<div class="boi-rate">
+  <div>
+    <strong>שער דולר יציג – בנק ישראל</strong>
+    <span>קישור מהיר לעמוד הדולר של בנק ישראל. לפי העמוד: 2.9610 ₪ לדולר, עדכון אחרון 29/04/2026. במטבעות שאינם דולר מוצגת גם המרה לדולר.</span>
+  </div>
+  <a href="https://www.boi.org.il/roles/markets/exchangerates/usdollar/" target="_blank" rel="noopener">פתיחת שער הדולר ↗</a>
 </div>
 </section>
 
@@ -98,7 +122,7 @@ tbody tr:hover{background:rgba(255,255,255,.05)}
 
 <div class="table-wrap desktop-table">
 <table>
-<thead><tr><th>מדינה</th><th>עיר</th><th>מטבע</th><th>קצובת לינה</th></tr></thead>
+<thead><tr><th>מדינה</th><th>עיר</th><th>מטבע</th><th>קצובת לינה</th><th>שווי בדולר</th><th>מדד קצובה</th></tr></thead>
 <tbody id="tableBody"></tbody>
 </table>
 <div class="no-results" id="noResults"><strong>לא נמצאו תוצאות</strong>נסה לשנות את החיפוש או לבחור מסננים אחרים.</div>
@@ -134,6 +158,78 @@ const cardLimit = document.getElementById("cardLimit");
 let selectedKey = "";
 
 function normalizeAmount(value){return Number(String(value).replace(/,/g,""))}
+
+const currencySymbols = {
+  "USD":"$","EUR":"€","GBP":"£","ILS":"₪","AUD":"A$","CAD":"C$","CHF":"CHF","JPY":"¥","CNY":"¥","HKD":"HK$","NZD":"NZ$","DKK":"kr","NOK":"kr","SEK":"kr","RUB":"₽","SAR":"﷼","JOD":"د.أ","SGD":"S$"
+};
+function getCurrencySymbol(currency){return currencySymbols[currency] || currency}
+function currencyDisplay(currency){return `<span class="currency-mark"><span class="currency-symbol">${getCurrencySymbol(currency)}</span><span>${currency}</span></span>`}
+
+const USD_ILS_RATE = 2.9610;
+const boiIlsPerUnit = {
+  // שערים יציגים מבנק ישראל, עדכון 29/04/2026. JPY מופיע בבנק ישראל ל-100 ין ולכן הומר ליחידת ין אחת.
+  "USD":2.9610,
+  "EUR":3.4651,
+  "GBP":3.9992,
+  "JPY":1.8521/100,
+  "AUD":2.1192,
+  "CAD":2.1642,
+  "DKK":0.4636,
+  "NOK":0.3189,
+  "SEK":0.3196,
+  "CHF":3.7509,
+  "JOD":4.1757,
+
+  // מטבעות שמופיעים בטבלת הקצובות אך אינם מוצגים בטבלת השערים הראשית של בנק ישראל בעמוד.
+  // אלה ערכי עזר בקוד; אפשר לעדכן אותם ידנית בעת הצורך.
+  "CNY":0.4060,
+  "HKD":0.3815,
+  "NZD":1.7800,
+  "RUB":0.0365,
+  "SAR":0.7896,
+  "SGD":2.2800
+};
+function usdEquivalent(item){
+  if(item.currency === "USD") return normalizeAmount(item.amount);
+  const ilsPerUnit = boiIlsPerUnit[item.currency];
+  if(!ilsPerUnit) return null;
+  return normalizeAmount(item.amount) * ilsPerUnit / USD_ILS_RATE;
+}
+function usdEquivalentHtml(item){
+  if(item.currency === "USD") return `<span class="usd-missing">—</span>`;
+  const value = usdEquivalent(item);
+  if(value === null) return `<span class="usd-missing">אין שער זמין</span>`;
+  return `<span class="usd-equivalent">≈ $${Math.round(value).toLocaleString("en-US")} <small>USD</small></span>`;
+}
+function usdEquivalentSearchValue(item){
+  const value = usdEquivalent(item);
+  return value === null ? "" : String(Math.round(value));
+}
+function currencyStats(currency){
+  const values=data.filter(x=>x.currency===currency).map(x=>normalizeAmount(x.amount));
+  return {min:Math.min(...values), max:Math.max(...values)};
+}
+function scalePercent(item){
+  const value=normalizeAmount(item.amount);
+  const stats=currencyStats(item.currency);
+  if(stats.max===stats.min){return 55}
+  return Math.max(8, Math.round(((value-stats.min)/(stats.max-stats.min))*100));
+}
+function scaleLevel(item){
+  const pct=scalePercent(item);
+  if(pct>=78) return "גבוה";
+  if(pct>=45) return "בינוני";
+  return "נמוך";
+}
+function scaleHtml(item){
+  const pct=scalePercent(item);
+  return `<div class="allowance-scale" title="מדד יחסי לפי אותו מטבע">
+    <div class="scale-label"><span>נמוך</span><span>גבוה</span></div>
+    <div class="scale-track"><div class="scale-fill" style="width:${pct}%"></div></div>
+    <div class="scale-level">מדד יחסי במטבע ${item.currency}: ${scaleLevel(item)}</div>
+  </div>`;
+}
+
 function getFlag(country){return flagMap[country] || "🌍"}
 function getCountryList(){return [...new Set(data.map(item => item.country))].sort((a,b)=>a.localeCompare(b))}
 function getCurrencyList(){return [...new Set(data.map(item => item.currency))].sort((a,b)=>a.localeCompare(b))}
@@ -174,7 +270,8 @@ function getBaseFilteredRows(){
       item.country.toLowerCase().includes(value) ||
       item.city.toLowerCase().includes(value) ||
       item.currency.toLowerCase().includes(value) ||
-      String(item.amount).toLowerCase().includes(value);
+      String(item.amount).toLowerCase().includes(value) ||
+      usdEquivalentSearchValue(item).includes(value);
 
     const matchesCountry=!selectedCountry || item.country===selectedCountry;
     const matchesCurrency=!selectedCurrency || item.currency===selectedCurrency;
@@ -203,7 +300,7 @@ function renderCards(rows){
       <div class="media">
         <img src="${getImageUrl(item)}" alt="${item.city} ${item.country}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80';" />
         <div class="flag">${getFlag(item.country)}</div>
-        <div class="badge">${item.currency} · ${item.amount}</div>
+        <div class="badge">${getCurrencySymbol(item.currency)} ${item.amount} · ${item.currency}</div>
         <div class="caption">${item.city}</div>
       </div>
       <div class="card-body">
@@ -212,8 +309,9 @@ function renderCards(rows){
           <span class="pill">${item.amount}</span>
         </div>
         <div class="meta">
-          <span>מטבע: ${item.currency}</span>
-          <span>דגל: ${getFlag(item.country)}</span>
+          <span>מטבע: ${getCurrencySymbol(item.currency)} ${item.currency}</span>
+          <span>מדד: ${scaleLevel(item)}</span>
+          <span>בדולר: ${item.currency === "USD" ? "$" + item.amount : usdEquivalentHtml(item)}</span>
           <span>${item.country}</span>
         </div>
       </div>
@@ -232,8 +330,10 @@ function renderTable(rows){
     tr.innerHTML=`
       <td><div class="country-cell"><span class="flag-chip">${getFlag(item.country)}</span><span>${item.country}</span></div></td>
       <td>${item.city}</td>
-      <td>${item.currency}</td>
-      <td class="amount">${item.amount}</td>
+      <td>${currencyDisplay(item.currency)}</td>
+      <td class="amount">${getCurrencySymbol(item.currency)} ${item.amount}</td>
+      <td>${usdEquivalentHtml(item)}</td>
+      <td>${scaleHtml(item)}</td>
     `;
     tableBody.appendChild(tr);
 
@@ -242,11 +342,14 @@ function renderTable(rows){
     mobileRow.innerHTML=`
       <div class="mobile-row-top">
         <div><h4>${getFlag(item.country)} ${item.city}</h4><small>${item.country}</small></div>
-        <div class="pill">${item.amount}</div>
+        <div class="pill">${getCurrencySymbol(item.currency)} ${item.amount}</div>
       </div>
       <div class="mobile-tags">
-        <span>מטבע: ${item.currency}</span>
+        <span>מטבע: ${getCurrencySymbol(item.currency)} ${item.currency}</span>
         <span>מדינה: ${item.country}</span>
+        <span>שווי בדולר: ${item.currency === "USD" ? "$" + item.amount : usdEquivalentHtml(item)}</span>
+        <span>מדד: ${scaleLevel(item)}</span>
+        ${scaleHtml(item)}
       </div>
     `;
     mobileList.appendChild(mobileRow);
