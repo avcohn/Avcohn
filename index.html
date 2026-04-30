@@ -37,23 +37,67 @@ h1, h2, h3 { font-family: 'Heebo', sans-serif; }
 .nav-links a.active{color:var(--navy);background:var(--gold);box-shadow:inset 0 2px 4px rgba(0,0,0,0.1)}
 
 /* Hero */
-.hero{position:relative;min-height:95vh;display:flex;align-items:center;background:var(--navy);overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,20,42,.3) 0%,rgba(8,20,42,.7) 50%,rgba(8,20,42,.98) 100%),url('hero-family.png')}}
-.hero-in{position:relative;z-index:1;max-width:1120px;margin:auto;padding:100px 24px;text-align:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,150,60,.12);border:1px solid rgba(200,150,60,.3);color:var(--gold-light);padding:8px 20px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,0.2)}
-h1{font-weight:900;color:#fff;font-size:clamp(55px,11vw,95px);line-height:.95;letter-spacing:-3px;margin-bottom:24px;text-shadow:0 4px 12px rgba(0,0,0,0.3)}
+.hero{
+  position:relative;
+  min-height:auto;
+  display:block;
+  background:linear-gradient(180deg,#fff7e8 0%,#fffaf1 56%,#f8fafc 100%);
+  overflow:hidden;
+  padding:34px 18px 42px;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 20% 10%,rgba(226,176,87,.18),transparent 30%),radial-gradient(circle at 80% 20%,rgba(74,127,193,.10),transparent 34%);
+  pointer-events:none;
+}
+.hero-bg{display:none}
+.hero-in{
+  position:relative;
+  z-index:1;
+  max-width:1260px;
+  margin:auto;
+  padding:0;
+  text-align:center;
+}
+.hero-poster{
+  max-width:1180px;
+  margin:0 auto 24px;
+  border-radius:30px;
+  overflow:hidden;
+  background:#fff3d9;
+  border:1px solid rgba(200,150,60,.38);
+  box-shadow:0 24px 70px rgba(15,34,64,.20);
+}
+.hero-poster img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.hero-details{
+  max-width:960px;
+  margin:0 auto;
+  padding:22px 24px 26px;
+  border-radius:28px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(200,150,60,.28);
+  box-shadow:0 18px 45px rgba(15,34,64,.10);
+  backdrop-filter:blur(10px);
+}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,150,60,.13);border:1px solid rgba(200,150,60,.32);color:#9a6b1f;padding:8px 20px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;box-shadow:none}
+h1{font-weight:900;color:var(--navy);font-size:clamp(34px,7vw,70px);line-height:1;letter-spacing:-2px;margin-bottom:14px;text-shadow:none}
 h1 span{color:var(--gold);position:relative;display:inline-block}
-/* Removed underline under the Budapest title */
 h1 span::after{content:none}
-.hero-sub{font-size:22px;color:rgba(255,255,255,.85);font-weight:300;max-width:650px;margin:0 auto 40px;line-height:1.6}
-.hero-sub strong{color:#fff;font-weight:700}
-.flight-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:48px}
-.fchip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;padding:12px 20px;border-radius:14px;font-size:14.5px;font-weight:500;backdrop-filter:blur(5px);box-shadow:0 4px 6px rgba(0,0,0,0.1);display:flex;align-items:center;gap:8px;}
-.fchip i{color:var(--gold-light);font-size:18px;}
+.hero-sub{font-size:20px;color:var(--muted);font-weight:400;max-width:650px;margin:0 auto 24px;line-height:1.6}
+.hero-sub strong{color:var(--navy);font-weight:800}
+.flight-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:24px}
+.fchip{background:#fff;border:1px solid rgba(15,34,64,.10);color:var(--navy);padding:12px 20px;border-radius:14px;font-size:14.5px;font-weight:600;backdrop-filter:none;box-shadow:0 6px 16px rgba(15,34,64,.08);display:flex;align-items:center;gap:8px;}
+.fchip i{color:var(--gold);font-size:18px;}
 .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:var(--transition);border:2px solid transparent;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:var(--transition);border:2px solid transparent;box-shadow:0 8px 20px rgba(15,34,64,.12)}
 .btn-g{background:var(--gold);color:var(--navy)}.btn-g:hover{background:var(--gold-light);transform:translateY(-3px)}
-.btn-o{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}.btn-o:hover{background:rgba(255,255,255,.08);border-color:#fff;transform:translateY(-3px)}
+.btn-o{background:#fff;color:var(--navy);border-color:rgba(15,34,64,.12)}.btn-o:hover{background:var(--gold-pale);border-color:var(--gold);transform:translateY(-3px)}
 
 /* FAB */
 .fab {position:fixed;bottom:24px;left:24px;width:60px;height:60px;background:var(--navy-light);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);text-decoration:none;border:2px solid rgba(255,255,255,0.1);}
@@ -145,6 +189,25 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
   #pb{display:none}
   .wrap{padding:60px 16px} .tips-grid{grid-template-columns:1fr}
 }
+
+
+@media(max-width:860px){
+  .hero{padding:22px 12px 32px}
+  .hero-poster{border-radius:22px;margin-bottom:16px}
+  .hero-details{padding:18px 16px 20px;border-radius:22px}
+  .hero-sub{font-size:17px;margin-bottom:18px}
+  .flight-row{margin-bottom:18px}
+  .fchip{width:100%;justify-content:center;padding:11px 14px}
+  .btn{width:100%;justify-content:center;padding:14px 22px}
+}
+
+@media(max-width:600px){
+  .hero{padding-top:14px}
+  .hero-poster{border-radius:16px;box-shadow:0 12px 34px rgba(15,34,64,.14)}
+  .hero-details{background:rgba(255,255,255,.92)}
+  h1{font-size:34px;letter-spacing:-1px}
+}
+
 </style>
 </head>
 <body>
@@ -176,17 +239,22 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
 <header class="hero">
   <div class="hero-bg"></div>
   <div class="hero-in">
-    <div class="eyebrow reveal"><i class="ph ph-sun"></i> קיץ 2026 · טיול משפחתי</div>
-    <h1 class="reveal">וינה & <span>בודפשט</span></h1>
-    <p class="hero-sub reveal"><strong>20–27 באוגוסט 2026</strong><br>אבי, אלינור, אלמה ואליאנה</p>
-    <div class="flight-row reveal">
-      <div class="fchip"><i class="ph ph-airplane-tilt"></i> <strong>20.8</strong> טיסה לוינה 06:20</div>
-      <div class="fchip"><i class="ph ph-train"></i> <strong>24.8</strong> רכבת לבודפשט 11:40</div>
-      <div class="fchip"><i class="ph ph-airplane-landing"></i> <strong>27.8</strong> חזרה מבודפשט 09:20</div>
+    <div class="hero-poster reveal">
+      <img src="hero-family.png" alt="וינה ובודפשט - טיול משפחתי קיץ 2026">
     </div>
-    <div class="btns reveal">
-      <a class="btn btn-g" href="#vienna"><i class="ph ph-mountains"></i> גלו את וינה</a>
-      <a class="btn btn-o" href="#budapest"><i class="ph ph-castle-turret"></i> גלו את בודפשט</a>
+    <div class="hero-details reveal">
+      <div class="eyebrow"><i class="ph ph-sun"></i> קיץ 2026 · טיול משפחתי</div>
+      <h1>וינה & <span>בודפשט</span></h1>
+      <p class="hero-sub"><strong>20–27 באוגוסט 2026</strong><br>אבי, אלינור, אלמה ואליאנה</p>
+      <div class="flight-row">
+        <div class="fchip"><i class="ph ph-airplane-tilt"></i> <strong>20.8</strong> טיסה לוינה 06:20</div>
+        <div class="fchip"><i class="ph ph-train"></i> <strong>24.8</strong> רכבת לבודפשט 11:40</div>
+        <div class="fchip"><i class="ph ph-airplane-landing"></i> <strong>27.8</strong> חזרה מבודפשט 09:20</div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-g" href="#vienna"><i class="ph ph-mountains"></i> גלו את וינה</a>
+        <a class="btn btn-o" href="#budapest"><i class="ph ph-castle-turret"></i> גלו את בודפשט</a>
+      </div>
     </div>
   </div>
 </header>
@@ -402,6 +470,7 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
           <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80" alt="Airport" loading="lazy">
           <div class="cov"></div>
           <div class="dtag">יום 8<small>27.8</small></div>
+        </div>
         <div class="cbody">
           <h3>טיסת חזור מוקדמת</h3>
           <p>בוקר קצר ויעיל: יציאה מוקדמת לשדה התעופה, צ׳ק-אין, קפה אחרון וחזרה הביתה.</p>
