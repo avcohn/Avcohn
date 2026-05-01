@@ -104,6 +104,29 @@ img,iframe{max-width:100%}
 .dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:inherit;opacity:0.25}
 .dot.v{background:var(--cv)}.dot.b{background:var(--cb)}
 
+/* ── DAILY MISSIONS BUTTON ── */
+.day-missions-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;margin-bottom:16px;
+  padding:13px 18px;border-radius:14px;
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  color:#fff;border:none;cursor:pointer;font-family:inherit;
+  font-size:14px;font-weight:700;
+  transition:var(--transition);
+  box-shadow:0 4px 14px rgba(15,34,64,.18);
+}
+.day-missions-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(15,34,64,.25)}
+.day-missions-btn .dmb-left{display:flex;align-items:center;gap:10px}
+.day-missions-btn .dmb-left i{font-size:18px;color:var(--gold-light)}
+.day-missions-btn .dmb-badge{
+  background:rgba(255,255,255,.15);
+  font-size:11px;font-weight:800;
+  padding:3px 10px;border-radius:999px;
+  color:rgba(255,255,255,.8);
+  white-space:nowrap;
+}
+.day-missions-btn .dmb-badge.all-done{background:rgba(74,222,128,.25);color:#86efac}
+
 .mission{background:linear-gradient(135deg,#fffdf5,#fff9e8);border:1.5px dashed var(--gold-light);border-radius:14px;padding:14px 18px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start;position:relative;overflow:hidden;cursor:pointer;transition:var(--transition)}
 .mission::before{content:'⭐';position:absolute;left:-8px;top:-8px;font-size:32px;opacity:0.08;transform:rotate(-15deg)}
 .mission.done{background:linear-gradient(135deg,#f0fdf4,#dcfce7)!important;border-color:#4ade80!important;border-style:solid!important}
@@ -315,7 +338,6 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
       <a href="#vienna"><i class="ph ph-map-pin"></i> וינה</a>
       <a href="#transfer"><i class="ph ph-train"></i> מעבר</a>
       <a href="#budapest"><i class="ph ph-map-pin"></i> בודפשט</a>
-      <button class="nav-special" onclick="openPopup('missionsPopup')"><i class="ph ph-star"></i> משימות</button>
       <button class="nav-special" onclick="openPopup('currencyPopup')"><i class="ph ph-currency-circle-dollar"></i> מטבע</button>
     </div>
   </div>
@@ -393,10 +415,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot v"></span>סיור רגלי ב-Stephansplatz ורחוב Graben</li>
             <li><span class="dot v"></span>עצירת חובה לקפה ועוגה ב-Demel המפורסם</li>
           </ul>
-          <div class="mission" data-mission="day1-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-magnifying-glass"></i></div>
-            <div><strong>🎯 משימה 1</strong>חפשו בחלון הראווה של Demel את העוגה שהכי מזכירה פרח!</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day1" onclick="openMissionsForDay('day1')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day1">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-coffee"></i> פתיחה וינאית קלאסית עם קפה משובח ועוגות.</div>
         </div>
       </div>
@@ -412,10 +434,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot v"></span>מנוחת צהריים חיונית במלון</li>
             <li><span class="dot v"></span>אחה"צ וערב: פראטר + נסיעה בגלגל הענק</li>
           </ul>
-          <div class="mission" data-mission="day2-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-ferris-wheel"></i></div>
-            <div><strong>🎯 משימה 1</strong>ספרו כמה קרונות אדומים יש לגלגל הענק של פראטר!</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day2" onclick="openMissionsForDay('day2')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day2">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-shooting-star"></i> למידה חוויתית בבוקר, וכיף טהור משחרר בערב.</div>
         </div>
       </div>
@@ -431,10 +453,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot v"></span>מתחם Hofburg וחצרותיו</li>
             <li><span class="dot v"></span>סיום מתוק בגלידה / קפה ברחוב Graben</li>
           </ul>
-          <div class="mission" data-mission="day3-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-basket"></i></div>
-            <div><strong>🎯 משימה 1</strong>מי מוצאת ראשונה פרי מוזר בשוק שמעולם לא ראיתן בארץ?</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day3" onclick="openMissionsForDay('day3')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day3">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-shopping-bag"></i> טעימות מקומיות אותנטיות + הזוהר של הקיסר.</div>
         </div>
       </div>
@@ -450,10 +472,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot v"></span>צהריים קליל באחת המסעדות בתוך המתחם</li>
             <li><span class="dot v"></span>טיול בגנים ההיסטוריים ותצפית מהגלורייט</li>
           </ul>
-          <div class="mission" data-mission="day4-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-paw-print"></i></div>
-            <div><strong>🎯 משימה 1</strong>חפשו את הפנדות – האם הן ערות ואוכלות במבוק, או שוב ישנות?</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day4" onclick="openMissionsForDay('day4')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day4">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-tree"></i> חווית חיות ייחודית על רקע ארמון קיסרי.</div>
         </div>
       </div>
@@ -492,10 +514,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot b"></span>יציאה מהמלון לטיילת הדנובה (Dunakorzó)</li>
             <li><span class="dot b"></span>גשר השלשלאות ורחוב Váci Street</li>
           </ul>
-          <div class="mission" data-mission="day5-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-bridge"></i></div>
-            <div><strong>🎯 משימה 1</strong>ספרו כמה גשרים גדולים ומוארים אתן מצליחות לראות מהטיילת!</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day5" onclick="openMissionsForDay('day5')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day5">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-sparkles"></i> בודפשט נדלקת בלילה והיא יפה מאי פעם.</div>
         </div>
       </div>
@@ -511,10 +533,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot b"></span>חזרה למלון מריוט · מנוחה והתרעננות</li>
             <li><span class="dot b"></span>17:30–19:00 · סיור EZRaider חוויתי</li>
           </ul>
-          <div class="mission" data-mission="day6-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-t-shirt"></i></div>
-            <div><strong>🎯 משימה 1</strong>תחרות בפריימרק! מי מוצאת ראשונה חולצה עם הדפס של דמות מדיסני?</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day6" onclick="openMissionsForDay('day6')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day6">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-scooter"></i> שופינג מטורף בבוקר, אקשן ואדרנלין בערב.</div>
         </div>
       </div>
@@ -530,10 +552,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot b"></span>אחה"צ: בית הכנסת הגדול וחצרות Gozsdu</li>
             <li><span class="dot b"></span>19:30 חזרה למלון · אריזות + שינה מוקדמת</li>
           </ul>
-          <div class="mission" data-mission="day7-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-castle-turret"></i></div>
-            <div><strong>🎯 משימה 1</strong>במצודת הדייגים — כמה מגדלי אבן קטנים יש שם בדיוק?</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day7" onclick="openMissionsForDay('day7')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day7">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-star-of-david"></i> נופי גלויה מבודה + סיום תרבותי ברובע היהודי.</div>
         </div>
       </div>
@@ -548,10 +570,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <li><span class="dot b"></span>צ׳ק-אין ובידוק ביטחוני</li>
             <li><span class="dot b"></span>09:20 · טיסה חזרה מבודפשט</li>
           </ul>
-          <div class="mission" data-mission="day8-m1" onclick="toggleMission(this)">
-            <div class="mission-ico"><i class="ph ph-airplane-takeoff"></i></div>
-            <div><strong>🎯 משימה 1</strong>בחרו תמונה אחת מכל הטיול שהכי תרצו להדפיס למזכרת.</div>
-          </div>
+          <button class="day-missions-btn" id="dmb-day8" onclick="openMissionsForDay('day8')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day8">0 / 5</div>
+          </button>
           <div class="hl"><i class="ph ph-house-line"></i> סיום רגוע ומסודר אחרי ערב אריזות מוקדם.</div>
         </div>
       </div>
@@ -648,10 +670,10 @@ function buildMissionsPopup(){
     let dayDone = 0;
     day.tasks.forEach((_,i) => { if(state[`${dk}-m${i+1}`]) dayDone++; });
 
-    html += `<div class="missions-day">
+    html += `<div class="missions-day" id="missions-day-${dk}">
       <div class="missions-day-hdr">
         <span class="day-badge ${day.badge}">${day.label}</span>
-        <span class="missions-progress">${dayDone}/${day.tasks.length} ✓</span>
+        <span class="missions-progress" id="mp-${dk}">${dayDone}/${day.tasks.length} ✓</span>
       </div>`;
     day.tasks.forEach((task, i) => {
       const key = `${dk}-m${i+1}`;
@@ -666,6 +688,7 @@ function buildMissionsPopup(){
 
   document.getElementById('missionsContent').innerHTML = html;
   updateMissionsBar(done, total);
+  updateAllCardBadges();
 }
 
 function updateMissionsBar(done, total){
@@ -676,6 +699,18 @@ function updateMissionsBar(done, total){
   if(pct===100) fireConfetti();
 }
 
+function updateAllCardBadges(){
+  const state = loadState();
+  Object.keys(MISSIONS).forEach(dk => {
+    const total = MISSIONS[dk].tasks.length;
+    const done  = MISSIONS[dk].tasks.filter((_,i) => state[`${dk}-m${i+1}`]).length;
+    const badge = document.getElementById('dmb-badge-'+dk);
+    if(!badge) return;
+    badge.textContent = done === total ? '✅ הכל הושלם!' : `${done} / ${total}`;
+    badge.classList.toggle('all-done', done === total);
+  });
+}
+
 function toggleMissionPopup(el){
   const key = el.dataset.key;
   const state = loadState();
@@ -684,16 +719,13 @@ function toggleMissionPopup(el){
   saveState(state);
   el.classList.toggle('done', nowDone);
   el.querySelector('.mission-check').textContent = nowDone ? '✓' : '';
-  // sync card
-  const card = document.querySelector(`.mission[data-mission="${key}"]`);
-  if(card) card.classList.toggle('done', nowDone);
   const {done, total} = countAll(state);
   updateMissionsBar(done, total);
-  // update day count
+  updateAllCardBadges();
   const dk = key.split('-m')[0];
   const dayDoneCount = MISSIONS[dk].tasks.filter((_,i) => state[`${dk}-m${i+1}`]).length;
-  el.closest('.missions-day')?.querySelector('.missions-progress')?.setAttribute('textContent', `${dayDoneCount}/${MISSIONS[dk].tasks.length} ✓`);
-  el.closest('.missions-day')?.querySelector('.missions-progress') && (el.closest('.missions-day').querySelector('.missions-progress').textContent = `${dayDoneCount}/${MISSIONS[dk].tasks.length} ✓`);
+  const mp = document.getElementById('mp-'+dk);
+  if(mp) mp.textContent = `${dayDoneCount}/${MISSIONS[dk].tasks.length} ✓`;
   if(nowDone){ showToast('✅ משימה הושלמה! 🌟'); if(done===total) setTimeout(()=>showToast('🏆 השלמתן את כל המשימות!!'),500); }
   else showToast('↩️ משימה בוטלה');
 }
@@ -796,6 +828,16 @@ function openPopup(id){
   document.getElementById(id).classList.add('open');
   document.body.style.overflow='hidden';
 }
+function openMissionsForDay(dayKey){
+  buildMissionsPopup();
+  document.getElementById('missionsPopup').classList.add('open');
+  document.body.style.overflow='hidden';
+  // scroll to the right day inside the popup after render
+  setTimeout(()=>{
+    const el = document.getElementById('missions-day-'+dayKey);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 80);
+}
 function closePopup(id){
   document.getElementById(id).classList.remove('open');
   document.body.style.overflow='';
@@ -868,6 +910,7 @@ function showToast(msg){
 
 /* INIT */
 restoreCardMissions();
+updateAllCardBadges();
 fetchRates();
 </script>
 </body>
