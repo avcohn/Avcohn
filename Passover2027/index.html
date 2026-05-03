@@ -1,376 +1,376 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פסח 2026 – וינה, זלצבורג, מינכן</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #1e3c72;
-            --secondary: #2a5298;
-            --accent: #ff7e5f;
-            --bg-color: #f4f7f6;
-            --text-dark: #333;
-            --text-light: #666;
-            --white: #ffffff;
-            --radius: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פסח 2026 – וינה · זלצבורג · מינכן</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        * {
-            box-sizing: border-box;
-        }
+<style>
+:root {
+  --ink:    #1a1a2e;
+  --deep:   #16213e;
+  --mid:    #0f3460;
+  --gold:   #e2a84b;
+  --rose:   #c8556a;
+  --sage:   #4a8c74;
+  --cream:  #faf8f4;
+  --muted:  #6b6b7a;
+  --line:   rgba(0,0,0,0.08);
+  --r:      16px;
+  --shadow: 0 8px 40px rgba(0,0,0,0.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Assistant',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
 
-        body {
-            margin: 0;
-            font-family: 'Assistant', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px 90px;background:var(--deep);overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(15,52,96,.85) 0%,transparent 70%),radial-gradient(ellipse 55% 45% at 15% 100%,rgba(200,85,106,.3) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 85% 100%,rgba(226,168,75,.25) 0%,transparent 60%)}
+.hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px),repeating-linear-gradient(-45deg,transparent,transparent 60px,rgba(255,255,255,.018) 60px,rgba(255,255,255,.018) 61px)}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-tag{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(226,168,75,.4);border-radius:30px;padding:6px 20px;margin-bottom:26px;opacity:0;animation:fadeUp .8s .2s ease forwards}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,9vw,5.8rem);font-weight:900;color:#fff;line-height:1.05;opacity:0;animation:fadeUp .8s .4s ease forwards}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:clamp(.95rem,2.5vw,1.2rem);color:rgba(255,255,255,.6);margin-top:18px;line-height:1.8;opacity:0;animation:fadeUp .8s .6s ease forwards}
+.hero-meta{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;margin-top:44px;opacity:0;animation:fadeUp .8s .8s ease forwards}
+.meta-item{text-align:center;color:rgba(255,255,255,.8)}
+.meta-item strong{display:block;font-size:1.9rem;font-family:'Playfair Display',serif;color:var(--gold)}
+.meta-item span{font-size:.77rem;letter-spacing:1px;opacity:.7}
+.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.35);font-size:.72rem;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s 1.3s ease forwards}
+.scroll-cue::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:pulse 2s infinite}
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 80px 20px 60px;
-            position: relative;
-            overflow: hidden;
-        }
+/* NAV */
+.sticky-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:0 16px}
+.nav-track{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:11px 0;max-width:1200px;margin:0 auto;-webkit-overflow-scrolling:touch}
+.nav-track::-webkit-scrollbar{display:none}
+.nav-track a{flex-shrink:0;text-decoration:none;font-size:.8rem;font-weight:700;color:var(--muted);padding:6px 14px;border-radius:30px;transition:all .2s;border:1.5px solid transparent;white-space:nowrap}
+.nav-track a:hover{color:var(--mid);background:#fff;border-color:var(--line)}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+/* SECTION HEADER */
+.sec-head{text-align:center;padding:70px 20px 16px}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ink)}
+.sec-head p{color:var(--muted);margin-top:8px;font-size:1rem}
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 10px;
-            font-weight: 400;
-        }
+/* GRID */
+.days-grid{max-width:1240px;margin:0 auto;padding:16px 20px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px;align-items:start}
 
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: flex-start;
-            gap: 15px;
-            padding: 15px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            z-index: 999;
-            overflow-x: auto;
-            scrollbar-width: none; /* Firefox */
-        }
+/* CITY DIVIDER */
+.city-div{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:24px 0 6px}
+.city-div::before,.city-div::after{content:'';flex:1;height:1px;background:var(--line)}
+.city-div span{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--muted);white-space:nowrap;padding:6px 20px;border:1.5px solid var(--line);border-radius:30px;background:#fff}
 
-        nav::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
-        }
+/* CARD */
+.card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;opacity:0;transform:translateY(28px);transition:opacity .5s ease,transform .5s ease,box-shadow .3s}
+.card.visible{opacity:1;transform:translateY(0)}
+.card:hover{box-shadow:0 20px 60px rgba(0,0,0,.14);transform:translateY(-5px)}
 
-        .nav-inner {
-            display: flex;
-            gap: 15px;
-            margin: 0 auto;
-        }
+.card-thumb{position:relative;height:195px;overflow:hidden;flex-shrink:0}
+.card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.card:hover .card-thumb img{transform:scale(1.06)}
+.card-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,33,62,.55) 0%,transparent 55%)}
 
-        nav a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 700;
-            background: var(--white);
-            padding: 8px 16px;
-            border-radius: 30px;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-        }
+.city-tag{position:absolute;top:13px;left:14px;z-index:2;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:20px}
+.day-badge{position:absolute;bottom:13px;right:14px;z-index:2;background:#fff;color:var(--ink);font-weight:700;font-size:.77rem;padding:4px 13px;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,.18);letter-spacing:.3px}
 
-        nav a:hover, nav a:active {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
+.card-body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column;gap:12px}
+.card-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);line-height:1.25}
 
-        /* Layout Grid */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
+/* ACTIVITIES */
+.acts{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
+.act{display:grid;grid-template-columns:46px 1fr;gap:0 10px;align-items:start}
+.act-time{font-size:.7rem;font-weight:700;color:var(--gold);background:rgba(226,168,75,.1);border-radius:6px;padding:2px 4px;text-align:center;line-height:1.5;margin-top:1px;white-space:nowrap}
+.act-text{font-size:.88rem;color:#444;line-height:1.55}
+.act-text b{color:var(--mid);font-weight:700;font-size:.8rem;display:block;margin-bottom:1px}
 
-        /* Day Cards */
-        .day {
-            background: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+/* TIP */
+.tip{background:rgba(74,140,116,.07);border-right:3px solid var(--sage);border-radius:0 8px 8px 0;padding:9px 12px;font-size:.82rem;color:#2e6050;line-height:1.55}
+.tip::before{content:'💡 '}
 
-        .day:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
+/* FOOTER */
+.site-footer{background:var(--deep);color:rgba(255,255,255,.55);text-align:center;padding:56px 20px}
+.site-footer h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;margin-bottom:10px}
+.site-footer p{font-size:.88rem;line-height:1.75;max-width:380px;margin:0 auto 26px}
+.back-top{display:inline-flex;align-items:center;gap:8px;padding:12px 30px;background:var(--gold);color:var(--deep);border-radius:30px;text-decoration:none;font-weight:700;font-size:.88rem;transition:.25s}
+.back-top:hover{transform:translateY(-3px);filter:brightness(1.08)}
 
-        .img-wrapper {
-            position: relative;
-        }
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
 
-        .day img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .date-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: var(--white);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(255, 126, 95, 0.4);
-        }
-
-        .content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h2 {
-            margin: 0 0 15px 0;
-            color: var(--primary);
-            font-size: 1.4rem;
-        }
-
-        ul {
-            padding-right: 20px;
-            margin: 0;
-            color: var(--text-light);
-            flex-grow: 1;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        /* Footer / Back to top */
-        .footer-area {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .backTop {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
-        }
-
-        .backTop:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        /* Mobile Adjustments */
-        @media(max-width: 768px){
-            header h1 { font-size: 2.2rem; }
-            .container { margin: 20px auto; gap: 20px; }
-            nav { padding: 10px; }
-            .day img { height: 200px; }
-        }
-    </style>
+/* MOBILE */
+@media(max-width:600px){
+  .hero{min-height:88svh}
+  .hero-meta{gap:22px}
+  .days-grid{grid-template-columns:1fr;padding:10px 14px 60px;gap:18px}
+  .card-thumb{height:175px}
+  .city-div{grid-column:1}
+  .sec-head{padding:48px 16px 10px}
+  .card-body{padding:16px 15px 18px}
+}
+@media(min-width:1100px){
+  .days-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
 </head>
-
 <body>
 
-<header>
-    <h1>פסח 2026 ✈️</h1>
-    <p>וינה | זלצבורג והאגמים | מינכן<br>הטיול המשפחתי של אלמה ואליאנה</p>
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-tag">פסח 2026 · מסע משפחתי</div>
+    <h1>וינה · זלצבורג<br><em>ומינכן</em></h1>
+    <p class="hero-sub">הרפתקת האלפים של אלמה ואליאנה<br>20–28 באפריל 2026 · 9 ימים של קסם</p>
+    <div class="hero-meta">
+      <div class="meta-item"><strong>9</strong><span>ימים</span></div>
+      <div class="meta-item"><strong>3</strong><span>ערים</span></div>
+      <div class="meta-item"><strong>2</strong><span>מדינות</span></div>
+      <div class="meta-item"><strong>∞</strong><span>זיכרונות</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">גלול מטה</div>
 </header>
 
-<nav>
-    <div class="nav-inner">
-        <a href="#d1">20.4 וינה</a>
-        <a href="#d2">21.4 לאגמים</a>
-        <a href="#d3">22.4 זלצבורג</a>
-        <a href="#d4">23.4 שוקולד</a>
-        <a href="#d5">24.4 הלשטאט</a>
-        <a href="#d6">25.4 טבע</a>
-        <a href="#d7">26.4 למינכן</a>
-        <a href="#d8">27.4 מינכן</a>
-        <a href="#d9">28.4 סיום</a>
-    </div>
+<nav class="sticky-nav" aria-label="ניווט ימים">
+  <div class="nav-track">
+    <a href="#d1">20.4 נחיתה</a>
+    <a href="#d2">21.4 לאגמים</a>
+    <a href="#d3">22.4 זלצבורג</a>
+    <a href="#d4">23.4 מוזיאון וטבע</a>
+    <a href="#d5">24.4 הלשטאט</a>
+    <a href="#d6">25.4 שבת טבע</a>
+    <a href="#d7">26.4 למינכן</a>
+    <a href="#d8">27.4 מינכן</a>
+    <a href="#d9">28.4 סיום</a>
+  </div>
 </nav>
 
-<div class="container">
+<main>
+  <div class="sec-head">
+    <h2>המסלול המלא</h2>
+    <p>תכנון יום-יום לחופשה בלתי נשכחת</p>
+  </div>
 
-    <div class="day" id="d1">
-        <div class="img-wrapper">
-            <span class="date-badge">20.4 | יום ב'</span>
-            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=600&q=80" alt="וינה" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>נחיתה בווינה 🇦🇹</h2>
-            <ul>
-                <li>נחיתה בשדה התעופה של וינה והתארגנות ברכב.</li>
-                <li>צ'ק אין במלון סמוך לשדה (נוח לטיסות ערב).</li>
-                <li>ארוחת ערב קלילה במסעדה מקומית והתאוששות.</li>
-            </ul>
-        </div>
-    </div>
+  <div class="days-grid">
 
-    <div class="day" id="d2">
-        <div class="img-wrapper">
-            <span class="date-badge">21.4 | יום ג'</span>
-            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="אגמים אוסטריה" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>הדרך לאזור האגמים 🚗</h2>
-            <ul>
-                <li>נסיעה מערבה אל נופי האלפים המדהימים.</li>
-                <li>עצירה בדרך להתרעננות (מומלץ במנזר מלק או באמסטטן).</li>
-                <li>הגעה למלון באזור האגמים (Wolfgangsee/Mondsee) ופרוק מזוודות.</li>
-            </ul>
-        </div>
-    </div>
+    <div class="city-div"><span>🇦🇹 אוסטריה</span></div>
 
-    <div class="day" id="d3">
-        <div class="img-wrapper">
-            <span class="date-badge">22.4 | יום ד'</span>
-            <img src="https://images.unsplash.com/photo-1549893075-7c8a9f62f0b5?auto=format&fit=crop&w=600&q=80" alt="זלצבורג" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>קסם בעיר זלצבורג 🥨</h2>
-            <ul>
-                <li>טיול בגני מיראבל המרהיבים.</li>
-                <li>שיטוט בעיר העתיקה, סמטאות ציוריות ושופינג.</li>
-                <li><strong>המלצה לילדות:</strong> ארמון הלברון (Hellbrunn) ומזרקות הפלא המשעשעות.</li>
-            </ul>
-        </div>
-    </div>
+    <!-- DAY 1 -->
+    <article class="card" id="d1">
+      <div class="card-thumb">
+        <span class="city-tag">וינה</span>
+        <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=700&q=80" alt="וינה" loading="lazy">
+        <span class="day-badge">20.4 | יום ב׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">✈️ נחיתה בווינה</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">14:00</span><span class="act-text"><b>נחיתה בשדה התעופה</b>השלמת ניירת, השכרת רכב ויציאה לדרך.</span></li>
+          <li class="act"><span class="act-time">16:00</span><span class="act-text"><b>צ׳ק אין במלון</b>לינה ב-Schwechat סמוך לשדה – נוח ורגוע לאחר טיסה.</span></li>
+          <li class="act"><span class="act-time">18:30</span><span class="act-text">ארוחת ערב בבית קפה וינאי קלאסי ושינה מוקדמת.</span></li>
+        </ul>
+        <div class="tip">הזמינו חניה במלון מראש – חניות ציבוריות ליד השדה יקרות.</div>
+      </div>
+    </article>
 
-    <div class="day" id="d4">
-        <div class="img-wrapper">
-            <span class="date-badge">23.4 | יום ה'</span>
-            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80" alt="שוקולד" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>שוקולד וחוויות 🍫</h2>
-            <ul>
-                <li>נסיעה למפעל השוקולד Loacker (לחלופין: מוזיאון הטבע המדהים בזלצבורג - Haus der Natur).</li>
-                <li>סדנת שוקולד וטעימות שילדים אוהבים.</li>
-                <li>קניות בחנות המפעל וזמן חופשי.</li>
-            </ul>
-        </div>
-    </div>
+    <!-- DAY 2 -->
+    <article class="card" id="d2">
+      <div class="card-thumb">
+        <span class="city-tag">אוסטריה</span>
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=80" alt="אגמים אוסטריים" loading="lazy">
+        <span class="day-badge">21.4 | יום ג׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🚗 הדרך לאזור האגמים</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">09:00</span><span class="act-text"><b>יציאה מוינה מערבה</b>נסיעה של כשעתיים בנוף הררי גורם.</span></li>
+          <li class="act"><span class="act-time">10:30</span><span class="act-text"><b>מנזר מלק (Melk)</b>מנזר בארוקי מרהיב על צוק מעל הדנובה – חובה!</span></li>
+          <li class="act"><span class="act-time">13:00</span><span class="act-text"><b>פיקניק על אגם Mondsee</b>אחד האגמים המחוממים ביותר באוסטריה – מושלם לילדות.</span></li>
+          <li class="act"><span class="act-time">15:00</span><span class="act-text"><b>הגעה למלון</b>התפנקות ובריכה אחר-הצהריים.</span></li>
+        </ul>
+        <div class="tip">מנזר מלק פתוח 09:00–17:30. כניסה כ-15€ מבוגר, 7€ ילד.</div>
+      </div>
+    </article>
 
-    <div class="day" id="d5">
-        <div class="img-wrapper">
-            <span class="date-badge">24.4 | יום ו'</span>
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="הלשטאט" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>גלויות מהלשטאט 🛶</h2>
-            <ul>
-                <li>טיול בוקר בעיירה המפורסמת בעולם.</li>
-                <li>עלייה ברכבל לתצפית Skywalk או תצפית 5 האצבעות.</li>
-                <li>שייט רגוע באגם היפהפה בין ההרים.</li>
-            </ul>
-        </div>
-    </div>
+    <!-- DAY 3 -->
+    <article class="card" id="d3">
+      <div class="card-thumb">
+        <span class="city-tag">זלצבורג</span>
+        <img src="https://images.unsplash.com/photo-1549893075-7c8a9f62f0b5?auto=format&fit=crop&w=700&q=80" alt="זלצבורג" loading="lazy">
+        <span class="day-badge">22.4 | יום ד׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🎶 קסם בעיר זלצבורג</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">09:30</span><span class="act-text"><b>גני מיראבל</b>פרחים, מזרקות ואווירה כמו מהאגדות – הילדות יאהבו.</span></li>
+          <li class="act"><span class="act-time">11:00</span><span class="act-text"><b>עיר העתיקה (Altstadt)</b>שיטוט בסמטאות, שוקולד מוצרט מהחנות המקורית ושופינג.</span></li>
+          <li class="act"><span class="act-time">13:30</span><span class="act-text"><b>ארמון הלברון (Hellbrunn)</b>מזרקות הפלא המשתובבות – הפתעה רטובה ומשעשעת מאוד!</span></li>
+          <li class="act"><span class="act-time">16:30</span><span class="act-text"><b>מצודת הוהנזלצבורג</b>עלייה ברכבל לתצפית פנורמית על העיר.</span></li>
+        </ul>
+        <div class="tip">בהלברון – קחו בגדים להחלפה. הילדות *יירטבו* בהנאה 😄</div>
+      </div>
+    </article>
 
-    <div class="day" id="d6">
-        <div class="img-wrapper">
-            <span class="date-badge">25.4 | שבת</span>
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="טבע משפחתי" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>טבע, אקשן ורוגע 🌲</h2>
-            <ul>
-                <li>פעילות כיפית: מגלשות הרים ב-Abtenau או ב-St. Gilgen.</li>
-                <li>פיקניק משפחתי על שפת אחד האגמים באזור.</li>
-                <li>חזרה מוקדמת למלון לקפיצה לבריכה ומנוחה.</li>
-            </ul>
-        </div>
-    </div>
+    <!-- DAY 4 -->
+    <article class="card" id="d4">
+      <div class="card-thumb">
+        <span class="city-tag">זלצבורג</span>
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=700&q=80" alt="מוזיאון טבע" loading="lazy">
+        <span class="day-badge">23.4 | יום ה׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🦕 מדע, טבע ושוקולד</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">09:30</span><span class="act-text"><b>Haus der Natur</b>מוזיאון הטבע של זלצבורג – דינוזאורים, אקווריום ומינהרת הקרח. ילדות יתלהבו!</span></li>
+          <li class="act"><span class="act-time">13:00</span><span class="act-text"><b>Fürst Confiserie</b>בית הממתקים המקורי של שוקולד מוצרט – הכי טעים בעיר.</span></li>
+          <li class="act"><span class="act-time">14:30</span><span class="act-text"><b>Getreidegasse</b>הרחוב עם שלטי הברזל הצבעוניים – קניות, בייגלה ואווירה.</span></li>
+          <li class="act"><span class="act-time">17:00</span><span class="act-text">חזרה למלון, שחייה ומנוחה.</span></li>
+        </ul>
+        <div class="tip">Haus der Natur: כ-10€ לאדם, פתוח 09:00–17:00. כדאי להגיע בבוקר.</div>
+      </div>
+    </article>
 
-    <div class="day" id="d7">
-        <div class="img-wrapper">
-            <span class="date-badge">26.4 | יום א'</span>
-            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=600&q=80" alt="רכבת למינכן" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>מעבר למינכן 🇩🇪</h2>
-            <ul>
-                <li>נסיעת רכבת נוחה (או רכב) מזלצבורג למינכן.</li>
-                <li>הגעה לעיר וצ'ק אין במלון החדש.</li>
-                <li>סיבוב ערב ראשון בעיר, אזור כיכר מריאנפלאץ (Marienplatz).</li>
-            </ul>
-        </div>
-    </div>
+    <!-- DAY 5 -->
+    <article class="card" id="d5">
+      <div class="card-thumb">
+        <span class="city-tag">הלשטאט</span>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="הלשטאט" loading="lazy">
+        <span class="day-badge">24.4 | יום ו׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🛶 גלויות מהלשטאט</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">08:30</span><span class="act-text"><b>יציאה מוקדמת</b>הגיעו לפני 10:00 – הכפר מתמלא בתיירים מהר מאוד.</span></li>
+          <li class="act"><span class="act-time">09:15</span><span class="act-text"><b>שיטוט בעיירה</b>רחובות אבן ובתים צבעוניים מעל האגם – אחת היפות בעולם.</span></li>
+          <li class="act"><span class="act-time">10:30</span><span class="act-text"><b>תצפית Skywalk</b>עלייה ברכבל לתצפית הזכוכית מעל ערפל ההרים.</span></li>
+          <li class="act"><span class="act-time">13:00</span><span class="act-text"><b>שייט באגם</b>סירה חשמלית שקטה בין ההרים – חוויה מרגיעה ויפהפייה.</span></li>
+          <li class="act"><span class="act-time">15:30</span><span class="act-text">חזרה למלון, ארוחה קלה ומנוחה.</span></li>
+        </ul>
+        <div class="tip">חנו ב-Obertraun וקחו את סירת המעבר – חניה בהלשטאט עצמה מוגבלת מאוד.</div>
+      </div>
+    </article>
 
-    <div class="day" id="d8">
-        <div class="img-wrapper">
-            <span class="date-badge">27.4 | יום ב'</span>
-            <img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=600&q=80" alt="חיות מינכן" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>אטרקציות במינכן 🐘</h2>
-            <ul>
-                <li>ביקור בגן החיות האקולוגי הלאברון (Hellabrunn).</li>
-                <li>הפארק האנגלי (Englischer Garten) - צפייה בגולשי הגלים בנהר.</li>
-                <li>ארוחת ערב באווירה בווארית קלאסית.</li>
-            </ul>
-        </div>
-    </div>
+    <!-- DAY 6 -->
+    <article class="card" id="d6">
+      <div class="card-thumb">
+        <span class="city-tag">אזור האגמים</span>
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="טבע אלפיני" loading="lazy">
+        <span class="day-badge">25.4 | שבת</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🌲 שבת של טבע ואקשן</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">10:00</span><span class="act-text"><b>מגלשות הרים ב-St. Gilgen</b>רכבל לפסגה + מגלשת קיץ ארוכה ומהנה.</span></li>
+          <li class="act"><span class="act-time">13:00</span><span class="act-text"><b>פיקניק על Wolfgangsee</b>נוף אלפיני, מים שקופים, לחם ונקניקיות על האש.</span></li>
+          <li class="act"><span class="act-time">15:30</span><span class="act-text"><b>St. Wolfgang</b>כפר ציורי עם כנסייה מפורסמת ואווירה אוסטרית אותנטית.</span></li>
+          <li class="act"><span class="act-time">17:30</span><span class="act-text">חזרה לבריכת המלון, מנוחה ומסיבת פיג׳מות 😄</span></li>
+        </ul>
+        <div class="tip">Sommerrodelbahn ב-St. Gilgen – מגלשת קיץ מהנה מגיל 4+. בדקו שעות פתיחה מראש.</div>
+      </div>
+    </article>
 
-    <div class="day" id="d9">
-        <div class="img-wrapper">
-            <span class="date-badge">28.4 | יום ג'</span>
-            <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=600&q=80" alt="שופינג טיסה" loading="lazy">
-        </div>
-        <div class="content">
-            <h2>שופינג וסיום 🛍️</h2>
-            <ul>
-                <li>קניות במדרחוב המרכזי של מינכן (Kaufingerstraße).</li>
-                <li>עצירה אחרונה בבתי קפה ופינוקים מתוקים.</li>
-                <li>סגירת הטיול ונסיעה לשדה התעופה לטיסה חזרה הביתה.</li>
-            </ul>
-        </div>
-    </div>
+    <div class="city-div"><span>🇩🇪 גרמניה</span></div>
 
-</div>
+    <!-- DAY 7 -->
+    <article class="card" id="d7">
+      <div class="card-thumb">
+        <span class="city-tag">מינכן</span>
+        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=700&q=80" alt="מינכן" loading="lazy">
+        <span class="day-badge">26.4 | יום א׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🚗 מעבר למינכן</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">09:00</span><span class="act-text"><b>יציאה מהמלון</b>נסיעה בכביש A8 – כ-90 דקות בלבד מזלצבורג.</span></li>
+          <li class="act"><span class="act-time">10:45</span><span class="act-text"><b>עצירה ב-Chiemsee</b>האגם הגדול בבוואריה – מומלץ לקפה ולמתיחה.</span></li>
+          <li class="act"><span class="act-time">12:30</span><span class="act-text"><b>הגעה למינכן, צ׳ק אין</b>פרוק מזוודות ומנוחה קצרה.</span></li>
+          <li class="act"><span class="act-time">15:00</span><span class="act-text"><b>כיכר מריאנפלאץ</b>הגלוקנשפיל מכה ב-17:00 – אל תפספסו!</span></li>
+          <li class="act"><span class="act-time">18:30</span><span class="act-text">ביאר-גארטן בפארק האנגלי – בווארי אמיתי עם Brezel ונקניקיות.</span></li>
+        </ul>
+        <div class="tip">חנו בפרברים ועלו בתחבורה ציבורית – הרבה יותר נוח מחניה במרכז מינכן.</div>
+      </div>
+    </article>
 
-<div class="footer-area">
-    <a href="#" class="backTop">⬆ חזרה למעלה</a>
-</div>
+    <!-- DAY 8 -->
+    <article class="card" id="d8">
+      <div class="card-thumb">
+        <span class="city-tag">מינכן</span>
+        <img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=700&q=80" alt="גן חיות מינכן" loading="lazy">
+        <span class="day-badge">27.4 | יום ב׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🐘 יום חוויות במינכן</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">09:30</span><span class="act-text"><b>גן חיות הלברון (Hellabrunn)</b>אחד מגני החיות הגדולים באירופה – פילים, קופים ועולם הקרח.</span></li>
+          <li class="act"><span class="act-time">13:30</span><span class="act-text"><b>Deutsches Museum</b>מוזיאון הטכנולוגיה הגדול בעולם – מטוסים, ספינות ואנרגיה. מהנה לגדולות!</span></li>
+          <li class="act"><span class="act-time">16:30</span><span class="act-text"><b>פארק האנגלי – גולשי הגלים</b>צפייה ב-Eisbach – גלישה בלב העיר, תופעה ייחודית בעולם.</span></li>
+          <li class="act"><span class="act-time">19:00</span><span class="act-text">ארוחה בטאברנה בווארית – שניצל, קנדל ובייגלה ענקי.</span></li>
+        </ul>
+        <div class="tip">Hellabrunn: 21€ מבוגר, 9€ ילד. פתוח עד 18:00 – כדאי להגיע בבוקר.</div>
+      </div>
+    </article>
 
+    <!-- DAY 9 -->
+    <article class="card" id="d9">
+      <div class="card-thumb">
+        <span class="city-tag">מינכן</span>
+        <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=700&q=80" alt="שופינג מינכן" loading="lazy">
+        <span class="day-badge">28.4 | יום ג׳</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">🛍️ שופינג ופרידה</h2>
+        <ul class="acts">
+          <li class="act"><span class="act-time">09:00</span><span class="act-text"><b>קניות ב-Kaufingerstraße</b>המדרחוב הראשי – בגדים, ספרים, מזכרות ועוד.</span></li>
+          <li class="act"><span class="act-time">11:00</span><span class="act-text"><b>Viktualienmarkt</b>שוק האוכל הצבעוני – פירות טריים, גבינות ומתנות מיוחדות.</span></li>
+          <li class="act"><span class="act-time">12:30</span><span class="act-text"><b>ארוחת סיום</b>בית קפה בווארי עם עוגת שמנת וקפה – סיום בטעם.</span></li>
+          <li class="act"><span class="act-time">14:30</span><span class="act-text"><b>נסיעה לשדה התעופה</b>כ-45 דקות מהעיר – יוצאים בזמן!</span></li>
+        </ul>
+        <div class="tip">הגיעו לשדה שעתיים לפני ועשו החזרת רכב שכור לפחות שעה וחצי לפני הטיסה.</div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <h3>✈️ נסיעה טובה!</h3>
+  <p>שיהיה מסע מלא בזיכרונות נפלאים עם אלמה ואליאנה 💛</p>
+  <a href="#top" class="back-top">⬆ חזרה למעלה</a>
+</footer>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+cards.forEach(c => io.observe(c));
+
+const navLinks = document.querySelectorAll('.nav-track a');
+const navIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => { a.style.color=''; a.style.background=''; a.style.borderColor=''; });
+      const active = document.querySelector(`.nav-track a[href="#${e.target.id}"]`);
+      if (active) {
+        active.style.color = 'var(--mid)';
+        active.style.background = '#fff';
+        active.style.borderColor = 'var(--line)';
+        active.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+      }
+    }
+  });
+}, { threshold: 0.4 });
+['d1','d2','d3','d4','d5','d6','d7','d8','d9'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) navIO.observe(el);
+});
+</script>
 </body>
 </html>
