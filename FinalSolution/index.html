@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>צפון איטליה 2026 🇮🇹</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --terra: #c0533a;
+    --terra-light: #e8876e;
+    --cream: #faf6f0;
+    --navy: #1a2744;
+    --navy-light: #2c3e6b;
+    --sand: #e8dcc8;
+    --sand-dark: #d4c4a8;
+    --text: #2a2420;
+    --text-muted: #7a6a60;
+    --white: #ffffff;
+    --gold: #c9a84c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Assistant', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=1600') center/cover no-repeat;
+    transform: scale(1.05);
+    animation: heroScale 12s ease-out forwards;
+  }
+
+  @keyframes heroScale {
+    to { transform: scale(1); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(26, 39, 68, 0.75) 0%,
+      rgba(192, 83, 58, 0.45) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Assistant', sans-serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 8vw, 80px);
+    color: var(--white);
+    margin: 0 0 12px;
+    line-height: 1.1;
+  }
+
+  .hero-dates {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 28px;
+    border: 1.5px solid rgba(255,255,255,0.45);
+    border-radius: 40px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s ease infinite;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--navy);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar { display: none; }
+
+  .nav-logo {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    white-space: nowrap;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    /* RTL: this is the rightmost element */
+  }
+
+  nav a {
+    padding: 16px 22px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+    position: relative;
+    letter-spacing: 0.5px;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0; left: 0;
+    height: 2px;
+    background: var(--terra-light);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+  }
+
+  nav a:hover {
+    color: var(--white);
+  }
+
+  nav a:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .trip-progress {
+    background: var(--sand);
+    padding: 28px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .progress-step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .step-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--sand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .step-circle.active {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: white;
+    transform: scale(1.1);
+  }
+
+  .step-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 6px;
+    white-space: nowrap;
+    max-width: 70px;
+  }
+
+  .step-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-line {
+    width: 40px;
+    height: 2px;
+    background: var(--sand-dark);
+    margin-top: -15px; /* align with circle center */
+    flex-shrink: 0;
+  }
+
+  /* ─── MAIN LAYOUT ─── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+  }
+
+  /* ─── DAY CARD ─── */
+  .day-card {
+    scroll-margin-top: 70px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+  }
+
+  .day-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .day-card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.13);
+  }
+
+  /* Alternate image side every other card */
+  .day-card:nth-child(even) {
+    direction: ltr;
+  }
+  .day-card:nth-child(even) .day-body {
+    direction: rtl;
+  }
+
+  .day-img {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .day-card:hover .day-img img {
+    transform: scale(1.04);
+  }
+
+  .day-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--terra);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .day-card:nth-child(even) .day-badge {
+    right: auto;
+    left: 20px;
+  }
+
+  .day-body {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .day-number {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--terra);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 20px;
+    line-height: 1.3;
+  }
+
+  .day-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+
+  .day-items li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0ece6;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: #3a3030;
+  }
+
+  .day-items li:last-child {
+    border-bottom: none;
+  }
+
+  .item-icon {
+    font-size: 16px;
+    margin-top: 1px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+  }
+
+  /* ─── TAGS ─── */
+  .day-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .tag {
+    background: var(--sand);
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── TIP BOX ─── */
+  .tip-box {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .tip-box .tip-header {
+    background: var(--navy);
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 9px 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .tip-box .tip-body {
+    background: #f5f1eb;
+    padding: 14px 16px;
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .tip-box.warning .tip-header {
+    background: var(--terra);
+  }
+
+  /* ─── SECTION DIVIDERS ─── */
+  .section-label {
+    text-align: center;
+    margin: 60px 0 40px;
+  }
+
+  .section-label span {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .section-label span::before,
+  .section-label span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 1px;
+    background: var(--sand-dark);
+  }
+
+  .section-label span::before { right: calc(100% + 16px); }
+  .section-label span::after  { left:  calc(100% + 16px); }
+
+  /* ─── ESSENTIALS BAR ─── */
+  .essentials {
+    background: var(--navy);
+    color: white;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .essentials h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 22px;
+    margin: 0 0 28px;
+  }
+
+  .essentials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .essential-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px 22px;
+    min-width: 160px;
+    flex: 1;
+  }
+
+  .essential-item .ei-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 6px;
+  }
+
+  .essential-item .ei-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+  }
+
+  /* ─── BACK TO TOP ─── */
+  .back-top {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .back-top:hover { color: var(--terra); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 700px) {
+    .day-card,
+    .day-card:nth-child(even) {
+      grid-template-columns: 1fr;
+      direction: rtl;
+    }
+
+    .day-img {
+      height: 220px;
+    }
+
+    .day-body {
+      padding: 24px 24px;
+    }
+
+    .day-card:nth-child(even) .day-badge {
+      right: 20px;
+      left: auto;
+    }
+
+    .trip-progress {
+      padding: 20px 12px;
+    }
+
+    .step-line {
+      width: 20px;
+    }
+
+    .step-label {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">מסע משפחתי · אפריל 2026</span>
+    <h1>צפון איטליה</h1>
+    <div class="hero-dates">🇮🇹 &nbsp; 21–26 באפריל, 2026 &nbsp; · &nbsp; 6 ימים &nbsp; 🇮🇹</div>
+  </div>
+  <div class="hero-scroll">גלול</div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Italia ✦</div>
+  <a href="#day1">יום 1 – גארדה</a>
+  <a href="#day2">יום 2 – גארדלנד</a>
+  <a href="#day3">יום 3 – מלצ'סינה</a>
+  <a href="#day4">יום 4 – ספארי → קומו</a>
+  <a href="#day5">יום 5 – קומו</a>
+  <a href="#day6">יום 6 – מילאנו</a>
+</nav>
+
+<!-- PROGRESS TIMELINE -->
+<div class="trip-progress">
+  <div class="progress-step">
+    <div class="step-wrapper">
+      <div class="step-circle active">1</div>
+      <div class="step-label">נחיתה<br>גארדה</div>
+    </div>
+    <div class="step-line"></div>
+  </div>
+  <div class="progress-step">
+    <div class="step-wrapper">
+      <div class="step-circle active">2</div>
+      <div class="step-label">גארדלנד</div>
+    </div>
+    <div class="step-line"></div>
+  </div>
+  <div class="progress-step">
+    <div class="step-wrapper">
+      <div class="step-circle active">3</div>
+      <div class="step-label">מלצ'סינה<br>רכבל</div>
+    </div>
+    <div class="step-line"></div>
+  </div>
+  <div class="progress-step">
+    <div class="step-wrapper">
+      <div class="step-circle">4</div>
+      <div class="step-label">ספארי →<br>קומו</div>
+    </div>
+    <div class="step-line"></div>
+  </div>
+  <div class="progress-step">
+    <div class="step-wrapper">
+      <div class="step-circle">5</div>
+      <div class="step-label">בלג'יו<br>וארנה</div>
+    </div>
+    <div class="step-line"></div>
+  </div>
+  <div class="progress-step">
+    <div class="step-wrapper">
+      <div class="step-circle">6</div>
+      <div class="step-label">מילאנו<br>✈️</div>
+    </div>
+  </div>
+</div>
+
+<!-- ESSENTIALS BAR -->
+<div class="essentials">
+  <h3>לפני שיוצאים</h3>
+  <div class="essentials-grid">
+    <div class="essential-item">
+      <div class="ei-label">רכב שכור</div>
+      <div class="ei-value">חובה להזמין מראש</div>
+    </div>
+    <div class="essential-item">
+      <div class="ei-label">גארדלנד</div>
+      <div class="ei-value">כרטיסים אונליין בלבד</div>
+    </div>
+    <div class="essential-item">
+      <div class="ei-label">רכבל מונטה בלדו</div>
+      <div class="ei-value">הזמינו שבועות מראש</div>
+    </div>
+    <div class="essential-item">
+      <div class="ei-label">מטבע</div>
+      <div class="ei-value">אירו + כרטיס אשראי</div>
+    </div>
+    <div class="essential-item">
+      <div class="ei-label">25 באפריל</div>
+      <div class="ei-value">חג לאומי – הכל עמוס</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <div class="section-label"><span>המסלול יום אחר יום</span></div>
+
+  <!-- DAY 1 -->
+  <div class="day-card" id="day1">
+    <div class="day-img">
+      <img src="https://images.unsplash.com/photo-1570939274717-7eda259b50ed?w=800" alt="אגם גארדה – סירמיונה">
+      <div class="day-badge">יום 1 · 21.4</div>
+    </div>
+    <div class="day-body">
+      <div class="day-number">יום ראשון · מילאנו → גארדה</div>
+      <h2 class="day-title">נחיתה וטעימה ראשונה מהאגם</h2>
+      <ul class="day-items">
+        <li><span class="item-icon">✈️</span> נחיתה במילאנו מלפנסה (MXP) ואיסוף הרכב השכור – הקצו לפחות שעה לאיסוף הרכב בשדה.</li>
+        <li><span class="item-icon">🛣️</span> נסיעה לאגם גארדה (כ-1:45 ש') – ניתן לעצור לאכול בהייפר בדרך.</li>
+        <li><span class="item-icon">🏰</span> עצירה בסירמיונה (Sirmione): סיבוב בעיר העתיקה מבוצרת ובמפורסם בה – המצודה הסקאליגרית (כניסה ~€5 למבוגר). הילדים אוהבים לתלות מעל לתעלות.</li>
+        <li><span class="item-icon">🏨</span> צ'ק אין במלון ברשות – ממליצים על אזור פסקיירה דל גארדה (חניה נוחה, קרוב לגארדלנד).</li>
+        <li><span class="item-icon">🍕</span> ארוחת ערב בפסקיירה: <em>Ristorante Il Gallo</em> – פיצות ופסטות על שפת האגם, ידידותי לילדים.</li>
+        <li><span class="item-icon">🍦</span> גלידה איטלקית ראשונה! מחפשים שלט "artigianale" – זה אומר תוצרת בית אמיתית.</li>
+      </ul>
+      <div class="day-tags">
+        <span class="tag">🚗 נסיעה</span>
+        <span class="tag">🏰 היסטוריה</span>
+        <span class="tag">🍦 קולינריה</span>
+      </div>
+      <div class="tip-box">
+        <div class="tip-header">💡 טיפ זהב – חניה בסירמיונה</div>
+        <div class="tip-body">החניון הכי קרוב לעיר העתיקה הוא Parcheggio del Castello. שלמו במדחן (קחו מטבעות!) ולכו רגלית על הגשר לחצי האי. אל תנסו להיכנס עם הרכב פנימה – תסתבכו.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card" id="day2">
+    <div class="day-img">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="גארדלנד פארק שעשועים">
+      <div class="day-badge">יום 2 · 22.4</div>
+    </div>
+    <div class="day-body">
+      <div class="day-number">יום שני · גארדלנד</div>
+      <h2 class="day-title">אקסטרים וכיף מלא בגארדלנד 🎢</h2>
+      <ul class="day-items">
+        <li><span class="item-icon">⏰</span> הגיעו ב-9:45 – הפארק נפתח ב-10:00. הרבע שעה הראשונה שווה זהב.</li>
+        <li><span class="item-icon">🎢</span> <strong>ראשונים:</strong> Shaman (רכבת ההרים הגדולה) – לפני שהתורים מתנפחים.</li>
+        <li><span class="item-icon">👶</span> <strong>לקטנים:</strong> אזור Fantasy Kingdom מתאים לגילאי 3–8, כולל מתקנים עצמאיים.</li>
+        <li><span class="item-icon">💧</span> בקיץ חם: Prezzemolo's Splash – גוף מים מרעיש ומרענן, קחו בגד ים ומגבת.</li>
+        <li><span class="item-icon">🍔</span> ארוחת צהריים: כדאי לצאת מהפארק לעשרים דקות ולאכול בחנות קרובה – מחצית המחיר.</li>
+        <li><span class="item-icon">🐙</span> גשם? Sea Life Aquarium צמוד לפארק – כרטיס משולב זול יותר, ומעולה לשעות.</li>
+      </ul>
+      <div class="day-tags">
+        <span class="tag">🎢 פארק שעשועים</span>
+        <span class="tag">👨‍👩‍👧‍👦 ילדים</span>
+        <span class="tag">💦 מים</span>
+      </div>
+      <div class="tip-box">
+        <div class="tip-header">💡 טיפ – Express Pass</div>
+        <div class="tip-body">הורידו את אפליקציית Gardaland לפני הגעה לצפות בזמני המתנה. בסופי שבוע ובחגים הפארק עמוס מאוד – Express Pass (כ-€20 תוספת) משתלם אם יש ילדים בגילאי 6–12 שלא ישבו בתורים.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card" id="day3">
+    <div class="day-img">
+      <img src="https://images.unsplash.com/photo-1543158181-1274e5362710?w=800" alt="מלצ'סינה רכבל מונטה בלדו">
+      <div class="day-badge">יום 3 · 23.4</div>
+    </div>
+    <div class="day-body">
+      <div class="day-number">יום שלישי · חוף מזרחי</div>
+      <h2 class="day-title">פסגות, רכבל ועיירות ציוריות</h2>
+      <ul class="day-items">
+        <li><span class="item-icon">🌅</span> נסיעה צפונה לאורך החוף לעיירה <strong>מלצ'סינה</strong> (~45 ד' מפסקיירה) – כניסת רכבים מוגבלת, חנו בחניון האשטון.</li>
+        <li><span class="item-icon">🚡</span> רכבל מסתובב <strong>Monte Baldo</strong> (1,760מ'): ↑€22 ↓€22 או הלוך-חזור ~€40. קחו ג'קט! – 15°C פחות מהאגם.</li>
+        <li><span class="item-icon">🥾</span> בפסגה: שביל קל (כ-40 דקות) עם נוף לכל האגם – שווה כל רגע. יש מסעדה פשוטה למעלה.</li>
+        <li><span class="item-icon">⛵</span> ב-13:00 – קחו מעבורת ממלצ'סינה לליד אגם <strong>Limone sul Garda</strong>: עיירת הלימונים הכי ציורית. (~30 ד', ~€7).</li>
+        <li><span class="item-icon">🍋</span> בלימונה: לגסטיה <em>Osteria del Castelo</em> – פסטה עם לימון אגמי, מדהים.</li>
+        <li><span class="item-icon">🌇</span> חזרה לאגם ב-17:00 – ערב חופשי, מרגיעים לקראת יום הנסיעה למחר.</li>
+      </ul>
+      <div class="day-tags">
+        <span class="tag">🚡 רכבל</span>
+        <span class="tag">⛵ מעבורת</span>
+        <span class="tag">🥾 הליכה</span>
+        <span class="tag">🍋 לימונה</span>
+      </div>
+      <div class="tip-box warning">
+        <div class="tip-header">⚠️ חשוב מאוד – הזמינו רכבל מראש!</div>
+        <div class="tip-body">הרכבל פופולרי מאוד ומתמלא שבועות מראש בחופשת פסח. הזמינו באתר Funivie Monte Baldo. בלי הזמנה מראש – תורים של שעה-שעתיים.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card" id="day4">
+    <div class="day-img">
+      <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800" alt="ספארי פארקו נאטורה ויוה">
+      <div class="day-badge">יום 4 · 24.4</div>
+    </div>
+    <div class="day-body">
+      <div class="day-number">יום רביעי · ספארי → קומו</div>
+      <h2 class="day-title">ספארי אפריקאי ומעבר לאגם קומו</h2>
+      <ul class="day-items">
+        <li><span class="item-icon">🦁</span> <strong>Parco Natura Viva</strong> (Bussolengo): פתיחה ב-9:00. התחילו במסלול הספארי עם הרכב הפרטי – ג'ירפות, קרנפים וזברות ממש ליד החלון!</li>
+        <li><span class="item-icon">🦕</span> המשיכו לחלק הרגלי: <strong>אזור הדינוזאורים</strong> הוא hit עצום עם ילדים. גם פינת המגע עם חיות קטנות מומלצת.</li>
+        <li><span class="item-icon">🕐</span> צאו מהפארק לא יאוחר מ-13:00 לנסיעה של 2.5 שעות לאגם קומו.</li>
+        <li><span class="item-icon">🏘️</span> צ'ק אין בעיירה <strong>Varenna</strong> (ממליצים על Varenna על פני Menaggio – שקטה יותר, נוף מדהים).</li>
+        <li><span class="item-icon">🚶</span> טיול ערב ב<strong>Via del Amore</strong> (שביל הנאהבים) של וארנה לאורך הסלעים – 15 דקות, חינם, עוצר נשימה.</li>
+        <li><span class="item-icon">🍷</span> ארוחת ערב מומלצת: <em>Ristorante Vecchia Varenna</em> – על שפת הסלעים, עם נוף לאגם. הזמינו שולחן!</li>
+      </ul>
+      <div class="day-tags">
+        <span class="tag">🦁 ספארי</span>
+        <span class="tag">🦕 דינוזאורים</span>
+        <span class="tag">🚗 נסיעה ארוכה</span>
+        <span class="tag">🏘️ וארנה</span>
+      </div>
+      <div class="tip-box">
+        <div class="tip-header">💡 טיפ – כניסה לספארי</div>
+        <div class="tip-body">כרטיס משולב (ספארי + גן חיות) עולה כ-€24 מבוגר / €18 ילד. הזמינו אונליין לחסוך בקופה. שמרו מים בגלישים – חיות לא נותנות דרך!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card" id="day5">
+    <div class="day-img">
+      <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800" alt="אגם קומו בלג'יו">
+      <div class="day-badge">יום 5 · 25.4 🇮🇹</div>
+    </div>
+    <div class="day-body">
+      <div class="day-number">יום חמישי · יום השחרור האיטלקי</div>
+      <h2 class="day-title">הקסם של אגם קומו 🚤</h2>
+      <ul class="day-items">
+        <li><span class="item-icon">⛴️</span> <strong>מעבורת בוקר 8:30</strong> מוארנה לבלג'יו (~15 ד', ~€5): קחו כרטיסים ב-Trenitalia מראש!</li>
+        <li><span class="item-icon">🌸</span> <strong>בלג'יו</strong>: שוטטות בסמטאות המדרגות לפני שהתיירים מתעוררים. הגיעו לנקודת התצפית מעל העיירה לתמונה המושלמת.</li>
+        <li><span class="item-icon">🏛️</span> <strong>Villa del Balbianello</strong> (סרת'רה): אחת הוילות הנסתרות ביותר, ולוקיישן של ג'יימס בונד. הזמינו כרטיסים מראש ~€12. גינות מדהימות לילדים לרוץ.</li>
+        <li><span class="item-icon">🛶</span> אופציה: ספינת מוטור פרטית (~€80/שעה, שכרו דרך המלון) לאגם – חוויה אחרת לגמרי.</li>
+        <li><span class="item-icon">☕</span> קפה ב-Bar Rossi בבלג'יו – מאז 1947, קפה שחור ומאפה של הבוקר במחיר סביר.</li>
+        <li><span class="item-icon">🌅</span> חזרה לוארנה לשקיעה מהמרפסת של המלון – אחת מהנקודות הכי יפות בעולם, ברצינות.</li>
+      </ul>
+      <div class="day-tags">
+        <span class="tag">⛴️ מעבורת</span>
+        <span class="tag">🏛️ וילות</span>
+        <span class="tag">🌸 בלג'יו</span>
+        <span class="tag">📷 צילום</span>
+      </div>
+      <div class="tip-box warning">
+        <div class="tip-header">⚠️ 25 באפריל – יום שבתון לאומי</div>
+        <div class="tip-body">Festa della Liberazione: האגם עמוס מאוד במקומיים. הזמינו מעבורות וכרטיסי וילות שבועות מראש. גם חניות ותחבורה ציבורית צפויות לעומסים. ראשית בוקר = פחות צפוף.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card" id="day6">
+    <div class="day-img">
+      <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800" alt="מילאנו דואומו">
+      <div class="day-badge">יום 6 · 26.4</div>
+    </div>
+    <div class="day-body">
+      <div class="day-number">יום שישי · מילאנו ✈️</div>
+      <h2 class="day-title">מילאנו, גלידה אחרונה ופרידה</h2>
+      <ul class="day-items">
+        <li><span class="item-icon">🚗</span> יציאה מוקדמת מוארנה (~8:00). נסיעה לכיוון מילאנו (~90 ד'). החזירו רכב לשדה – קחו מרווח זמן.</li>
+        <li><span class="item-icon">⛪</span> <strong>Piazza del Duomo</strong>: תראו את הקתדרלה גם בלי להיכנס – הפלאזה מרשימה. גג הדואומו (כ-€13) – ילדים מתלהבים מהגגות הגותיים.</li>
+        <li><span class="item-icon">🛍️</span> <strong>Galleria Vittorio Emanuele II</strong>: גלריה מכוסה מהמאה ה-19, בין היפות בעולם. Prada, Louis Vuitton... ולפחות צלמו.</li>
+        <li><span class="item-icon">🍫</span> חנות <em>Venchi</em> בגלריה – שוקולד ניוטלה-גלידה שהילדים לא ישכחו. מחיר גבוה אבל שווה.</li>
+        <li><span class="item-icon">🎨</span> אם יש זמן: <em>The Last Supper</em> (הסעודה האחרונה) – אבל חייבים הזמנה חודשים מראש!</li>
+        <li><span class="item-icon">✈️</span> שדה התעופה מלפנסה (MXP) – הגיעו 3 שעות לפני, ידוע כמתאגר. Ciao Italia! 🇮🇹</li>
+      </ul>
+      <div class="day-tags">
+        <span class="tag">⛪ דואומו</span>
+        <span class="tag">🛍️ שופינג</span>
+        <span class="tag">🍫 גסטרונומיה</span>
+        <span class="tag">✈️ טיסה</span>
+      </div>
+      <div class="tip-box">
+        <div class="tip-header">💡 טיפ – יונים ורוכלים ברחבה</div>
+        <div class="tip-body">ברחבת הדואומו יש אנשים עם יונים ועם צמידים – תמיד עולה כסף. הסבירו לילדים מראש: לא נוגעים, לא לוקחים, לא מנומסים כשהם מסרבים. פשוט זזים הלאה.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<div style="background: var(--navy); text-align:center; padding: 50px 20px; color: rgba(255,255,255,0.5);">
+  <div style="font-family:'Playfair Display',serif; font-style:italic; color:var(--gold); font-size:28px; margin-bottom:12px;">Buon Viaggio! 🇮🇹</div>
+  <div style="font-size:14px; letter-spacing:1px; margin-bottom:24px;">21–26 באפריל, 2026 · צפון איטליה</div>
+  <a href="#" class="back-top" style="color:rgba(255,255,255,0.35); text-decoration:none; letter-spacing:2px; font-size:12px; text-transform:uppercase;">⬆ חזרה לראש</a>
+</div>
+
+<script>
+  // Scroll reveal animation for day cards
+  const cards = document.querySelectorAll('.day-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  cards.forEach(card => observer.observe(card));
+
+  // Active nav highlight on scroll
+  const navLinks = document.querySelectorAll('nav a');
+  const dayIds = ['day1','day2','day3','day4','day5','day6'];
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    dayIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === `#${current}`
+        ? 'white'
+        : 'rgba(255,255,255,0.55)';
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
