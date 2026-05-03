@@ -57,4 +57,242 @@
         gap: 10px;
         padding: 15px 20px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        z-
+        z-index: 1000;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    nav::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+    nav a {
+        text-decoration: none;
+        color: var(--dark-text);
+        font-weight: 600;
+        background: var(--light-bg);
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    /* Grid Layout */
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    /* Day Cards */
+    .day {
+        background: var(--card-bg);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .day:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .day img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .day-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .day h2 {
+        margin: 0 0 15px;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+    }
+
+    .day ul {
+        padding-right: 20px;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+
+    .day li {
+        margin-bottom: 8px;
+    }
+
+    /* Footer Elements */
+    .back-home {
+        display: inline-block;
+        padding: 10px 20px;
+        background: var(--secondary-color);
+        color: white;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        text-align: center;
+        transition: background 0.3s;
+        margin-top: auto;
+    }
+
+    .back-home:hover {
+        background: #3ebbb2;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px 20px;
+        background: #2d3436;
+        color: #b2bec3;
+        margin-top: 40px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>אמסטרדם 🇳🇱 פסח 2026<br>הטיול של משפחת כהן</h1>
+</header>
+
+<nav>
+    <a href="#d1">20.4 נחיתה</a>
+    <a href="#d2">21.4 תעלות העיר</a>
+    <a href="#d3">22.4 גן חיות</a>
+    <a href="#d4">23.4 פריחת צבעונים</a>
+    <a href="#d5">24.4 מוזיאון מדע</a>
+    <a href="#d6">25.4 כפר טחנות הרוח</a>
+    <a href="#d7">26.4 שווקים וקניות</a>
+    <a href="#d8">27.4 חזרה הביתה</a>
+</nav>
+
+<div class="container">
+
+    <div class="day" id="d1">
+        <img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=600&q=80" alt="תעלות אמסטרדם בערב" loading="lazy">
+        <div class="day-content">
+            <h2>20.4 – נחיתה והיכרות ראשונה</h2>
+            <ul>
+                <li>הגעה בערב למלון והתארגנות בחדרים.</li>
+                <li>סיבוב קצר ונושם באזור המלון לחילוץ עצמות.</li>
+                <li>ארוחת ערב קלילה במסעדה מקומית או פיצריה קרובה.</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+    <div class="day" id="d2">
+        <img src="https://images.unsplash.com/photo-1524041255072-7da0525d6b3f?auto=format&fit=crop&w=600&q=80" alt="אופניים ליד תעלה" loading="lazy">
+        <div class="day-content">
+            <h2>21.4 – מרכז העיר ושייט תעלות 🚲</h2>
+            <ul>
+                <li>הליכה באזור כיכר דאם וצפייה בארמון המלכותי.</li>
+                <li><strong>ארוחת בוקר/צהריים:</strong> בית פנקייקים הולנדי אותנטי.</li>
+                <li>שייט מודרך (וסגור מזגוויר) בתעלות העיר לקראת שקיעה – חוויה נהדרת לילדות.</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+    <div class="day" id="d3">
+        <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef3?auto=format&fit=crop&w=600&q=80" alt="פיל בגן החיות" loading="lazy">
+        <div class="day-content">
+            <h2>22.4 – יום גן חיות (ARTIS) 🐘</h2>
+            <ul>
+                <li>ביקור ב-ARTIS Zoo, גן החיות העתיק והיפהפה של אמסטרדם.</li>
+                <li>פיקניק ומנוחה במדשאות גן החיות או בגינת המשחקים הצמודה.</li>
+                <li>אחר צהריים רגוע בחיק הטבע, כולל עצירה לגלידה מפנקת.</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+    <div class="day" id="d4">
+        <img src="https://images.unsplash.com/photo-1523419409543-a5c8e4f3c3a0?auto=format&fit=crop&w=600&q=80" alt="שדות טוליפים פריחה" loading="lazy">
+        <div class="day-content">
+            <h2>23.4 – קוקנהוף: ממלכת הצבעונים 🌷</h2>
+            <ul>
+                <li>נסיעה מחוץ לעיר לפארק קוקנהוף (Keukenhof) - חובה באפריל!</li>
+                <li>טיול ציורי בין מיליוני פרחים וטחנות רוח קטנות בפארק.</li>
+                <li>אפשרות לשכירת אופניים (עם מושבים לילדות) לרכיבה קצרה בשדות שמחוץ לפארק.</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+    <div class="day" id="d5">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="אמסטרדם ארכיטקטורה" loading="lazy">
+        <div class="day-content">
+            <h2>24.4 – מוזיאון המדע NEMO 🧪</h2>
+            <ul>
+                <li>חצי יום במוזיאון NEMO (אינטראקטיבי ומעולה לילדים, מותר לגעת בהכל!).</li>
+                <li>תצפית פנורמית על העיר מגג המוזיאון.</li>
+                <li><strong>בונוס קרוב:</strong> הצצה לספינת המפרש ההיסטורית הענקית שעוגנת ליד המוזיאון הימי.</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+    <div class="day" id="d6">
+        <img src="https://images.unsplash.com/photo-1583241800698-9a2c4e82d0d8?auto=format&fit=crop&w=600&q=80" alt="זאנסה סכאנס טחנות רוח" loading="lazy">
+        <div class="day-content">
+            <h2>25.4 – כפר טחנות הרוח 🧀</h2>
+            <ul>
+                <li>חצי יום בכפר Zaanse Schans.</li>
+                <li>סיור בתוך טחנת רוח פעילה וביקור בבית מלאכה לייצור קבקבי עץ.</li>
+                <li>טעימות גבינות בחווה המקומית (הילדות יעופו על זה).</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+    <div class="day" id="d7">
+        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=600&q=80" alt="רחובות קניות אמסטרדם" loading="lazy">
+        <div class="day-content">
+            <h2>26.4 – שווקים, קניות ופינוקים 🛍️</h2>
+            <ul>
+                <li>ביקור בשוק אלברט קאופ (Albert Cuyp) לטעימת מיני-פנקייקים (Poffertjes) ושופינג מזכרות.</li>
+                <li>סיבוב קניות ברחובות Kalverstraat ואזור 9 הרחובות (Nine Streets).</li>
+                <li>ארוחת ערב חגיגית לסיום הטיול.</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+    <div class="day" id="d8">
+        <img src="https://images.unsplash.com/photo-1504198458649-3128b932f49b?auto=format&fit=crop&w=600&q=80" alt="שדה תעופה טיסה" loading="lazy">
+        <div class="day-content">
+            <h2>27.4 – חזרה הביתה ✈️</h2>
+            <ul>
+                <li>בוקר רגוע במלון ואריזת מזוודות.</li>
+                <li>קפה אחרון וסיבוב פרידה קצר ליד המלון.</li>
+                <li>נסיעה מסודרת לשדה התעופה סכיפהול וטיסה הביתה.</li>
+            </ul>
+            <a class="back-home" href="#">⬆ חזרה למעלה</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    טיול משפחתי מושלם לאמסטרדם ✈️ | נבנה בעזרת Gemini
+</footer>
+
+</body>
+</html>
