@@ -216,6 +216,135 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
 .confetti-piece{position:fixed;pointer-events:none;z-index:9999;border-radius:2px;animation:confettiFall 2.5s ease-in forwards}
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 
+/* ══════════════════════════════════════
+   LIVE DASHBOARD
+══════════════════════════════════════ */
+.dash{max-width:1180px;margin:0 auto 8px;padding:0 18px}
+.dash-card{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:26px;padding:26px 28px;box-shadow:0 20px 50px rgba(15,34,64,.22);position:relative;overflow:hidden}
+.dash-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(200,150,60,.14),transparent 40%),radial-gradient(circle at 90% 80%,rgba(74,127,193,.12),transparent 45%);pointer-events:none}
+.dash-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.dash-title{color:#fff;font-weight:900;font-size:19px;display:flex;align-items:center;gap:10px}
+.dash-title i{color:var(--gold-light);font-size:22px}
+.dash-daytag{background:rgba(200,150,60,.18);border:1px solid rgba(200,150,60,.3);color:var(--gold-light);font-size:12.5px;font-weight:800;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.dash-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.dash-tile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 14px;text-align:center;backdrop-filter:blur(4px)}
+.dash-tile i{font-size:20px;color:var(--gold-light);margin-bottom:6px;display:block}
+.dash-tile .dv{color:#fff;font-weight:800;font-size:18px;font-family:'Heebo',sans-serif;line-height:1.2}
+.dash-tile .dl{color:rgba(255,255,255,.55);font-size:11px;font-weight:600;margin-top:2px}
+.dash-countdown{position:relative;z-index:1;display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.cd-unit{background:rgba(0,0,0,.22);border:1px solid rgba(200,150,60,.2);border-radius:14px;padding:10px 16px;min-width:66px;text-align:center}
+.cd-unit .num{color:var(--gold-light);font-weight:900;font-size:24px;font-family:'Heebo',sans-serif;line-height:1}
+.cd-unit .lbl{color:rgba(255,255,255,.55);font-size:10.5px;margin-top:4px;font-weight:600}
+.dash-actions{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.dash-actions button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:12.5px;font-weight:700;padding:9px 15px;border-radius:999px;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:var(--transition)}
+.dash-actions button:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+
+/* ── FACT / FOOD BOXES ── */
+.fact-box{display:flex;gap:10px;align-items:flex-start;background:#eef4fb;border-radius:12px;padding:12px 15px;margin-bottom:14px;font-size:13.5px;color:#2c4a70;line-height:1.55}
+.fact-box i{color:var(--cv);font-size:19px;flex-shrink:0;margin-top:1px}
+.fact-box strong{color:var(--cv);font-weight:800}
+.food-box{background:#fff6ee;border:1px solid rgba(200,150,60,.25);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.food-hdr{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.food-name{font-weight:800;color:var(--navy);font-size:15.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.food-stars{color:var(--gold);font-size:13px;letter-spacing:1px}
+.food-tip{font-size:13.5px;color:var(--text);margin-top:5px;line-height:1.5}
+.food-meta{font-size:12px;color:var(--muted);margin-top:7px;display:flex;align-items:center;gap:6px}
+.food-meta i{color:var(--cv)}
+
+.day-tools-row{display:flex;gap:8px;margin-bottom:16px}
+.tool-chip{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 8px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;font-family:inherit;transition:var(--transition)}
+.tool-chip:hover{background:var(--gold-pale);border-color:var(--gold-light)}
+.tool-chip i{font-size:16px;color:var(--gold)}
+
+.score-box{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg);border-radius:12px;padding:12px 15px;margin-top:14px;flex-wrap:wrap}
+.score-label{font-size:13px;font-weight:700;color:var(--muted)}
+.score-stars{display:flex;gap:3px;direction:ltr}
+.score-star{font-size:20px;cursor:pointer;color:#d8dee8;transition:var(--transition);line-height:1}
+.score-star.on{color:var(--gold)}
+.score-star:hover{transform:scale(1.15)}
+
+/* ── GENERIC TOOL SECTION IN POPUPS ── */
+.tool-section-title{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:18px 0 10px}
+.tool-section-title:first-child{margin-top:0}
+
+/* packing */
+.pack-progress{background:var(--bg);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.pack-bar-wrap{flex:1;height:8px;border-radius:999px;background:var(--border);overflow:hidden}
+.pack-bar{height:100%;border-radius:999px;background:linear-gradient(to left,#4ade80,#16a34a);transition:width .4s cubic-bezier(0.22,1,0.36,1)}
+.pack-txt{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap}
+.pack-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:var(--bg);border:1px solid var(--border);margin-bottom:6px;cursor:pointer;transition:var(--transition)}
+.pack-item:hover{border-color:var(--gold-light)}
+.pack-item.done{background:#f0fdf4;border-color:#86efac}
+.pack-check{width:20px;height:20px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;font-size:12px}
+.pack-item.done .pack-check{background:#16a34a;border-color:#16a34a;color:#fff}
+.pack-item span{font-size:13.5px;color:var(--text)}
+.pack-item.done span{text-decoration:line-through;color:#16a34a;opacity:.75}
+.pack-add-row{display:flex;gap:8px;margin-top:10px}
+.pack-add-row input{flex:1;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-family:inherit;font-size:13.5px}
+.pack-add-row button{background:var(--navy);color:#fff;border:none;border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer}
+
+/* budget */
+.budget-total{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:16px;padding:16px 20px;color:#fff;margin-bottom:18px;text-align:center}
+.budget-total .bt-num{font-size:28px;font-weight:900;font-family:'Heebo',sans-serif}
+.budget-total .bt-lbl{font-size:12px;opacity:.7;margin-top:2px}
+.budget-cat{margin-bottom:14px}
+.budget-cat-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13.5px}
+.budget-cat-hdr b{color:var(--navy)}
+.budget-cat-hdr span{color:var(--muted);font-size:12px}
+.budget-bar-wrap{height:10px;border-radius:999px;background:var(--border);overflow:hidden}
+.budget-bar{height:100%;border-radius:999px;transition:width .4s cubic-bezier(0.22,1,0.36,1)}
+.budget-add{display:flex;gap:8px;margin-top:18px}
+.budget-add select,.budget-add input{padding:10px 12px;border:2px solid var(--border);border-radius:10px;font-family:inherit;font-size:13px}
+.budget-add select{flex:1}
+.budget-add input{width:90px}
+.budget-add button{background:var(--gold);color:var(--navy);border:none;border-radius:10px;padding:0 16px;font-weight:800;cursor:pointer}
+.budget-reset{display:block;margin:14px auto 0;background:none;border:none;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer;font-family:inherit}
+
+/* gallery */
+.gallery-day-select{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.gday-btn{border:2px solid var(--border);background:#fff;border-radius:999px;padding:6px 13px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;transition:var(--transition)}
+.gday-btn.active{border-color:var(--gold);background:var(--gold-pale);color:var(--navy)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.gallery-thumb{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--bg);border:1px solid var(--border)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-thumb button{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:rgba(15,34,64,.75);color:#fff;border:none;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.gallery-empty{grid-column:1/-1;text-align:center;padding:30px 10px;color:var(--muted);font-size:13.5px}
+.gallery-upload{display:block;width:100%;padding:14px;border:2px dashed var(--gold-light);border-radius:14px;text-align:center;color:var(--gold);font-weight:700;font-size:13.5px;cursor:pointer;background:var(--gold-pale)}
+.gallery-upload input{display:none}
+
+/* map popup */
+.map-day-select{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.map-frame-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:300px;margin-bottom:12px;background:var(--bg)}
+.map-frame-wrap iframe{width:100%;height:100%;border:0}
+.map-open-link{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;padding:12px;border-radius:12px;font-weight:700;font-size:13.5px}
+
+/* achievements */
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.ach-item{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;opacity:.35;filter:grayscale(1);transition:var(--transition)}
+.ach-item.unlocked{opacity:1;filter:none;background:linear-gradient(135deg,#fffdf5,#fff9e8);border-color:var(--gold-light)}
+.ach-item .ai{font-size:30px;margin-bottom:6px}
+.ach-item .at{font-size:12px;font-weight:800;color:var(--navy);line-height:1.4}
+
+/* weather forecast per day */
+.day-weather{display:flex;align-items:center;gap:10px;background:#eef7ff;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#1e4a70}
+.day-weather i{font-size:20px;color:var(--cv)}
+.day-weather b{font-family:'Heebo',sans-serif}
+
+/* ── DARK MODE ── */
+body.dark{--bg:#0c1424;--text:#dbe4f0;--muted:#8a97ac;--border:#233047;--white:#131c2e;--bg-b:#170f14}
+body.dark .card,body.dark .popup-box,body.dark .fchip,body.dark .dash-tile,body.dark .food-box,body.dark .pack-item,body.dark .tool-chip,body.dark .budget-cat-hdr,body.dark .gday-btn,body.dark .cresult,body.dark .currency-main,body.dark .ach-item,body.dark .mission-item{background:var(--white);color:var(--text)}
+body.dark .cbody h3,body.dark .sec-title,body.dark .popup-header h2,body.dark .cname-{color:#fff}
+body.dark .popup-header{background:var(--white)}
+body.dark .fact-box{background:#101b2e;color:#bcd4ee}
+body.dark .day-weather{background:#0f1e2e;color:#bcd4ee}
+body.dark .hero{background:linear-gradient(180deg,#141826 0%,#0f1420 56%,var(--bg) 100%)}
+body.dark .hero-actions{background:rgba(20,26,40,.9);border-color:rgba(200,150,60,.18)}
+body.dark .btn-o{background:#131c2e;color:#fff}
+body.dark .mission{background:linear-gradient(135deg,#1c1708,#181305)}
+body.dark .hl{background:#1c1708}
+body.dark #budapest{background:var(--bg-b)!important}
+body.dark .dash-tile .dv{color:#fff}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   html{scroll-padding-top:90px}
@@ -239,6 +368,14 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
   .hero{padding:14px 10px 26px}
   .hero-poster{border-radius:18px;margin:0 auto 14px}
   .hero-actions{padding:14px 12px 16px;border-radius:20px}
+  .dash{padding:0 10px}
+  .dash-card{padding:18px 16px;border-radius:20px}
+  .dash-grid{grid-template-columns:repeat(2,1fr)}
+  .cd-unit{min-width:56px;padding:8px 10px}
+  .cd-unit .num{font-size:19px}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .ach-grid{grid-template-columns:1fr}
+  .day-tools-row{flex-direction:column}
   .flight-row{display:grid;grid-template-columns:1fr;gap:9px;margin-bottom:14px}
   .fchip{width:100%;justify-content:center;padding:11px 12px;font-size:13.5px}
   .btns{display:grid;grid-template-columns:1fr;gap:10px}
@@ -325,20 +462,115 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
   </div>
 </div>
 
+<!-- ══ PACKING POPUP ══ -->
+<div class="popup-overlay" id="packingPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2><i class="ph ph-suitcase-rolling"></i> רשימת ציוד</h2>
+      <button class="popup-close" onclick="closePopup('packingPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="pack-progress">
+        <div class="pack-bar-wrap"><div class="pack-bar" id="packBar" style="width:0%"></div></div>
+        <div class="pack-txt" id="packTxt">0/0</div>
+      </div>
+      <div id="packList"></div>
+      <div class="pack-add-row">
+        <input type="text" id="packNewItem" placeholder="הוסיפו פריט משלכם..." onkeydown="if(event.key==='Enter')addPackItem()">
+        <button onclick="addPackItem()"><i class="ph ph-plus"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BUDGET POPUP ══ -->
+<div class="popup-overlay" id="budgetPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2><i class="ph ph-wallet"></i> תקציב הטיול</h2>
+      <button class="popup-close" onclick="closePopup('budgetPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="budget-total">
+        <div class="bt-num" id="budgetTotalNum">₪0</div>
+        <div class="bt-lbl">סה"כ הוצאות שנרשמו</div>
+      </div>
+      <div id="budgetCats"></div>
+      <div class="budget-add">
+        <select id="budgetCatSelect"></select>
+        <input type="number" id="budgetAmount" placeholder="₪ סכום" min="0">
+        <button onclick="addExpense()"><i class="ph ph-plus"></i></button>
+      </div>
+      <button class="budget-reset" onclick="resetBudget()">איפוס כל ההוצאות</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GALLERY POPUP ══ -->
+<div class="popup-overlay" id="galleryPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2><i class="ph ph-images"></i> Memory Wall</h2>
+      <button class="popup-close" onclick="closePopup('galleryPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="gallery-day-select" id="galleryDaySelect"></div>
+      <label class="gallery-upload"><i class="ph ph-upload-simple"></i> הוסיפו תמונות מהיום
+        <input type="file" id="galleryUploadInput" accept="image/*" multiple onchange="handleGalleryUpload(event)">
+      </label>
+      <br><br>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAP POPUP ══ -->
+<div class="popup-overlay" id="mapPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2><i class="ph ph-map-trifold"></i> מפת המסלול</h2>
+      <button class="popup-close" onclick="closePopup('mapPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="map-day-select" id="mapDaySelect"></div>
+      <div class="map-frame-wrap"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <a class="map-open-link" id="mapOpenLink" href="#" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i> פתחו ב-Google Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACHIEVEMENTS POPUP ══ -->
+<div class="popup-overlay" id="achievementsPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2><i class="ph ph-trophy"></i> הישגים</h2>
+      <button class="popup-close" onclick="closePopup('achievementsPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="ach-grid" id="achGrid"></div>
+    </div>
+  </div>
+</div>
+
 <div id="pb"></div>
 
 <nav class="nav">
   <div class="nav-in">
     <a href="#" class="nav-brand"><i class="ph ph-airplane-takeoff"></i> קיץ 2026</a>
     <div class="nav-center">
-      <div class="w-item"><i class="ph ph-sun"></i><span>וינה: קיץ נעים ~26°C</span></div>
-      <div class="w-item"><i class="ph ph-sun"></i><span>בודפשט: חם וקיצי ~29°C</span></div>
+      <div class="w-item"><i class="ph ph-sun"></i><span id="navWeatherV">וינה: טוען...</span></div>
+      <div class="w-item"><i class="ph ph-sun"></i><span id="navWeatherB">בודפשט: טוען...</span></div>
     </div>
     <div class="nav-links">
       <a href="#vienna"><i class="ph ph-map-pin"></i> וינה</a>
-      <a href="#transfer"><i class="ph ph-train"></i> מעבר</a>
       <a href="#budapest"><i class="ph ph-map-pin"></i> בודפשט</a>
       <button class="nav-special" onclick="openPopup('currencyPopup')"><i class="ph ph-currency-circle-dollar"></i> מטבע</button>
+      <button onclick="openMapForDay('day1')"><i class="ph ph-map-trifold"></i> מפה</button>
+      <button onclick="openPopup('packingPopup')"><i class="ph ph-suitcase-rolling"></i> ציוד</button>
+      <button onclick="openBudgetPopup()"><i class="ph ph-wallet"></i> תקציב</button>
+      <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> תמונות</button>
+      <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
+      <button onclick="toggleDarkMode()" title="מצב לילה"><i class="ph ph-moon-stars"></i></button>
     </div>
   </div>
 </nav>
@@ -350,7 +582,6 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
     <div class="dp-dot v" data-day="day2"></div>
     <div class="dp-dot v" data-day="day3"></div>
     <div class="dp-dot v" data-day="day4"></div>
-    <div class="dp-dot tr" data-day="transfer"></div>
     <div class="dp-dot b" data-day="day5"></div>
     <div class="dp-dot b" data-day="day6"></div>
     <div class="dp-dot b" data-day="day7"></div>
@@ -361,17 +592,15 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
 
 <div class="tstrip">
   <div class="tstrip-in">
-    <a href="#vienna"   class="ts v active_sec">יום 1<small>20.8</small></a>
-    <a href="#day2"     class="ts v">יום 2<small>21.8</small></a>
-    <a href="#day3"     class="ts v">יום 3<small>22.8</small></a>
-    <a href="#day4"     class="ts v">יום 4<small>23.8</small></a>
+    <a href="#vienna"   class="ts v active_sec">יום 1<small>חמישי 20.8</small></a>
+    <a href="#day2"     class="ts v">יום 2<small>שישי 21.8</small></a>
+    <a href="#day3"     class="ts v">יום 3<small>שבת 22.8</small></a>
+    <a href="#day4"     class="ts v">יום 4<small>ראשון 23.8</small></a>
     <div class="tstrip-sep"></div>
-    <a href="#transfer" class="ts tr">מעבר<small>24.8</small></a>
-    <div class="tstrip-sep"></div>
-    <a href="#budapest" class="ts b">יום 5<small>24.8</small></a>
-    <a href="#day6"     class="ts b">יום 6<small>25.8</small></a>
-    <a href="#day7"     class="ts b">יום 7<small>26.8</small></a>
-    <a href="#day8"     class="ts b">יום 8<small>27.8</small></a>
+    <a href="#budapest" class="ts b">יום 5<small>שני 24.8</small></a>
+    <a href="#day6"     class="ts b">יום 6<small>שלישי 25.8</small></a>
+    <a href="#day7"     class="ts b">יום 7<small>רביעי 26.8</small></a>
+    <a href="#day8"     class="ts b">יום 8<small>חמישי 27.8</small></a>
   </div>
 </div>
 
@@ -394,6 +623,30 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
   </div>
 </header>
 
+<!-- ══════ LIVE DASHBOARD ══════ -->
+<div class="dash reveal">
+  <div class="dash-card">
+    <div class="dash-top">
+      <div class="dash-title"><i class="ph ph-airplane-tilt"></i> וינה ← בודפשט · קיץ 2026</div>
+      <div class="dash-daytag" id="dashDayTag">טוען מסלול…</div>
+    </div>
+    <div class="dash-grid">
+      <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeatherV">--°</div><div class="dl">וינה עכשיו</div></div>
+      <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeatherB">--°</div><div class="dl">בודפשט עכשיו</div></div>
+      <div class="dash-tile"><i class="ph ph-currency-eur"></i><div class="dv" id="dashRate">--</div><div class="dl">1 € בשקלים</div></div>
+      <div class="dash-tile"><i class="ph ph-star"></i><div class="dv" id="dashMissions">0/40</div><div class="dl">משימות שהושלמו</div></div>
+    </div>
+    <div class="dash-countdown" id="dashCountdown"></div>
+    <div class="dash-actions">
+      <button onclick="openPopup('packingPopup')"><i class="ph ph-suitcase-rolling"></i> ציוד</button>
+      <button onclick="openBudgetPopup()"><i class="ph ph-wallet"></i> תקציב</button>
+      <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> אלבום</button>
+      <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
+      <button onclick="openPopup('missionsPopup')"><i class="ph ph-star"></i> משימות</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══════ VIENNA ══════ -->
 <section id="vienna">
   <div class="wrap">
@@ -405,10 +658,10 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
     <div class="grid">
 
       <div class="card reveal" id="day1">
-        <div class="cimg-w"><img src="1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80'" alt="יום 1" loading="lazy"><div class="cov"></div><div class="dtag">יום 1<small>20.8</small></div></div>
+        <div class="cimg-w"><img src="1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80'" alt="יום 1" loading="lazy"><div class="cov"></div><div class="dtag">יום 1<small>חמישי · 20.8</small></div></div>
         <div class="cbody">
           <h3>נחיתה, מרכז העיר ו-Demel</h3>
-          <p>יום פתיחה רגוע אחרי טיסה מוקדמת — סיבוב היכרות ועצירה מתוקה בלב הוינאי.</p>
+          <p>נחיתה, צ׳ק-אין (או השארת מזוודות), Stephansplatz, קתדרלת סנט סטפן, Graben, Kohlmarkt, Demel, קניות קלות וארוחת ערב.</p>
           <ul class="acts">
             <li><span class="dot v"></span>נחיתה · הגעה למלון / השארת מזוודות</li>
             <li><span class="dot v"></span>מנוחה קלה והתרעננות חיונית</li>
@@ -419,53 +672,99 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day1">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> כנסיית סטפנוס (Stephansdom) התחילה להיבנות במאה ה-12, וגג הרעפים המפורסם שלה עשוי מ-230,000 רעפים צבעוניים!</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Plachutta Wollzeile <span class="food-stars">★★★★★</span></div>
+            <div class="food-tip">מומלץ להזמין שניצל וינאי קלאסי (Wiener Schnitzel) - מוסד וינאי אמיתי.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-8 דקות הליכה מהאזור המרכזי</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day1')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day1')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day1" data-day="day1"></div>
+          </div>
           <div class="hl"><i class="ph ph-coffee"></i> פתיחה וינאית קלאסית עם קפה משובח ועוגות.</div>
         </div>
       </div>
 
       <div class="card reveal" id="day2">
-        <div class="cimg-w"><img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?auto=format&fit=crop&w=900&q=80'" alt="יום 2" loading="lazy"><div class="cov"></div><div class="dtag">יום 2<small>21.8</small></div></div>
+        <div class="cimg-w"><img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?auto=format&fit=crop&w=900&q=80'" alt="יום 2" loading="lazy"><div class="cov"></div><div class="dtag">יום 2<small>שישי · 21.8</small></div></div>
         <div class="cbody">
-          <h3>מוזיאון ZOOM ופארק פראטר</h3>
-          <p>בוקר אינטראקטיבי ומעשיר, וערב מלא אדרנלין בפארק השעשועים האגדי.</p>
+          <h3>יום כיף בפראטר</h3>
+          <p>יום מלא בפארק Prater: הגלגל הענק, Liliputbahn, רכבות הרים, מתקני ילדים, משחקים וגלידות.</p>
           <ul class="acts">
-            <li><span class="dot v"></span>ZOOM Children's Museum (להזמין מראש!)</li>
-            <li><span class="dot v"></span>צהריים נינוחים במתחם MuseumsQuartier</li>
-            <li><span class="dot v"></span>מנוחת צהריים חיונית במלון</li>
-            <li><span class="dot v"></span>אחה"צ וערב: פראטר + נסיעה בגלגל הענק</li>
+            <li><span class="dot v"></span>ארוחת בוקר ונסיעה לפארק Prater</li>
+            <li><span class="dot v"></span>יום מלא בפארק: Wiener Riesenrad, Liliputbahn, רכבות הרים ומתקני ילדים</li>
+            <li><span class="dot v"></span>ארוחת צהריים בפארק והמשך בילוי ומשחקים</li>
+            <li><span class="dot v"></span>חזרה למרכז העיר וארוחת ערב</li>
           </ul>
           <button class="day-missions-btn" id="dmb-day2" onclick="openMissionsForDay('day2')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day2">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> הגלגל הענק של פראטר (Wiener Riesenrad) נבנה ב-1897 ומגיע לגובה 65 מטר - הוא היה הגלגל הענק הכי גבוה בעולם כשנבנה.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Schweizerhaus <span class="food-stars">★★★★☆</span></div>
+            <div class="food-tip">גן בירה משפחתי בתוך פראטר, מפורסם בקנוקל צלוי - מקום מושלם אחרי הגלגל הענק.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך שטח פראטר, 5 דקות מהגלגל</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day2')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day2')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day2" data-day="day2"></div>
+          </div>
           <div class="hl"><i class="ph ph-shooting-star"></i> למידה חוויתית בבוקר, וכיף טהור משחרר בערב.</div>
         </div>
       </div>
 
       <div class="card reveal" id="day3">
-        <div class="cimg-w"><img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=900&q=80'" alt="יום 3" loading="lazy"><div class="cov"></div><div class="dtag">יום 3<small>22.8</small></div></div>
+        <div class="cimg-w"><img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=900&q=80'" alt="יום 3" loading="lazy"><div class="cov"></div><div class="dtag">יום 3<small>שבת · 22.8</small></div></div>
         <div class="cbody">
-          <h3>Naschmarkt + וינה האימפריאלית</h3>
-          <p>שוק תוסס בבוקר ולאחריו צלילה לאלגנטיות של רובע ההופבורג.</p>
+          <h3>ZOOM, MuseumsQuartier ונשמרקט</h3>
+          <p>בוקר ב-ZOOM Children's Museum ו-MuseumsQuartier, צהריים בנשמרקט, ואחר הצהריים Karlskirche והופבורג.</p>
           <ul class="acts">
-            <li><span class="dot v"></span>בוקר: Naschmarkt + שוק פשפשים (שבת)</li>
-            <li><span class="dot v"></span>הליכה נינוחה לכיוון בית האופרה</li>
-            <li><span class="dot v"></span>מתחם Hofburg וחצרותיו</li>
-            <li><span class="dot v"></span>סיום מתוק בגלידה / קפה ברחוב Graben</li>
+            <li><span class="dot v"></span>ארוחת בוקר ולאחריה ZOOM Children's Museum (להזמין מראש!)</li>
+            <li><span class="dot v"></span>המשך בבוקר במתחם MuseumsQuartier</li>
+            <li><span class="dot v"></span>ארוחת צהריים ואז נשמרקט + שוק פשפשים (שבת)</li>
+            <li><span class="dot v"></span>Karlskirche, מתחם Hofburg וזמן חופשי</li>
+            <li><span class="dot v"></span>קפה וקינוח, ולסיום ארוחת ערב</li>
           </ul>
           <button class="day-missions-btn" id="dmb-day3" onclick="openMissionsForDay('day3')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day3">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> לנשמרקט יש היסטוריה של יותר מ-250 שנה - השם 'נאש' מגיע ממילה גרמנית ישנה למזון שמתקלקל מהר, כמו חלב ולחם.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">עמדות האוכל בנשמרקט <span class="food-stars">★★★★☆</span></div>
+            <div class="food-tip">טעימות מגוונות - חומוס, פלאפל, פירות טריים וגבינות - כיף לילדות לבחור בעצמן.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך השוק עצמו</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day3')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day3')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day3" data-day="day3"></div>
+          </div>
           <div class="hl"><i class="ph ph-shopping-bag"></i> טעימות מקומיות אותנטיות + הזוהר של הקיסר.</div>
         </div>
       </div>
 
       <div class="card reveal" id="day4">
-        <div class="cimg-w"><img src="4.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80'" alt="יום 4" loading="lazy"><div class="cov"></div><div class="dtag">יום 4<small>23.8</small></div></div>
+        <div class="cimg-w"><img src="4.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80'" alt="יום 4" loading="lazy"><div class="cov"></div><div class="dtag">יום 4<small>ראשון · 23.8</small></div></div>
         <div class="cbody">
           <h3>גן חיות שנברון + גנים מלכותיים</h3>
-          <p>ביקור בגן החיות העתיק בעולם הממוקם בתוך מתחם הארמון, וטיול גנים קיסרי.</p>
+          <p>יום שלם בגן החיות של Schönbrunn, גני הארמון, Gloriette וזמן משפחתי.</p>
           <ul class="acts">
             <li><span class="dot v"></span>יציאה מוקדמת ל-Tiergarten Schönbrunn</li>
             <li><span class="dot v"></span>סיור במתחמים המודרניים בקצב רגוע</li>
@@ -476,6 +775,21 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day4">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> לארמון שנברון יש 1,441 חדרים! רק חלק קטן מהם פתוח למבקרים, וגן החיות שבשטחו הוא אחד הוותיקים בעולם - נפתח כבר ב-1752.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Landtmann's Jausen Station <span class="food-stars">★★★★☆</span></div>
+            <div class="food-tip">בתוך גני שנברון עצמם - אידיאלי לארוחת צהריים קלה בלי לצאת מהמתחם.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך גני הארמון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day4')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day4')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day4" data-day="day4"></div>
+          </div>
           <div class="hl"><i class="ph ph-tree"></i> חווית חיות ייחודית על רקע ארמון קיסרי.</div>
         </div>
       </div>
@@ -483,16 +797,6 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
     </div>
   </div>
 </section>
-
-<div id="transfer" class="xfer-wrap">
-  <div class="xfer-in">
-    <div class="xfer-ico"><i class="ph ph-train-regional"></i></div>
-    <div class="xfer-info reveal">
-      <h2>יום המעבר לבודפשט</h2>
-      <p><strong>24 באוגוסט, 11:40</strong> — נפרדים לשלום מוינה ועולים על הרכבת. מחכה לנו נסיעה נוחה ומרגיעה של כשעתיים וחצי. הגעה לבודפשט, צ'ק-אין במלון סביב 16:00, והתארגנות לסיבוב ערב ראשון על הדנובה.</p>
-    </div>
-  </div>
-</div>
 
 <!-- ══════ BUDAPEST ══════ -->
 <section id="budapest" style="background:var(--bg-b)">
@@ -505,28 +809,45 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
     <div class="grid">
 
       <div class="card reveal" id="day5">
-        <div class="cimg-w"><img src="5.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=900&q=80'" alt="יום 5" loading="lazy"><div class="cov"></div><div class="dtag">יום 5<small>24.8</small></div></div>
+        <div class="cimg-w"><img src="5.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=900&q=80'" alt="יום 5" loading="lazy"><div class="cov"></div><div class="dtag">יום 5<small>שני · 24.8</small></div></div>
         <div class="cbody">
-          <h3>צ'ק-אין במלון + ערב על הדנובה</h3>
-          <p>הגעה לבודפשט, התמקמות בחדרים המקושרים עם נוף לנהר, וסיבוב ערב מואר לאורך הטיילת.</p>
+          <h3><i class="ph ph-train-regional" style="color:var(--cb);margin-left:6px"></i>מעבר לבודפשט + ערב ראשון</h3>
+          <p>ארוחת בוקר בווינה, רכבת ב-11:40, הגעה לבודפשט, צ'ק-אין במלון Marriott, טיילת הדנובה ו-Váci utca.</p>
           <ul class="acts">
-            <li><span class="dot b"></span>הגעה למלון Marriott Budapest</li>
-            <li><span class="dot b"></span>יציאה מהמלון לטיילת הדנובה (Dunakorzó)</li>
-            <li><span class="dot b"></span>גשר השלשלאות ורחוב Váci Street</li>
+            <li><span class="dot b"></span>ארוחת בוקר ואריזות אחרונות במלון בווינה</li>
+            <li><span class="dot b"></span>נסיעה לתחנת הרכבת ורכבת לבודפשט בשעה 11:40</li>
+            <li><span class="dot b"></span>הגעה למלון Marriott Budapest וצ'ק-אין</li>
+            <li><span class="dot b"></span>מנוחה קצרה, ואז יציאה לטיילת הדנובה (Dunakorzó)</li>
+            <li><span class="dot b"></span>נעלי הברזל על הדנובה, גשר השלשלאות ורחוב Váci Street</li>
           </ul>
           <button class="day-missions-btn" id="dmb-day5" onclick="openMissionsForDay('day5')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day5">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> גשר השלשלאות (Széchenyi Lánchid) נפתח ב-1849 והיה הגשר הקבוע הראשון שחיבר בין בודה לפשט - לפניו, חצו את הדנובה בסירות בלבד.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Stand25 Bisztró <span class="food-stars">★★★★★</span></div>
+            <div class="food-tip">מטבח הונגרי מודרני במחירים סבירים, קרוב לטיילת - נהדר לערב ראשון בעיר.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-10 דקות הליכה מהמלון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day5')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day5')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day5" data-day="day5"></div>
+          </div>
           <div class="hl"><i class="ph ph-sparkles"></i> בודפשט נדלקת בלילה והיא יפה מאי פעם.</div>
         </div>
       </div>
 
       <div class="card reveal" id="day6">
-        <div class="cimg-w"><img src="6.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80'" alt="יום 6" loading="lazy"><div class="cov"></div><div class="dtag">יום 6<small>25.8</small></div></div>
+        <div class="cimg-w"><img src="6.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80'" alt="יום 6" loading="lazy"><div class="cov"></div><div class="dtag">יום 6<small>שלישי · 25.8</small></div></div>
         <div class="cbody">
-          <h3>Arena Mall + Primark + EZRaider</h3>
-          <p>בוקר של שופינג בקניון הגדול, מנוחת צהריים, ואקשן מדליק בסיור ערב.</p>
+          <h3>יום 6 — קניות ו‑EZRaider</h3>
+          <p>Arena Mall, Primark, מנוחה במלון, EZRaider וצילום שקיעה.</p>
           <ul class="acts">
             <li><span class="dot b"></span>10:00–13:30 · Arena Mall + <strong>Primark!</strong></li>
             <li><span class="dot b"></span>צהריים קליל ומהיר במתחם האוכל</li>
@@ -537,15 +858,30 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day6">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> קו המטרו הצהוב של בודפשט (Millennium Underground) נפתח ב-1896 והוא הרכבת התחתית העתיקה ביותר ביבשת אירופה!</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">מתחם האוכל ב-Arena Mall <span class="food-stars">★★★☆☆</span></div>
+            <div class="food-tip">אפשרויות מהירות ומגוונות לצהריים בין הקניות - כל אחד בוחר מה שהוא אוהב.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך הקניון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day6')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day6')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day6" data-day="day6"></div>
+          </div>
           <div class="hl"><i class="ph ph-scooter"></i> שופינג מטורף בבוקר, אקשן ואדרנלין בערב.</div>
         </div>
       </div>
 
       <div class="card reveal" id="day7">
-        <div class="cimg-w"><img src="7.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=900&q=80'" alt="יום 7" loading="lazy"><div class="cov"></div><div class="dtag">יום 7<small>26.8</small></div></div>
+        <div class="cimg-w"><img src="7.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=900&q=80'" alt="יום 7" loading="lazy"><div class="cov"></div><div class="dtag">יום 7<small>רביעי · 26.8</small></div></div>
         <div class="cbody">
-          <h3>בודה + הרובע היהודי</h3>
-          <p>בוקר בתצפיות הגבעות של בודה, אחה"צ היסטורי ברובע היהודי — וחזרה לאריזות.</p>
+          <h3>יום 7 — בודה והרובע היהודי</h3>
+          <p>Fisherman’s Bastion, Matthias Church, הרובע היהודי, Gozsdu, אריזות וארוחת ערב אחרונה.</p>
           <ul class="acts">
             <li><span class="dot b"></span>בוקר: מצודת הדייגים וארמון בודה</li>
             <li><span class="dot b"></span>צהריים מאוחרים + מנוחה קלה במלון</li>
@@ -556,15 +892,30 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day7">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> מצודת הדייגים נבנתה בין 1895-1902 ויש בה 7 מגדלים - כל אחד מסמל אחד משבעת השבטים המגיארים שייסדו את הונגריה.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Mazel Tov <span class="food-stars">★★★★★</span></div>
+            <div class="food-tip">מסעדה תוססת בחצרות Gozsdu עם חצר פנימית מוארת - אווירה מיוחדת לערב האחרון.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-5 דקות מהרובע היהודי</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day7')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day7')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day7" data-day="day7"></div>
+          </div>
           <div class="hl"><i class="ph ph-star-of-david"></i> נופי גלויה מבודה + סיום תרבותי ברובע היהודי.</div>
         </div>
       </div>
 
       <div class="card reveal" id="day8">
-        <div class="cimg-w"><img src="8.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80'" alt="יום 8" loading="lazy"><div class="cov"></div><div class="dtag">יום 8<small>27.8</small></div></div>
+        <div class="cimg-w"><img src="8.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80'" alt="יום 8" loading="lazy"><div class="cov"></div><div class="dtag">יום 8<small>חמישי · 27.8</small></div></div>
         <div class="cbody">
-          <h3>טיסת חזור מוקדמת</h3>
-          <p>בוקר קצר ויעיל: יציאה מוקדמת לשדה התעופה, צ׳ק-אין, קפה אחרון וחזרה הביתה.</p>
+          <h3>יום 8 — חוזרים הביתה</h3>
+          <p>השכמה מוקדמת, צ׳ק-אאוט, נסיעה לשדה וטיסה בשעה 09:20.</p>
           <ul class="acts">
             <li><span class="dot b"></span>יציאה מוקדמת מהמלון לשדה התעופה</li>
             <li><span class="dot b"></span>צ׳ק-אין ובידוק ביטחוני</li>
@@ -574,6 +925,21 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day8">0 / 5</div>
           </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> המרחק בין וינה לבודפשט הוא כ-240 ק"מ בלבד - פחות משעתיים וחצי נסיעה ברכבת, וזו הסיבה שהשתיים הן צמד יעדים כל כך פופולרי.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">ארוחת בוקר במלון <span class="food-stars">★★★★☆</span></div>
+            <div class="food-tip">כדאי לנצל את ארוחת הבוקר במלון לפני היציאה - יום טיסה עמוס ולא תמיד יהיה זמן בהמשך.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> במלון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day8')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day8')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day8" data-day="day8"></div>
+          </div>
           <div class="hl"><i class="ph ph-house-line"></i> סיום רגוע ומסודר אחרי ערב אריזות מוקדם.</div>
         </div>
       </div>
@@ -601,7 +967,7 @@ const MISSIONS = {
   ]},
   day2:{label:'יום 2 – וינה',badge:'v',tasks:[
     'ספרו כמה קרונות אדומים יש לגלגל הענק של פראטר',
-    'במוזיאון ZOOM — גלו את החדר הכי מוזר וצלמו אותו',
+    'עלו על Liliputbahn - הרכבת הקטנה של פראטר - וספרו כמה תחנות היא עוברת',
     'מצאו פסל או פיסול בפראטר וצלמו לצידו',
     'אכלו גלידה בוינה ותארו את הטעם ב-3 מילים',
     'ספרו כמה נורות יש בגלגל הענק כשהוא מואר בלילה'
@@ -610,7 +976,7 @@ const MISSIONS = {
     'מצאו פרי מוזר בשוק שמעולם לא ראיתן בארץ',
     'בשוק הפשפשים — מצאו חפץ ישן שנראה לכם מסקרן',
     'צלמו את הופבורג מבחוץ ונסו לאמוד כמה חדרים יש',
-    'מצאו כנסייה בדרך ובדקו כמה עתיקה היא',
+    'במוזיאון ZOOM — גלו את החדר הכי מוזר וצלמו אותו',
     'קנו גלידה וצלמו אותה לפני שאתן אוכלות — לא אחרי!'
   ]},
   day4:{label:'יום 4 – וינה',badge:'v',tasks:[
@@ -878,13 +1244,13 @@ window.addEventListener('scroll',()=>{ fabTop.classList.toggle('visible',window.
 const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
-const dayOrder=['day1','day2','day3','day4','transfer','day5','day6','day7','day8'];
-const sectionMap={day1:'vienna',day2:'vienna',day3:'vienna',day4:'vienna',transfer:'transfer',day5:'budapest',day6:'budapest',day7:'budapest',day8:'budapest'};
+const dayOrder=['day1','day2','day3','day4','day5','day6','day7','day8'];
+const sectionMap={day1:'vienna',day2:'vienna',day3:'vienna',day4:'vienna',day5:'budapest',day6:'budapest',day7:'budapest',day8:'budapest'};
 const stripLinks=document.querySelectorAll('.ts');
 const navLinks=document.querySelectorAll('.nav-links a');
 const dpDots=document.querySelectorAll('#dpDots .dp-dot');
 const dpLabel=document.getElementById('dp-current-label');
-const dayLabels={day1:'יום 1 – וינה',day2:'יום 2 – וינה',day3:'יום 3 – וינה',day4:'יום 4 – וינה',transfer:'מעבר – 24.8',day5:'יום 5 – בודפשט',day6:'יום 6 – בודפשט',day7:'יום 7 – בודפשט',day8:'יום 8 – בודפשט'};
+const dayLabels={day1:'יום 1 – וינה',day2:'יום 2 – וינה',day3:'יום 3 – וינה',day4:'יום 4 – וינה',day5:'יום 5 – בודפשט',day6:'יום 6 – בודפשט',day7:'יום 7 – בודפשט',day8:'יום 8 – בודפשט'};
 
 function updateActive(){
   let cur=dayOrder[0];
@@ -908,10 +1274,287 @@ function showToast(msg){
   toastT=setTimeout(()=>t.classList.remove('show'),3000);
 }
 
+/* ══════════════════════════════════════
+   TRIP DATES / DASHBOARD / COUNTDOWN
+══════════════════════════════════════ */
+const TRIP_START = new Date('2026-08-20T06:20:00+02:00');
+const TRIP_END   = new Date('2026-08-27T23:59:00+02:00');
+function updateDashboard(){
+  const now = new Date();
+  const dashTag = document.getElementById('dashDayTag');
+  const cd = document.getElementById('dashCountdown');
+  if(now < TRIP_START){
+    const diff = TRIP_START - now;
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    dashTag.innerHTML = `<i class="ph ph-hourglass-medium"></i> עוד ${d} ימים לטיסה`;
+    cd.innerHTML = `
+      <div class="cd-unit"><div class="num">${d}</div><div class="lbl">ימים</div></div>
+      <div class="cd-unit"><div class="num">${String(h).padStart(2,'0')}</div><div class="lbl">שעות</div></div>
+      <div class="cd-unit"><div class="num">${String(m).padStart(2,'0')}</div><div class="lbl">דקות</div></div>`;
+  } else if(now <= TRIP_END){
+    const dayIdx = Math.min(8, Math.floor((now-TRIP_START)/86400000)+1);
+    dashTag.innerHTML = `<i class="ph ph-confetti"></i> אתם בטיול! יום ${dayIdx} מתוך 8`;
+    cd.innerHTML = `<div class="cd-unit" style="min-width:auto;padding:14px 24px"><div class="num">🎉</div><div class="lbl">תיהנו!</div></div>`;
+  } else {
+    dashTag.innerHTML = `<i class="ph ph-heart"></i> הטיול נגמר... איזה זיכרונות!`;
+    cd.innerHTML = '';
+  }
+  const st = loadState();
+  const {done, total} = countAll(st);
+  document.getElementById('dashMissions').textContent = `${done}/${total}`;
+}
+
+async function fetchDashWeather(){
+  const spots = [
+    {id:'dashWeatherV', navSel:'#navWeatherV', lat:48.2082, lon:16.3738, city:'וינה'},
+    {id:'dashWeatherB', navSel:'#navWeatherB', lat:47.4979, lon:19.0402, city:'בודפשט'}
+  ];
+  for(const s of spots){
+    try{
+      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=temperature_2m,weather_code`);
+      const d = await r.json();
+      const t = Math.round(d.current.temperature_2m);
+      document.getElementById(s.id).textContent = t+'°';
+      const navEl = document.querySelector(s.navSel);
+      if(navEl) navEl.textContent = `${s.city}: כרגע ${t}°C`;
+    }catch(e){
+      document.getElementById(s.id).textContent = '—';
+    }
+  }
+}
+
+function updateDashRate(){
+  if(rates.EUR){
+    document.getElementById('dashRate').textContent = (1/rates.EUR).toFixed(2)+' ₪';
+  } else {
+    setTimeout(updateDashRate, 800);
+  }
+}
+
+/* ══════════════════════════════════════
+   DAY TRAVEL SCORE (5-star rating)
+══════════════════════════════════════ */
+const SCORE_KEY = 'trip2026_scores_v1';
+const loadScores = () => { try{ return JSON.parse(localStorage.getItem(SCORE_KEY))||{}; }catch(e){ return {}; } };
+const saveScores = s => localStorage.setItem(SCORE_KEY, JSON.stringify(s));
+
+function renderScoreStars(){
+  const scores = loadScores();
+  document.querySelectorAll('.score-stars[data-day]').forEach(box=>{
+    const day = box.dataset.day;
+    const val = scores[day]||0;
+    box.innerHTML = [1,2,3,4,5].map(i=>`<span class="score-star ${i<=val?'on':''}" onclick="setDayScore('${day}',${i})">★</span>`).join('');
+  });
+}
+function setDayScore(day, val){
+  const scores = loadScores();
+  scores[day] = (scores[day]===val) ? val : val; // allow re-tap to keep value
+  saveScores(scores);
+  renderScoreStars();
+  showToast(val===5 ? '🌟 יום מושלם! רשמנו את זה' : '✅ הדירוג נשמר');
+  if(val===5) fireConfetti();
+}
+
+/* ══════════════════════════════════════
+   PACKING CHECKLIST
+══════════════════════════════════════ */
+const PACK_DEFAULT = ['דרכונים ותעודות','כרטיסי טיסה/רכבת','מטענים וכבלים','תרופות אישיות','בגדי ים','משקפי שמש וכובעים','קרם הגנה','נעליים נוחות להליכה','ג׳קט קל לערב','משחקים/ספרים לילדות','כרטיס אשראי בינלאומי','מזומן ביורו'];
+const PACK_KEY = 'trip2026_packing_v1';
+function loadPacking(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(PACK_KEY));
+    if(saved) return saved;
+  }catch(e){}
+  const initial = PACK_DEFAULT.map(name=>({name, done:false}));
+  localStorage.setItem(PACK_KEY, JSON.stringify(initial));
+  return initial;
+}
+function savePacking(list){ localStorage.setItem(PACK_KEY, JSON.stringify(list)); }
+function renderPacking(){
+  const list = loadPacking();
+  const done = list.filter(i=>i.done).length;
+  document.getElementById('packBar').style.width = (list.length? done/list.length*100:0)+'%';
+  document.getElementById('packTxt').textContent = `${done}/${list.length}`;
+  document.getElementById('packList').innerHTML = list.map((item,i)=>`
+    <div class="pack-item ${item.done?'done':''}" onclick="togglePack(${i})">
+      <div class="pack-check">${item.done?'✓':''}</div>
+      <span>${item.name}</span>
+    </div>`).join('');
+  if(done===list.length && list.length) fireConfetti();
+}
+function togglePack(i){
+  const list = loadPacking();
+  list[i].done = !list[i].done;
+  savePacking(list);
+  renderPacking();
+}
+function addPackItem(){
+  const input = document.getElementById('packNewItem');
+  const val = input.value.trim();
+  if(!val) return;
+  const list = loadPacking();
+  list.push({name:val, done:false});
+  savePacking(list);
+  input.value='';
+  renderPacking();
+}
+
+/* ══════════════════════════════════════
+   BUDGET TRACKER
+══════════════════════════════════════ */
+const BUDGET_CATS = {hotel:{label:'מלון',icon:'🏨',budget:6000,color:'#4a7fc1'},food:{label:'אוכל',icon:'🍽️',budget:2500,color:'#c8963c'},attractions:{label:'אטרקציות',icon:'🎡',budget:1800,color:'#d4617a'},shopping:{label:'קניות',icon:'🛍️',budget:1500,color:'#16a34a'}};
+const BUDGET_KEY = 'trip2026_budget_v1';
+function loadBudget(){ try{ return JSON.parse(localStorage.getItem(BUDGET_KEY))||{}; }catch(e){ return {}; } }
+function saveBudget(b){ localStorage.setItem(BUDGET_KEY, JSON.stringify(b)); }
+function openBudgetPopup(){
+  const sel = document.getElementById('budgetCatSelect');
+  sel.innerHTML = Object.keys(BUDGET_CATS).map(k=>`<option value="${k}">${BUDGET_CATS[k].icon} ${BUDGET_CATS[k].label}</option>`).join('');
+  renderBudget();
+  openPopup('budgetPopup');
+}
+function renderBudget(){
+  const b = loadBudget();
+  let total = 0;
+  const html = Object.keys(BUDGET_CATS).map(k=>{
+    const cat = BUDGET_CATS[k];
+    const spent = b[k]||0;
+    total += spent;
+    const pct = Math.min(100, Math.round(spent/cat.budget*100));
+    return `<div class="budget-cat">
+      <div class="budget-cat-hdr"><b>${cat.icon} ${cat.label}</b><span>₪${spent.toLocaleString()} / ₪${cat.budget.toLocaleString()}</span></div>
+      <div class="budget-bar-wrap"><div class="budget-bar" style="width:${pct}%;background:${cat.color}"></div></div>
+    </div>`;
+  }).join('');
+  document.getElementById('budgetCats').innerHTML = html;
+  document.getElementById('budgetTotalNum').textContent = '₪'+total.toLocaleString();
+}
+function addExpense(){
+  const cat = document.getElementById('budgetCatSelect').value;
+  const amt = parseFloat(document.getElementById('budgetAmount').value);
+  if(!amt || amt<=0) return;
+  const b = loadBudget();
+  b[cat] = (b[cat]||0)+amt;
+  saveBudget(b);
+  document.getElementById('budgetAmount').value='';
+  renderBudget();
+  showToast('💰 ההוצאה נוספה לתקציב');
+}
+function resetBudget(){
+  if(!confirm('לאפס את כל ההוצאות שנרשמו?')) return;
+  saveBudget({});
+  renderBudget();
+}
+
+/* ══════════════════════════════════════
+   MEMORY WALL / GALLERY
+══════════════════════════════════════ */
+const GALLERY_KEY = 'trip2026_gallery_v1';
+let currentGalleryDay = 'day1';
+function loadGallery(){ try{ return JSON.parse(localStorage.getItem(GALLERY_KEY))||{}; }catch(e){ return {}; } }
+function saveGallery(g){
+  try{ localStorage.setItem(GALLERY_KEY, JSON.stringify(g)); }
+  catch(e){ showToast('⚠️ אין מספיק מקום בדפדפן לשמור עוד תמונות'); }
+}
+function openGalleryForDay(day){
+  currentGalleryDay = day;
+  const sel = document.getElementById('galleryDaySelect');
+  sel.innerHTML = Object.keys(dayLabels).filter(d=>d!=='transfer').map(d=>
+    `<button class="gday-btn ${d===day?'active':''}" onclick="openGalleryForDay('${d}')">${dayLabels[d].replace('יום ','יום ').split('–')[0].trim()}</button>`
+  ).join('');
+  renderGallery();
+  openPopup('galleryPopup');
+}
+function renderGallery(){
+  const g = loadGallery();
+  const photos = g[currentGalleryDay]||[];
+  document.getElementById('galleryGrid').innerHTML = photos.length ? photos.map((src,i)=>`
+    <div class="gallery-thumb"><img src="${src}" loading="lazy"><button onclick="deletePhoto(${i})"><i class="ph ph-x"></i></button></div>
+  `).join('') : `<div class="gallery-empty"><i class="ph ph-image" style="font-size:28px;display:block;margin-bottom:8px"></i>עדיין אין תמונות ליום הזה — הוסיפו אחת!</div>`;
+}
+function handleGalleryUpload(e){
+  const files = Array.from(e.target.files||[]);
+  const g = loadGallery();
+  if(!g[currentGalleryDay]) g[currentGalleryDay]=[];
+  let remaining = files.length;
+  files.forEach(file=>{
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      g[currentGalleryDay].push(ev.target.result);
+      remaining--;
+      if(remaining===0){ saveGallery(g); renderGallery(); showToast('📸 התמונות נוספו לאלבום'); }
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function deletePhoto(i){
+  const g = loadGallery();
+  g[currentGalleryDay].splice(i,1);
+  saveGallery(g);
+  renderGallery();
+}
+
+/* ══════════════════════════════════════
+   INTERACTIVE MAP
+══════════════════════════════════════ */
+const MAP_QUERIES = {
+  day1:'Stephansdom, Vienna', day2:'Wiener Riesenrad, Prater, Vienna', day3:'Naschmarkt, Vienna',
+  day4:'Schonbrunn Palace, Vienna', day5:'Chain Bridge, Budapest', day6:'Arena Mall, Budapest',
+  day7:'Fishermans Bastion, Budapest', day8:'Budapest Airport'
+};
+function openMapForDay(day){
+  const sel = document.getElementById('mapDaySelect');
+  sel.innerHTML = Object.keys(MAP_QUERIES).map(d=>
+    `<button class="gday-btn ${d===day?'active':''}" onclick="openMapForDay('${d}')">${dayLabels[d].split('–')[0].trim()}</button>`
+  ).join('');
+  const q = encodeURIComponent(MAP_QUERIES[day]);
+  document.getElementById('mapFrame').src = `https://www.google.com/maps?q=${q}&output=embed`;
+  document.getElementById('mapOpenLink').href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  openPopup('mapPopup');
+}
+
+/* ══════════════════════════════════════
+   ACHIEVEMENTS
+══════════════════════════════════════ */
+const ACHIEVEMENTS = [
+  {id:'first_mission', icon:'🏅', text:'השלמתם משימה ראשונה', check:()=>countAll(loadState()).done>=1},
+  {id:'ten_missions', icon:'🌟', text:'10 משימות הושלמו', check:()=>countAll(loadState()).done>=10},
+  {id:'all_missions', icon:'🏆', text:'כל 40 המשימות הושלמו!', check:()=>{const c=countAll(loadState()); return c.done===c.total;}},
+  {id:'day_perfect', icon:'😊', text:'דירוג 5 כוכבים ליום', check:()=>Object.values(loadScores()).some(v=>v===5)},
+  {id:'all_scored', icon:'📋', text:'דירגתם את כל ימי הטיול', check:()=>Object.keys(dayLabels).filter(d=>d!=='transfer').every(d=>loadScores()[d])},
+  {id:'first_photo', icon:'📸', text:'תמונה ראשונה באלבום', check:()=>Object.values(loadGallery()).some(arr=>arr&&arr.length)},
+  {id:'packed', icon:'🧳', text:'רשימת הציוד הושלמה', check:()=>{const l=loadPacking(); return l.length && l.every(i=>i.done);}},
+  {id:'budgeted', icon:'💶', text:'רשמתם הוצאה ראשונה', check:()=>Object.values(loadBudget()).some(v=>v>0)}
+];
+function openAchievementsPopup(){
+  document.getElementById('achGrid').innerHTML = ACHIEVEMENTS.map(a=>{
+    const unlocked = a.check();
+    return `<div class="ach-item ${unlocked?'unlocked':''}"><div class="ai">${unlocked?a.icon:'🔒'}</div><div class="at">${a.text}</div></div>`;
+  }).join('');
+  openPopup('achievementsPopup');
+}
+
+/* ══════════════════════════════════════
+   DARK MODE
+══════════════════════════════════════ */
+function toggleDarkMode(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('trip2026_dark', document.body.classList.contains('dark') ? '1':'0');
+}
+if(localStorage.getItem('trip2026_dark')==='1') document.body.classList.add('dark');
+
 /* INIT */
 restoreCardMissions();
 updateAllCardBadges();
+renderScoreStars();
+renderPacking();
 fetchRates();
+fetchDashWeather();
+updateDashboard();
+setInterval(updateDashboard, 60000);
+setTimeout(updateDashRate, 600);
 </script>
 </body>
 </html>
