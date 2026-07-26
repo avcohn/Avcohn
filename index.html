@@ -51,6 +51,21 @@ img,iframe{max-width:100%}
 .hero{position:relative;background:linear-gradient(180deg,#fff7e8 0%,#fffaf1 56%,#f8fafc 100%);overflow:hidden;padding:32px 18px 40px}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(226,176,87,.18),transparent 30%),radial-gradient(circle at 80% 20%,rgba(74,127,193,.10),transparent 34%);pointer-events:none}
 .hero-in{position:relative;z-index:1;max-width:1260px;margin:auto;text-align:center}
+
+/* ── VACATION STICKERS (floating decorations) ── */
+.hero-sticker{position:absolute;font-size:30px;pointer-events:none;filter:drop-shadow(0 6px 10px rgba(15,34,64,.12));animation:stickerFloat 5s ease-in-out infinite;z-index:0;opacity:.9}
+.hero-sticker.s1{top:8%;left:6%;font-size:34px;animation-delay:0s}
+.hero-sticker.s2{top:18%;right:8%;font-size:28px;animation-delay:.6s}
+.hero-sticker.s3{top:58%;left:3%;font-size:26px;animation-delay:1.2s}
+.hero-sticker.s4{top:66%;right:5%;font-size:32px;animation-delay:1.8s}
+.hero-sticker.s5{top:2%;left:42%;font-size:22px;animation-delay:2.4s}
+@keyframes stickerFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(4deg)}}
+.hero-trail{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.55}
+@media(max-width:640px){.hero-sticker{display:none}.hero-trail{opacity:.35}}
+
+/* ── POSTMARK-STYLE DAY TAG ── */
+.dtag{transform:rotate(-6deg)}
+.dtag::before{content:'';position:absolute;inset:-4px;border:1.5px dashed rgba(15,34,64,.35);border-radius:14px;pointer-events:none}
 .hero-poster{max-width:1180px;margin:0 auto 18px;border-radius:28px;overflow:hidden;background:#fff3d9;border:1px solid rgba(200,150,60,.35);box-shadow:0 24px 70px rgba(15,34,64,.18)}
 .hero-poster img{display:block;width:100%;height:auto}
 .hero-actions{max-width:980px;margin:0 auto;padding:22px 28px 26px;border-radius:26px;background:rgba(255,255,255,.9);border:1px solid rgba(200,150,60,.22);box-shadow:0 18px 45px rgba(15,34,64,.10);backdrop-filter:blur(12px)}
@@ -411,15 +426,15 @@ body.dark .dash-tile .dv{color:#fff}
 <body>
 
 <div class="toast" id="toast"><i class="ph ph-check-circle"></i><span id="toast-msg"></span></div>
-<button class="fab" id="fab-top" title="חזרה למעלה" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ph ph-arrow-up"></i></button>
-<a href="https://drive.google.com/drive/folders/15b15MtqrbGSFqjxrhAavWluYdvImcwG6?usp=drive_link" target="_blank" class="fab-docs" title="מסמכים חשובים"><i class="ph ph-folder-open"></i></a>
+<button class="fab" id="fab-top" title="חזרה למעלה" aria-label="חזרה למעלה" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ph ph-arrow-up"></i></button>
+<a href="https://drive.google.com/drive/folders/15b15MtqrbGSFqjxrhAavWluYdvImcwG6?usp=drive_link" target="_blank" class="fab-docs" title="מסמכים חשובים" aria-label="מסמכים חשובים"><i class="ph ph-folder-open"></i></a>
 
 <!-- ══ MISSIONS POPUP ══ -->
 <div class="popup-overlay" id="missionsPopup">
   <div class="popup-box">
     <div class="popup-header">
       <h2><i class="ph ph-star"></i> לוח משימות</h2>
-      <button class="popup-close" onclick="closePopup('missionsPopup')"><i class="ph ph-x"></i></button>
+      <button class="popup-close" onclick="closePopup('missionsPopup')" aria-label="סגירה"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
       <div class="missions-total">
@@ -437,7 +452,7 @@ body.dark .dash-tile .dv{color:#fff}
   <div class="popup-box">
     <div class="popup-header">
       <h2><i class="ph ph-currency-circle-dollar"></i> המרת מטבע</h2>
-      <button class="popup-close" onclick="closePopup('currencyPopup')"><i class="ph ph-x"></i></button>
+      <button class="popup-close" onclick="closePopup('currencyPopup')" aria-label="סגירה"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
       <div class="currency-tabs">
@@ -467,7 +482,7 @@ body.dark .dash-tile .dv{color:#fff}
   <div class="popup-box">
     <div class="popup-header">
       <h2><i class="ph ph-suitcase-rolling"></i> רשימת ציוד</h2>
-      <button class="popup-close" onclick="closePopup('packingPopup')"><i class="ph ph-x"></i></button>
+      <button class="popup-close" onclick="closePopup('packingPopup')" aria-label="סגירה"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
       <div class="pack-progress">
@@ -488,7 +503,7 @@ body.dark .dash-tile .dv{color:#fff}
   <div class="popup-box">
     <div class="popup-header">
       <h2><i class="ph ph-wallet"></i> תקציב הטיול</h2>
-      <button class="popup-close" onclick="closePopup('budgetPopup')"><i class="ph ph-x"></i></button>
+      <button class="popup-close" onclick="closePopup('budgetPopup')" aria-label="סגירה"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
       <div class="budget-total">
@@ -511,7 +526,7 @@ body.dark .dash-tile .dv{color:#fff}
   <div class="popup-box">
     <div class="popup-header">
       <h2><i class="ph ph-images"></i> Memory Wall</h2>
-      <button class="popup-close" onclick="closePopup('galleryPopup')"><i class="ph ph-x"></i></button>
+      <button class="popup-close" onclick="closePopup('galleryPopup')" aria-label="סגירה"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
       <div class="gallery-day-select" id="galleryDaySelect"></div>
@@ -529,7 +544,7 @@ body.dark .dash-tile .dv{color:#fff}
   <div class="popup-box">
     <div class="popup-header">
       <h2><i class="ph ph-map-trifold"></i> מפת המסלול</h2>
-      <button class="popup-close" onclick="closePopup('mapPopup')"><i class="ph ph-x"></i></button>
+      <button class="popup-close" onclick="closePopup('mapPopup')" aria-label="סגירה"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
       <div class="map-day-select" id="mapDaySelect"></div>
@@ -544,7 +559,7 @@ body.dark .dash-tile .dv{color:#fff}
   <div class="popup-box">
     <div class="popup-header">
       <h2><i class="ph ph-trophy"></i> הישגים</h2>
-      <button class="popup-close" onclick="closePopup('achievementsPopup')"><i class="ph ph-x"></i></button>
+      <button class="popup-close" onclick="closePopup('achievementsPopup')" aria-label="סגירה"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
       <div class="ach-grid" id="achGrid"></div>
@@ -565,12 +580,10 @@ body.dark .dash-tile .dv{color:#fff}
       <a href="#vienna"><i class="ph ph-map-pin"></i> וינה</a>
       <a href="#budapest"><i class="ph ph-map-pin"></i> בודפשט</a>
       <button class="nav-special" onclick="openPopup('currencyPopup')"><i class="ph ph-currency-circle-dollar"></i> מטבע</button>
-      <button onclick="openMapForDay('day1')"><i class="ph ph-map-trifold"></i> מפה</button>
-      <button onclick="openPopup('packingPopup')"><i class="ph ph-suitcase-rolling"></i> ציוד</button>
-      <button onclick="openBudgetPopup()"><i class="ph ph-wallet"></i> תקציב</button>
-      <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> תמונות</button>
+      <button onclick="openMapForDay(currentVisibleDay)"><i class="ph ph-map-trifold"></i> מפה</button>
+      <button onclick="openGalleryForDay(currentVisibleDay)"><i class="ph ph-images"></i> תמונות</button>
       <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
-      <button onclick="toggleDarkMode()" title="מצב לילה"><i class="ph ph-moon-stars"></i></button>
+      <button onclick="toggleDarkMode()" title="מצב לילה" aria-label="החלפת מצב לילה"><i class="ph ph-moon-stars"></i></button>
     </div>
   </div>
 </nav>
@@ -605,6 +618,14 @@ body.dark .dash-tile .dv{color:#fff}
 </div>
 
 <header class="hero">
+  <svg class="hero-trail" viewBox="0 0 1260 380" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M40,320 C300,250 420,90 700,70 C880,58 980,140 1220,60" fill="none" stroke="#c8963c" stroke-width="2.5" stroke-dasharray="1 14" stroke-linecap="round"/>
+  </svg>
+  <span class="hero-sticker s1" aria-hidden="true">✈️</span>
+  <span class="hero-sticker s2" aria-hidden="true">☀️</span>
+  <span class="hero-sticker s3" aria-hidden="true">🎡</span>
+  <span class="hero-sticker s4" aria-hidden="true">🏰</span>
+  <span class="hero-sticker s5" aria-hidden="true">📍</span>
   <div class="hero-in">
     <div class="hero-poster reveal">
       <img src="hero-family.png" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1516550135131-fe3dcdd41517?auto=format&fit=crop&w=1200&q=80'" alt="וינה ובודפשט – טיול משפחתי קיץ 2026">
@@ -638,8 +659,8 @@ body.dark .dash-tile .dv{color:#fff}
     </div>
     <div class="dash-countdown" id="dashCountdown"></div>
     <div class="dash-actions">
-      <button onclick="openPopup('packingPopup')"><i class="ph ph-suitcase-rolling"></i> ציוד</button>
-      <button onclick="openBudgetPopup()"><i class="ph ph-wallet"></i> תקציב</button>
+      
+      
       <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> אלבום</button>
       <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
       <button onclick="openPopup('missionsPopup')"><i class="ph ph-star"></i> משימות</button>
@@ -694,13 +715,13 @@ body.dark .dash-tile .dv{color:#fff}
       <div class="card reveal" id="day2">
         <div class="cimg-w"><img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?auto=format&fit=crop&w=900&q=80'" alt="יום 2" loading="lazy"><div class="cov"></div><div class="dtag">יום 2<small>שישי · 21.8</small></div></div>
         <div class="cbody">
-          <h3>יום כיף בפראטר</h3>
-          <p>יום מלא בפארק Prater: הגלגל הענק, Liliputbahn, רכבות הרים, מתקני ילדים, משחקים וגלידות.</p>
+          <h3>ZOOM בבוקר ו‑Prater בערב</h3>
+          <p>בוקר במוזיאון הילדים ZOOM, שנ״ץ במלון, ובערב פארק Prater.</p>
           <ul class="acts">
-            <li><span class="dot v"></span>ארוחת בוקר ונסיעה לפארק Prater</li>
-            <li><span class="dot v"></span>יום מלא בפארק: Wiener Riesenrad, Liliputbahn, רכבות הרים ומתקני ילדים</li>
-            <li><span class="dot v"></span>ארוחת צהריים בפארק והמשך בילוי ומשחקים</li>
-            <li><span class="dot v"></span>חזרה למרכז העיר וארוחת ערב</li>
+            <li><span class="dot v"></span>בוקר במוזיאון הילדים ZOOM</li>
+            <li><span class="dot v"></span>חזרה למלון לשנ״ץ</li>
+            <li><span class="dot v"></span>בערב יציאה ל‑Prater</li>
+            <li><span class="dot v"></span>הגלגל הענק, מתקנים וגלידה</li>
           </ul>
           <button class="day-missions-btn" id="dmb-day2" onclick="openMissionsForDay('day2')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
@@ -728,8 +749,8 @@ body.dark .dash-tile .dv{color:#fff}
       <div class="card reveal" id="day3">
         <div class="cimg-w"><img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=900&q=80'" alt="יום 3" loading="lazy"><div class="cov"></div><div class="dtag">יום 3<small>שבת · 22.8</small></div></div>
         <div class="cbody">
-          <h3>ZOOM, MuseumsQuartier ונשמרקט</h3>
-          <p>בוקר ב-ZOOM Children's Museum ו-MuseumsQuartier, צהריים בנשמרקט, ואחר הצהריים Karlskirche והופבורג.</p>
+          <h3>Naschmarkt, Burggarten ומרכז העיר</h3>
+          <p>יום רגוע: Naschmarkt, Burggarten, מרכז העיר ועצירה לקפה.</p>
           <ul class="acts">
             <li><span class="dot v"></span>ארוחת בוקר ולאחריה ZOOM Children's Museum (להזמין מראש!)</li>
             <li><span class="dot v"></span>המשך בבוקר במתחם MuseumsQuartier</li>
@@ -1064,12 +1085,15 @@ function buildMissionsPopup(){
   updateAllCardBadges();
 }
 
+let missionsWasComplete = null;
 function updateMissionsBar(done, total){
   const pct = total>0?(done/total)*100:0;
   document.getElementById('missionsTotalBar').style.width = pct+'%';
   document.getElementById('missionsTotalTxt').textContent = `${done} / ${total}`;
   document.getElementById('missionsEmoji').textContent = pct===100?'🏆':pct>=75?'🌟':pct>=50?'⭐':'🎯';
-  if(pct===100) fireConfetti();
+  if(missionsWasComplete===null) missionsWasComplete = (pct===100); // first render: just record state, no confetti
+  else if(pct===100 && !missionsWasComplete){ fireConfetti(); missionsWasComplete = true; }
+  else if(pct!==100) missionsWasComplete = false;
 }
 
 function updateAllCardBadges(){
@@ -1259,9 +1283,11 @@ const dpDots=document.querySelectorAll('#dpDots .dp-dot');
 const dpLabel=document.getElementById('dp-current-label');
 const dayLabels={day1:'יום 1 – וינה',day2:'יום 2 – וינה',day3:'יום 3 – וינה',day4:'יום 4 – וינה',day5:'יום 5 – בודפשט',day6:'יום 6 – בודפשט',day7:'יום 7 – בודפשט',day8:'יום 8 – בודפשט'};
 
+let currentVisibleDay = dayOrder[0];
 function updateActive(){
   let cur=dayOrder[0];
   dayOrder.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-200) cur=id; });
+  currentVisibleDay = cur;
   stripLinks.forEach(a=>{ const h=a.getAttribute('href').replace('#',''); a.classList.toggle('active_sec',h===cur||(h==='budapest'&&cur==='day5')||(h==='vienna'&&cur==='day1')); });
   const cn=sectionMap[cur]||'vienna';
   navLinks.forEach(a=>{ a.classList.toggle('active',a.getAttribute('href')==='#'+cn); });
@@ -1328,6 +1354,8 @@ async function fetchDashWeather(){
       if(navEl) navEl.textContent = `${s.city}: כרגע ${t}°C`;
     }catch(e){
       document.getElementById(s.id).textContent = '—';
+      const navEl = document.querySelector(s.navSel);
+      if(navEl) navEl.textContent = `${s.city}: אין חיבור`;
     }
   }
 }
@@ -1357,11 +1385,13 @@ function renderScoreStars(){
 }
 function setDayScore(day, val){
   const scores = loadScores();
-  scores[day] = (scores[day]===val) ? val : val; // allow re-tap to keep value
+  const wasFive = scores[day]===5;
+  scores[day] = (scores[day]===val) ? 0 : val; // tap the same star again to clear
   saveScores(scores);
   renderScoreStars();
+  if(scores[day]===0){ showToast('↩️ הדירוג נמחק'); return; }
   showToast(val===5 ? '🌟 יום מושלם! רשמנו את זה' : '✅ הדירוג נשמר');
-  if(val===5) fireConfetti();
+  if(val===5 && !wasFive) fireConfetti();
 }
 
 /* ══════════════════════════════════════
@@ -1379,9 +1409,11 @@ function loadPacking(){
   return initial;
 }
 function savePacking(list){ localStorage.setItem(PACK_KEY, JSON.stringify(list)); }
+let packingWasComplete = null;
 function renderPacking(){
   const list = loadPacking();
   const done = list.filter(i=>i.done).length;
+  const isComplete = list.length>0 && done===list.length;
   document.getElementById('packBar').style.width = (list.length? done/list.length*100:0)+'%';
   document.getElementById('packTxt').textContent = `${done}/${list.length}`;
   document.getElementById('packList').innerHTML = list.map((item,i)=>`
@@ -1389,7 +1421,9 @@ function renderPacking(){
       <div class="pack-check">${item.done?'✓':''}</div>
       <span>${item.name}</span>
     </div>`).join('');
-  if(done===list.length && list.length) fireConfetti();
+  if(packingWasComplete===null) packingWasComplete = isComplete;
+  else if(isComplete && !packingWasComplete){ fireConfetti(); packingWasComplete = true; }
+  else if(!isComplete) packingWasComplete = false;
 }
 function togglePack(i){
   const list = loadPacking();
@@ -1480,20 +1514,38 @@ function renderGallery(){
     <div class="gallery-thumb"><img src="${src}" loading="lazy"><button onclick="deletePhoto(${i})"><i class="ph ph-x"></i></button></div>
   `).join('') : `<div class="gallery-empty"><i class="ph ph-image" style="font-size:28px;display:block;margin-bottom:8px"></i>עדיין אין תמונות ליום הזה — הוסיפו אחת!</div>`;
 }
-function handleGalleryUpload(e){
-  const files = Array.from(e.target.files||[]);
-  const g = loadGallery();
-  if(!g[currentGalleryDay]) g[currentGalleryDay]=[];
-  let remaining = files.length;
-  files.forEach(file=>{
+function resizeImageFile(file, maxDim=1000, quality=0.75){
+  return new Promise((resolve)=>{
     const reader = new FileReader();
     reader.onload = ev=>{
-      g[currentGalleryDay].push(ev.target.result);
-      remaining--;
-      if(remaining===0){ saveGallery(g); renderGallery(); showToast('📸 התמונות נוספו לאלבום'); }
+      const img = new Image();
+      img.onload = ()=>{
+        let {width, height} = img;
+        if(width>height && width>maxDim){ height=Math.round(height*maxDim/width); width=maxDim; }
+        else if(height>maxDim){ width=Math.round(width*maxDim/height); height=maxDim; }
+        const canvas = document.createElement('canvas');
+        canvas.width=width; canvas.height=height;
+        canvas.getContext('2d').drawImage(img,0,0,width,height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = ()=>resolve(ev.target.result); // fall back to original if it can't decode
+      img.src = ev.target.result;
     };
+    reader.onerror = ()=>resolve(null);
     reader.readAsDataURL(file);
   });
+}
+async function handleGalleryUpload(e){
+  const files = Array.from(e.target.files||[]);
+  if(!files.length) return;
+  const g = loadGallery();
+  if(!g[currentGalleryDay]) g[currentGalleryDay]=[];
+  showToast('📸 מעבד תמונות...');
+  const results = await Promise.all(files.map(f=>resizeImageFile(f)));
+  results.forEach(dataUrl=>{ if(dataUrl) g[currentGalleryDay].push(dataUrl); });
+  saveGallery(g);
+  renderGallery();
+  showToast('📸 התמונות נוספו לאלבום');
   e.target.value='';
 }
 function deletePhoto(i){
