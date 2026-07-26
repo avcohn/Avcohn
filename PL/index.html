@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ציוד לטיסה — תרופות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --board:#12161B;
+    --board-panel:#1B2128;
+    --tarmac:#E8EAED;
+    --tarmac-2:#DDE1E5;
+    --card:#FFFFFF;
+    --gate-blue:#123E8C;
+    --gate-blue-2:#1A52B3;
+    --amber:#FFB400;
+    --amber-ink:#3A2A00;
+    --green:#1F9D55;
+    --ink:#181C20;
+    --ink-soft:#5C6670;
+    --line:#CBD2D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--tarmac);
+    color:var(--ink);
+    font-family:'Heebo',sans-serif;
+    line-height:1.5;
+    touch-action:manipulation;
+  }
+  .mono{font-family:'Space Mono',monospace;}
+  h1,h2,h3{font-family:'Heebo',sans-serif;font-weight:800;}
+  :focus-visible{outline:3px solid var(--gate-blue-2);outline-offset:2px;}
+
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+
+  /* ===== HERO — DEPARTURE BOARD ===== */
+  .hero{
+    background:
+      repeating-linear-gradient(180deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 4px),
+      linear-gradient(160deg, var(--board) 0%, #1A2028 100%);
+    color:#F2F4F6;
+    padding:28px 18px 22px;
+  }
+  .hero-inner{max-width:960px;margin:0 auto;}
+  .brand-row{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:.14em;
+    color:#8A97A4;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .brand-row .plane{width:14px;height:14px;flex-shrink:0;color:var(--amber);}
+
+  .board{
+    background:var(--board-panel);
+    border:1px solid #2A323B;
+    border-radius:10px;
+    padding:18px 16px;
+  }
+  .board-title{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(20px,5.5vw,32px);
+    font-weight:700;
+    letter-spacing:.03em;
+    color:#F5F7F8;
+    margin-bottom:4px;
+  }
+  .board-sub{
+    font-size:13px;color:#9AA5B0;margin-bottom:18px;
+    max-width:480px;
+  }
+  .board-rows{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:1px;
+    background:#2A323B;
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .board-row{
+    background:var(--board-panel);
+    padding:12px 14px;
+  }
+  .board-row .k{
+    font-family:'Space Mono',monospace;
+    font-size:10px;letter-spacing:.12em;
+    color:#7A8794;text-transform:uppercase;
+    display:block;margin-bottom:6px;
+  }
+  .board-row .v{
+    font-family:'Space Mono',monospace;
+    font-size:18px;font-weight:700;
+    color:var(--amber);
+    letter-spacing:.02em;
+  }
+  #statusText{color:#F5F7F8;font-size:15px;}
+
+  .runway{
+    margin-top:14px;
+    position:relative;
+    height:8px;
+    background:#2A323B;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .runway-fill{
+    position:absolute;top:0;right:0;height:100%;
+    background:var(--amber);
+    border-radius:4px;
+    width:0%;
+    transition:width .5s ease;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .runway-fill{transition:none;}
+  }
+
+  /* ===== STICKY CATEGORY NAV ===== */
+  .catnav{
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:30;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .catnav::-webkit-scrollbar{display:none;}
+  .catnav-inner{
+    display:inline-flex;gap:8px;
+    padding:10px 16px;
+    min-width:100%;
+  }
+  .catnav a{
+    font-family:'Space Mono',monospace;
+    font-size:12px;font-weight:700;
+    color:var(--ink-soft);
+    text-decoration:none;
+    padding:9px 14px;
+    border-radius:100px;
+    border:1.5px solid var(--line);
+    white-space:nowrap;
+    display:inline-flex;align-items:center;gap:7px;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .catnav a .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);flex-shrink:0;}
+  .catnav a.active{
+    background:var(--gate-blue);
+    border-color:var(--gate-blue);
+    color:#fff;
+  }
+  .catnav a.active .dot{background:var(--amber);}
+  .catnav a.complete .dot{background:var(--green);}
+
+  /* ===== MAIN ===== */
+  main{max-width:960px;margin:0 auto;padding:28px 16px 90px;}
+
+  .section-title{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;margin-bottom:20px;flex-wrap:wrap;
+  }
+  .section-title h2{font-size:24px;}
+  .reset-btn{
+    background:transparent;border:1.5px solid var(--line);
+    color:var(--ink-soft);padding:9px 16px;border-radius:8px;
+    font-size:13px;font-family:'Heebo',sans-serif;font-weight:500;
+    cursor:pointer;min-height:40px;
+  }
+  .reset-btn:hover{border-color:#C0392B;color:#C0392B;}
+
+  .categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:18px;
+    margin-bottom:50px;
+  }
+
+  /* ===== GATE SIGN CARD ===== */
+  .tag{
+    scroll-margin-top:66px;
+    background:var(--card);
+    border-radius:10px;
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .tag-head{
+    background:var(--gate-blue);
+    background-image:linear-gradient(160deg, var(--gate-blue-2), var(--gate-blue));
+    color:#fff;
+    padding:13px 16px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .tag.completed .tag-head{
+    background:var(--green);
+    background-image:linear-gradient(160deg,#25B863,var(--green));
+  }
+  .tag-code{
+    font-family:'Space Mono',monospace;
+    font-size:12px;font-weight:700;
+    background:rgba(0,0,0,0.22);
+    padding:4px 9px;border-radius:5px;
+    letter-spacing:.05em;
+  }
+  .tag-head h3{font-size:17px;flex:1;color:#fff;}
+  .tag-progress{
+    font-family:'Space Mono',monospace;
+    font-size:13px;font-weight:700;
+  }
+
+  .tag-actions{
+    display:flex;gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .tag-actions button{
+    flex:1;background:#F6F7F8;border:none;
+    padding:9px 8px;font-size:12px;color:var(--ink-soft);
+    font-family:'Heebo',sans-serif;cursor:pointer;
+    min-height:38px;
+  }
+  .tag-actions button:first-child{border-left:1px solid var(--line);}
+  .tag-actions button:hover{background:#EBEEF1;color:var(--ink);}
+
+  .item-list{list-style:none;}
+  .item{border-bottom:1px solid #F0F2F4;}
+  .item:last-child{border-bottom:none;}
+
+  .item label{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:13px 16px;cursor:pointer;min-height:44px;
+  }
+  .item:hover label{background:#FAFBFC;}
+
+  /* flap checkbox — split-flap flip */
+  .flap{
+    position:relative;width:26px;height:26px;flex-shrink:0;
+    margin-top:2px;
+    perspective:200px;
+  }
+  .flap-face{
+    position:absolute;inset:0;border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    backface-visibility:hidden;
+    transition:transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .flap-front{
+    background:#fff;border:2px solid var(--ink-soft);
+  }
+  .flap-back{
+    background:var(--amber);color:var(--amber-ink);
+    transform:rotateX(180deg);
+  }
+  .flap-back svg{width:14px;height:14px;}
+  input.check-input:checked ~ .flap .flap-front{transform:rotateX(-180deg);}
+  input.check-input:checked ~ .flap .flap-back{transform:rotateX(0deg);}
+  input.check-input:focus-visible ~ .flap{outline:3px solid var(--gate-blue-2);outline-offset:2px;border-radius:6px;}
+  @media (prefers-reduced-motion:reduce){
+    .flap-face{transition:none;}
+  }
+
+  .item-content{flex:1;font-size:15px;padding-top:2px;}
+  .item.packed .item-content{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line);}
+
+  .item-note{display:block;font-size:12px;color:var(--ink-soft);margin-top:3px;text-decoration:none !important;}
+  .flag{
+    display:inline-flex;align-items:center;gap:5px;
+    font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+    color:#8A5A00;background:#FFF1CC;
+    padding:2px 8px;border-radius:100px;margin-top:4px;
+  }
+  .flag svg{width:9px;height:9px;}
+
+  /* ===== COMING SOON ===== */
+  .soon{border-top:2px dashed var(--line);padding-top:30px;}
+  .soon h2{font-size:18px;color:var(--ink-soft);margin-bottom:14px;font-weight:700;}
+  .soon-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .ghost-tag{
+    font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-soft);
+    border:1.5px dashed var(--line);padding:9px 14px;border-radius:100px;
+    background:transparent;
+  }
+
+  footer{
+    text-align:center;padding:26px 16px 46px;
+    font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-soft);
+  }
+
+  @media (max-width:560px){
+    .hero{padding:20px 12px 16px;}
+    .board{padding:15px 12px;}
+    main{padding:22px 12px 80px;}
+    .categories{grid-template-columns:1fr;}
+    .board-rows{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-row">
+      <svg class="plane" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16.5L22 9L2 5.5L2 10.5L14 12L2 12.5L2 16.5Z" fill="currentColor"/></svg>
+      <span>לוח יציאות · ציוד לטיסה</span>
+    </div>
+
+    <div class="board">
+      <div class="board-title">תרופות</div>
+      <p class="board-sub">רשימת אריזה מודולרית. מתחילים עם מדור התרופות — שאר הציוד יתווסף בהמשך המסלול.</p>
+
+      <div class="board-rows">
+        <div class="board-row">
+          <span class="k">סטטוס</span>
+          <span class="v" id="statusText">ממתין לצ'ק אין</span>
+        </div>
+        <div class="board-row">
+          <span class="k">נארז</span>
+          <span class="v mono" id="progressFraction">0/25</span>
+        </div>
+        <div class="board-row">
+          <span class="k">דורש מרשם</span>
+          <span class="v mono">1</span>
+        </div>
+      </div>
+
+      <div class="runway"><div class="runway-fill" id="runwayFill"></div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="catnav" aria-label="ניווט בין מדורים">
+  <div class="catnav-inner" id="catNav"></div>
+</nav>
+
+<main>
+  <div class="section-title">
+    <h2>תרופות</h2>
+    <button class="reset-btn" id="resetBtn">איפוס הרשימה</button>
+  </div>
+
+  <div class="categories" id="categories"></div>
+
+  <div class="soon">
+    <h2>מדורים נוספים — בהמתנה להמראה</h2>
+    <div class="soon-row">
+      <span class="ghost-tag">CLO · בגדים</span>
+      <span class="ghost-tag">ELC · אלקטרוניקה</span>
+      <span class="ghost-tag">DOC · מסמכים ודרכונים</span>
+      <span class="ghost-tag">CAR · טיפוח וילדים</span>
+      <span class="ghost-tag">TOY · בידור לטיסה</span>
+    </div>
+  </div>
+</main>
+
+<footer>flight-kit · נשמר אוטומטית במכשיר הזה</footer>
+
+<script>
+const DATA = [
+  { code:"FEV", name:"חום וכאבים", items:[
+    { id:"fev-1", name:"נובימול" },
+    { id:"fev-2", name:"נורופן ילדים" },
+    { id:"fev-3", name:"נורופן קוויק" },
+    { id:"fev-4", name:"כדורי ציפי — אלינור" }
+  ]},
+  { code:"RSP", name:"נשימה ואינהלציה", items:[
+    { id:"rsp-1", name:"מתאם למשאף" },
+    { id:"rsp-2", name:"ונטולין — משאף + נוזל" },
+    { id:"rsp-3", name:"אינהלציה" },
+    { id:"rsp-4", name:"בודיקורט" },
+    { id:"rsp-5", name:"מי מלח — בקבוקונים" }
+  ]},
+  { code:"E&E", name:"עיניים ואזניים", items:[
+    { id:"ee-1", name:"טיפות עיניים" },
+    { id:"ee-2", name:"משחת עיניים" },
+    { id:"ee-3", name:"טיפות אזניים" },
+    { id:"ee-4", name:"נוביקס משחה" }
+  ]},
+  { code:"SKN", name:"עור וחיטוי", items:[
+    { id:"skn-1", name:"קרן האייל" },
+    { id:"skn-2", name:"פלסטרים" },
+    { id:"skn-3", name:"אלכוהול ג'ל" },
+    { id:"skn-4", name:"פניסטיל" }
+  ]},
+  { code:"DIG", name:"עיכול", items:[
+    { id:"dig-1", name:"ורמוקס" },
+    { id:"dig-2", name:"כדורים לצרבת" }
+  ]},
+  { code:"RX", name:"מרשמים ואנטיביוטיקה", items:[
+    { id:"rx-1", name:"אוגמנטין", note:"אנטיביוטיקה" },
+    { id:"rx-2", name:"בטנזול — כדורים ורודים", note:"לבקש מרשם מרופא", prescription:true }
+  ]},
+  { code:"KIT", name:"ציוד עזר", items:[
+    { id:"kit-1", name:"מזרקים" },
+    { id:"kit-2", name:"כוסית לשתיית תרופות" },
+    { id:"kit-3", name:"משטחי גרון" },
+    { id:"kit-4", name:"גלולות" }
+  ]}
+];
+
+const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const WARN_SVG = '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="currentColor"/></svg>';
+
+const STORAGE_KEY = "flightkit-medications-v3";
+
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e){ return {}; }
+}
+function saveState(state){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+let state = loadState();
+
+const totalItems = () => DATA.reduce((s,c)=>s+c.items.length,0);
+const packedItems = () => Object.values(state).filter(Boolean).length;
+
+function render(){
+  const catNav = document.getElementById("catNav");
+  const categories = document.getElementById("categories");
+  catNav.innerHTML = "";
+  categories.innerHTML = "";
+
+  DATA.forEach(cat=>{
+    const link = document.createElement("a");
+    link.href = "#cat-"+cat.code;
+    link.id = "nav-"+cat.code;
+    link.innerHTML = `<span class="dot"></span>${cat.name}`;
+    catNav.appendChild(link);
+
+    const card = document.createElement("div");
+    card.className = "tag";
+    card.id = "cat-"+cat.code;
+
+    const head = document.createElement("div");
+    head.className = "tag-head";
+    head.innerHTML = `
+      <span class="tag-code">${cat.code}</span>
+      <h3>${cat.name}</h3>
+      <span class="tag-progress mono" data-cat="${cat.code}"></span>
+    `;
+    card.appendChild(head);
+
+    const actions = document.createElement("div");
+    actions.className = "tag-actions";
+    actions.innerHTML = `
+      <button type="button" data-action="all" data-cat="${cat.code}">סמן הכל</button>
+      <button type="button" data-action="none" data-cat="${cat.code}">נקה מדור</button>
+    `;
+    card.appendChild(actions);
+
+    const list = document.createElement("ul");
+    list.className = "item-list";
+    cat.items.forEach(item=>{
+      const li = document.createElement("li");
+      li.className = "item" + (state[item.id] ? " packed" : "");
+      const noteHTML = item.prescription
+        ? `<span class="flag">${WARN_SVG}${item.note}</span>`
+        : (item.note ? `<span class="item-note">${item.note}</span>` : "");
+      li.innerHTML = `
+        <label for="${item.id}">
+          <input class="check-input sr-only" type="checkbox" id="${item.id}" ${state[item.id] ? "checked" : ""}>
+          <span class="flap" aria-hidden="true">
+            <span class="flap-face flap-front"></span>
+            <span class="flap-face flap-back">${CHECK_SVG}</span>
+          </span>
+          <span class="item-content">${item.name}${noteHTML}</span>
+        </label>
+      `;
+      list.appendChild(li);
+      li.querySelector("input").addEventListener("change",(e)=>{
+        state[item.id] = e.target.checked;
+        saveState(state);
+        li.classList.toggle("packed", e.target.checked);
+        updateProgress();
+      });
+    });
+    card.appendChild(list);
+    categories.appendChild(card);
+  });
+
+  categories.addEventListener("click",(e)=>{
+    const btn = e.target.closest("button[data-action]");
+    if(!btn) return;
+    const cat = DATA.find(c=>c.code === btn.dataset.cat);
+    const setTo = btn.dataset.action === "all";
+    cat.items.forEach(i=> state[i.id] = setTo);
+    saveState(state);
+    render();
+  });
+
+  updateProgress();
+  setupActiveNav();
+}
+
+function updateProgress(){
+  const total = totalItems();
+  const packed = packedItems();
+  const pct = total === 0 ? 0 : Math.round((packed/total)*100);
+
+  document.getElementById("progressFraction").textContent = `${packed}/${total}`;
+  document.getElementById("runwayFill").style.width = pct + "%";
+
+  let status = "ממתין לצ'ק אין";
+  if(pct > 0 && pct < 100) status = "עלייה למטוס בעיצומה";
+  if(pct === 100) status = "מוכנים להמראה";
+  document.getElementById("statusText").textContent = status;
+
+  DATA.forEach(cat=>{
+    const packedInCat = cat.items.filter(i=>state[i.id]).length;
+    const isComplete = packedInCat === cat.items.length;
+    const progEl = document.querySelector(`.tag-progress[data-cat="${cat.code}"]`);
+    if(progEl) progEl.textContent = isComplete ? "הושלם" : `${packedInCat}/${cat.items.length}`;
+    const cardEl = document.getElementById("cat-"+cat.code);
+    if(cardEl) cardEl.classList.toggle("completed", isComplete);
+    const navEl = document.getElementById("nav-"+cat.code);
+    if(navEl) navEl.classList.toggle("complete", isComplete);
+  });
+}
+
+function setupActiveNav(){
+  const sections = DATA.map(c => document.getElementById("cat-"+c.code)).filter(Boolean);
+  if(!("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const navEl = document.getElementById("nav-"+entry.target.id.replace("cat-",""));
+      if(!navEl) return;
+      if(entry.isIntersecting){
+        document.querySelectorAll(".catnav a").forEach(a=>a.classList.remove("active"));
+        navEl.classList.add("active");
+        navEl.scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
+      }
+    });
+  }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
+  sections.forEach(s => observer.observe(s));
+}
+
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+  if(confirm("לאפס את כל הרשימה?")){
+    state = {};
+    saveState(state);
+    render();
+  }
+});
+
+render();
+</script>
+
+</body>
+</html>
