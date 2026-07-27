@@ -2,102 +2,382 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="יומן המסעות של משפחת כהן — כל הטיולים המתוכננים במקום אחד.">
+<meta name="theme-color" content="#241F2E">
 <title>טיולי משפחת כהן</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{
---pink:#f7b2c9;
---rose:#ffd9e8;
---peach:#ffc89a;
---sun:#ff8f70;
---gold:#ffd66b;
---navy:#24324a;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Heebo,sans-serif;
-background:
-radial-gradient(circle at top,#ffd9e8 0%,#ffc89a 30%,#ff8f70 65%,#24324a 100%);
-min-height:100vh;color:#fff;overflow-x:hidden}
-body:before{
-content:"";position:fixed;inset:0;
-background:
-radial-gradient(rgba(255,255,255,.18),transparent 60%) 10% 10%/180px 180px,
-radial-gradient(rgba(255,182,193,.15),transparent 60%) 80% 30%/220px 220px;
-pointer-events:none}
-.hero{
-padding:90px 20px 60px;
-text-align:center}
-.hero h1{
-font-size:clamp(42px,7vw,72px);
-font-weight:800;
-text-shadow:0 8px 30px rgba(0,0,0,.3)}
-.hero p{font-size:1.35rem;margin-top:14px;opacity:.95}
-.grid{
-max-width:1200px;margin:20px auto 80px;
-display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:32px;padding:20px}
-.card{
-background:rgba(255,255,255,.14);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.25);
-border-radius:28px;
-overflow:hidden;
-transition:.35s;
-box-shadow:0 20px 45px rgba(0,0,0,.25)}
-.card:hover{transform:translateY(-10px) scale(1.02)}
-.card img{width:100%;height:240px;object-fit:cover}
-.content{padding:28px;text-align:center}
-h2{font-size:2rem;color:#fff}
-.small{margin:8px 0 24px;color:#fff8}
-a.btn{
-display:inline-block;
-padding:14px 30px;
-border-radius:999px;
-background:linear-gradient(90deg,var(--pink),var(--gold));
-color:var(--navy);
-text-decoration:none;
-font-weight:800;
-box-shadow:0 10px 30px rgba(0,0,0,.2)}
-a.btn:hover{filter:brightness(1.05)}
-footer{text-align:center;padding:30px;opacity:.8}
+  :root{
+    --paper:#fff3ec;
+    --paper-dim:#ffe4ea;
+    --ink:#2b2138;
+    --ink-soft:#5a4f63;
+    --blossom:#ff8fab;
+    --blossom-deep:#e0568a;
+    --coral:#ff8362;
+    --coral-deep:#e0562f;
+    --gold:#ffb454;
+    --card-bg:#ffffff;
+    --radius-lg:26px;
+    --radius-sm:14px;
+    --shadow:0 18px 40px -14px rgba(36,31,46,.35);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  }
+
+  body{
+    font-family:"Heebo",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  a{color:inherit}
+
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:min(560px,88vh);
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero-media{position:absolute;inset:0;z-index:-2}
+  .hero-media img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(1.05) brightness(.72);
+  }
+  .hero-media.is-fallback{
+    background:linear-gradient(160deg,#4a3a52,var(--ink) 60%);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(185deg,rgba(255,181,207,.28) 0%,rgba(255,150,110,.4) 42%,rgba(43,33,56,.6) 78%,var(--paper) 100%);
+  }
+
+  .stamp{
+    position:absolute;
+    top:28px;
+    inset-inline-start:28px;
+    width:96px;height:96px;
+    border-radius:50%;
+    border:2px dashed rgba(255,228,234,.85);
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(255,246,236,.9);
+    font-size:1.6rem;
+    transform:rotate(-10deg);
+    animation:drift 7s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{transform:rotate(-10deg) translateY(0)}
+    50%{transform:rotate(-6deg) translateY(-6px)}
+  }
+
+  .hero-content{
+    position:relative;
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px 56px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    color:var(--blossom);
+    background:rgba(43,33,56,.35);
+    border:1px solid rgba(255,246,236,.25);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,6vw,4.6rem);
+    font-weight:900;
+    line-height:1.05;
+    text-shadow:0 6px 26px rgba(0,0,0,.35);
+  }
+  .hero p{
+    margin-top:14px;
+    font-size:clamp(1rem,2vw,1.25rem);
+    color:rgba(255,246,236,.9);
+    max-width:46ch;
+  }
+
+  /* ---------- TRIPS ---------- */
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:56px 24px 20px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:28px;
+  }
+  .section-head h2{
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,3vw,2rem);
+  }
+  .section-head span{
+    color:var(--ink-soft);
+    font-size:.95rem;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+  }
+
+  .card{
+    display:block;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--card-bg);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    opacity:0;
+    transform:translateY(24px);
+    transition:transform .5s var(--ease),box-shadow .35s var(--ease);
+  }
+  .card.is-visible{
+    opacity:1;
+    transform:translateY(0);
+    transition:transform .6s var(--ease),opacity .6s var(--ease),box-shadow .35s var(--ease);
+  }
+  .card:hover,.card:focus-visible{
+    transform:translateY(-8px);
+    box-shadow:0 26px 50px -16px rgba(36,31,46,.45);
+  }
+
+  .card-media{
+    position:relative;
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--paper-dim);
+  }
+  .card-media img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .6s var(--ease);
+  }
+  .card:hover .card-media img{transform:scale(1.06)}
+
+  .badge{
+    position:absolute;
+    top:14px;
+    inset-inline-start:14px;
+    background:linear-gradient(135deg,var(--blossom),var(--coral));
+    color:#fff;
+    font-size:.78rem;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:999px;
+    box-shadow:0 6px 14px -4px rgba(224,86,138,.55);
+  }
+
+  /* perforated tear between photo and details, like a ticket stub */
+  .tear{
+    position:relative;
+    height:0;
+  }
+  .tear::before{
+    content:"";
+    position:absolute;
+    inset-inline:0;
+    top:-11px;
+    height:22px;
+    background:radial-gradient(circle 11px at 11px 11px,var(--paper) 11px,transparent 11.5px) repeat-x;
+    background-size:26px 22px;
+    background-position:center;
+  }
+
+  .card-body{
+    padding:26px 22px 24px;
+  }
+  .code-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:10px;
+  }
+  .code{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    letter-spacing:.08em;
+    font-size:.8rem;
+    color:var(--blossom-deep);
+    text-transform:uppercase;
+  }
+  .flags{font-size:1.1rem;letter-spacing:2px}
+
+  .card-body h3{
+    font-size:1.5rem;
+    font-weight:800;
+    margin-bottom:4px;
+  }
+  .season{
+    color:var(--ink-soft);
+    font-size:.95rem;
+    margin-bottom:20px;
+  }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    font-size:.95rem;
+    color:var(--coral-deep);
+  }
+  .cta svg{
+    width:16px;height:16px;
+    transition:transform .3s var(--ease);
+  }
+  .card:hover .cta svg{transform:translateX(-4px)}
+  html[dir="rtl"] .card:hover .cta svg{transform:translateX(4px)}
+
+  footer{
+    margin-top:64px;
+    padding:34px 24px 40px;
+    text-align:center;
+    background:var(--ink);
+    color:rgba(255,246,236,.75);
+    font-size:.9rem;
+  }
+  footer strong{color:var(--paper)}
 </style>
 </head>
 <body>
+
 <section class="hero">
-<div style="font-size:58px">🌸✈️🌅</div>
-<h1>טיולי משפחת כהן</h1>
-<p>כל טיול הוא עוד זיכרון משפחתי שנשאר לנצח</p>
+  <div class="hero-media" id="heroMedia">
+    <img src="hero-family.png" alt="משפחת כהן בטיול" loading="eager"
+         onerror="this.parentElement.classList.add('is-fallback'); this.remove();">
+  </div>
+  <div class="stamp" aria-hidden="true">✈️</div>
+  <div class="hero-content">
+    <span class="eyebrow">יומן מסעות</span>
+    <h1>טיולי משפחת כהן</h1>
+  </div>
 </section>
 
-<section class="grid">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80">
-<div class="content">
-<h2>🇦🇹 וינה • 🇭🇺 בודפשט</h2>
-<div class="small">קיץ 2026</div>
-<a class="btn" href="https://avcohn.github.io/Avcohn/Summer26/" target="_blank">למסע שלנו →</a>
-</div></div>
+<main>
+  <div class="section-head">
+    <h2>הטיולים שלנו</h2>
+    <span id="tripCount"></span>
+  </div>
+  <div class="grid" id="tripGrid" role="list"></div>
+</main>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80">
-<div class="content">
-<h2>🇨🇿 פראג</h2>
-<div class="small">כריסמס 2026 🎄</div>
-<a class="btn" href="https://avcohn.github.io/Avcohn/Xmas26/" target="_blank">למסע שלנו →</a>
-</div></div>
+<footer>
+  <p>❤️ בהכנה בקפידה על ידי <strong>משפחת כהן</strong> · 2026</p>
+</footer>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1200&q=80">
-<div class="content">
-<h2>🇳🇱 אמסטרדם והולנד</h2>
-<div class="small">פסח 2027 🌷</div>
-<a class="btn" href="https://avcohn.github.io/Avcohn/Passover27/" target="_blank">למסע שלנו →</a>
-</div></div>
-</section>
+<script>
+  // כל טיול מוגדר פעם אחת כאן — הוספת יעד חדש = אובייקט אחד, בלי לשכפל HTML.
+  const trips = [
+    {
+      code: "VIE · BUD",
+      name: "וינה • בודפשט",
+      season: "קיץ 2026",
+      flags: "🇦🇹🇭🇺",
+      badge: "הבא בתור",
+      img: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80",
+      alt: "רחוב היסטורי בוינה עם ארכיטקטורה קלאסית",
+      href: "https://avcohn.github.io/Avcohn/Summer26/"
+    },
+    {
+      code: "PRG",
+      name: "פראג",
+      season: "כריסמס 2026",
+      flags: "🇨🇿",
+      badge: "",
+      img: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80",
+      alt: "גשר קרלוב בפראג בשקיעה",
+      href: "https://avcohn.github.io/Avcohn/Xmas26/"
+    },
+    {
+      code: "AMS",
+      name: "אמסטרדם והולנד",
+      season: "פסח 2027",
+      flags: "🇳🇱",
+      badge: "",
+      img: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1200&q=80",
+      alt: "תעלה טיפוסית באמסטרדם עם בתי קנאל",
+      href: "https://avcohn.github.io/Avcohn/Passover27/"
+    }
+  ];
 
-<footer>משפחת כהן © 2026 ❤️</footer>
+  const grid = document.getElementById("tripGrid");
+  const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>`;
+
+  grid.innerHTML = trips.map(t => `
+    <a class="card" role="listitem" href="${t.href}" target="_blank" rel="noopener"
+       aria-label="למסלול המלא: ${t.name}, ${t.season}">
+      <div class="card-media">
+        <img src="${t.img}" alt="${t.alt}" loading="lazy">
+        ${t.badge ? `<span class="badge">${t.badge}</span>` : ""}
+      </div>
+      <div class="tear"></div>
+      <div class="card-body">
+        <div class="code-row">
+          <span class="code">${t.code}</span>
+          <span class="flags" aria-hidden="true">${t.flags}</span>
+        </div>
+        <h3>${t.name}</h3>
+        <div class="season">${t.season}</div>
+        <span class="cta">למסלול המלא ${arrow}</span>
+      </div>
+    </a>
+  `).join("");
+
+  document.getElementById("tripCount").textContent =
+    `${trips.length} יעדים מתוכננים`;
+
+  // חשיפה בגלילה
+  const cards = document.querySelectorAll(".card");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    cards.forEach(c => io.observe(c));
+  } else {
+    cards.forEach(c => c.classList.add("is-visible"));
+  }
+</script>
 </body>
 </html>
