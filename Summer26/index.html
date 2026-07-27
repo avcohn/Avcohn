@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קיץ 2026 | וינה ובודפשט - מסלול משפחתי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@700;800;900&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style>
+:root{
+  --navy:#0f2240;--navy-mid:#1a3a6b;--navy-light:#2a4d85;
+  --gold:#c8963c;--gold-light:#e2b057;--gold-pale:#fdf8ee;
+  --text:#1e2a3a;--muted:#5a6a7e;--border:#e1e8f0;--white:#fff;
+  --bg:#f8fafc;--bg-b:#fef2f4;
+  --cv:#4a7fc1;--cb:#d4617a;
+  --r:16px;--rl:24px;
+  --transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px;font-size:16px;width:100%;max-width:100%;overflow-x:hidden}
+body{font-family:'Rubik',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Heebo',sans-serif}
+img,iframe{max-width:100%}
+
+#pb{position:fixed;top:0;right:0;left:0;height:3px;width:0%;background:linear-gradient(to left,var(--gold-light),var(--cv),var(--cb));z-index:9999;transition:width 0.1s linear;border-radius:0 2px 2px 0}
+
+.day-progress{background:rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.05);padding:6px 20px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:0.5px}
+.dp-label{color:var(--gold-light)}
+.dp-dots{display:flex;gap:5px;align-items:center}
+.dp-dot{width:22px;height:4px;border-radius:4px;background:rgba(255,255,255,0.15);transition:var(--transition)}
+.dp-dot.v{background:rgba(74,127,193,0.5)}.dp-dot.v.done{background:var(--cv)}.dp-dot.v.current{background:var(--cv);transform:scaleY(2.5);box-shadow:0 0 8px rgba(74,127,193,0.6)}
+.dp-dot.tr{background:rgba(200,150,60,0.5)}.dp-dot.tr.done{background:var(--gold)}.dp-dot.tr.current{background:var(--gold);transform:scaleY(2.5);box-shadow:0 0 8px rgba(200,150,60,0.6)}
+.dp-dot.b{background:rgba(212,97,122,0.5)}.dp-dot.b.done{background:var(--cb)}.dp-dot.b.current{background:var(--cb);transform:scaleY(2.5);box-shadow:0 0 8px rgba(212,97,122,0.6)}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(15,34,64,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,150,60,.12);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+.nav-in{max-width:1200px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{color:var(--gold);font-weight:800;font-size:17px;letter-spacing:.5px;text-decoration:none;display:flex;align-items:center;gap:7px;flex-shrink:0}
+.nav-brand i{font-size:20px}
+.nav-center{display:flex;gap:12px;font-size:13px;color:rgba(255,255,255,0.75);font-weight:500}
+.w-item{display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.2);padding:5px 13px;border-radius:999px;white-space:nowrap}
+.w-item i{color:var(--gold-light);font-size:15px}
+.nav-links{display:flex;gap:4px}
+.nav-links a,.nav-links button{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;font-weight:600;padding:8px 15px;border-radius:999px;transition:var(--transition);display:flex;align-items:center;gap:6px;white-space:nowrap;background:none;border:none;cursor:pointer;font-family:inherit}
+.nav-links a i,.nav-links button i{font-size:15px}
+.nav-links a:hover,.nav-links button:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-links a.active{color:var(--navy);background:var(--gold)}
+.nav-links button.nav-special{background:rgba(200,150,60,.15);color:var(--gold-light);border:1px solid rgba(200,150,60,.25)}
+.nav-links button.nav-special:hover{background:rgba(200,150,60,.25);color:#fff}
+
+.hero{position:relative;background:linear-gradient(180deg,#fff7e8 0%,#fffaf1 56%,#f8fafc 100%);overflow:hidden;padding:32px 18px 40px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(226,176,87,.18),transparent 30%),radial-gradient(circle at 80% 20%,rgba(74,127,193,.10),transparent 34%);pointer-events:none}
+.hero-in{position:relative;z-index:1;max-width:1260px;margin:auto;text-align:center}
+.hero-poster{max-width:1180px;margin:0 auto 18px;border-radius:28px;overflow:hidden;background:#fff3d9;border:1px solid rgba(200,150,60,.35);box-shadow:0 24px 70px rgba(15,34,64,.18)}
+.hero-poster img{display:block;width:100%;height:auto}
+.hero-actions{max-width:980px;margin:0 auto;padding:22px 28px 26px;border-radius:26px;background:rgba(255,255,255,.9);border:1px solid rgba(200,150,60,.22);box-shadow:0 18px 45px rgba(15,34,64,.10);backdrop-filter:blur(12px)}
+.flight-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:20px}
+.fchip{background:#fff;border:1px solid rgba(15,34,64,.09);color:var(--navy);padding:11px 20px;border-radius:14px;font-size:14.5px;font-weight:600;box-shadow:0 4px 14px rgba(15,34,64,.07);display:flex;align-items:center;gap:8px}
+.fchip i{color:var(--gold);font-size:18px}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:var(--transition);border:2px solid transparent;box-shadow:0 8px 20px rgba(15,34,64,.12)}
+.btn-g{background:var(--gold);color:var(--navy)}.btn-g:hover{background:var(--gold-light);transform:translateY(-3px)}
+.btn-o{background:#fff;color:var(--navy);border-color:rgba(15,34,64,.12)}.btn-o:hover{background:var(--gold-pale);border-color:var(--gold);transform:translateY(-3px)}
+
+.fab{position:fixed;bottom:24px;left:24px;width:52px;height:52px;background:var(--navy-light);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);text-decoration:none;border:2px solid rgba(255,255,255,0.1);opacity:0;pointer-events:none;cursor:pointer}
+.fab.visible{opacity:1;pointer-events:auto}
+.fab:hover{transform:scale(1.1) translateY(-4px);background:var(--cv)}
+.fab-docs{position:fixed;bottom:86px;left:24px;width:52px;height:52px;background:rgba(15,34,64,0.9);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);text-decoration:none;border:2px solid rgba(200,150,60,0.3)}
+.fab-docs:hover{transform:scale(1.1) translateY(-4px);background:var(--navy-mid)}
+
+.tstrip{background:var(--navy);overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:56px;z-index:99}
+.tstrip::-webkit-scrollbar{display:none}
+.tstrip-in{max-width:1200px;margin:auto;padding:0 20px;display:flex;align-items:stretch}
+.tstrip-sep{width:1px;background:rgba(255,255,255,0.1);margin:8px 0;flex-shrink:0}
+.ts{flex:1;min-width:85px;padding:14px 10px;text-align:center;color:rgba(255,255,255,.4);font-size:12.5px;font-weight:600;border-top:3px solid transparent;text-decoration:none;transition:var(--transition);display:flex;flex-direction:column;align-items:center;gap:2px}
+.ts:hover{color:#fff;background:rgba(255,255,255,.04)}
+.ts.v.active_sec{border-top-color:var(--cv);color:#fff;background:rgba(74,127,193,.08)}
+.ts.tr.active_sec{border-top-color:var(--gold);color:var(--gold-light);background:rgba(200,150,60,.06)}
+.ts.b.active_sec{border-top-color:var(--cb);color:#fff;background:rgba(212,97,122,.08)}
+.ts small{display:block;font-size:11px;opacity:.65;font-weight:400}
+
+.wrap{max-width:1200px;margin:auto;padding:80px 24px}
+.sec-hdr{margin-bottom:52px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.clbl{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.clbl.v{background:#e8f0fc;color:var(--cv)}.clbl.b{background:#fce8ec;color:var(--cb)}
+.sec-title{font-weight:900;font-size:clamp(36px,6vw,54px);color:var(--navy);line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px}
+.sec-desc{font-size:19px;color:var(--muted);max-width:700px;line-height:1.7;font-weight:300}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{background:#fff;border-radius:var(--rl);border:1px solid var(--border);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;box-shadow:0 4px 8px rgba(0,0,0,0.03)}
+.card:hover{transform:translateY(-8px);box-shadow:0 28px 55px rgba(15,34,64,.13)}
+.cimg-w{position:relative;height:270px;overflow:hidden;background:#e2e8f0}
+.cimg-w img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.card:hover .cimg-w img{transform:scale(1.07)}
+.cov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,34,64,.68) 0%,rgba(15,34,64,.18) 50%,transparent 100%);pointer-events:none}
+.dtag{position:absolute;top:18px;right:18px;background:var(--white);color:var(--navy);padding:9px 15px;border-radius:12px;font-size:13.5px;font-weight:800;line-height:1.2;box-shadow:0 4px 14px rgba(0,0,0,.14);z-index:2}
+.dtag small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+.cbody{padding:28px;flex-grow:1;display:flex;flex-direction:column}
+.cbody h3{font-weight:800;font-size:23px;color:var(--navy);margin-bottom:9px;line-height:1.2;letter-spacing:-.5px}
+.cbody>p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.acts{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.acts li{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:var(--text);line-height:1.5;transition:var(--transition)}
+.acts li:hover{transform:translateX(-6px);color:var(--navy);font-weight:500;}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px;position:relative}
+.dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:inherit;opacity:0.25}
+.dot.v{background:var(--cv)}.dot.b{background:var(--cb)}
+
+.day-missions-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;margin-bottom:16px;
+  padding:13px 18px;border-radius:14px;
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  color:#fff;border:none;cursor:pointer;font-family:inherit;
+  font-size:14px;font-weight:700;
+  transition:var(--transition);
+  box-shadow:0 4px 14px rgba(15,34,64,.18);
+}
+.day-missions-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(15,34,64,.25)}
+.day-missions-btn:focus-visible,.tool-chip:focus-visible,.nav-links a:focus-visible,.nav-links button:focus-visible,.fab:focus-visible,.fab-docs:focus-visible{outline:2px solid var(--gold-light);outline-offset:2px}
+.day-missions-btn .dmb-left{display:flex;align-items:center;gap:10px}
+.day-missions-btn .dmb-left i{font-size:18px;color:var(--gold-light)}
+.day-missions-btn .dmb-badge{
+  background:rgba(255,255,255,.15);
+  font-size:11px;font-weight:800;
+  padding:3px 10px;border-radius:999px;
+  color:rgba(255,255,255,.8);
+  white-space:nowrap;
+}
+.day-missions-btn .dmb-badge.all-done{background:rgba(74,222,128,.25);color:#86efac}
+
+.hl{margin-top:auto;padding:15px 18px;background:var(--gold-pale);border-right:4px solid var(--gold);border-radius:0 8px 8px 0;font-size:14.5px;font-weight:600;color:#7a5a1a;line-height:1.5;display:flex;align-items:flex-start;gap:10px}
+.hl i{font-size:20px;color:var(--gold);margin-top:2px;flex-shrink:0}
+
+@keyframes ping{75%,100%{transform:scale(1.8);opacity:0}}
+.mission-check{position:relative;}
+.mission-item.done .mission-check::after{content:'';position:absolute;inset:-2px;border-radius:inherit;border:2px solid #16a34a;animation:ping 0.8s cubic-bezier(0,0,0.2,1) forwards;}
+
+footer{background:#060b14;padding:50px 24px;text-align:center;color:rgba(255,255,255,.35);font-size:14px;line-height:2}
+footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:14px 20px;border-radius:14px;font-size:14px;font-weight:600;box-shadow:0 8px 28px rgba(0,0,0,0.3);display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(12px);transition:all 0.35s cubic-bezier(0.22,1,0.36,1);pointer-events:none;z-index:9998;border:1px solid rgba(200,150,60,0.2);max-width:280px}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast i{color:var(--gold);font-size:18px;flex-shrink:0}
+
+.popup-overlay{position:fixed;inset:0;z-index:2000;background:rgba(5,12,28,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.popup-overlay.open{opacity:1;pointer-events:auto}
+.popup-box{background:#fff;border-radius:24px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 30px 80px rgba(5,12,28,0.4);transform:translateY(20px) scale(0.97);transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);scrollbar-width:thin}
+.popup-overlay.open .popup-box{transform:translateY(0) scale(1)}
+.popup-header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px 24px 16px;background:#fff;border-bottom:1px solid var(--border);border-radius:24px 24px 0 0}
+.popup-header h2{font-size:22px;font-weight:900;color:var(--navy);display:flex;align-items:center;gap:10px}
+.popup-header h2 i{color:var(--gold)}
+.popup-close{width:36px;height:36px;border-radius:50%;background:var(--bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--muted);transition:var(--transition);flex-shrink:0}
+.popup-close:hover{background:var(--border);color:var(--navy)}
+.popup-body{padding:20px 24px 24px}
+
+.missions-total{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.missions-total-bar-wrap{flex:1;background:rgba(255,255,255,.1);border-radius:999px;height:8px;overflow:hidden}
+.missions-total-bar{height:100%;background:linear-gradient(to left,var(--gold-light),var(--gold));border-radius:999px;transition:width 0.5s cubic-bezier(0.22,1,0.36,1)}
+.missions-total-txt{font-size:13px;font-weight:700;color:rgba(255,255,255,.8);white-space:nowrap}
+.missions-total-emoji{font-size:24px}
+.missions-day{margin-bottom:22px}
+.missions-day-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.day-badge{background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;letter-spacing:.5px;white-space:nowrap}
+.day-badge.b{background:var(--cb)}.day-badge.v{background:var(--cv)}
+.missions-day-hdr h3{font-size:14px;font-weight:700;color:var(--navy)}
+.missions-progress{font-size:12px;color:var(--muted);margin-right:auto;white-space:nowrap}
+.mission-item{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border-radius:12px;background:var(--bg);border:1px solid var(--border);margin-bottom:7px;cursor:pointer;transition:var(--transition);user-select:none}
+.mission-item:hover{background:var(--gold-pale);border-color:var(--gold-light)}
+.mission-item.done{background:#f0fdf4;border-color:#86efac}
+.mission-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:var(--transition);font-size:13px;background:#fff;z-index:1}
+.mission-item.done .mission-check{background:#16a34a;border-color:#16a34a;color:#fff}
+.mission-text{font-size:14px;color:var(--text);line-height:1.5}
+.mission-item.done .mission-text{color:#16a34a;text-decoration:line-through;opacity:0.7}
+
+.currency-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.ctab{flex:1;min-width:80px;padding:10px 14px;border-radius:12px;border:2px solid var(--border);background:#fff;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;transition:var(--transition);text-align:center;font-family:inherit}
+.ctab.active{border-color:var(--gold);background:var(--gold-pale);color:var(--navy)}
+.currency-main{background:var(--bg);border-radius:18px;padding:20px;margin-bottom:16px}
+.currency-input-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.currency-flag{font-size:28px;flex-shrink:0}
+.currency-input-wrap{flex:1}
+.currency-input-wrap label{display:block;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.currency-input-wrap input{width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:12px;font-size:20px;font-weight:700;color:var(--navy);background:#fff;outline:none;font-family:inherit;transition:var(--transition)}
+.currency-input-wrap input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(200,150,60,.1)}
+.currency-results{display:flex;flex-direction:column;gap:10px}
+.cresult{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 18px}
+.cresult-flag{font-size:24px;flex-shrink:0}
+.cresult-info{flex:1}
+.cname{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.cresult-val{font-size:22px;font-weight:800;color:var(--navy);font-family:'Heebo',sans-serif}
+.cresult-rate{font-size:11px;color:var(--muted);margin-top:2px}
+.currency-updated{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:5px}
+.currency-updated i{font-size:13px;color:var(--cv)}
+.rate-loading{text-align:center;padding:20px;color:var(--muted);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+.tool-section-title{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:18px 0 10px}
+.tool-section-title:first-child{margin-top:0}
+
+.pack-progress{background:var(--bg);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.pack-bar-wrap{flex:1;height:8px;border-radius:999px;background:var(--border);overflow:hidden}
+.pack-bar{height:100%;border-radius:999px;background:linear-gradient(to left,#4ade80,#16a34a);transition:width .4s cubic-bezier(0.22,1,0.36,1)}
+.pack-txt{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap}
+.pack-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:var(--bg);border:1px solid var(--border);margin-bottom:6px;cursor:pointer;transition:var(--transition)}
+.pack-item:hover{border-color:var(--gold-light)}
+.pack-item.done{background:#f0fdf4;border-color:#86efac}
+.pack-check{width:20px;height:20px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;font-size:12px}
+.pack-item.done .pack-check{background:#16a34a;border-color:#16a34a;color:#fff}
+.pack-item span{font-size:13.5px;color:var(--text)}
+.pack-item.done span{text-decoration:line-through;color:#16a34a;opacity:.75}
+.pack-item .pack-del{margin-right:auto;background:none;border:none;color:var(--muted);font-size:15px;cursor:pointer;padding:4px}
+.pack-item .pack-del:hover{color:var(--cb)}
+.pack-add-row{display:flex;gap:8px;margin-top:10px}
+.pack-add-row input{flex:1;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-family:inherit;font-size:13.5px}
+.pack-add-row button{background:var(--navy);color:#fff;border:none;border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer}
+
+.budget-total{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:16px;padding:16px 20px;color:#fff;margin-bottom:18px;text-align:center}
+.budget-total .bt-num{font-size:28px;font-weight:900;font-family:'Heebo',sans-serif}
+.budget-total .bt-lbl{font-size:12px;opacity:.7;margin-top:2px}
+.budget-cat{margin-bottom:14px}
+.budget-cat-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13.5px}
+.budget-cat-hdr b{color:var(--navy)}
+.budget-cat-hdr span{color:var(--muted);font-size:12px}
+.budget-bar-wrap{height:10px;border-radius:999px;background:var(--border);overflow:hidden}
+.budget-bar{height:100%;border-radius:999px;transition:width .4s cubic-bezier(0.22,1,0.36,1)}
+.budget-add{display:flex;gap:8px;margin-top:18px}
+.budget-add select,.budget-add input{padding:10px 12px;border:2px solid var(--border);border-radius:10px;font-family:inherit;font-size:13px}
+.budget-add select{flex:1}
+.budget-add input{width:90px}
+.budget-add button{background:var(--gold);color:var(--navy);border:none;border-radius:10px;padding:0 16px;font-weight:800;cursor:pointer}
+.budget-reset{display:block;margin:14px auto 0;background:none;border:none;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer;font-family:inherit}
+.budget-over{color:var(--cb)!important;font-weight:800}
+
+.gallery-day-select{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.gday-btn{border:2px solid var(--border);background:#fff;border-radius:999px;padding:6px 13px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;transition:var(--transition)}
+.gday-btn.active{border-color:var(--gold);background:var(--gold-pale);color:var(--navy)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.gallery-thumb{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--bg);border:1px solid var(--border)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-thumb button{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:rgba(15,34,64,.75);color:#fff;border:none;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.gallery-empty{grid-column:1/-1;text-align:center;padding:30px 10px;color:var(--muted);font-size:13.5px}
+.gallery-upload{display:block;width:100%;padding:14px;border:2px dashed var(--gold-light);border-radius:14px;text-align:center;color:var(--gold);font-weight:700;font-size:13.5px;cursor:pointer;background:var(--gold-pale)}
+.gallery-upload input{display:none}
+.gallery-upload.uploading{opacity:.6;pointer-events:none}
+
+.map-day-select{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.map-frame-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:300px;margin-bottom:12px;background:var(--bg)}
+.map-frame-wrap iframe{width:100%;height:100%;border:0}
+.map-open-link{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;padding:12px;border-radius:12px;font-weight:700;font-size:13.5px}
+
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.ach-item{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;opacity:.35;filter:grayscale(1);transition:var(--transition)}
+.ach-item.unlocked{opacity:1;filter:none;background:linear-gradient(135deg,#fffdf5,#fff9e8);border-color:var(--gold-light)}
+.ach-item .ai{font-size:30px;margin-bottom:6px}
+.ach-item .at{font-size:12px;font-weight:800;color:var(--navy);line-height:1.4}
+
+.day-weather{display:flex;align-items:center;gap:10px;background:#eef7ff;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#1e4a70}
+.day-weather i{font-size:20px;color:var(--cv)}
+.day-weather b{font-family:'Heebo',sans-serif}
+
+body.dark{--bg:#0c1424;--text:#dbe4f0;--muted:#8a97ac;--border:#233047;--white:#131c2e;--bg-b:#170f14}
+body.dark .card,body.dark .popup-box,body.dark .fchip,body.dark .dash-tile,body.dark .food-box,body.dark .pack-item,body.dark .tool-chip,body.dark .budget-cat-hdr,body.dark .gday-btn,body.dark .cresult,body.dark .currency-main,body.dark .ach-item,body.dark .mission-item{background:var(--white);color:var(--text)}
+body.dark .cbody h3,body.dark .sec-title,body.dark .popup-header h2,body.dark .cname-{color:#fff}
+body.dark .popup-header{background:var(--white)}
+body.dark .fact-box{background:#101b2e;color:#bcd4ee}
+body.dark .day-weather{background:#0f1e2e;color:#bcd4ee}
+body.dark .hero{background:linear-gradient(180deg,#141826 0%,#0f1420 56%,var(--bg) 100%)}
+body.dark .hero-actions{background:rgba(20,26,40,.9);border-color:rgba(200,150,60,.18)}
+body.dark .btn-o{background:#131c2e;color:#fff}
+body.dark .mission{background:linear-gradient(135deg,#1c1708,#181305)}
+body.dark .hl{background:#1c1708}
+body.dark #budapest{background:var(--bg-b)!important}
+body.dark .dash-tile .dv{color:#fff}
+
+.fact-box{display:flex;gap:10px;align-items:flex-start;background:#eef4fb;border-radius:12px;padding:12px 15px;margin-bottom:14px;font-size:13.5px;color:#2c4a70;line-height:1.55}
+.fact-box i{color:var(--cv);font-size:19px;flex-shrink:0;margin-top:1px}
+.fact-box strong{color:var(--cv);font-weight:800}
+.food-box{background:#fff6ee;border:1px solid rgba(200,150,60,.25);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.food-hdr{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.food-name{font-weight:800;color:var(--navy);font-size:15.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.food-stars{color:var(--gold);font-size:13px;letter-spacing:1px}
+.food-tip{font-size:13.5px;color:var(--text);margin-top:5px;line-height:1.5}
+.food-meta{font-size:12px;color:var(--muted);margin-top:7px;display:flex;align-items:center;gap:6px}
+.food-meta i{color:var(--cv)}
+
+.day-tools-row{display:flex;gap:8px;margin-bottom:16px}
+.tool-chip{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 8px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;font-family:inherit;transition:var(--transition)}
+.tool-chip:hover{background:var(--gold-pale);border-color:var(--gold-light)}
+.tool-chip i{font-size:16px;color:var(--gold)}
+
+.score-box{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg);border-radius:12px;padding:12px 15px;margin-top:14px;flex-wrap:wrap}
+.score-label{font-size:13px;font-weight:700;color:var(--muted)}
+.score-stars{display:flex;gap:3px;direction:ltr}
+.score-star{font-size:20px;cursor:pointer;color:#d8dee8;transition:var(--transition);line-height:1;background:none;border:none;padding:0}
+.score-star.on{color:var(--gold)}
+.score-star:hover{transform:scale(1.15)}
+
+.dash{max-width:1180px;margin:0 auto 8px;padding:0 18px}
+.dash-card{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:26px;padding:26px 28px;box-shadow:0 20px 50px rgba(15,34,64,.22);position:relative;overflow:hidden}
+.dash-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(200,150,60,.14),transparent 40%),radial-gradient(circle at 90% 80%,rgba(74,127,193,.12),transparent 45%);pointer-events:none}
+.dash-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.dash-title{color:#fff;font-weight:900;font-size:19px;display:flex;align-items:center;gap:10px}
+.dash-title i{color:var(--gold-light);font-size:22px}
+.dash-daytag{background:rgba(200,150,60,.18);border:1px solid rgba(200,150,60,.3);color:var(--gold-light);font-size:12.5px;font-weight:800;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.dash-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.dash-tile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 14px;text-align:center;backdrop-filter:blur(4px)}
+.dash-tile i{font-size:20px;color:var(--gold-light);margin-bottom:6px;display:block}
+.dash-tile .dv{color:#fff;font-weight:800;font-size:18px;font-family:'Heebo',sans-serif;line-height:1.2}
+.dash-tile .dl{color:rgba(255,255,255,.55);font-size:11px;font-weight:600;margin-top:2px}
+.dash-countdown{position:relative;z-index:1;display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.cd-unit{background:rgba(0,0,0,.22);border:1px solid rgba(200,150,60,.2);border-radius:14px;padding:10px 16px;min-width:66px;text-align:center}
+.cd-unit .num{color:var(--gold-light);font-weight:900;font-size:24px;font-family:'Heebo',sans-serif;line-height:1}
+.cd-unit .lbl{color:rgba(255,255,255,.55);font-size:10.5px;margin-top:4px;font-weight:600}
+.dash-actions{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.dash-actions button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:12.5px;font-weight:700;padding:9px 15px;border-radius:999px;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:var(--transition)}
+.dash-actions button:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+
+@media(max-width:900px){
+  html{scroll-padding-top:90px}
+  .grid{grid-template-columns:1fr}
+  .xfer-in{grid-template-columns:1fr;text-align:center;justify-items:center;gap:22px}
+  .nav-center{display:none}
+}
+@media(max-width:700px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  html{scroll-padding-top:106px}
+  .nav-in{height:auto;padding:10px 12px 8px;flex-direction:column;align-items:center;gap:8px}
+  .nav-brand{width:100%;justify-content:center;font-size:15px}
+  .nav-links{width:100%;overflow-x:auto;overflow-y:hidden;display:flex;justify-content:flex-start;gap:6px;padding:2px 0 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a,.nav-links button{flex:0 0 auto;white-space:nowrap;font-size:13px;padding:7px 12px}
+  .day-progress{font-size:11px;padding:5px 12px;gap:8px}
+  .dp-dot{width:16px}
+  .tstrip{top:90px}
+  .tstrip-in{padding:0 8px}
+  .ts{flex:0 0 78px;min-width:78px;padding:12px 8px;font-size:12px}
+  .hero{padding:14px 10px 26px}
+  .hero-poster{border-radius:18px;margin:0 auto 14px}
+  .hero-actions{padding:14px 12px 16px;border-radius:20px}
+  .dash{padding:0 10px}
+  .dash-card{padding:18px 16px;border-radius:20px}
+  .dash-grid{grid-template-columns:repeat(2,1fr)}
+  .cd-unit{min-width:56px;padding:8px 10px}
+  .cd-unit .num{font-size:19px}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .ach-grid{grid-template-columns:1fr}
+  .day-tools-row{flex-direction:column}
+  .flight-row{display:grid;grid-template-columns:1fr;gap:9px;margin-bottom:14px}
+  .fchip{width:100%;justify-content:center;padding:11px 12px;font-size:13.5px}
+  .btns{display:grid;grid-template-columns:1fr;gap:10px}
+  .btn{width:100%;justify-content:center;padding:14px 16px;font-size:15px}
+  .wrap{padding:56px 14px}
+  .sec-title{font-size:32px;letter-spacing:-.8px}
+  .sec-desc{font-size:15.5px}
+  .grid{gap:18px}
+  .card{border-radius:20px}
+  .cimg-w{height:215px}
+  .cbody{padding:20px 16px}
+  .cbody h3{font-size:21px}
+  .mission{padding:12px 14px}
+  .hl{padding:13px 15px}
+  .xfer-in{padding:56px 16px}
+  .fab,.fab-docs{width:48px;height:48px;font-size:22px}
+  .fab{bottom:16px;left:16px}
+  .fab-docs{bottom:76px;left:16px}
+  .toast{bottom:16px;right:16px;max-width:calc(100vw - 80px);font-size:13px}
+  .popup-box{border-radius:20px}
+  .popup-header{padding:16px 18px 14px}
+  .popup-header h2{font-size:18px}
+  .popup-body{padding:16px 18px 20px}
+  .cresult-val{font-size:18px}
+}
+@media(max-width:400px){
+  .nav-links a,.nav-links button{font-size:12px;padding:6px 10px}
+  .ts{flex:0 0 72px;min-width:72px}
+  .sec-title{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><i class="ph ph-check-circle"></i><span id="toast-msg"></span></div>
+<button class="fab" id="fab-top" title="חזרה למעלה" aria-label="חזרה למעלה" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ph ph-arrow-up"></i></button>
+<a href="https://drive.google.com/drive/folders/15b15MtqrbGSFqjxrhAavWluYdvImcwG6?usp=drive_link" target="_blank" rel="noopener" class="fab-docs" title="מסמכים חשובים" aria-label="מסמכים חשובים"><i class="ph ph-folder-open"></i></a>
+
+<!-- ══ MISSIONS POPUP ══ -->
+<div class="popup-overlay" id="missionsPopup" role="dialog" aria-modal="true" aria-labelledby="missionsPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="missionsPopupTitle"><i class="ph ph-star"></i> לוח משימות</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('missionsPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="missions-total">
+        <div class="missions-total-emoji" id="missionsEmoji">🎯</div>
+        <div class="missions-total-bar-wrap"><div class="missions-total-bar" id="missionsTotalBar" style="width:0%"></div></div>
+        <div class="missions-total-txt" id="missionsTotalTxt">0 / 40</div>
+      </div>
+      <div id="missionsContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CURRENCY POPUP ══ -->
+<div class="popup-overlay" id="currencyPopup" role="dialog" aria-modal="true" aria-labelledby="currencyPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="currencyPopupTitle"><i class="ph ph-currency-circle-dollar"></i> המרת מטבע</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('currencyPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="currency-tabs">
+        <button class="ctab active" onclick="setCurrencyBase('ILS',this)">🇮🇱 שקל</button>
+        <button class="ctab" onclick="setCurrencyBase('EUR',this)">🇪🇺 אירו</button>
+        <button class="ctab" onclick="setCurrencyBase('HUF',this)">🇭🇺 פורינט</button>
+      </div>
+      <div class="currency-main">
+        <div class="currency-input-row">
+          <div class="currency-flag" id="baseFlag">🇮🇱</div>
+          <div class="currency-input-wrap">
+            <label id="baseLabel" for="currencyInput">סכום בשקלים (₪)</label>
+            <input type="number" id="currencyInput" value="100" oninput="convertCurrency()" inputmode="decimal" min="0">
+          </div>
+        </div>
+        <div class="currency-results" id="currencyResults">
+          <div class="rate-loading">טוען שערים עדכניים...</div>
+        </div>
+      </div>
+      <div class="currency-updated" id="rateUpdated"><i class="ph ph-clock"></i><span>טוען...</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PACKING POPUP ══ -->
+<div class="popup-overlay" id="packingPopup" role="dialog" aria-modal="true" aria-labelledby="packingPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="packingPopupTitle"><i class="ph ph-suitcase-rolling"></i> רשימת ציוד</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('packingPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="pack-progress">
+        <div class="pack-bar-wrap"><div class="pack-bar" id="packBar" style="width:0%"></div></div>
+        <div class="pack-txt" id="packTxt">0/0</div>
+      </div>
+      <div id="packList"></div>
+      <div class="pack-add-row">
+        <input type="text" id="packNewItem" placeholder="הוסיפו פריט משלכם..." onkeydown="if(event.key==='Enter')addPackItem()">
+        <button onclick="addPackItem()" aria-label="הוספת פריט"><i class="ph ph-plus"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BUDGET POPUP ══ -->
+<div class="popup-overlay" id="budgetPopup" role="dialog" aria-modal="true" aria-labelledby="budgetPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="budgetPopupTitle"><i class="ph ph-wallet"></i> תקציב הטיול</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('budgetPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="budget-total">
+        <div class="bt-num" id="budgetTotalNum">₪0</div>
+        <div class="bt-lbl">סה"כ הוצאות שנרשמו</div>
+      </div>
+      <div id="budgetCats"></div>
+      <div class="budget-add">
+        <select id="budgetCatSelect"></select>
+        <input type="number" id="budgetAmount" placeholder="₪ סכום" min="0">
+        <button onclick="addExpense()" aria-label="הוספת הוצאה"><i class="ph ph-plus"></i></button>
+      </div>
+      <button class="budget-reset" onclick="resetBudget()">איפוס כל ההוצאות</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GALLERY POPUP ══ -->
+<div class="popup-overlay" id="galleryPopup" role="dialog" aria-modal="true" aria-labelledby="galleryPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="galleryPopupTitle"><i class="ph ph-images"></i> Memory Wall</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('galleryPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="gallery-day-select" id="galleryDaySelect"></div>
+      <label class="gallery-upload" id="galleryUploadLabel"><i class="ph ph-upload-simple"></i> <span id="galleryUploadText">הוסיפו תמונות מהיום</span>
+        <input type="file" id="galleryUploadInput" accept="image/*" multiple onchange="handleGalleryUpload(event)">
+      </label>
+      <br><br>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAP POPUP ══ -->
+<div class="popup-overlay" id="mapPopup" role="dialog" aria-modal="true" aria-labelledby="mapPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="mapPopupTitle"><i class="ph ph-map-trifold"></i> מפת המסלול</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('mapPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="map-day-select" id="mapDaySelect"></div>
+      <div class="map-frame-wrap"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="מפת יעד"></iframe></div>
+      <a class="map-open-link" id="mapOpenLink" href="#" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i> פתחו ב-Google Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACHIEVEMENTS POPUP ══ -->
+<div class="popup-overlay" id="achievementsPopup" role="dialog" aria-modal="true" aria-labelledby="achievementsPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="achievementsPopupTitle"><i class="ph ph-trophy"></i> הישגים</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('achievementsPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="ach-grid" id="achGrid"></div>
+    </div>
+  </div>
+</div>
+
+<div id="pb"></div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="#" class="nav-brand"><i class="ph ph-airplane-takeoff"></i> קיץ 2026</a>
+    <div class="nav-center">
+      <div class="w-item"><i class="ph ph-sun"></i><span id="navWeatherV">וינה: טוען...</span></div>
+      <div class="w-item"><i class="ph ph-sun"></i><span id="navWeatherB">בודפשט: טוען...</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#vienna"><i class="ph ph-map-pin"></i> וינה</a>
+      <a href="#budapest"><i class="ph ph-map-pin"></i> בודפשט</a>
+      <button class="nav-special" onclick="openPopup('currencyPopup')"><i class="ph ph-currency-circle-dollar"></i> מטבע</button>
+      <button onclick="openMapForDay('day1')"><i class="ph ph-map-trifold"></i> מפה</button>
+      <button onclick="openPopup('packingPopup')"><i class="ph ph-suitcase-rolling"></i> ציוד</button>
+      <button onclick="openBudgetPopup()"><i class="ph ph-wallet"></i> תקציב</button>
+      <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> תמונות</button>
+      <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
+      <button onclick="toggleDarkMode()" title="מצב לילה" aria-label="החלפת מצב תצוגה בהיר/כהה"><i class="ph ph-moon-stars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="day-progress">
+  <span class="dp-label"><i class="ph ph-calendar-check"></i> מסלול 8 ימים</span>
+  <div class="dp-dots" id="dpDots">
+    <div class="dp-dot v" data-day="day1"></div>
+    <div class="dp-dot v" data-day="day2"></div>
+    <div class="dp-dot v" data-day="day3"></div>
+    <div class="dp-dot v" data-day="day4"></div>
+    <div class="dp-dot b" data-day="day5"></div>
+    <div class="dp-dot b" data-day="day6"></div>
+    <div class="dp-dot b" data-day="day7"></div>
+    <div class="dp-dot b" data-day="day8"></div>
+  </div>
+  <span id="dp-current-label" style="color:rgba(255,255,255,0.5);font-size:11px;min-width:70px;text-align:center"></span>
+</div>
+
+<div class="tstrip">
+  <div class="tstrip-in">
+    <a href="#vienna"   class="ts v active_sec">יום 1<small>חמישי 20.8</small></a>
+    <a href="#day2"     class="ts v">יום 2<small>שישי 21.8</small></a>
+    <a href="#day3"     class="ts v">יום 3<small>שבת 22.8</small></a>
+    <a href="#day4"     class="ts v">יום 4<small>ראשון 23.8</small></a>
+    <div class="tstrip-sep"></div>
+    <a href="#budapest" class="ts b">יום 5<small>שני 24.8</small></a>
+    <a href="#day6"     class="ts b">יום 6<small>שלישי 25.8</small></a>
+    <a href="#day7"     class="ts b">יום 7<small>רביעי 26.8</small></a>
+    <a href="#day8"     class="ts b">יום 8<small>חמישי 27.8</small></a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="hero-poster reveal">
+      <img src="hero-family.png" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1516550135131-fe3dcdd41517?auto=format&fit=crop&w=1200&q=80'" alt="וינה ובודפשט – טיול משפחתי קיץ 2026">
+    </div>
+    <div class="hero-actions reveal">
+      <div class="flight-row">
+        <div class="fchip"><i class="ph ph-airplane-tilt"></i><strong>20.8</strong>&nbsp;טיסה לוינה 06:20</div>
+        <div class="fchip"><i class="ph ph-train"></i><strong>24.8</strong>&nbsp;רכבת לבודפשט 11:40</div>
+        <div class="fchip"><i class="ph ph-airplane-landing"></i><strong>27.8</strong>&nbsp;חזרה מבודפשט 09:20</div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-g" href="#vienna"><i class="ph ph-mountains"></i> גלו את וינה</a>
+        <a class="btn btn-o" href="#budapest"><i class="ph ph-castle-turret"></i> גלו את בודפשט</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════ LIVE DASHBOARD ══════ -->
+<div class="dash reveal">
+  <div class="dash-card">
+    <div class="dash-top">
+      <div class="dash-title"><i class="ph ph-airplane-tilt"></i> וינה ← בודפשט · קיץ 2026</div>
+      <div class="dash-daytag" id="dashDayTag">טוען מסלול…</div>
+    </div>
+    <div class="dash-grid">
+      <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeatherV">--°</div><div class="dl">וינה עכשיו</div></div>
+      <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeatherB">--°</div><div class="dl">בודפשט עכשיו</div></div>
+      <div class="dash-tile"><i class="ph ph-currency-eur"></i><div class="dv" id="dashRate">--</div><div class="dl">1 € בשקלים</div></div>
+      <div class="dash-tile"><i class="ph ph-star"></i><div class="dv" id="dashMissions">0/40</div><div class="dl">משימות שהושלמו</div></div>
+    </div>
+    <div class="dash-countdown" id="dashCountdown"></div>
+    <div class="dash-actions">
+      <button onclick="openPopup('packingPopup')"><i class="ph ph-suitcase-rolling"></i> ציוד</button>
+      <button onclick="openBudgetPopup()"><i class="ph ph-wallet"></i> תקציב</button>
+      <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> אלבום</button>
+      <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
+      <button onclick="openPopup('missionsPopup')"><i class="ph ph-star"></i> משימות</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ VIENNA ══════ -->
+<section id="vienna">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="clbl v"><i class="ph ph-flag"></i> אוסטריה · 4 ימים</div>
+      <h2 class="sec-title">וינה הקלאסית</h2>
+      <p class="sec-desc">היסטוריה, אמנות ופארקים קיסריים בקצב וינאי מוקפד.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card reveal" id="day1">
+        <div class="cimg-w"><img src="1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80'" alt="יום 1" loading="lazy"><div class="cov"></div><div class="dtag">יום 1<small>חמישי · 20.8</small></div></div>
+        <div class="cbody">
+          <h3>נחיתה, מרכז העיר ו-Demel</h3>
+          <p>נחיתה, צ׳ק-אין (או השארת מזוודות), Stephansplatz, קתדרלת סנט סטפן, Graben, Kohlmarkt, Demel, קניות קלות וארוחת ערב.</p>
+          <ul class="acts">
+            <li><span class="dot v"></span>נחיתה · הגעה למלון / השארת מזוודות</li>
+            <li><span class="dot v"></span>מנוחה קלה והתרעננות חיונית</li>
+            <li><span class="dot v"></span>סיור רגלי ב-Stephansplatz ורחוב Graben</li>
+            <li><span class="dot v"></span>עצירת חובה לקפה ועוגה ב-Demel המפורסם</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day1" onclick="openMissionsForDay('day1')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day1">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> כנסיית סטפנוס (Stephansdom) התחילה להיבנות במאה ה-12, וגג הרעפים המפורסם שלה עשוי מ-230,000 רעפים צבעוניים!</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Plachutta Wollzeile <span class="food-stars">★★★★★</span></div>
+            <div class="food-tip">מומלץ להזמין שניצל וינאי קלאסי (Wiener Schnitzel) - מוסד וינאי אמיתי.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-8 דקות הליכה מהאזור המרכזי</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day1')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day1')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day1" data-day="day1"></div>
+          </div>
+          <div class="hl"><i class="ph ph-coffee"></i> פתיחה וינאית קלאסית עם קפה משובח ועוגות.</div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="day2">
+        <div class="cimg-w"><img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?auto=format&fit=crop&w=900&q=80'" alt="יום 2" loading="lazy"><div class="cov"></div><div class="dtag">יום 2<small>שישי · 21.8</small></div></div>
+        <div class="cbody">
+          <h3>ZOOM בבוקר ו‑Prater בערב</h3>
+          <p>בוקר במוזיאון הילדים ZOOM, שנ״ץ במלון, ובערב פארק Prater.</p>
+          <ul class="acts">
+            <li><span class="dot v"></span>בוקר במוזיאון הילדים ZOOM</li>
+            <li><span class="dot v"></span>חזרה למלון לשנ״ץ</li>
+            <li><span class="dot v"></span>בערב יציאה ל‑Prater</li>
+            <li><span class="dot v"></span>הגלגל הענק, מתקנים וגלידה</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day2" onclick="openMissionsForDay('day2')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day2">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> הגלגל הענק של פראטר (Wiener Riesenrad) נבנה ב-1897 ומגיע לגובה 65 מטר - הוא היה הגלגל הענק הכי גבוה בעולם כשנבנה.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Schweizerhaus <span class="food-stars">★★★★☆</span></div>
+            <div class="food-tip">גן בירה משפחתי בתוך פראטר, מפורסם בקנוקל צלוי - מקום מושלם אחרי הגלגל הענק.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך שטח פראטר, 5 דקות מהגלגל</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day2')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day2')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day2" data-day="day2"></div>
+          </div>
+          <div class="hl"><i class="ph ph-shooting-star"></i> למידה חוויתית בבוקר, וכיף טהור משחרר בערב.</div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="day3">
+        <div class="cimg-w"><img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=900&q=80'" alt="יום 3" loading="lazy"><div class="cov"></div><div class="dtag">יום 3<small>שבת · 22.8</small></div></div>
+        <div class="cbody">
+          <h3>בוקר בשוק, MQ והעיר העתיקה</h3>
+          <p>יום וינאי רגוע שמתחיל בבראנץ׳ בשוק, ממשיך ברביצה ברובע המוזיאונים, ומסתיים בלב הקיסרי.</p>
+          <ul class="acts">
+            <li><span class="dot v"></span>בראנץ' מתגלגל בנאשמרקט ושוק הפשפשים</li>
+            <li><span class="dot v"></span>תמונות משפחתיות מול הקארלסקירכה המרשימה</li>
+            <li><span class="dot v"></span>רוגע עירוני על ספות הענק ברובע המוזיאונים (MQ)</li>
+            <li><span class="dot v"></span>גנים וקיסרים: Burggarten, בית הפרפרים ומתחם Hofburg</li>
+            <li><span class="dot v"></span>קפה, קינוח מסורתי וארוחת ערב בעיר העתיקה</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day3" onclick="openMissionsForDay('day3')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day3">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> ספות הענק ברחבת ה-MQ נקראות "Enzis". בכל קיץ תושבי וינה מצביעים על הצבע החדש שלהן! פעם הן היו ירוקות, אחר כך כחולות, והשנה... תגלו כשתגיעו.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">NENI am Naschmarkt <span class="food-stars">★★★★★</span></div>
+            <div class="food-tip">המסעדה האהובה (של שפית ישראלית) באמצע השוק - אוכל ים-תיכוני טעים ומשפחתי, מושלם לבראנץ' או צהריים.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך שוק הנאשמרקט</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day3')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day3')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day3" data-day="day3"></div>
+          </div>
+          <div class="hl"><i class="ph ph-shopping-bag"></i> בראנץ' מושחת בבוקר, וסיום קיסרי עם שטרודל מול הארמון.</div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="day4">
+        <div class="cimg-w"><img src="4.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80'" alt="יום 4" loading="lazy"><div class="cov"></div><div class="dtag">יום 4<small>ראשון · 23.8</small></div></div>
+        <div class="cbody">
+          <h3>גן חיות שנברון + גנים מלכותיים</h3>
+          <p>יום שלם בגן החיות של Schönbrunn, גני הארמון, Gloriette וזמן משפחתי.</p>
+          <ul class="acts">
+            <li><span class="dot v"></span>יציאה מוקדמת ל-Tiergarten Schönbrunn</li>
+            <li><span class="dot v"></span>סיור במתחמים המודרניים בקצב רגוע</li>
+            <li><span class="dot v"></span>צהריים קליל באחת המסעדות בתוך המתחם</li>
+            <li><span class="dot v"></span>טיול בגנים ההיסטוריים ותצפית מהגלורייט</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day4" onclick="openMissionsForDay('day4')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day4">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> לארמון שנברון יש 1,441 חדרים! רק חלק קטן מהם פתוח למבקרים, וגן החיות שבשטחו הוא אחד הוותיקים בעולם - נפתח כבר ב-1752.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Landtmann's Jausen Station <span class="food-stars">★★★★☆</span></div>
+            <div class="food-tip">בתוך גני שנברון עצמם - אידיאלי לארוחת צהריים קלה בלי לצאת מהמתחם.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך גני הארמון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day4')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day4')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day4" data-day="day4"></div>
+          </div>
+          <div class="hl"><i class="ph ph-tree"></i> חווית חיות ייחודית על רקע ארמון קיסרי.</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ BUDAPEST ══════ -->
+<section id="budapest" style="background:var(--bg-b)">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="clbl b"><i class="ph ph-flag"></i> הונגריה · 4 ימים</div>
+      <h2 class="sec-title">בודפשט התוססת</h2>
+      <p class="sec-desc">מלון Marriott על הדנובה, שופינג, מצודת הדייגים והמון חוויות מרגשות.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card reveal" id="day5">
+        <div class="cimg-w"><img src="5.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=900&q=80'" alt="יום 5" loading="lazy"><div class="cov"></div><div class="dtag">יום 5<small>שני · 24.8</small></div></div>
+        <div class="cbody">
+          <h3><i class="ph ph-train-regional" style="color:var(--cb);margin-left:6px"></i>מעבר לבודפשט + EZRaider למצודה</h3>
+          <p>רכבת מווינה, צ'ק-אין במלון Marriott, מנוחה, ובשעה 18:30 סיור EZRaider למצודת הדייגים.</p>
+          <ul class="acts">
+            <li><span class="dot b"></span>ארוחת בוקר ואריזות אחרונות במלון בווינה</li>
+            <li><span class="dot b"></span>נסיעה לתחנת הרכבת ורכבת לבודפשט בשעה 11:40</li>
+            <li><span class="dot b"></span>הגעה למלון Marriott Budapest וצ'ק-אין</li>
+            <li><span class="dot b"></span>מנוחה קצרה במלון</li>
+            <li><span class="dot b"></span>18:30 · סיור EZRaider Budapest למצודת הדייגים</li>
+            <li><span class="dot b"></span>ארוחת ערב</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day5" onclick="openMissionsForDay('day5')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day5">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> מצודת הדייגים נבנתה בין 1895-1902 ויש בה 7 מגדלים - כל אחד מסמל אחד משבעת השבטים המגיארים שייסדו את הונגריה. בערב, כשהיא מוארת, הנוף על הפרלמנט משם עוצר נשימה.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Stand25 Bisztró <span class="food-stars">★★★★★</span></div>
+            <div class="food-tip">מטבח הונגרי מודרני במחירים סבירים, קרוב לטיילת - נהדר לערב ראשון בעיר.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-10 דקות הליכה מהמלון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day5')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day5')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day5" data-day="day5"></div>
+          </div>
+          <div class="hl"><i class="ph ph-sparkles"></i> בודפשט נדלקת בלילה והיא יפה מאי פעם.</div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="day6">
+        <div class="cimg-w"><img src="6.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80'" alt="יום 6" loading="lazy"><div class="cov"></div><div class="dtag">יום 6<small>שלישי · 25.8</small></div></div>
+        <div class="cbody">
+          <h3>🛍️ קניות ו-Budapest Eye</h3>
+          <p>Arena Mall, Primark, מנוחה, גלגל הענק Budapest Eye, גלידה והליכה בכיכר Erzsébet ובטיילת.</p>
+          <ul class="acts">
+            <li><span class="dot b"></span>ארוחת בוקר</li>
+            <li><span class="dot b"></span>10:00–13:30 · Arena Mall + <strong>Primark!</strong></li>
+            <li><span class="dot b"></span>צהריים קליל ומהיר במתחם האוכל</li>
+            <li><span class="dot b"></span>חזרה למלון מריוט למנוחה קצרה</li>
+            <li><span class="dot b"></span>אחה"צ: 🎡 Budapest Eye ואחריו 🍦 גלידה</li>
+            <li><span class="dot b"></span>הליכה נעימה בכיכר Erzsébet ובטיילת</li>
+            <li><span class="dot b"></span>ארוחת ערב</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day6" onclick="openMissionsForDay('day6')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day6">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> Budapest Eye ניצב בכיכר Erzsébet ומגיע לגובה 65 מטר - נקודת תצפית מעולה בדיוק בלב מרכז העיר, ומהחלונות שלו רואים כמעט את כל בודפשט.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">מתחם האוכל ב-Arena Mall <span class="food-stars">★★★☆☆</span></div>
+            <div class="food-tip">אפשרויות מהירות ומגוונות לצהריים בין הקניות - כל אחד בוחר מה שהוא אוהב.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך הקניון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day6')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day6')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day6" data-day="day6"></div>
+          </div>
+          <div class="hl"><i class="ph ph-ferris-wheel"></i> שופינג מטורף בבוקר, ותצפית מהממת מלמעלה בערב.</div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="day7">
+        <div class="cimg-w"><img src="7.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=900&q=80'" alt="יום 7" loading="lazy"><div class="cov"></div><div class="dtag">יום 7<small>רביעי · 26.8</small></div></div>
+        <div class="cbody">
+          <h3>🚍🚤 RiverRide, בזיליקה והרובע היהודי</h3>
+          <p>סיור אמפיבי RiverRide בדנובה, בזיליקת סנט אישטוון, הרובע היהודי, חצרות Gozsdu, אריזות וארוחת ערב אחרונה.</p>
+          <ul class="acts">
+            <li><span class="dot b"></span>ארוחת בוקר</li>
+            <li><span class="dot b"></span>RiverRide Budapest — סיור אמפיבי מיוחד ביבשה ובנהר</li>
+            <li><span class="dot b"></span>בזיליקת סנט אישטוון (St. Stephen's Basilica)</li>
+            <li><span class="dot b"></span>ארוחת צהריים</li>
+            <li><span class="dot b"></span>הרובע היהודי וחצרות Gozsdu</li>
+            <li><span class="dot b"></span>אריזות לקראת הטיסה</li>
+            <li><span class="dot b"></span>19:30 · ארוחת ערב אחרונה בבודפשט</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day7" onclick="openMissionsForDay('day7')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day7">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> בזיליקת סנט אישטוון מגיעה בדיוק לגובה 96 מטר - בדיוק כמו בניין הפרלמנט ההונגרי. זה לא מקרי: לפי חוק ישן, שום בניין בבודפשט לא בנוי גבוה יותר, כסמל לאיזון בין דת לשלטון.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">Mazel Tov <span class="food-stars">★★★★★</span></div>
+            <div class="food-tip">מסעדה תוססת בחצרות Gozsdu עם חצר פנימית מוארת - אווירה מיוחדת לערב האחרון.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-5 דקות מהרובע היהודי</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day7')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day7')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day7" data-day="day7"></div>
+          </div>
+          <div class="hl"><i class="ph ph-star-of-david"></i> הרפתקה על המים בבוקר + סיום תרבותי ברובע היהודי.</div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="day8">
+        <div class="cimg-w"><img src="8.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80'" alt="יום 8" loading="lazy"><div class="cov"></div><div class="dtag">יום 8<small>חמישי · 27.8</small></div></div>
+        <div class="cbody">
+          <h3>יום 8 — חוזרים הביתה</h3>
+          <p>השכמה מוקדמת, צ׳ק-אאוט, נסיעה לשדה וטיסה בשעה 09:20.</p>
+          <ul class="acts">
+            <li><span class="dot b"></span>יציאה מוקדמת מהמלון לשדה התעופה</li>
+            <li><span class="dot b"></span>צ׳ק-אין ובידוק ביטחוני</li>
+            <li><span class="dot b"></span>09:20 · טיסה חזרה מבודפשט</li>
+          </ul>
+          <button class="day-missions-btn" id="dmb-day8" onclick="openMissionsForDay('day8')">
+            <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
+            <div class="dmb-badge" id="dmb-badge-day8">0 / 5</div>
+          </button>
+          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> המרחק בין וינה לבודפשט הוא כ-240 ק"מ בלבד - פחות משעתיים וחצי נסיעה ברכבת, וזו הסיבה שהשתיים הן צמד יעדים כל כך פופולרי.</div></div>
+          <div class="food-box">
+            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
+            <div class="food-name">ארוחת בוקר במלון <span class="food-stars">★★★★☆</span></div>
+            <div class="food-tip">כדאי לנצל את ארוחת הבוקר במלון לפני היציאה - יום טיסה עמוס ולא תמיד יהיה זמן בהמשך.</div>
+            <div class="food-meta"><i class="ph ph-map-pin"></i> במלון</div>
+          </div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openGalleryForDay('day8')"><i class="ph ph-camera"></i> תמונות מהיום</button>
+            <button class="tool-chip" onclick="openMapForDay('day8')"><i class="ph ph-map-trifold"></i> מפה</button>
+          </div>
+          <div class="score-box">
+            <span class="score-label">איך היה היום?</span>
+            <div class="score-stars" id="score-day8" data-day="day8"></div>
+          </div>
+          <div class="hl"><i class="ph ph-house-line"></i> סיום רגוע ומסודר אחרי ערב אריזות מוקדם.</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  נבנה באהבה לטיול המשפחתי של אבי, אלינור, אלמה ואליאנה <span>✦</span> קיץ 2026<br>
+  וינה · בודפשט · זיכרונות טובים
+</footer>
+
+<script>
+/* ══════════════════════════════════════
+   MISSIONS DATA – 5 per day
+══════════════════════════════════════ */
+const MISSIONS = {
+  day1:{label:'יום 1 – וינה',badge:'v',tasks:[
+    'חפשו בחלון Demel את העוגה שהכי מזכירה צורה של פרח',
+    'צלמו את קתדרלת סטפנוס מזווית מיוחדת שאף אחד לא יחשוב עליה',
+    'מצאו שלט ברחוב שכתוב בו מספר שיש בו את הספרה 2',
+    'קנו משהו מתוק מאוד וינאי וספרו לאמא מה הטעם',
+    'מצאו ספסל נחמד וצלמו עליו תמונה משפחתית'
+  ]},
+  day2:{label:'יום 2 – וינה',badge:'v',tasks:[
+    'ספרו כמה קרונות אדומים יש לגלגל הענק של פראטר',
+    'עלו על Liliputbahn - הרכבת הקטנה של פראטר - וספרו כמה תחנות היא עוברת',
+    'מצאו פסל או פיסול בפראטר וצלמו לצידו',
+    'אכלו גלידה בוינה ותארו את הטעם ב-3 מילים',
+    'ספרו כמה נורות יש בגלגל הענק כשהוא מואר בלילה'
+  ]},
+  day3:{label:'יום 3 – וינה',badge:'v',tasks:[
+    'מצאו פרי מוזר בשוק שמעולם לא ראיתן בארץ',
+    'בשוק הפשפשים — מצאו חפץ ישן שנראה לכם מסקרן',
+    'צלמו את הופבורג מבחוץ ונסו לאמוד כמה חדרים יש',
+    'ברובע המוזיאונים (MQ) — מצאו מיטת רחוב ענקית והצטלמו עליה כולם יחד',
+    'קנו גלידה וצלמו אותה לפני שאתן אוכלות — לא אחרי!'
+  ]},
+  day4:{label:'יום 4 – וינה',badge:'v',tasks:[
+    'חפשו את הפנדות – האם הן ערות ואוכלות, או שוב ישנות?',
+    'מצאו את החיה הכי מצחיקה בגן וצלמו אותה',
+    'ספרו כמה חיות שונות ראיתן היום — מי ספרה יותר?',
+    'מהגלורייט — מצאו את וינה ברקע וצלמו',
+    'קנו מזכרת קטנה מהגן שתזכיר לכם את הביקור'
+  ]},
+  day5:{label:'יום 5 – בודפשט',badge:'b',tasks:[
+    'בסיור ה-EZRaider — ספרו כמה כיכרות וגשרים אתן עוברות',
+    'צלמו ב-EZRaider תמונה מיוחדת תוך כדי נסיעה',
+    'ממצודת הדייגים בערב — מצאו את הנוף הכי יפה וצלמו אותו',
+    'אכלו משהו הונגרי לראשונה הערב',
+    'צלמו את הנוף מחלון חדר המלון בלילה'
+  ]},
+  day6:{label:'יום 6 – בודפשט',badge:'b',tasks:[
+    'תחרות בפריימרק! מי מוצאת ראשונה חולצה עם הדפס מדיסני?',
+    'מצאו בקניון Arena Mall את החנות הכי מוזרה שראיתן',
+    'מלמעלה ב-Budapest Eye — ספרו כמה בניינים גבוהים אתן רואות',
+    'אכלו גלידה וספרו את הטעם האהוב עליכן ב-3 מילים',
+    'קנו מתנה קטנה לסבתא או לחברה הטובה ביותר שלכן'
+  ]},
+  day7:{label:'יום 7 – בודפשט',badge:'b',tasks:[
+    'ב-RiverRide — ספרו כמה גשרים אתן חוצות מהמים, כולל גשר השלשלאות',
+    'ליד בזיליקת סנט אישטוון — מצאו את הפסל הכי מרשים בכיכר',
+    'ברובע היהודי — מצאו כיתוב בעברית על קיר',
+    'בחצרות Gozsdu — מצאו חנות קטנה ומיוחדת',
+    'ארזו 3 חפצים שהכי חשוב לכן לקחת הביתה'
+  ]},
+  day8:{label:'יום 8 – בודפשט',badge:'b',tasks:[
+    'בחרו תמונה אחת מכל הטיול שהכי תרצו להדפיס',
+    'כתבו או הקליטו דבר אחד שהכי הפתיע אתכן בטיול',
+    'מה היתה הארוחה הכי טעימה? ספרו לאבא',
+    'מה תספרו לחברות בבית ספר? תחשבו על 3 דברים',
+    'בשדה התעופה — חפשו שלט בשפה שאתן לא מכירות'
+  ]}
+};
+
+const SK = 'trip2026_missions_v4';
+const loadState = () => { try{ return JSON.parse(localStorage.getItem(SK))||{}; }catch(e){ return {}; } };
+const saveState = s => { try{ localStorage.setItem(SK, JSON.stringify(s)); }catch(e){ showToast('⚠️ שגיאה בשמירת המשימות'); } };
+
+function countAll(state){
+  let done=0, total=0;
+  Object.keys(MISSIONS).forEach(dk => MISSIONS[dk].tasks.forEach((_,i) => { total++; if(state[`${dk}-m${i+1}`]) done++; }));
+  return {done, total};
+}
+
+function buildMissionsPopup(){
+  const state = loadState();
+  const {done, total} = countAll(state);
+  let html = '';
+
+  Object.keys(MISSIONS).forEach(dk => {
+    const day = MISSIONS[dk];
+    let dayDone = 0;
+    day.tasks.forEach((_,i) => { if(state[`${dk}-m${i+1}`]) dayDone++; });
+
+    html += `<div class="missions-day" id="missions-day-${dk}">
+      <div class="missions-day-hdr">
+        <span class="day-badge ${day.badge}">${day.label}</span>
+        <span class="missions-progress" id="mp-${dk}">${dayDone}/${day.tasks.length} ✓</span>
+      </div>`;
+    day.tasks.forEach((task, i) => {
+      const key = `${dk}-m${i+1}`;
+      const d = !!state[key];
+      html += `<div class="mission-item ${d?'done':''}" data-key="${key}" role="checkbox" aria-checked="${d}" tabindex="0" onclick="toggleMissionPopup(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleMissionPopup(this);}">
+        <div class="mission-check">${d?'✓':''}</div>
+        <div class="mission-text">משימה ${i+1}: ${task}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+
+  document.getElementById('missionsContent').innerHTML = html;
+  updateMissionsBar(done, total, false);
+  updateAllCardBadges();
+}
+
+let missionsCelebrated = localStorage.getItem('trip2026_missions_celebrated')==='1';
+function updateMissionsBar(done, total, allowCelebrate=true){
+  const pct = total>0?(done/total)*100:0;
+  document.getElementById('missionsTotalBar').style.width = pct+'%';
+  document.getElementById('missionsTotalTxt').textContent = `${done} / ${total}`;
+  document.getElementById('missionsEmoji').textContent = pct===100?'🏆':pct>=75?'🌟':pct>=50?'⭐':'🎯';
+  if(pct===100 && allowCelebrate && !missionsCelebrated){
+    fireConfetti();
+    missionsCelebrated = true;
+    localStorage.setItem('trip2026_missions_celebrated','1');
+  } else if(pct<100){
+    missionsCelebrated = false;
+    localStorage.setItem('trip2026_missions_celebrated','0');
+  }
+}
+
+function updateAllCardBadges(){
+  const state = loadState();
+  Object.keys(MISSIONS).forEach(dk => {
+    const total = MISSIONS[dk].tasks.length;
+    const done  = MISSIONS[dk].tasks.filter((_,i) => state[`${dk}-m${i+1}`]).length;
+    const badge = document.getElementById('dmb-badge-'+dk);
+    if(!badge) return;
+    badge.textContent = done === total ? '✅ הכל הושלם!' : `${done} / ${total}`;
+    badge.classList.toggle('all-done', done === total);
+  });
+}
+
+function toggleMissionPopup(el){
+  const key = el.dataset.key;
+  const state = loadState();
+  const nowDone = !state[key];
+  state[key] = nowDone;
+  saveState(state);
+  el.classList.toggle('done', nowDone);
+  el.setAttribute('aria-checked', String(nowDone));
+  el.querySelector('.mission-check').textContent = nowDone ? '✓' : '';
+  const {done, total} = countAll(state);
+  updateMissionsBar(done, total, true);
+  updateAllCardBadges();
+  const dk = key.split('-m')[0];
+  const dayDoneCount = MISSIONS[dk].tasks.filter((_,i) => state[`${dk}-m${i+1}`]).length;
+  const mp = document.getElementById('mp-'+dk);
+  if(mp) mp.textContent = `${dayDoneCount}/${MISSIONS[dk].tasks.length} ✓`;
+  if(nowDone){ showToast('✅ משימה הושלמה! 🌟'); if(done===total) setTimeout(()=>showToast('🏆 השלמתן את כל המשימות!!'),500); }
+  else showToast('↩️ משימה בוטלה');
+}
+
+/* ══════════════════════════════════════
+   CURRENCY
+══════════════════════════════════════ */
+let rates = {ILS:1, EUR:null, HUF:null};
+let baseCur = 'ILS';
+const FLAGS = {ILS:'🇮🇱', EUR:'🇪🇺', HUF:'🇭🇺'};
+const NAMES = {ILS:'שקל ישראלי (₪)', EUR:'אירו (€)', HUF:'פורינט הונגרי (Ft)'};
+const SYMS  = {ILS:'₪', EUR:'€', HUF:'Ft'};
+
+async function fetchRates(){
+  try{
+    const controller = new AbortController();
+    const timeout = setTimeout(()=>controller.abort(), 6000);
+    const r = await fetch('https://api.exchangerate-api.com/v4/latest/ILS', {signal:controller.signal});
+    clearTimeout(timeout);
+    if(!r.ok) throw new Error('bad response');
+    const d = await r.json();
+    rates.EUR = d.rates.EUR;
+    rates.HUF = d.rates.HUF;
+    const t = new Date();
+    document.querySelector('#rateUpdated span').textContent = `שערים עדכניים · ${t.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'})}`;
+  }catch(e){
+    rates.EUR = 0.265; rates.HUF = 100.5;
+    document.querySelector('#rateUpdated span').textContent = 'שערים משוערים (אין חיבור)';
+  }
+  convertCurrency();
+  updateDashRate();
+}
+
+function toILS(val, cur){
+  if(cur==='ILS') return val;
+  if(cur==='EUR') return val/rates.EUR;
+  return val/rates.HUF;
+}
+function fromILS(val, cur){
+  if(cur==='ILS') return val;
+  if(cur==='EUR') return val*rates.EUR;
+  return val*rates.HUF;
+}
+function fmt(val, cur){ return cur==='HUF' ? Math.round(val).toLocaleString('he-IL') : val.toFixed(2); }
+
+function setCurrencyBase(cur, btn){
+  baseCur = cur;
+  document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('baseFlag').textContent = FLAGS[cur];
+  document.getElementById('baseLabel').textContent = 'סכום: ' + NAMES[cur];
+  document.getElementById('currencyInput').value = cur==='HUF'?10000:cur==='EUR'?50:100;
+  convertCurrency();
+}
+
+function convertCurrency(){
+  if(!rates.EUR) return;
+  const input = parseFloat(document.getElementById('currencyInput').value)||0;
+  const inILS = toILS(input, baseCur);
+  const targets = Object.keys(FLAGS).filter(c=>c!==baseCur);
+  document.getElementById('currencyResults').innerHTML = targets.map(cur => {
+    const val = fromILS(inILS, cur);
+    let rateLabel = '';
+    if(baseCur==='ILS'&&cur==='EUR') rateLabel=`1 ₪ = ${rates.EUR.toFixed(4)} €`;
+    if(baseCur==='ILS'&&cur==='HUF') rateLabel=`1 ₪ = ${rates.HUF.toFixed(1)} Ft`;
+    if(baseCur==='EUR'&&cur==='ILS') rateLabel=`1 € = ${(1/rates.EUR).toFixed(2)} ₪`;
+    if(baseCur==='EUR'&&cur==='HUF') rateLabel=`1 € = ${(rates.HUF/rates.EUR).toFixed(0)} Ft`;
+    if(baseCur==='HUF'&&cur==='ILS') rateLabel=`1 Ft = ${(1/rates.HUF).toFixed(4)} ₪`;
+    if(baseCur==='HUF'&&cur==='EUR') rateLabel=`1 Ft = ${(rates.EUR/rates.HUF).toFixed(6)} €`;
+    return `<div class="cresult">
+      <div class="cresult-flag">${FLAGS[cur]}</div>
+      <div class="cresult-info">
+        <div class="cname">${NAMES[cur]}</div>
+        <div class="cresult-val">${SYMS[cur]} ${fmt(val,cur)}</div>
+        <div class="cresult-rate">${rateLabel}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════
+   POPUP OPEN / CLOSE
+══════════════════════════════════════ */
+let lastFocusedEl = null;
+function openPopup(id){
+  if(id==='missionsPopup') buildMissionsPopup();
+  if(id==='packingPopup') renderPacking();
+  lastFocusedEl = document.activeElement;
+  const overlay = document.getElementById(id);
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  const closeBtn = overlay.querySelector('.popup-close');
+  if(closeBtn) closeBtn.focus();
+}
+function openMissionsForDay(dayKey){
+  buildMissionsPopup();
+  lastFocusedEl = document.activeElement;
+  document.getElementById('missionsPopup').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{
+    const el = document.getElementById('missions-day-'+dayKey);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 80);
+}
+function closePopup(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocusedEl && typeof lastFocusedEl.focus==='function') lastFocusedEl.focus();
+}
+document.querySelectorAll('.popup-overlay').forEach(el=>{
+  el.addEventListener('click', e=>{ if(e.target===el) closePopup(el.id); });
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') document.querySelectorAll('.popup-overlay.open').forEach(el=>closePopup(el.id));
+});
+
+/* ══════════════════════════════════════
+   CONFETTI
+══════════════════════════════════════ */
+function fireConfetti(){
+  const colors=['#c8963c','#4a7fc1','#d4617a','#22c55e','#f59e0b','#a855f7'];
+  for(let i=0;i<40;i++){
+    const el=document.createElement('div');
+    el.className='confetti-piece';
+    el.style.cssText=`left:${Math.random()*100}vw;top:0;background:${colors[Math.floor(Math.random()*colors.length)]};animation-delay:${Math.random()*.8}s;animation-duration:${1.8+Math.random()*1.2}s;width:${6+Math.random()*6}px;height:${6+Math.random()*6}px`;
+    document.body.appendChild(el);
+    el.addEventListener('animationend',()=>el.remove());
+  }
+}
+
+/* ══════════════════════════════════════
+   SCROLL / NAV
+══════════════════════════════════════ */
+const pb = document.getElementById('pb');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
+},{passive:true});
+
+const fabTop=document.getElementById('fab-top');
+window.addEventListener('scroll',()=>{ fabTop.classList.toggle('visible',window.scrollY>400); },{passive:true});
+
+const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+const dayOrder=['day1','day2','day3','day4','day5','day6','day7','day8'];
+const sectionMap={day1:'vienna',day2:'vienna',day3:'vienna',day4:'vienna',day5:'budapest',day6:'budapest',day7:'budapest',day8:'budapest'};
+const stripLinks=document.querySelectorAll('.ts');
+const navLinks=document.querySelectorAll('.nav-links a');
+const dpDots=document.querySelectorAll('#dpDots .dp-dot');
+const dpLabel=document.getElementById('dp-current-label');
+const dayLabels={day1:'יום 1 – וינה',day2:'יום 2 – וינה',day3:'יום 3 – וינה',day4:'יום 4 – וינה',day5:'יום 5 – בודפשט',day6:'יום 6 – בודפשט',day7:'יום 7 – בודפשט',day8:'יום 8 – בודפשט'};
+
+let scrollTicking = false;
+function updateActive(){
+  let cur=dayOrder[0];
+  dayOrder.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-200) cur=id; });
+  stripLinks.forEach(a=>{ const h=a.getAttribute('href').replace('#',''); a.classList.toggle('active_sec',h===cur||(h==='budapest'&&cur==='day5')||(h==='vienna'&&cur==='day1')); });
+  const cn=sectionMap[cur]||'vienna';
+  navLinks.forEach(a=>{ a.classList.toggle('active',a.getAttribute('href')==='#'+cn); });
+  const idx=dayOrder.indexOf(cur);
+  dpDots.forEach((d,i)=>{ d.classList.remove('done','current'); if(i<idx)d.classList.add('done'); else if(i===idx)d.classList.add('current'); });
+  dpLabel.textContent=dayLabels[cur]||'';
+}
+window.addEventListener('scroll',()=>{
+  if(!scrollTicking){
+    window.requestAnimationFrame(()=>{ updateActive(); scrollTicking=false; });
+    scrollTicking = true;
+  }
+},{passive:true});
+updateActive();
+
+let toastT;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+/* ══════════════════════════════════════
+   TRIP DATES / DASHBOARD / COUNTDOWN
+══════════════════════════════════════ */
+const TRIP_START = new Date('2026-08-20T06:20:00+02:00');
+const TRIP_END   = new Date('2026-08-27T23:59:00+02:00');
+function updateDashboard(){
+  const now = new Date();
+  const dashTag = document.getElementById('dashDayTag');
+  const cd = document.getElementById('dashCountdown');
+  if(now < TRIP_START){
+    const diff = TRIP_START - now;
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    dashTag.innerHTML = `<i class="ph ph-hourglass-medium"></i> עוד ${d} ימים לטיסה`;
+    cd.innerHTML = `
+      <div class="cd-unit"><div class="num">${d}</div><div class="lbl">ימים</div></div>
+      <div class="cd-unit"><div class="num">${String(h).padStart(2,'0')}</div><div class="lbl">שעות</div></div>
+      <div class="cd-unit"><div class="num">${String(m).padStart(2,'0')}</div><div class="lbl">דקות</div></div>`;
+  } else if(now <= TRIP_END){
+    const dayIdx = Math.min(8, Math.floor((now-TRIP_START)/86400000)+1);
+    dashTag.innerHTML = `<i class="ph ph-confetti"></i> אתם בטיול! יום ${dayIdx} מתוך 8`;
+    cd.innerHTML = `<div class="cd-unit" style="min-width:auto;padding:14px 24px"><div class="num">🎉</div><div class="lbl">תיהנו!</div></div>`;
+  } else {
+    dashTag.innerHTML = `<i class="ph ph-heart"></i> הטיול נגמר... איזה זיכרונות!`;
+    cd.innerHTML = '';
+  }
+  const st = loadState();
+  const {done, total} = countAll(st);
+  document.getElementById('dashMissions').textContent = `${done}/${total}`;
+}
+
+async function fetchDashWeather(){
+  const spots = [
+    {id:'dashWeatherV', navSel:'#navWeatherV', lat:48.2082, lon:16.3738, city:'וינה'},
+    {id:'dashWeatherB', navSel:'#navWeatherB', lat:47.4979, lon:19.0402, city:'בודפשט'}
+  ];
+  for(const s of spots){
+    try{
+      const controller = new AbortController();
+      const timeout = setTimeout(()=>controller.abort(), 6000);
+      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current=temperature_2m,weather_code`, {signal:controller.signal});
+      clearTimeout(timeout);
+      if(!r.ok) throw new Error('bad response');
+      const d = await r.json();
+      const t = Math.round(d.current.temperature_2m);
+      document.getElementById(s.id).textContent = t+'°';
+      const navEl = document.querySelector(s.navSel);
+      if(navEl) navEl.textContent = `${s.city}: כרגע ${t}°C`;
+    }catch(e){
+      document.getElementById(s.id).textContent = '—';
+      const navEl = document.querySelector(s.navSel);
+      if(navEl) navEl.textContent = `${s.city}: אין נתונים`;
+    }
+  }
+}
+
+function updateDashRate(){
+  if(rates.EUR){
+    document.getElementById('dashRate').textContent = (1/rates.EUR).toFixed(2)+' ₪';
+  }
+}
+
+/* ══════════════════════════════════════
+   DAY TRAVEL SCORE (5-star rating)
+══════════════════════════════════════ */
+const SCORE_KEY = 'trip2026_scores_v1';
+const loadScores = () => { try{ return JSON.parse(localStorage.getItem(SCORE_KEY))||{}; }catch(e){ return {}; } };
+const saveScores = s => { try{ localStorage.setItem(SCORE_KEY, JSON.stringify(s)); }catch(e){} };
+
+function renderScoreStars(){
+  const scores = loadScores();
+  document.querySelectorAll('.score-stars[data-day]').forEach(box=>{
+    const day = box.dataset.day;
+    const val = scores[day]||0;
+    box.innerHTML = [1,2,3,4,5].map(i=>`<button type="button" class="score-star ${i<=val?'on':''}" aria-label="דירוג ${i} כוכבים" onclick="setDayScore('${day}',${i})">★</button>`).join('');
+  });
+}
+function setDayScore(day, val){
+  const scores = loadScores();
+  scores[day] = val;
+  saveScores(scores);
+  renderScoreStars();
+  showToast(val===5 ? '🌟 יום מושלם! רשמנו את זה' : '✅ הדירוג נשמר');
+  if(val===5) fireConfetti();
+}
+
+/* ══════════════════════════════════════
+   PACKING CHECKLIST
+══════════════════════════════════════ */
+const PACK_DEFAULT = ['דרכונים ותעודות','כרטיסי טיסה/רכבת','מטענים וכבלים','תרופות אישיות','בגדי ים','משקפי שמש וכובעים','קרם הגנה','נעליים נוחות להליכה','ג׳קט קל לערב','משחקים/ספרים לילדות','כרטיס אשראי בינלאומי','מזומן ביורו'];
+const PACK_KEY = 'trip2026_packing_v1';
+let packCelebrated = localStorage.getItem('trip2026_pack_celebrated')==='1';
+function loadPacking(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(PACK_KEY));
+    if(saved) return saved;
+  }catch(e){}
+  const initial = PACK_DEFAULT.map(name=>({name, done:false}));
+  localStorage.setItem(PACK_KEY, JSON.stringify(initial));
+  return initial;
+}
+function savePacking(list){ try{ localStorage.setItem(PACK_KEY, JSON.stringify(list)); }catch(e){ showToast('⚠️ שגיאה בשמירת הציוד'); } }
+function renderPacking(){
+  const list = loadPacking();
+  const done = list.filter(i=>i.done).length;
+  document.getElementById('packBar').style.width = (list.length? done/list.length*100:0)+'%';
+  document.getElementById('packTxt').textContent = `${done}/${list.length}`;
+  document.getElementById('packList').innerHTML = list.map((item,i)=>`
+    <div class="pack-item ${item.done?'done':''}">
+      <div class="pack-check" onclick="togglePack(${i})">${item.done?'✓':''}</div>
+      <span onclick="togglePack(${i})">${item.name}</span>
+      <button class="pack-del" aria-label="מחיקת פריט" onclick="removePackItem(${i})"><i class="ph ph-trash"></i></button>
+    </div>`).join('');
+  if(done===list.length && list.length>0){
+    if(!packCelebrated){ fireConfetti(); packCelebrated=true; localStorage.setItem('trip2026_pack_celebrated','1'); }
+  } else {
+    packCelebrated=false; localStorage.setItem('trip2026_pack_celebrated','0');
+  }
+}
+function togglePack(i){
+  const list = loadPacking();
+  list[i].done = !list[i].done;
+  savePacking(list);
+  renderPacking();
+}
+function removePackItem(i){
+  const list = loadPacking();
+  list.splice(i,1);
+  savePacking(list);
+  renderPacking();
+}
+function addPackItem(){
+  const input = document.getElementById('packNewItem');
+  const val = input.value.trim();
+  if(!val) return;
+  const list = loadPacking();
+  list.push({name:val, done:false});
+  savePacking(list);
+  input.value='';
+  renderPacking();
+}
+
+/* ══════════════════════════════════════
+   BUDGET TRACKER
+══════════════════════════════════════ */
+const BUDGET_CATS = {hotel:{label:'מלון',icon:'🏨',budget:6000,color:'#4a7fc1'},food:{label:'אוכל',icon:'🍽️',budget:2500,color:'#c8963c'},attractions:{label:'אטרקציות',icon:'🎡',budget:1800,color:'#d4617a'},shopping:{label:'קניות',icon:'🛍️',budget:1500,color:'#16a34a'}};
+const BUDGET_KEY = 'trip2026_budget_v1';
+function loadBudget(){ try{ return JSON.parse(localStorage.getItem(BUDGET_KEY))||{}; }catch(e){ return {}; } }
+function saveBudget(b){ try{ localStorage.setItem(BUDGET_KEY, JSON.stringify(b)); }catch(e){ showToast('⚠️ שגיאה בשמירת התקציב'); } }
+function openBudgetPopup(){
+  const sel = document.getElementById('budgetCatSelect');
+  sel.innerHTML = Object.keys(BUDGET_CATS).map(k=>`<option value="${k}">${BUDGET_CATS[k].icon} ${BUDGET_CATS[k].label}</option>`).join('');
+  renderBudget();
+  openPopup('budgetPopup');
+}
+function renderBudget(){
+  const b = loadBudget();
+  let total = 0;
+  const html = Object.keys(BUDGET_CATS).map(k=>{
+    const cat = BUDGET_CATS[k];
+    const spent = b[k]||0;
+    total += spent;
+    const pct = Math.min(100, Math.round(spent/cat.budget*100));
+    const over = spent > cat.budget;
+    return `<div class="budget-cat">
+      <div class="budget-cat-hdr"><b>${cat.icon} ${cat.label}</b><span class="${over?'budget-over':''}">₪${spent.toLocaleString()} / ₪${cat.budget.toLocaleString()}${over?' ⚠️':''}</span></div>
+      <div class="budget-bar-wrap"><div class="budget-bar" style="width:${pct}%;background:${over?'#d4617a':cat.color}"></div></div>
+    </div>`;
+  }).join('');
+  document.getElementById('budgetCats').innerHTML = html;
+  document.getElementById('budgetTotalNum').textContent = '₪'+total.toLocaleString();
+}
+function addExpense(){
+  const cat = document.getElementById('budgetCatSelect').value;
+  const amtInput = document.getElementById('budgetAmount');
+  const amt = parseFloat(amtInput.value);
+  if(!amt || amt<=0){ showToast('⚠️ הכניסו סכום תקין'); return; }
+  const b = loadBudget();
+  b[cat] = (b[cat]||0)+amt;
+  saveBudget(b);
+  amtInput.value='';
+  renderBudget();
+  showToast('💰 ההוצאה נוספה לתקציב');
+}
+function resetBudget(){
+  if(!confirm('לאפס את כל ההוצאות שנרשמו?')) return;
+  saveBudget({});
+  renderBudget();
+}
+
+/* ══════════════════════════════════════
+   MEMORY WALL / GALLERY
+   Photos are downscaled client-side before storage
+   so the browser's localStorage quota isn't exhausted.
+══════════════════════════════════════ */
+const GALLERY_KEY = 'trip2026_gallery_v1';
+let currentGalleryDay = 'day1';
+function loadGallery(){ try{ return JSON.parse(localStorage.getItem(GALLERY_KEY))||{}; }catch(e){ return {}; } }
+function saveGallery(g){
+  try{ localStorage.setItem(GALLERY_KEY, JSON.stringify(g)); return true; }
+  catch(e){ showToast('⚠️ אין מספיק מקום בדפדפן לשמור עוד תמונות'); return false; }
+}
+function openGalleryForDay(day){
+  currentGalleryDay = day;
+  const sel = document.getElementById('galleryDaySelect');
+  sel.innerHTML = Object.keys(dayLabels).map(d=>
+    `<button class="gday-btn ${d===day?'active':''}" onclick="openGalleryForDay('${d}')">${dayLabels[d].split('–')[0].trim()}</button>`
+  ).join('');
+  renderGallery();
+  openPopup('galleryPopup');
+}
+function renderGallery(){
+  const g = loadGallery();
+  const photos = g[currentGalleryDay]||[];
+  document.getElementById('galleryGrid').innerHTML = photos.length ? photos.map((src,i)=>`
+    <div class="gallery-thumb"><img src="${src}" loading="lazy"><button aria-label="מחיקת תמונה" onclick="deletePhoto(${i})"><i class="ph ph-x"></i></button></div>
+  `).join('') : `<div class="gallery-empty"><i class="ph ph-image" style="font-size:28px;display:block;margin-bottom:8px"></i>עדיין אין תמונות ליום הזה — הוסיפו אחת!</div>`;
+}
+
+/* Resize+compress an image file to a JPEG data URL, capped at maxDim px on the long edge. */
+function resizeImageFile(file, maxDim=1280, quality=0.72){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('read failed'));
+    reader.onload = ()=>{
+      const img = new Image();
+      img.onerror = () => reject(new Error('decode failed'));
+      img.onload = ()=>{
+        let {width, height} = img;
+        if(width > maxDim || height > maxDim){
+          if(width > height){ height = Math.round(height * (maxDim/width)); width = maxDim; }
+          else { width = Math.round(width * (maxDim/height)); height = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handleGalleryUpload(e){
+  const files = Array.from(e.target.files||[]);
+  if(!files.length) return;
+  const label = document.getElementById('galleryUploadLabel');
+  const labelText = document.getElementById('galleryUploadText');
+  const originalText = labelText.textContent;
+  label.classList.add('uploading');
+  labelText.textContent = 'מעבד תמונות...';
+  const g = loadGallery();
+  if(!g[currentGalleryDay]) g[currentGalleryDay]=[];
+  let added = 0, failed = 0;
+  for(const file of files){
+    try{
+      const dataUrl = await resizeImageFile(file);
+      g[currentGalleryDay].push(dataUrl);
+      added++;
+    }catch(err){ failed++; }
+  }
+  const ok = saveGallery(g);
+  label.classList.remove('uploading');
+  labelText.textContent = originalText;
+  e.target.value='';
+  renderGallery();
+  if(ok && added) showToast(`📸 ${added} תמונות נוספו לאלבום`);
+  if(failed) showToast(`⚠️ ${failed} תמונות לא נטענו`);
+}
+function deletePhoto(i){
+  const g = loadGallery();
+  g[currentGalleryDay].splice(i,1);
+  saveGallery(g);
+  renderGallery();
+}
+
+/* ══════════════════════════════════════
+   INTERACTIVE MAP
+══════════════════════════════════════ */
+const MAP_QUERIES = {
+  day1:'Stephansdom, Vienna', day2:'Wiener Riesenrad, Prater, Vienna', day3:'Naschmarkt, Vienna',
+  day4:'Schonbrunn Palace, Vienna', day5:'Fishermans Bastion, Budapest', day6:'Budapest Eye, Erzsebet ter, Budapest',
+  day7:'St Stephen Basilica, Budapest', day8:'Budapest Airport'
+};
+function openMapForDay(day){
+  const sel = document.getElementById('mapDaySelect');
+  sel.innerHTML = Object.keys(MAP_QUERIES).map(d=>
+    `<button class="gday-btn ${d===day?'active':''}" onclick="openMapForDay('${d}')">${dayLabels[d].split('–')[0].trim()}</button>`
+  ).join('');
+  const q = encodeURIComponent(MAP_QUERIES[day]);
+  document.getElementById('mapFrame').src = `https://www.google.com/maps?q=${q}&output=embed`;
+  document.getElementById('mapOpenLink').href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  openPopup('mapPopup');
+}
+
+/* ══════════════════════════════════════
+   ACHIEVEMENTS
+══════════════════════════════════════ */
+const ACHIEVEMENTS = [
+  {id:'first_mission', icon:'🏅', text:'השלמתם משימה ראשונה', check:()=>countAll(loadState()).done>=1},
+  {id:'ten_missions', icon:'🌟', text:'10 משימות הושלמו', check:()=>countAll(loadState()).done>=10},
+  {id:'all_missions', icon:'🏆', text:'כל 40 המשימות הושלמו!', check:()=>{const c=countAll(loadState()); return c.done===c.total;}},
+  {id:'day_perfect', icon:'😊', text:'דירוג 5 כוכבים ליום', check:()=>Object.values(loadScores()).some(v=>v===5)},
+  {id:'all_scored', icon:'📋', text:'דירגתם את כל ימי הטיול', check:()=>Object.keys(dayLabels).every(d=>loadScores()[d])},
+  {id:'first_photo', icon:'📸', text:'תמונה ראשונה באלבום', check:()=>Object.values(loadGallery()).some(arr=>arr&&arr.length)},
+  {id:'packed', icon:'🧳', text:'רשימת הציוד הושלמה', check:()=>{const l=loadPacking(); return l.length && l.every(i=>i.done);}},
+  {id:'budgeted', icon:'💶', text:'רשמתם הוצאה ראשונה', check:()=>Object.values(loadBudget()).some(v=>v>0)}
+];
+function openAchievementsPopup(){
+  document.getElementById('achGrid').innerHTML = ACHIEVEMENTS.map(a=>{
+    const unlocked = a.check();
+    return `<div class="ach-item ${unlocked?'unlocked':''}"><div class="ai">${unlocked?a.icon:'🔒'}</div><div class="at">${a.text}</div></div>`;
+  }).join('');
+  openPopup('achievementsPopup');
+}
+
+/* ══════════════════════════════════════
+   DARK MODE
+══════════════════════════════════════ */
+function toggleDarkMode(){
+  document.body.classList.toggle('dark');
+  try{ localStorage.setItem('trip2026_dark', document.body.classList.contains('dark') ? '1':'0'); }catch(e){}
+}
+if(localStorage.getItem('trip2026_dark')==='1') document.body.classList.add('dark');
+
+/* INIT */
+updateAllCardBadges();
+renderScoreStars();
+renderPacking();
+fetchRates();
+fetchDashWeather();
+updateDashboard();
+setInterval(updateDashboard, 60000);
+</script>
+</body>
+</html>
