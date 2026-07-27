@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="יומן המסעות של משפחת כהן — כל הטיולים המתוכננים במקום אחד.">
-<meta name="theme-color" content="#241F2E">
+<meta name="theme-color" content="#1E2A52">
 <title>טיולי משפחת כהן</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,15 +12,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#fff3ec;
+    --paper:#fff4f2;
     --paper-dim:#ffe4ea;
-    --ink:#2b2138;
-    --ink-soft:#5a4f63;
-    --blossom:#ff8fab;
-    --blossom-deep:#e0568a;
-    --coral:#ff8362;
-    --coral-deep:#e0562f;
-    --gold:#ffb454;
+    --ink:#1e2a52;
+    --ink-soft:#4d5578;
+    --blossom:#ffb3cf;
+    --rose:#e0396f;
+    --rose-deep:#c22359;
+    --coral:#ff9a6b;
+    --gold:#f2a53c;
     --card-bg:#ffffff;
     --radius-lg:26px;
     --radius-sm:14px;
@@ -54,76 +54,22 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    min-height:min(560px,88vh);
-    display:flex;
-    align-items:flex-end;
+    aspect-ratio:3/2;
+    max-height:620px;
     overflow:hidden;
     isolation:isolate;
   }
   .hero-media{position:absolute;inset:0;z-index:-2}
   .hero-media img{
     width:100%;height:100%;object-fit:cover;
-    filter:saturate(1.05) brightness(.72);
   }
   .hero-media.is-fallback{
-    background:linear-gradient(160deg,#4a3a52,var(--ink) 60%);
+    background:linear-gradient(160deg,#3a4a7a,var(--ink) 60%);
   }
   .hero::before{
     content:"";
     position:absolute;inset:0;z-index:-1;
-    background:linear-gradient(185deg,rgba(255,181,207,.28) 0%,rgba(255,150,110,.4) 42%,rgba(43,33,56,.6) 78%,var(--paper) 100%);
-  }
-
-  .stamp{
-    position:absolute;
-    top:28px;
-    inset-inline-start:28px;
-    width:96px;height:96px;
-    border-radius:50%;
-    border:2px dashed rgba(255,228,234,.85);
-    display:flex;align-items:center;justify-content:center;
-    color:rgba(255,246,236,.9);
-    font-size:1.6rem;
-    transform:rotate(-10deg);
-    animation:drift 7s ease-in-out infinite;
-  }
-  @keyframes drift{
-    0%,100%{transform:rotate(-10deg) translateY(0)}
-    50%{transform:rotate(-6deg) translateY(-6px)}
-  }
-
-  .hero-content{
-    position:relative;
-    width:100%;
-    max-width:1100px;
-    margin:0 auto;
-    padding:0 24px 56px;
-  }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:.85rem;
-    font-weight:700;
-    letter-spacing:.06em;
-    color:var(--blossom);
-    background:rgba(43,33,56,.35);
-    border:1px solid rgba(255,246,236,.25);
-    padding:6px 14px;
-    border-radius:999px;
-    margin-bottom:18px;
-  }
-  .hero h1{
-    font-size:clamp(2.6rem,6vw,4.6rem);
-    font-weight:900;
-    line-height:1.05;
-    text-shadow:0 6px 26px rgba(0,0,0,.35);
-  }
-  .hero p{
-    margin-top:14px;
-    font-size:clamp(1rem,2vw,1.25rem);
-    color:rgba(255,246,236,.9);
-    max-width:46ch;
+    background:linear-gradient(180deg,transparent 0%,transparent 72%,var(--paper) 100%);
   }
 
   /* ---------- TRIPS ---------- */
@@ -195,13 +141,13 @@
     position:absolute;
     top:14px;
     inset-inline-start:14px;
-    background:linear-gradient(135deg,var(--blossom),var(--coral));
+    background:linear-gradient(135deg,var(--blossom),var(--rose));
     color:#fff;
     font-size:.78rem;
     font-weight:700;
     padding:5px 12px;
     border-radius:999px;
-    box-shadow:0 6px 14px -4px rgba(224,86,138,.55);
+    box-shadow:0 6px 14px -4px rgba(194,35,89,.5);
   }
 
   /* perforated tear between photo and details, like a ticket stub */
@@ -234,7 +180,7 @@
     font-weight:600;
     letter-spacing:.08em;
     font-size:.8rem;
-    color:var(--blossom-deep);
+    color:var(--rose-deep);
     text-transform:uppercase;
   }
   .flags{font-size:1.1rem;letter-spacing:2px}
@@ -256,7 +202,7 @@
     gap:8px;
     font-weight:700;
     font-size:.95rem;
-    color:var(--coral-deep);
+    color:var(--rose-deep);
   }
   .cta svg{
     width:16px;height:16px;
@@ -280,13 +226,8 @@
 
 <section class="hero">
   <div class="hero-media" id="heroMedia">
-    <img src="hero-family.png" alt="משפחת כהן בטיול" loading="eager"
+    <img src="hero-family.png" alt="טיולי משפחת כהן" loading="eager"
          onerror="this.parentElement.classList.add('is-fallback'); this.remove();">
-  </div>
-  <div class="stamp" aria-hidden="true">✈️</div>
-  <div class="hero-content">
-    <span class="eyebrow">יומן מסעות</span>
-    <h1>טיולי משפחת כהן</h1>
   </div>
 </section>
 
