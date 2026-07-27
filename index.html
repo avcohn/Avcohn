@@ -1,333 +1,103 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טיולי משפחת כהן</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* איפוס בסיסי */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Heebo', sans-serif;
-            background: #1e1a1d; /* גוון דמדומים חם ועשיר */
-            color: #fff;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* אזור פתיח (Hero) */
-        .hero {
-            position: relative;
-            height: 70vh;
-            /* מעבר שקיעה רך על התמונה (ורוד פריחה בהיר עד כתום שקיעה עמוק) */
-            background: linear-gradient(rgba(255, 175, 204, 0.3), rgba(251, 86, 7, 0.7)), 
-                        url("https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1800&q=80") center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            /* מעבר דמדומים תחתון למיזוג חלק עם רקע האתר */
-            background: linear-gradient(to bottom, transparent, rgba(30, 26, 29, 1));
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            transform: translateY(-20px);
-        }
-
-        .hero-icon {
-            font-size: 72px;
-            margin-bottom: 10px;
-            animation: bounce 2s infinite ease-in-out;
-        }
-
-        .hero h1 {
-            font-size: 64px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            line-height: 1.1;
-        }
-
-        .hero p {
-            font-size: 24px;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        /* אזור הסטטיסטיקות (مودגש צף) */
-        .stats-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-            background: rgba(251, 86, 7, 0.1); /* אקרילי כתום שקוף (שקיעה) */
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 35px 20px;
-            margin-top: -60px; /* מעלה את הקוביה על הרקע של הפתיח */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat {
-            text-align: center;
-            min-width: 120px;
-        }
-
-        .stat h2 {
-            font-size: 48px;
-            color: #fb5607; /* כתום שקיעה חם למספרים */
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-        
-        .stat div {
-            font-size: 18px;
-            font-weight: 600;
-            opacity: 0.9;
-        }
-
-        /* אזור תוכן וכרטיסיות */
-        section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 42px;
-            margin-bottom: 50px;
-            font-weight: 800;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-        }
-
-        .card {
-            background: rgba(255, 175, 204, 0.08); /* אקרילי ורוד שקוף (פריחה) */
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 22px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            animation: fadeInUp 0.8s forwards;
-        }
-
-        /* דיליי לאנימציית כרטיסיות */
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.3s; }
-        .card:nth-child(3) { animation-delay: 0.5s; }
-
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 121, 198, 0.4); /* אפקט מסגרת ורוד פריחה ב-Hover */
-        }
-
-        .image-wrapper {
-            overflow: hidden;
-            border-radius: 22px 22px 0 0;
-        }
-
-        .card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-            display: block;
-        }
-
-        .card:hover img {
-            transform: scale(1.08);
-        }
-
-        .content {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .country {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #e5989b; /* ורוד-אפרסק חם */
-            margin-bottom: 25px;
-            font-weight: 400;
-        }
-
-        .button {
-            display: inline-block;
-            background: #ff79c6; /* ורוד פריחה לכפתורים */
-            color: #1e1a1d; /* צבע רקע הדמדומים הכהה לטקסט, לניגודיות */
-            text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(255, 121, 198, 0.25); /* צל בגוון ורוד פריחה */
-        }
-
-        .button:hover {
-            background: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(255, 255, 255, 0.3);
-        }
-
-        /* פוקוס במקלדת לנגישות */
-        a:focus-visible {
-            outline: 3px solid #ff79c6; /* פוקוס ורוד פריחה */
-            outline-offset: 4px;
-        }
-
-        footer {
-            padding: 40px;
-            text-align: center;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 16px;
-        }
-
-        /* אנימציות */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* רספונסיביות */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 46px; }
-            .hero p { font-size: 20px; }
-            .section-title { font-size: 34px; }
-            .stats { flex-direction: column; gap: 20px; margin-top: -30px; }
-            .content { padding: 25px 20px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>טיולי משפחת כהן</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--pink:#f7b2c9;
+--rose:#ffd9e8;
+--peach:#ffc89a;
+--sun:#ff8f70;
+--gold:#ffd66b;
+--navy:#24324a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Heebo,sans-serif;
+background:
+radial-gradient(circle at top,#ffd9e8 0%,#ffc89a 30%,#ff8f70 65%,#24324a 100%);
+min-height:100vh;color:#fff;overflow-x:hidden}
+body:before{
+content:"";position:fixed;inset:0;
+background:
+radial-gradient(rgba(255,255,255,.18),transparent 60%) 10% 10%/180px 180px,
+radial-gradient(rgba(255,182,193,.15),transparent 60%) 80% 30%/220px 220px;
+pointer-events:none}
+.hero{
+padding:90px 20px 60px;
+text-align:center}
+.hero h1{
+font-size:clamp(42px,7vw,72px);
+font-weight:800;
+text-shadow:0 8px 30px rgba(0,0,0,.3)}
+.hero p{font-size:1.35rem;margin-top:14px;opacity:.95}
+.grid{
+max-width:1200px;margin:20px auto 80px;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:32px;padding:20px}
+.card{
+background:rgba(255,255,255,.14);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.25);
+border-radius:28px;
+overflow:hidden;
+transition:.35s;
+box-shadow:0 20px 45px rgba(0,0,0,.25)}
+.card:hover{transform:translateY(-10px) scale(1.02)}
+.card img{width:100%;height:240px;object-fit:cover}
+.content{padding:28px;text-align:center}
+h2{font-size:2rem;color:#fff}
+.small{margin:8px 0 24px;color:#fff8}
+a.btn{
+display:inline-block;
+padding:14px 30px;
+border-radius:999px;
+background:linear-gradient(90deg,var(--pink),var(--gold));
+color:var(--navy);
+text-decoration:none;
+font-weight:800;
+box-shadow:0 10px 30px rgba(0,0,0,.2)}
+a.btn:hover{filter:brightness(1.05)}
+footer{text-align:center;padding:30px;opacity:.8}
+</style>
 </head>
 <body>
+<section class="hero">
+<div style="font-size:58px">🌸✈️🌅</div>
+<h1>טיולי משפחת כהן</h1>
+<p>כל טיול הוא עוד זיכרון משפחתי שנשאר לנצח</p>
+</section>
 
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-icon">✈️</div>
-            <h1>טיולי משפחת כהן</h1>
-            <p>כל טיול הוא עוד פרק בסיפור המשפחתי שלנו</p>
-        </div>
-    </header>
+<section class="grid">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80">
+<div class="content">
+<h2>🇦🇹 וינה • 🇭🇺 בודפשט</h2>
+<div class="small">קיץ 2026</div>
+<a class="btn" href="https://avcohn.github.io/Avcohn/Summer26/" target="_blank">למסע שלנו →</a>
+</div></div>
 
-    <div class="stats-wrapper">
-        <div class="stats">
-            <div class="stat">
-                <h2>3</h2>
-                <div>מסעות</div>
-            </div>
-            <div class="stat">
-                <h2>4</h2>
-                <div>מדינות</div>
-            </div>
-            <div class="stat">
-                <h2>2026</h2>
-                <div>שנת ההרפתקאות</div>
-            </div>
-        </div>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80">
+<div class="content">
+<h2>🇨🇿 פראג</h2>
+<div class="small">כריסמס 2026 🎄</div>
+<a class="btn" href="https://avcohn.github.io/Avcohn/Xmas26/" target="_blank">למסע שלנו →</a>
+</div></div>
 
-    <section>
-        <h2 class="section-title">בחרו את היעד</h2>
-        <div class="grid">
-            
-            <!-- וינה ובודפשט -->
-            <div class="card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80" alt="וינה ובודפשט">
-                </div>
-                <div class="content">
-                    <div class="country">🇦🇹 וינה • 🇭🇺 בודפשט</div>
-                    <div class="subtitle">קיץ 2026</div>
-                    <a class="button" href="https://avcohn.github.io/Avcohn/Summer26/" target="_blank" rel="noopener noreferrer">פתח את המסלול</a>
-                </div>
-            </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1200&q=80">
+<div class="content">
+<h2>🇳🇱 אמסטרדם והולנד</h2>
+<div class="small">פסח 2027 🌷</div>
+<a class="btn" href="https://avcohn.github.io/Avcohn/Passover27/" target="_blank">למסע שלנו →</a>
+</div></div>
+</section>
 
-            <!-- פראג -->
-            <div class="card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80" alt="פראג">
-                </div>
-                <div class="content">
-                    <div class="country">🇨🇿 פראג</div>
-                    <div class="subtitle">כריסמס 2026</div>
-                    <a class="button" href="PragueChristmas2026.html">פתח את המסלול</a>
-                </div>
-            </div>
-
-            <!-- הולנד -->
-            <div class="card">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="הולנד">
-                </div>
-                <div class="content">
-                    <div class="country">🇳🇱 הולנד</div>
-                    <div class="subtitle">פסח 2026</div>
-                    <a class="button" href="HollandPesach2026.html">פתח את המסלול</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        משפחת כהן © 2026 • נבנה באהבה ❤️
-    </footer>
-
+<footer>משפחת כהן © 2026 ❤️</footer>
 </body>
 </html>
