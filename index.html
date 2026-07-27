@@ -45,15 +45,35 @@ a{text-decoration:none;color:inherit}
 }
 
 .heroPhoto{
-    width:min(1100px,95%);
-    margin:auto;
-    border-radius:30px;
+
+    width:min(860px,90%);
+    margin:70px auto 100px;
+
+    border-radius:34px;
     overflow:hidden;
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.18);
+    background:#fff;
+    border:8px solid #fff;
 
-    animation:floatHero 7s ease-in-out infinite;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.10),
+        0 35px 90px rgba(0,0,0,.18);
+
+    animation:floatHero 8s ease-in-out infinite;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.heroPhoto:hover{
+
+    transform:translateY(-4px) scale(1.01);
+    
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.12),
+        0 45px 110px rgba(0,0,0,.22);
+
 }
 
 .heroPhoto img{
@@ -65,15 +85,15 @@ a{text-decoration:none;color:inherit}
 @keyframes floatHero{
 
 0%{
-transform:translateY(0);
+    transform:translateY(0) scale(1);
 }
 
 50%{
-transform:translateY(-8px);
+    transform:translateY(-10px) scale(1.015);
 }
 
 100%{
-transform:translateY(0);
+    transform:translateY(0) scale(1);
 }
 
 }
