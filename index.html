@@ -22,62 +22,65 @@ img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 
 .hero{
-position:relative;
-aspect-ratio:16/8;
-min-height:420px;
-max-height:760px;
-overflow:hidden;
-background:#efe6ea;
-display:flex;
-align-items:center;
-justify-content:center;
+    padding:60px 20px 20px;
+    background:
+    radial-gradient(circle at top,#ffe8f2 0%,#fff8fb 45%,#ffffff 100%);
+    text-align:center;
 }
-.hero img{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:contain;
-object-position:center center;
-transform:scale(1.02);
-animation:float 12s ease-in-out infinite alternate;
-}
-.hero:before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,.18),rgba(255,255,255,.78),#fff);
-z-index:1;
-}
+
 .heroContent{
-position:relative;
-z-index:2;
-text-align:center;
-padding:20px;
-margin-top:120px;
+    margin-bottom:35px;
 }
+
 .heroContent h1{
-font-size:clamp(2.2rem,5vw,4rem);
-color:#fff;
-text-shadow:0 4px 18px rgba(0,0,0,.45);
+    font-size:clamp(2.4rem,5vw,4rem);
+    font-weight:900;
+    color:#24324a;
 }
+
 .heroContent p{
-margin-top:10px;
-font-size:1.15rem;
-font-weight:600;
-color:#fff;
-text-shadow:0 2px 8px rgba(0,0,0,.4);
+    margin-top:12px;
+    font-size:1.15rem;
+    color:#69758b;
 }
-@keyframes float{
-0%{transform:scale(1.02) translateY(0)}
-100%{transform:scale(1.05) translateY(-8px)}
+
+.heroPhoto{
+    width:min(1100px,95%);
+    margin:auto;
+    border-radius:30px;
+    overflow:hidden;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.18);
+
+    animation:floatHero 7s ease-in-out infinite;
+}
+
+.heroPhoto img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+@keyframes floatHero{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0);
+}
+
 }
 main{
-max-width:1180px;
-margin:-40px auto 60px;
-padding:0 20px;
-position:relative;
-z-index:3;
+    max-width:1180px;
+    margin:50px auto 60px;
+    padding:0 20px;
 }
 .intro{text-align:center;margin-bottom:32px}
 .intro h2{font-size:2rem}
@@ -125,11 +128,16 @@ footer{text-align:center;padding:28px;background:#fff0f6;color:#8c647b}
 </head>
 <body>
 <header class="hero">
-<img src="hero-family.png" alt="משפחת כהן">
-<div class="heroContent">
-<h1>🌍 המסעות של משפחת כהן</h1>
-<p>כל הטיולים שלנו במקום אחד</p>
-</div>
+
+  <div class="heroContent">
+    <h1>🌍 המסעות של משפחת כהן</h1>
+    <p>כל הטיולים שלנו במקום אחד</p>
+  </div>
+
+  <div class="heroPhoto">
+    <img src="hero-family.png" alt="משפחת כהן">
+  </div>
+
 </header>
 
 <main>
