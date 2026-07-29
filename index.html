@@ -33,6 +33,7 @@ img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 
 .hero{
+  position:relative;
   padding:60px 20px 20px;
   background:
     linear-gradient(180deg,
@@ -43,7 +44,18 @@ a{text-decoration:none;color:inherit}
       var(--gold) 88%,
       #fff6ef 100%);
   text-align:center;
+  overflow:hidden;
 }
+
+.heroScene{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
+
+.heroContent,.heroPhoto{position:relative;z-index:1}
 
 .heroContent{
   margin-bottom:35px;
@@ -148,11 +160,61 @@ main{
 }
 .cover img{width:100%;height:100%;object-fit:cover;transition:.45s}
 .card:hover .cover img{transform:scale(1.08)}
+
+.nextBadge{
+  position:absolute;
+  top:16px;
+  right:16px;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 16px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--magenta),var(--sunset-orange));
+  color:#fff;
+  font-weight:800;
+  font-size:.85rem;
+  box-shadow:0 8px 20px rgba(214,64,143,.4);
+  animation:pulseBadge 2.2s ease-in-out infinite;
+}
+@keyframes pulseBadge{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+}
+
 .content{padding:22px}
 .flags{display:flex;justify-content:center;gap:8px;margin-bottom:14px}
 .flags img{width:38px;height:26px;border:1px solid #f0dbe8;border-radius:4px}
 .title{text-align:center;font-size:1.7rem;font-weight:800;color:var(--sky-indigo)}
 .season{text-align:center;color:var(--muted);margin:12px 0 20px}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:0 0 20px;
+}
+.countdown .unit{
+  min-width:56px;
+  text-align:center;
+  background:rgba(214,64,143,.08);
+  border:1px solid rgba(214,64,143,.18);
+  border-radius:14px;
+  padding:8px 4px;
+}
+.countdown .num{
+  display:block;
+  font-size:1.3rem;
+  font-weight:800;
+  color:var(--sky-indigo);
+}
+.countdown .lbl{
+  display:block;
+  font-size:.7rem;
+  color:var(--muted);
+  margin-top:2px;
+}
 .btn{
   display:block;
   text-align:center;
@@ -180,6 +242,119 @@ footer{
 <body>
 <header class="hero">
 
+<svg class="heroScene" viewBox="0 0 1600 620" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff6df" stop-opacity=".95"/>
+      <stop offset="45%" stop-color="#ffd98a" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#ffd98a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mtBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a5aa8"/>
+      <stop offset="100%" stop-color="#5a3a7e"/>
+    </linearGradient>
+    <linearGradient id="mtFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d2a63"/>
+      <stop offset="100%" stop-color="#2b1b4c"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffb877" stop-opacity=".85"/>
+      <stop offset="100%" stop-color="#3d2a63" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="cityFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#241a3d"/>
+      <stop offset="100%" stop-color="#1c1433"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sun -->
+  <circle cx="800" cy="330" r="230" fill="url(#sunGlow)"/>
+  <circle cx="800" cy="330" r="58" fill="#fff6df"/>
+
+  <!-- far mountains -->
+  <path d="M0,430 L150,300 260,380 400,260 560,400 700,290 860,410 1020,270 1180,400 1340,300 1600,420 L1600,620 0,620 Z" fill="url(#mtBack)" opacity=".55"/>
+
+  <!-- near mountains -->
+  <path d="M0,470 L180,360 320,440 480,330 650,450 830,340 1000,460 1180,350 1360,440 1600,370 1600,620 0,620 Z" fill="url(#mtFront)" opacity=".8"/>
+
+  <!-- lake band -->
+  <rect x="0" y="470" width="1600" height="70" fill="url(#lake)"/>
+  <path d="M700,470 L800,560 900,470 Z" fill="#ffdca6" opacity=".35"/>
+  <line x1="0" y1="486" x2="1600" y2="486" stroke="#fff" stroke-opacity=".12" stroke-width="2"/>
+  <line x1="0" y1="504" x2="1600" y2="504" stroke="#fff" stroke-opacity=".1" stroke-width="2"/>
+  <line x1="0" y1="522" x2="1600" y2="522" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
+
+  <!-- classic european city skyline silhouette -->
+  <g fill="url(#cityFade)">
+    <rect x="60" y="470" width="26" height="70"/>
+    <rect x="92" y="450" width="20" height="90"/>
+    <polygon points="102,410 92,450 112,450"/>
+    <rect x="130" y="480" width="30" height="60"/>
+    <circle cx="145" cy="470" r="16"/>
+    <rect x="180" y="500" width="18" height="40"/>
+    <!-- domed cathedral -->
+    <rect x="230" y="460" width="46" height="80"/>
+    <circle cx="253" cy="450" r="26"/>
+    <rect x="248" y="405" width="10" height="30"/>
+    <polygon points="253,395 247,410 259,410"/>
+    <!-- castle towers -->
+    <rect x="330" y="440" width="20" height="100"/>
+    <polygon points="340,415 328,440 352,440"/>
+    <rect x="360" y="460" width="60" height="80"/>
+    <rect x="430" y="440" width="20" height="100"/>
+    <polygon points="440,415 428,440 452,440"/>
+    <!-- bridge arches -->
+    <path d="M480,540 Q480,495 520,495 Q560,495 560,540 Q560,495 600,495 Q640,495 640,540" fill="none" stroke="#1c1433" stroke-width="10"/>
+    <!-- more rooftops -->
+    <rect x="670" y="480" width="26" height="60"/>
+    <polygon points="683,462 668,480 698,480"/>
+    <rect x="705" y="495" width="30" height="45"/>
+    <rect x="900" y="490" width="24" height="50"/>
+    <rect x="932" y="470" width="22" height="70"/>
+    <polygon points="943,450 930,470 956,470"/>
+    <!-- second domed roof, echo of first -->
+    <rect x="1010" y="470" width="42" height="70"/>
+    <circle cx="1031" cy="460" r="22"/>
+    <rect x="1027" y="422" width="8" height="24"/>
+    <rect x="1090" y="500" width="20" height="40"/>
+    <rect x="1120" y="480" width="26" height="60"/>
+    <polygon points="1133,462 1118,480 1148,480"/>
+    <rect x="1420" y="495" width="24" height="45"/>
+    <rect x="1452" y="470" width="20" height="70"/>
+    <polygon points="1462,450 1450,470 1474,470"/>
+    <rect x="1500" y="490" width="30" height="50"/>
+    <circle cx="1515" cy="480" r="15"/>
+  </g>
+  <rect x="0" y="538" width="1600" height="82" fill="#1c1433"/>
+
+  <!-- doodle flight path -->
+  <path id="flightPath" d="M120,150 C260,60 420,60 560,140 S820,220 980,150" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="2.5" stroke-dasharray="2 12" stroke-linecap="round"/>
+  <g transform="translate(0,0)">
+    <g transform="rotate(20 980 150)">
+      <path d="M980,150 l24,4 -6,10 -10,-2 -4,10 -6,-2 2,-10 -10,-6 4,-8 10,4Z" fill="#ffffff" fill-opacity=".85"/>
+    </g>
+    <animateMotion xlink:href="#flightPath" dur="14s" repeatCount="indefinite" rotate="auto"
+      path="M980,150 C820,220 560,140 420,60 260,60 120,150 120,150"/>
+  </g>
+
+  <!-- suitcase doodle -->
+  <g transform="translate(1380,90)" stroke="#ffffff" stroke-opacity=".6" stroke-width="2.5" fill="none">
+    <rect x="0" y="10" width="46" height="34" rx="6"/>
+    <path d="M14,10 v-8 a4,4 0 0 1 4,-4 h10 a4,4 0 0 1 4,4 v8"/>
+    <line x1="23" y1="10" x2="23" y2="44"/>
+  </g>
+
+  <!-- blossom accents -->
+  <g fill="#ffb9d6" fill-opacity=".55">
+    <circle cx="90" cy="240" r="6"/>
+    <circle cx="102" cy="230" r="6"/>
+    <circle cx="80" cy="226" r="6"/>
+    <circle cx="1500" cy="200" r="6"/>
+    <circle cx="1512" cy="190" r="6"/>
+    <circle cx="1490" cy="186" r="6"/>
+  </g>
+</svg>
+
   <div class="heroContent">
     <h1>🌍 המסעות של משפחת כהן</h1>
     <p>כל הטיולים שלנו במקום אחד</p>
@@ -200,7 +375,10 @@ footer{
 <div class="grid">
 
 <a class="card" href="https://avcohn.github.io/Avcohn/Summer26/" target="_blank">
-<div class="cover"><img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1400&q=80"></div>
+<div class="cover">
+<img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1400&q=80">
+<div class="nextBadge">🔥 הבא בתור</div>
+</div>
 <div class="content">
 <div class="flags">
 <img src="at.png" alt="Austria">
@@ -208,6 +386,7 @@ footer{
 </div>
 <div class="title">וינה • בודפשט</div>
 <div class="season">☀️ קיץ 2026</div>
+<div class="countdown" data-flight="2026-08-20T06:00:00"></div>
 <div class="btn">לצפייה במסלול →</div>
 </div>
 </a>
@@ -218,6 +397,7 @@ footer{
 <div class="flags"><img src="cz.png" alt="Czechia"></div>
 <div class="title">פראג</div>
 <div class="season">🎄 כריסמס 2026</div>
+<div class="countdown" data-flight="2026-12-08T17:25:00"></div>
 <div class="btn">לצפייה במסלול →</div>
 </div>
 </a>
@@ -226,8 +406,9 @@ footer{
 <div class="cover"><img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1400&q=80"></div>
 <div class="content">
 <div class="flags"><img src="nl.png" alt="Netherlands"></div>
-<div class="title">אמסטרדם והולנד</div>
+<div class="title">הולנד</div>
 <div class="season">🌷 פסח 2027</div>
+<div class="countdown" data-flight="2027-04-20T06:30:00"></div>
 <div class="btn">לצפייה במסלול →</div>
 </div>
 </a>
@@ -235,5 +416,35 @@ footer{
 </div>
 </main>
 <footer>❤️ משפחת כהן · 2026</footer>
+
+<script>
+function updateCountdowns(){
+  const now = new Date();
+  document.querySelectorAll('.countdown').forEach(el=>{
+    const target = new Date(el.dataset.flight);
+    let diff = target - now;
+
+    if(diff <= 0){
+      el.innerHTML = '<div class="unit" style="min-width:auto;padding:8px 18px"><span class="num">✈️</span><span class="lbl">בדרכים!</span></div>';
+      return;
+    }
+
+    const day = 1000*60*60*24;
+    const days = Math.floor(diff/day);
+    diff -= days*day;
+    const hours = Math.floor(diff/(1000*60*60));
+    diff -= hours*(1000*60*60);
+    const mins = Math.floor(diff/(1000*60));
+
+    el.innerHTML = `
+      <div class="unit"><span class="num">${days}</span><span class="lbl">ימים</span></div>
+      <div class="unit"><span class="num">${hours}</span><span class="lbl">שעות</span></div>
+      <div class="unit"><span class="num">${mins}</span><span class="lbl">דקות</span></div>
+    `;
+  });
+}
+updateCountdowns();
+setInterval(updateCountdowns, 60000);
+</script>
 </body>
 </html>
