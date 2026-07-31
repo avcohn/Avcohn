@@ -705,19 +705,10 @@
 
   function resetBalance(kid) {
     const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
-    if (!confirm(`לאפס את הקופה של ${name} ל-0? הפעולה לא ניתנת לביטול (ההיסטוריה תישמר).`)) return;
-
-    if (appData[kid].balanceILS !== 0) {
-      appData[kid].history.unshift({
-        id: Date.now(),
-        desc: 'איפוס קופה',
-        amountILS: Math.abs(appData[kid].balanceILS),
-        type: appData[kid].balanceILS > 0 ? 'spend' : 'add',
-        date: new Date().toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
-      });
-    }
+    if (!confirm(`לאפס את הקופה של ${name}? הפעולה תאפס את הסכום ל-0 ותמחק את כל ההיסטוריה, ולא ניתנת לביטול.`)) return;
 
     appData[kid].balanceILS = 0;
+    appData[kid].history = [];
     saveData();
     updateUI();
     bumpBalance(kid);
