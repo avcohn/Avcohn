@@ -46,6 +46,8 @@
   }
 
   .logo {
+    display: block;
+    margin: 0 auto;
     width: 260px;
     height: 260px;
     object-fit: cover;
@@ -450,8 +452,8 @@
           <div class="progress-bar" id="alma-progress"></div>
         </div>
         <div class="goal-edit">
-          <input type="number" id="alma-new-goal" placeholder="תקציב חדש...">
-          <button class="btn-update-goal" onclick="updateGoal('alma')">עדכון תקציב</button>
+          <input type="number" id="alma-new-goal" placeholder="סכום...">
+          <button class="btn-update-goal" onclick="updateGoal('alma')">הגדרת סכום</button>
         </div>
       </div>
 
@@ -493,8 +495,8 @@
           <div class="progress-bar" id="eliana-progress"></div>
         </div>
         <div class="goal-edit">
-          <input type="number" id="eliana-new-goal" placeholder="תקציב חדש...">
-          <button class="btn-update-goal" onclick="updateGoal('eliana')">עדכון תקציב</button>
+          <input type="number" id="eliana-new-goal" placeholder="סכום...">
+          <button class="btn-update-goal" onclick="updateGoal('eliana')">הגדרת סכום</button>
         </div>
       </div>
 
@@ -618,19 +620,42 @@
   }
 
   function updateGoal(kid) {
+    const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
     const inputElement = document.getElementById(`${kid}-new-goal`);
-    const newGoalLocal = parseFloat(inputElement.value);
+    const newAmountLocal = parseFloat(inputElement.value);
 
-    if (isNaN(newGoalLocal) || newGoalLocal <= 0) {
+    if (isNaN(newAmountLocal) || newAmountLocal <= 0) {
       showToast('נא להזין סכום תקין');
       return;
     }
 
-    appData[kid].goalILS = convertToILS(newGoalLocal);
+    const newAmountILS = convertToILS(newAmountLocal);
+    const currentBalanceILS = appData[kid].balanceILS;
+
+    if (currentBalanceILS !== 0) {
+      const currentLocal = formatCurrency(convertFromILS(currentBalanceILS));
+      if (!confirm(`יש כרגע ${currentLocal} בקופה של ${name}. להחליף לסכום החדש (${formatCurrency(newAmountLocal)})?`)) return;
+    }
+
+    // רושמים בהיסטוריה את ההפרש, כדי שהיתרה תמיד תשקף את מה שבאמת קרה
+    const diffILS = newAmountILS - currentBalanceILS;
+    if (diffILS !== 0) {
+      appData[kid].history.unshift({
+        id: Date.now(),
+        desc: `הגדרת סכום: ${formatCurrency(newAmountLocal)}`,
+        amountILS: Math.abs(diffILS),
+        type: diffILS > 0 ? 'add' : 'spend',
+        date: new Date().toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+      });
+    }
+
+    appData[kid].goalILS = newAmountILS;
+    appData[kid].balanceILS = newAmountILS;
     inputElement.value = '';
     saveData();
     updateUI();
-    showToast(`התקציב של ${kid === 'alma' ? 'אלמה' : 'אליאנה'} עודכן ✨`);
+    bumpBalance(kid);
+    showToast(`הסכום של ${name} הוגדר ל-${formatCurrency(newAmountLocal)} ✨`);
   }
 
   function addTransaction(kid, type) {
