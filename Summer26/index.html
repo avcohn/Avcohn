@@ -67,13 +67,22 @@ img,iframe{max-width:100%}
 .fab:hover{transform:scale(1.1) translateY(-4px);background:var(--cv)}
 .fab-docs{position:fixed;bottom:86px;left:24px;width:52px;height:52px;background:rgba(15,34,64,0.9);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);text-decoration:none;border:2px solid rgba(200,150,60,0.3)}
 .fab-docs:hover{transform:scale(1.1) translateY(-4px);background:var(--navy-mid)}
-  .fab-ep{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;overflow:hidden;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);border:2px solid rgba(255,255,255,0.1);background:#fff;display:flex;align-items:center;justify-content:center}
-.fab-ep img{width:100%;height:100%;object-fit:cover}
-.fab-ep:hover{transform:scale(1.1) translateY(-4px)}
+@keyframes float-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
-.fab-cg{position:fixed;bottom:86px;right:24px;width:52px;height:52px;border-radius:50%;overflow:hidden;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);border:2px solid rgba(255,255,255,0.1);background:#fff;display:flex;align-items:center;justify-content:center}
+.fab-ep{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;overflow:hidden;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);border:2px solid rgba(255,255,255,0.1);background:#fff;display:flex;align-items:center;justify-content:center;animation:float-bob 3.2s ease-in-out infinite}
+.fab-ep img{width:100%;height:100%;object-fit:cover}
+.fab-ep:hover{transform:scale(1.1) translateY(-4px);animation-play-state:paused}
+
+.fab-cg{position:fixed;bottom:86px;right:24px;width:52px;height:52px;border-radius:50%;overflow:hidden;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);border:2px solid rgba(255,255,255,0.1);background:#fff;display:flex;align-items:center;justify-content:center;animation:float-bob 3.2s ease-in-out infinite;animation-delay:.5s}
 .fab-cg img{width:100%;height:100%;object-fit:cover}
-.fab-cg:hover{transform:scale(1.1) translateY(-4px)}
+.fab-cg:hover{transform:scale(1.1) translateY(-4px);animation-play-state:paused}
+
+.nav-top{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-logos{display:flex;align-items:center;gap:8px}
+.nav-logo{width:32px;height:32px;border-radius:50%;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.15);transition:var(--transition);animation:float-bob 3.2s ease-in-out infinite}
+.nav-logo img{width:100%;height:100%;object-fit:cover}
+.nav-logo:hover{transform:scale(1.18);animation-play-state:paused;border-color:var(--gold-light)}
+.nav-logo-cr{animation-delay:.5s}
 
 .tstrip{background:var(--navy);overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:56px;z-index:99}
 .tstrip::-webkit-scrollbar{display:none}
@@ -340,7 +349,9 @@ body.dark .dash-tile .dv{color:#fff}
   html,body{width:100%;max-width:100%;overflow-x:hidden}
   html{scroll-padding-top:106px}
   .nav-in{height:auto;padding:10px 12px 8px;flex-direction:column;align-items:center;gap:8px}
-  .nav-brand{width:100%;justify-content:center;font-size:15px}
+  .nav-top{width:100%;justify-content:center}
+  .nav-brand{font-size:15px}
+  .nav-logo{width:28px;height:28px}
   .nav-links{width:100%;overflow-x:auto;overflow-y:hidden;display:flex;justify-content:flex-start;gap:6px;padding:2px 0 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a,.nav-links button{flex:0 0 auto;white-space:nowrap;font-size:13px;padding:7px 12px}
@@ -547,7 +558,17 @@ body.dark .dash-tile .dv{color:#fff}
 
 <nav class="nav">
   <div class="nav-in">
-    <a href="#" class="nav-brand"><i class="ph ph-airplane-takeoff"></i> קיץ 2026</a>
+    <div class="nav-top">
+      <a href="#" class="nav-brand"><i class="ph ph-airplane-takeoff"></i> קיץ 2026</a>
+      <div class="nav-logos">
+        <a href="https://avcohn.github.io/Avcohn/Pharm/" target="_blank" rel="noopener" class="nav-logo" title="בית מרקחת" aria-label="בית מרקחת">
+          <img src="logoep.png" alt="Pharm">
+        </a>
+        <a href="https://avcohn.github.io/Avcohn/GirlsCR/" target="_blank" rel="noopener" class="nav-logo nav-logo-cr" title="Girls CR" aria-label="Girls CR">
+          <img src="logocr.png" alt="GirlsCR">
+        </a>
+      </div>
+    </div>
     <div class="nav-center">
       <div class="w-item"><i class="ph ph-sun"></i><span id="navWeatherV">וינה: טוען...</span></div>
       <div class="w-item"><i class="ph ph-sun"></i><span id="navWeatherB">בודפשט: טוען...</span></div>
