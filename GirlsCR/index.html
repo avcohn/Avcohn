@@ -171,7 +171,25 @@
     font-size: .8rem;
     color: var(--ink-soft);
     margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
   }
+
+  .btn-reset {
+    background: none;
+    border: 1.5px solid #e7e0d5;
+    color: var(--ink-soft);
+    font-size: .72rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    flex: none;
+    transition: border-color .15s, color .15s;
+  }
+  .btn-reset:hover { border-color: var(--eliana); color: #c0433e; }
 
   /* ---------- Goal ---------- */
   .goal-section {
@@ -420,7 +438,10 @@
         <h2 class="kid-name">אלמה</h2>
         <span class="kid-emoji">🌿</span>
       </div>
-      <div class="balance-label">יתרה נוכחית</div>
+      <div class="balance-label">
+        <span>יתרה נוכחית</span>
+        <button class="btn-reset" onclick="resetBalance('alma')">↺ איפוס קופה</button>
+      </div>
       <span class="balance" id="alma-balance" aria-live="polite">0</span>
 
       <div class="goal-section">
@@ -460,7 +481,10 @@
         <h2 class="kid-name">אליאנה</h2>
         <span class="kid-emoji">💗</span>
       </div>
-      <div class="balance-label">יתרה נוכחית</div>
+      <div class="balance-label">
+        <span>יתרה נוכחית</span>
+        <button class="btn-reset" onclick="resetBalance('eliana')">↺ איפוס קופה</button>
+      </div>
       <span class="balance" id="eliana-balance" aria-live="polite">0</span>
 
       <div class="goal-section">
@@ -655,6 +679,27 @@
     appData[kid].history = appData[kid].history.filter(h => h.id !== id);
     saveData();
     updateUI();
+  }
+
+  function resetBalance(kid) {
+    const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
+    if (!confirm(`לאפס את הקופה של ${name} ל-0? הפעולה לא ניתנת לביטול (ההיסטוריה תישמר).`)) return;
+
+    if (appData[kid].balanceILS !== 0) {
+      appData[kid].history.unshift({
+        id: Date.now(),
+        desc: 'איפוס קופה',
+        amountILS: Math.abs(appData[kid].balanceILS),
+        type: appData[kid].balanceILS > 0 ? 'spend' : 'add',
+        date: new Date().toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+      });
+    }
+
+    appData[kid].balanceILS = 0;
+    saveData();
+    updateUI();
+    bumpBalance(kid);
+    showToast(`הקופה של ${name} אופסה`);
   }
 
   function bumpBalance(kid) {
