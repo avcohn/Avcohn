@@ -67,6 +67,13 @@ img,iframe{max-width:100%}
 .fab:hover{transform:scale(1.1) translateY(-4px);background:var(--cv)}
 .fab-docs{position:fixed;bottom:86px;left:24px;width:52px;height:52px;background:rgba(15,34,64,0.9);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);text-decoration:none;border:2px solid rgba(200,150,60,0.3)}
 .fab-docs:hover{transform:scale(1.1) translateY(-4px);background:var(--navy-mid)}
+  .fab-ep{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;overflow:hidden;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);border:2px solid rgba(255,255,255,0.1);background:#fff;display:flex;align-items:center;justify-content:center}
+.fab-ep img{width:100%;height:100%;object-fit:cover}
+.fab-ep:hover{transform:scale(1.1) translateY(-4px)}
+
+.fab-cg{position:fixed;bottom:86px;right:24px;width:52px;height:52px;border-radius:50%;overflow:hidden;box-shadow:0 6px 20px rgba(15,34,64,0.4);z-index:999;transition:var(--transition);border:2px solid rgba(255,255,255,0.1);background:#fff;display:flex;align-items:center;justify-content:center}
+.fab-cg img{width:100%;height:100%;object-fit:cover}
+.fab-cg:hover{transform:scale(1.1) translateY(-4px)}
 
 .tstrip{background:var(--navy);overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:56px;z-index:99}
 .tstrip::-webkit-scrollbar{display:none}
@@ -369,6 +376,8 @@ body.dark .dash-tile .dv{color:#fff}
   .hl{padding:13px 15px}
   .xfer-in{padding:56px 16px}
   .fab,.fab-docs{width:48px;height:48px;font-size:22px}
+  .fab-ep{width:44px;height:44px;bottom:16px;right:16px}
+.fab-cg{width:44px;height:44px;bottom:70px;right:16px}
   .fab{bottom:16px;left:16px}
   .fab-docs{bottom:76px;left:16px}
   .toast{bottom:16px;right:16px;max-width:calc(100vw - 80px);font-size:13px}
@@ -390,7 +399,12 @@ body.dark .dash-tile .dv{color:#fff}
 <div class="toast" id="toast" role="status" aria-live="polite"><i class="ph ph-check-circle"></i><span id="toast-msg"></span></div>
 <button class="fab" id="fab-top" title="חזרה למעלה" aria-label="חזרה למעלה" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ph ph-arrow-up"></i></button>
 <a href="https://drive.google.com/drive/folders/15b15MtqrbGSFqjxrhAavWluYdvImcwG6?usp=drive_link" target="_blank" rel="noopener" class="fab-docs" title="מסמכים חשובים" aria-label="מסמכים חשובים"><i class="ph ph-folder-open"></i></a>
-
+<a href="https://avcohn.github.io/Avcohn/Pharm/" target="_blank" rel="noopener" class="fab-ep" title="בית מרקחת" aria-label="בית מרקחת">
+  <img src="logoep.png" alt="Pharm">
+</a>
+<a href="https://avcohn.github.io/Avcohn/GirlsCR/" target="_blank" rel="noopener" class="fab-cg" title="Girls CR" aria-label="Girls CR">
+  <img src="logocg.png" alt="GirlsCR">
+</a>
 <!-- ══ MISSIONS POPUP ══ -->
 <div class="popup-overlay" id="missionsPopup" role="dialog" aria-modal="true" aria-labelledby="missionsPopupTitle">
   <div class="popup-box">
