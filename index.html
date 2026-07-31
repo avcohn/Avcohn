@@ -237,6 +237,40 @@ footer{
   .heroContent{margin-bottom:24px}
   .heroPhoto{margin:40px auto 60px}
 }
+
+
+/* Center Quick Links */
+.quick-links{
+display:flex;
+justify-content:center;
+gap:22px;
+margin:-40px auto 45px;
+position:relative;
+z-index:20;
+}
+.quick-btn{
+width:84px;
+height:84px;
+border-radius:50%;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+box-shadow:0 12px 30px rgba(0,0,0,.22);
+transition:.3s;
+}
+.quick-btn:hover{
+transform:translateY(-6px) scale(1.08);
+box-shadow:0 18px 40px rgba(0,0,0,.3);
+}
+.quick-btn img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+}
+
 </style>
 </head>
 <body>
@@ -367,6 +401,16 @@ footer{
 </header>
 
 <main>
+
+<div class="quick-links">
+<a class="quick-btn" href="https://avcohn.github.io/Avcohn/Pharm/" target="_blank" title="אלינור פארם">
+<img src="logoep.png" alt="אלינור פארם">
+</a>
+<a class="quick-btn" href="https://avcohn.github.io/Avcohn/GirlsCR/" target="_blank" title="הקופה של אלמה ואליאנה">
+<img src="logocg.png" alt="הקופה של אלמה ואליאנה">
+</a>
+</div>
+
 <div class="intro">
 <h2>✈️ בחרו את הטיול הבא</h2>
 <p>שלושה מסעות · אינספור זיכרונות</p>
@@ -446,5 +490,6 @@ function updateCountdowns(){
 updateCountdowns();
 setInterval(updateCountdowns, 60000);
 </script>
+
 </body>
 </html>
