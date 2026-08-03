@@ -100,10 +100,20 @@
     text-align: center;
     font-size: .78rem;
     color: var(--ink-soft);
-    margin-bottom: 30px;
+    margin-bottom: 12px;
     min-height: 1.2em;
   }
   .rate-info.stale { color: var(--eliana); }
+
+  .sync-info {
+    text-align: center;
+    font-size: .76rem;
+    color: var(--ink-soft);
+    margin-bottom: 30px;
+    min-height: 1.2em;
+  }
+  .sync-info.error { color: #c0433e; }
+  .sync-info.ok { color: #4c8a2e; }
 
   /* ---------- Kid cards ---------- */
   .kids-container {
@@ -428,6 +438,7 @@
       </select>
     </div>
     <div class="rate-info" id="rate-display">טוען שערי חליפין...</div>
+    <div class="sync-info" id="sync-display">מתחבר לשיטס...</div>
   </div>
 
   <div class="kids-container">
@@ -522,7 +533,12 @@
 <div class="toast" id="toast"></div>
 
 <script>
+  // כתובת ה-Web App של Google Apps Script המחובר לגיליון
+  const API_URL = 'https://script.google.com/macros/s/AKfycbyU_voTT-NmxQVufz3kKCVpuCbNXuYGBcPeQaJeEC5EHRnZCqZTgQzoY30dGwoT0Q/exec';
+
   // מצב האפליקציה. הכל נשמר בשקלים מאחורי הקלעים ומומר לתצוגה לפי המטבע שנבחר.
+  // המקור האמיתי לנתונים הוא הגיליון בשיטס; localStorage משמש רק כמטמון מקומי
+  // כדי שהמסך לא יהיה ריק בזמן טעינה או כשאין רשת.
   let appData = {
     currentCurrency: 'ILS',
     alma: { balanceILS: 0, goalILS: 100, history: [] },
@@ -540,7 +556,71 @@
     loadCachedRates();
     updateUI();
     await fetchRates();
+    await loadFromSheet();
     updateUI();
+  }
+
+  // ---------- חיבור לשיטס ----------
+
+  async function loadFromSheet() {
+    const syncEl = document.getElementById('sync-display');
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+
+      ['alma', 'eliana'].forEach(kid => {
+        const kidTx = data.transactions
+          .filter(t => t.kid === kid)
+          .sort((a, b) => Number(b.id) - Number(a.id)); // חדש קודם
+
+        let balance = 0;
+        kidTx.forEach(t => { balance += (t.type === 'add' ? t.amount : -t.amount); });
+
+        appData[kid].balanceILS = balance;
+        appData[kid].history = kidTx.map(t => ({
+          id: Number(t.id), desc: t.desc, amountILS: t.amount, type: t.type, date: t.date
+        }));
+
+        if (data.goals && data.goals[kid] !== undefined) {
+          appData[kid].goalILS = data.goals[kid];
+        }
+      });
+
+      saveData();
+      syncEl.classList.remove('error');
+      syncEl.classList.add('ok');
+      syncEl.innerText = '✓ מסונכרן עם השיטס';
+      return true;
+    } catch (err) {
+      console.error('שגיאה בטעינה מהשיטס', err);
+      syncEl.classList.remove('ok');
+      syncEl.classList.add('error');
+      syncEl.innerText = '⚠️ אין חיבור לשיטס - מוצגים נתונים מקומיים';
+      return false;
+    }
+  }
+
+  async function postToSheet(payload) {
+    const syncEl = document.getElementById('sync-display');
+    try {
+      await fetch(API_URL, {
+        method: 'POST',
+        // חשוב: text/plain כדי לא להפעיל בדיקת CORS מקדימה (preflight) שה-Apps Script לא תומך בה
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      syncEl.classList.remove('error');
+      syncEl.classList.add('ok');
+      syncEl.innerText = '✓ מסונכרן עם השיטס';
+      return true;
+    } catch (err) {
+      console.error('שגיאה בשמירה לשיטס', err);
+      syncEl.classList.remove('ok');
+      syncEl.classList.add('error');
+      syncEl.innerText = '⚠️ לא הצלחנו לשמור בענן - נשמר רק במכשיר הזה';
+      showToast('⚠️ לא הצלחנו לשמור בענן כרגע');
+      return false;
+    }
   }
 
   // שימוש בשערים שנשמרו לפני שהרשת עונה, כדי שהמסך לא יהיה ריק
@@ -619,7 +699,7 @@
     return amount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + ' ' + sym;
   }
 
-  function updateGoal(kid) {
+  async function updateGoal(kid) {
     const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
     const inputElement = document.getElementById(`${kid}-new-goal`);
     const newAmountLocal = parseFloat(inputElement.value);
@@ -639,13 +719,19 @@
 
     // רושמים בהיסטוריה את ההפרש, כדי שהיתרה תמיד תשקף את מה שבאמת קרה
     const diffILS = newAmountILS - currentBalanceILS;
+    let transaction = null;
     if (diffILS !== 0) {
-      appData[kid].history.unshift({
+      transaction = {
+        kid,
         id: Date.now(),
         desc: `הגדרת סכום: ${formatCurrency(newAmountLocal)}`,
-        amountILS: Math.abs(diffILS),
+        amount: Math.abs(diffILS),
         type: diffILS > 0 ? 'add' : 'spend',
         date: new Date().toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+      };
+      appData[kid].history.unshift({
+        id: transaction.id, desc: transaction.desc, amountILS: transaction.amount,
+        type: transaction.type, date: transaction.date
       });
     }
 
@@ -656,9 +742,12 @@
     updateUI();
     bumpBalance(kid);
     showToast(`הסכום של ${name} הוגדר ל-${formatCurrency(newAmountLocal)} ✨`);
+
+    await postToSheet({ action: 'setGoal', kid, goalILS: newAmountILS });
+    if (transaction) await postToSheet({ action: 'add', transaction });
   }
 
-  function addTransaction(kid, type) {
+  async function addTransaction(kid, type) {
     const descInput = document.getElementById(`${kid}-desc`);
     const amountInput = document.getElementById(`${kid}-amount`);
 
@@ -676,14 +765,18 @@
       if (!confirm('זהירות: אין מספיק כסף בקופה! להמשיך ולהיכנס למינוס?')) return;
     }
 
-    appData[kid].balanceILS += (type === 'add' ? amountILS : -amountILS);
-
-    appData[kid].history.unshift({
+    const transaction = {
+      kid,
       id: Date.now(),
-      desc: desc,
-      amountILS: amountILS,
-      type: type,
+      desc,
+      amount: amountILS,
+      type,
       date: new Date().toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+    };
+
+    appData[kid].balanceILS += (type === 'add' ? amountILS : -amountILS);
+    appData[kid].history.unshift({
+      id: transaction.id, desc, amountILS, type, date: transaction.date
     });
 
     descInput.value = '';
@@ -691,9 +784,11 @@
     saveData();
     updateUI();
     bumpBalance(kid);
+
+    await postToSheet({ action: 'add', transaction });
   }
 
-  function deleteTransaction(kid, id) {
+  async function deleteTransaction(kid, id) {
     if (!confirm('למחוק את הפעולה הזו?')) return;
     const item = appData[kid].history.find(h => h.id === id);
     if (!item) return;
@@ -701,9 +796,11 @@
     appData[kid].history = appData[kid].history.filter(h => h.id !== id);
     saveData();
     updateUI();
+
+    await postToSheet({ action: 'delete', id });
   }
 
-  function resetBalance(kid) {
+  async function resetBalance(kid) {
     const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
     if (!confirm(`לאפס את הקופה של ${name}? הפעולה תאפס את הסכום ל-0 ותמחק את כל ההיסטוריה, ולא ניתנת לביטול.`)) return;
 
@@ -713,6 +810,8 @@
     updateUI();
     bumpBalance(kid);
     showToast(`הקופה של ${name} אופסה`);
+
+    await postToSheet({ action: 'reset', kid });
   }
 
   function bumpBalance(kid) {
