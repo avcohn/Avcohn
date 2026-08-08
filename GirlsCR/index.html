@@ -536,6 +536,9 @@
   // כתובת ה-Web App של Google Apps Script המחובר לגיליון
   const API_URL = 'https://script.google.com/macros/s/AKfycbyU_voTT-NmxQVufz3kKCVpuCbNXuYGBcPeQaJeEC5EHRnZCqZTgQzoY30dGwoT0Q/exec';
 
+  // קודי גישה לפעולות רגישות (איפוס והגדרת סכום)
+  const KID_PINS = { alma: '0204', eliana: '0403' };
+
   // מצב האפליקציה. הכל נשמר בשקלים מאחורי הקלעים ומומר לתצוגה לפי המטבע שנבחר.
   // המקור האמיתי לנתונים הוא הגיליון בשיטס; localStorage משמש רק כמטמון מקומי
   // כדי שהמסך לא יהיה ריק בזמן טעינה או כשאין רשת.
@@ -558,6 +561,19 @@
     await fetchRates();
     await loadFromSheet();
     updateUI();
+  }
+
+  // ---------- קוד הגנה ----------
+
+  function checkPin(kid) {
+    const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
+    const entered = prompt(`הזינו קוד סודי של ${name}:`);
+    if (entered === null) return false; // ביטול
+    if (entered.trim() !== KID_PINS[kid]) {
+      showToast('קוד שגוי ⛔');
+      return false;
+    }
+    return true;
   }
 
   // ---------- חיבור לשיטס ----------
@@ -700,6 +716,8 @@
   }
 
   async function updateGoal(kid) {
+    if (!checkPin(kid)) return;
+
     const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
     const inputElement = document.getElementById(`${kid}-new-goal`);
     const newAmountLocal = parseFloat(inputElement.value);
@@ -801,6 +819,8 @@
   }
 
   async function resetBalance(kid) {
+    if (!checkPin(kid)) return;
+
     const name = kid === 'alma' ? 'אלמה' : 'אליאנה';
     if (!confirm(`לאפס את הקופה של ${name}? הפעולה תאפס את הסכום ל-0 ותמחק את כל ההיסטוריה, ולא ניתנת לביטול.`)) return;
 
