@@ -25,14 +25,6 @@ img,iframe{max-width:100%}
 
 #pb{position:fixed;top:0;right:0;left:0;height:3px;width:0%;background:linear-gradient(to left,var(--gold-light),var(--cv),var(--cb));z-index:9999;transition:width 0.1s linear;border-radius:0 2px 2px 0}
 
-.day-progress{background:rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.05);padding:6px 20px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:0.5px}
-.dp-label{color:var(--gold-light)}
-.dp-dots{display:flex;gap:5px;align-items:center}
-.dp-dot{width:22px;height:4px;border-radius:4px;background:rgba(255,255,255,0.15);transition:var(--transition)}
-.dp-dot.v{background:rgba(74,127,193,0.5)}.dp-dot.v.done{background:var(--cv)}.dp-dot.v.current{background:var(--cv);transform:scaleY(2.5);box-shadow:0 0 8px rgba(74,127,193,0.6)}
-.dp-dot.tr{background:rgba(200,150,60,0.5)}.dp-dot.tr.done{background:var(--gold)}.dp-dot.tr.current{background:var(--gold);transform:scaleY(2.5);box-shadow:0 0 8px rgba(200,150,60,0.6)}
-.dp-dot.b{background:rgba(212,97,122,0.5)}.dp-dot.b.done{background:var(--cb)}.dp-dot.b.current{background:var(--cb);transform:scaleY(2.5);box-shadow:0 0 8px rgba(212,97,122,0.6)}
-
 .nav{position:sticky;top:0;z-index:100;background:rgba(15,34,64,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,150,60,.12);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
 .nav-in{max-width:1200px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
 .nav-brand{color:var(--gold);font-weight:800;font-size:17px;letter-spacing:.5px;text-decoration:none;display:flex;align-items:center;gap:7px;flex-shrink:0}
@@ -267,11 +259,6 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
 .gallery-upload input{display:none}
 .gallery-upload.uploading{opacity:.6;pointer-events:none}
 
-.map-day-select{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-.map-frame-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:300px;margin-bottom:12px;background:var(--bg)}
-.map-frame-wrap iframe{width:100%;height:100%;border:0}
-.map-open-link{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;padding:12px;border-radius:12px;font-weight:700;font-size:13.5px}
-
 .ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .ach-item{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;opacity:.35;filter:grayscale(1);transition:var(--transition)}
 .ach-item.unlocked{opacity:1;filter:none;background:linear-gradient(135deg,#fffdf5,#fff9e8);border-color:var(--gold-light)}
@@ -283,10 +270,9 @@ footer span{color:var(--gold-light);font-size:16px;margin:0 2px}
 .day-weather b{font-family:'Heebo',sans-serif}
 
 body.dark{--bg:#0c1424;--text:#dbe4f0;--muted:#8a97ac;--border:#233047;--white:#131c2e;--bg-b:#170f14}
-body.dark .card,body.dark .popup-box,body.dark .fchip,body.dark .dash-tile,body.dark .food-box,body.dark .pack-item,body.dark .tool-chip,body.dark .budget-cat-hdr,body.dark .gday-btn,body.dark .cresult,body.dark .currency-main,body.dark .ach-item,body.dark .mission-item{background:var(--white);color:var(--text)}
+body.dark .card,body.dark .popup-box,body.dark .fchip,body.dark .dash-tile,body.dark .pack-item,body.dark .tool-chip,body.dark .budget-cat-hdr,body.dark .gday-btn,body.dark .cresult,body.dark .currency-main,body.dark .ach-item,body.dark .mission-item{background:var(--white);color:var(--text)}
 body.dark .cbody h3,body.dark .sec-title,body.dark .popup-header h2,body.dark .cname-{color:#fff}
 body.dark .popup-header{background:var(--white)}
-body.dark .fact-box{background:#101b2e;color:#bcd4ee}
 body.dark .day-weather{background:#0f1e2e;color:#bcd4ee}
 body.dark .hero{background:linear-gradient(180deg,#141826 0%,#0f1420 56%,var(--bg) 100%)}
 body.dark .hero-actions{background:rgba(20,26,40,.9);border-color:rgba(200,150,60,.18)}
@@ -296,19 +282,8 @@ body.dark .hl{background:#1c1708}
 body.dark #budapest{background:var(--bg-b)!important}
 body.dark .dash-tile .dv{color:#fff}
 
-.fact-box{display:flex;gap:10px;align-items:flex-start;background:#eef4fb;border-radius:12px;padding:12px 15px;margin-bottom:14px;font-size:13.5px;color:#2c4a70;line-height:1.55}
-.fact-box i{color:var(--cv);font-size:19px;flex-shrink:0;margin-top:1px}
-.fact-box strong{color:var(--cv);font-weight:800}
-.food-box{background:#fff6ee;border:1px solid rgba(200,150,60,.25);border-radius:14px;padding:14px 16px;margin-bottom:16px}
-.food-hdr{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
-.food-name{font-weight:800;color:var(--navy);font-size:15.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.food-stars{color:var(--gold);font-size:13px;letter-spacing:1px}
-.food-tip{font-size:13.5px;color:var(--text);margin-top:5px;line-height:1.5}
-.food-meta{font-size:12px;color:var(--muted);margin-top:7px;display:flex;align-items:center;gap:6px}
-.food-meta i{color:var(--cv)}
-
-.day-tools-row{display:flex;gap:8px;margin-bottom:16px}
-.tool-chip{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 8px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;font-family:inherit;transition:var(--transition)}
+.day-tools-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tool-chip{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 8px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;font-family:inherit;transition:var(--transition);min-width:90px}
 .tool-chip:hover{background:var(--gold-pale);border-color:var(--gold-light)}
 .tool-chip i{font-size:16px;color:var(--gold)}
 
@@ -355,8 +330,6 @@ body.dark .dash-tile .dv{color:#fff}
   .nav-links{width:100%;overflow-x:auto;overflow-y:hidden;display:flex;justify-content:flex-start;gap:6px;padding:2px 0 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a,.nav-links button{flex:0 0 auto;white-space:nowrap;font-size:13px;padding:7px 12px}
-  .day-progress{font-size:11px;padding:5px 12px;gap:8px}
-  .dp-dot{width:16px}
   .tstrip{top:90px}
   .tstrip-in{padding:0 8px}
   .ts{flex:0 0 78px;min-width:78px;padding:12px 8px;font-size:12px}
@@ -526,17 +499,21 @@ body.dark .dash-tile .dv{color:#fff}
   </div>
 </div>
 
-<!-- ══ MAP POPUP ══ -->
-<div class="popup-overlay" id="mapPopup" role="dialog" aria-modal="true" aria-labelledby="mapPopupTitle">
+<!-- ══ ITINERARY EDITOR POPUP ══ -->
+<div class="popup-overlay" id="itineraryPopup" role="dialog" aria-modal="true" aria-labelledby="itineraryPopupTitle">
   <div class="popup-box">
     <div class="popup-header">
-      <h2 id="mapPopupTitle"><i class="ph ph-map-trifold"></i> מפת המסלול</h2>
-      <button class="popup-close" aria-label="סגירה" onclick="closePopup('mapPopup')"><i class="ph ph-x"></i></button>
+      <h2 id="itineraryPopupTitle"><i class="ph ph-list-checks"></i> עריכת מסלול</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('itineraryPopup')"><i class="ph ph-x"></i></button>
     </div>
     <div class="popup-body">
-      <div class="map-day-select" id="mapDaySelect"></div>
-      <div class="map-frame-wrap"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="מפת יעד"></iframe></div>
-      <a class="map-open-link" id="mapOpenLink" href="#" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i> פתחו ב-Google Maps</a>
+      <div class="gallery-day-select" id="itineraryDaySelect"></div>
+      <div id="itineraryEditList"></div>
+      <div class="pack-add-row">
+        <input type="text" id="itineraryNewItem" placeholder="הוסיפו פעילות חדשה למסלול..." onkeydown="if(event.key==='Enter')addItineraryItem()">
+        <button onclick="addItineraryItem()" aria-label="הוספת פעילות"><i class="ph ph-plus"></i></button>
+      </div>
+      <button class="budget-reset" onclick="resetItineraryDay()">איפוס היום למסלול המקורי</button>
     </div>
   </div>
 </div>
@@ -577,28 +554,12 @@ body.dark .dash-tile .dv{color:#fff}
       <a href="#vienna"><i class="ph ph-map-pin"></i> וינה</a>
       <a href="#budapest"><i class="ph ph-map-pin"></i> בודפשט</a>
       <button class="nav-special" onclick="openPopup('currencyPopup')"><i class="ph ph-currency-circle-dollar"></i> מטבע</button>
-      <button onclick="openMapForDay('day1')"><i class="ph ph-map-trifold"></i> מפה</button>
-                  <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> תמונות</button>
+      <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> תמונות</button>
       <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
       <button onclick="toggleDarkMode()" title="מצב לילה" aria-label="החלפת מצב תצוגה בהיר/כהה"><i class="ph ph-moon-stars"></i></button>
     </div>
   </div>
 </nav>
-
-<div class="day-progress">
-  <span class="dp-label"><i class="ph ph-calendar-check"></i> מסלול 8 ימים</span>
-  <div class="dp-dots" id="dpDots">
-    <div class="dp-dot v" data-day="day1"></div>
-    <div class="dp-dot v" data-day="day2"></div>
-    <div class="dp-dot v" data-day="day3"></div>
-    <div class="dp-dot v" data-day="day4"></div>
-    <div class="dp-dot b" data-day="day5"></div>
-    <div class="dp-dot b" data-day="day6"></div>
-    <div class="dp-dot b" data-day="day7"></div>
-    <div class="dp-dot b" data-day="day8"></div>
-  </div>
-  <span id="dp-current-label" style="color:rgba(255,255,255,0.5);font-size:11px;min-width:70px;text-align:center"></span>
-</div>
 
 <div class="tstrip">
   <div class="tstrip-in">
@@ -648,7 +609,7 @@ body.dark .dash-tile .dv{color:#fff}
     </div>
     <div class="dash-countdown" id="dashCountdown"></div>
     <div class="dash-actions">
-                  <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> אלבום</button>
+      <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> אלבום</button>
       <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
       <button onclick="openPopup('missionsPopup')"><i class="ph ph-star"></i> משימות</button>
     </div>
@@ -670,26 +631,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3>נחיתה, מרכז העיר ו-Demel</h3>
           <p>נחיתה, צ׳ק-אין (או השארת מזוודות), Stephansplatz, קתדרלת סנט סטפן, Graben, Kohlmarkt, Demel, קניות קלות וארוחת ערב.</p>
-          <ul class="acts">
-            <li><span class="dot v"></span>נחיתה · הגעה למלון / השארת מזוודות</li>
-            <li><span class="dot v"></span>מנוחה קלה והתרעננות חיונית</li>
-            <li><span class="dot v"></span>סיור רגלי ב-Stephansplatz ורחוב Graben</li>
-            <li><span class="dot v"></span>עצירת חובה לקפה ועוגה ב-Demel המפורסם</li>
-          </ul>
+          <ul class="acts" id="acts-day1"></ul>
           <button class="day-missions-btn" id="dmb-day1" onclick="openMissionsForDay('day1')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day1">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> כנסיית סטפנוס (Stephansdom) התחילה להיבנות במאה ה-12, וגג הרעפים המפורסם שלה עשוי מ-230,000 רעפים צבעוניים!</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">Plachutta Wollzeile <span class="food-stars">★★★★★</span></div>
-            <div class="food-tip">מומלץ להזמין שניצל וינאי קלאסי (Wiener Schnitzel) - מוסד וינאי אמיתי.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-8 דקות הליכה מהאזור המרכזי</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day1')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day1')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day1')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -704,26 +654,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3>ZOOM בבוקר ו‑Prater בערב</h3>
           <p>בוקר במוזיאון הילדים ZOOM, שנ״ץ במלון, ובערב פארק Prater.</p>
-          <ul class="acts">
-            <li><span class="dot v"></span>בוקר במוזיאון הילדים ZOOM</li>
-            <li><span class="dot v"></span>חזרה למלון לשנ״ץ</li>
-            <li><span class="dot v"></span>בערב יציאה ל‑Prater</li>
-            <li><span class="dot v"></span>הגלגל הענק, מתקנים וגלידה</li>
-          </ul>
+          <ul class="acts" id="acts-day2"></ul>
           <button class="day-missions-btn" id="dmb-day2" onclick="openMissionsForDay('day2')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day2">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> הגלגל הענק של פראטר (Wiener Riesenrad) נבנה ב-1897 ומגיע לגובה 65 מטר - הוא היה הגלגל הענק הכי גבוה בעולם כשנבנה.</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">Schweizerhaus <span class="food-stars">★★★★☆</span></div>
-            <div class="food-tip">גן בירה משפחתי בתוך פראטר, מפורסם בקנוקל צלוי - מקום מושלם אחרי הגלגל הענק.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך שטח פראטר, 5 דקות מהגלגל</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day2')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day2')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day2')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -738,27 +677,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3>בוקר בשוק, MQ והעיר העתיקה</h3>
           <p>יום וינאי רגוע שמתחיל בבראנץ׳ בשוק, ממשיך ברביצה ברובע המוזיאונים, ומסתיים בלב הקיסרי.</p>
-          <ul class="acts">
-            <li><span class="dot v"></span>בראנץ' מתגלגל בנאשמרקט ושוק הפשפשים</li>
-            <li><span class="dot v"></span>תמונות משפחתיות מול הקארלסקירכה המרשימה</li>
-            <li><span class="dot v"></span>רוגע עירוני על ספות הענק ברובע המוזיאונים (MQ)</li>
-            <li><span class="dot v"></span>גנים וקיסרים: Burggarten, בית הפרפרים ומתחם Hofburg</li>
-            <li><span class="dot v"></span>קפה, קינוח מסורתי וארוחת ערב בעיר העתיקה</li>
-          </ul>
+          <ul class="acts" id="acts-day3"></ul>
           <button class="day-missions-btn" id="dmb-day3" onclick="openMissionsForDay('day3')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day3">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> ספות הענק ברחבת ה-MQ נקראות "Enzis". בכל קיץ תושבי וינה מצביעים על הצבע החדש שלהן! פעם הן היו ירוקות, אחר כך כחולות, והשנה... תגלו כשתגיעו.</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">NENI am Naschmarkt <span class="food-stars">★★★★★</span></div>
-            <div class="food-tip">המסעדה האהובה (של שפית ישראלית) באמצע השוק - אוכל ים-תיכוני טעים ומשפחתי, מושלם לבראנץ' או צהריים.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך שוק הנאשמרקט</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day3')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day3')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day3')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -773,26 +700,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3>גן חיות שנברון + גנים מלכותיים</h3>
           <p>יום שלם בגן החיות של Schönbrunn, גני הארמון, Gloriette וזמן משפחתי.</p>
-          <ul class="acts">
-            <li><span class="dot v"></span>יציאה מוקדמת ל-Tiergarten Schönbrunn</li>
-            <li><span class="dot v"></span>סיור במתחמים המודרניים בקצב רגוע</li>
-            <li><span class="dot v"></span>צהריים קליל באחת המסעדות בתוך המתחם</li>
-            <li><span class="dot v"></span>טיול בגנים ההיסטוריים ותצפית מהגלורייט</li>
-          </ul>
+          <ul class="acts" id="acts-day4"></ul>
           <button class="day-missions-btn" id="dmb-day4" onclick="openMissionsForDay('day4')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day4">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> לארמון שנברון יש 1,441 חדרים! רק חלק קטן מהם פתוח למבקרים, וגן החיות שבשטחו הוא אחד הוותיקים בעולם - נפתח כבר ב-1752.</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">Landtmann's Jausen Station <span class="food-stars">★★★★☆</span></div>
-            <div class="food-tip">בתוך גני שנברון עצמם - אידיאלי לארוחת צהריים קלה בלי לצאת מהמתחם.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך גני הארמון</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day4')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day4')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day4')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -821,28 +737,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3><i class="ph ph-train-regional" style="color:var(--cb);margin-left:6px"></i>מעבר לבודפשט + EZRaider למצודה</h3>
           <p>רכבת מווינה, צ'ק-אין במלון Marriott, מנוחה, ובשעה 18:30 סיור EZRaider למצודת הדייגים.</p>
-          <ul class="acts">
-            <li><span class="dot b"></span>ארוחת בוקר ואריזות אחרונות במלון בווינה</li>
-            <li><span class="dot b"></span>נסיעה לתחנת הרכבת ורכבת לבודפשט בשעה 11:40</li>
-            <li><span class="dot b"></span>הגעה למלון Marriott Budapest וצ'ק-אין</li>
-            <li><span class="dot b"></span>מנוחה קצרה במלון</li>
-            <li><span class="dot b"></span>18:30 · סיור EZRaider Budapest למצודת הדייגים</li>
-            <li><span class="dot b"></span>ארוחת ערב</li>
-          </ul>
+          <ul class="acts" id="acts-day5"></ul>
           <button class="day-missions-btn" id="dmb-day5" onclick="openMissionsForDay('day5')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day5">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> מצודת הדייגים נבנתה בין 1895-1902 ויש בה 7 מגדלים - כל אחד מסמל אחד משבעת השבטים המגיארים שייסדו את הונגריה. בערב, כשהיא מוארת, הנוף על הפרלמנט משם עוצר נשימה.</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">Stand25 Bisztró <span class="food-stars">★★★★★</span></div>
-            <div class="food-tip">מטבח הונגרי מודרני במחירים סבירים, קרוב לטיילת - נהדר לערב ראשון בעיר.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-10 דקות הליכה מהמלון</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day5')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day5')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day5')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -857,29 +760,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3>🛍️ קניות ו-Budapest Eye</h3>
           <p>Arena Mall, Primark, מנוחה, גלגל הענק Budapest Eye, גלידה והליכה בכיכר Erzsébet ובטיילת.</p>
-          <ul class="acts">
-            <li><span class="dot b"></span>ארוחת בוקר</li>
-            <li><span class="dot b"></span>10:00–13:30 · Arena Mall + <strong>Primark!</strong></li>
-            <li><span class="dot b"></span>צהריים קליל ומהיר במתחם האוכל</li>
-            <li><span class="dot b"></span>חזרה למלון מריוט למנוחה קצרה</li>
-            <li><span class="dot b"></span>אחה"צ: 🎡 Budapest Eye ואחריו 🍦 גלידה</li>
-            <li><span class="dot b"></span>הליכה נעימה בכיכר Erzsébet ובטיילת</li>
-            <li><span class="dot b"></span>ארוחת ערב</li>
-          </ul>
+          <ul class="acts" id="acts-day6"></ul>
           <button class="day-missions-btn" id="dmb-day6" onclick="openMissionsForDay('day6')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day6">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> Budapest Eye ניצב בכיכר Erzsébet ומגיע לגובה 65 מטר - נקודת תצפית מעולה בדיוק בלב מרכז העיר, ומהחלונות שלו רואים כמעט את כל בודפשט.</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">מתחם האוכל ב-Arena Mall <span class="food-stars">★★★☆☆</span></div>
-            <div class="food-tip">אפשרויות מהירות ומגוונות לצהריים בין הקניות - כל אחד בוחר מה שהוא אוהב.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> בתוך הקניון</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day6')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day6')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day6')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -894,29 +783,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3>🚍🚤 RiverRide, בזיליקה והרובע היהודי</h3>
           <p>סיור אמפיבי RiverRide בדנובה, בזיליקת סנט אישטוון, הרובע היהודי, חצרות Gozsdu, אריזות וארוחת ערב אחרונה.</p>
-          <ul class="acts">
-            <li><span class="dot b"></span>ארוחת בוקר</li>
-            <li><span class="dot b"></span>RiverRide Budapest — סיור אמפיבי מיוחד ביבשה ובנהר</li>
-            <li><span class="dot b"></span>בזיליקת סנט אישטוון (St. Stephen's Basilica)</li>
-            <li><span class="dot b"></span>ארוחת צהריים</li>
-            <li><span class="dot b"></span>הרובע היהודי וחצרות Gozsdu</li>
-            <li><span class="dot b"></span>אריזות לקראת הטיסה</li>
-            <li><span class="dot b"></span>19:30 · ארוחת ערב אחרונה בבודפשט</li>
-          </ul>
+          <ul class="acts" id="acts-day7"></ul>
           <button class="day-missions-btn" id="dmb-day7" onclick="openMissionsForDay('day7')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day7">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> בזיליקת סנט אישטוון מגיעה בדיוק לגובה 96 מטר - בדיוק כמו בניין הפרלמנט ההונגרי. זה לא מקרי: לפי חוק ישן, שום בניין בבודפשט לא בנוי גבוה יותר, כסמל לאיזון בין דת לשלטון.</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">Mazel Tov <span class="food-stars">★★★★★</span></div>
-            <div class="food-tip">מסעדה תוססת בחצרות Gozsdu עם חצר פנימית מוארת - אווירה מיוחדת לערב האחרון.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> כ-5 דקות מהרובע היהודי</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day7')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day7')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day7')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -931,25 +806,15 @@ body.dark .dash-tile .dv{color:#fff}
         <div class="cbody">
           <h3>יום 8 — חוזרים הביתה</h3>
           <p>השכמה מוקדמת, צ׳ק-אאוט, נסיעה לשדה וטיסה בשעה 09:20.</p>
-          <ul class="acts">
-            <li><span class="dot b"></span>יציאה מוקדמת מהמלון לשדה התעופה</li>
-            <li><span class="dot b"></span>צ׳ק-אין ובידוק ביטחוני</li>
-            <li><span class="dot b"></span>09:20 · טיסה חזרה מבודפשט</li>
-          </ul>
+          <ul class="acts" id="acts-day8"></ul>
           <button class="day-missions-btn" id="dmb-day8" onclick="openMissionsForDay('day8')">
             <div class="dmb-left"><i class="ph ph-star"></i> משימות יומיות</div>
             <div class="dmb-badge" id="dmb-badge-day8">0 / 5</div>
           </button>
-          <div class="fact-box"><i class="ph ph-lightbulb"></i><div><strong>הידעת?</strong> המרחק בין וינה לבודפשט הוא כ-240 ק"מ בלבד - פחות משעתיים וחצי נסיעה ברכבת, וזו הסיבה שהשתיים הן צמד יעדים כל כך פופולרי.</div></div>
-          <div class="food-box">
-            <div class="food-hdr"><i class="ph ph-fork-knife"></i> איפה נאכל?</div>
-            <div class="food-name">ארוחת בוקר במלון <span class="food-stars">★★★★☆</span></div>
-            <div class="food-tip">כדאי לנצל את ארוחת הבוקר במלון לפני היציאה - יום טיסה עמוס ולא תמיד יהיה זמן בהמשך.</div>
-            <div class="food-meta"><i class="ph ph-map-pin"></i> במלון</div>
-          </div>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day8')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="openMapForDay('day8')"><i class="ph ph-map-trifold"></i> מפה</button>
+            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip" onclick="openItineraryEditor('day8')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -969,6 +834,104 @@ body.dark .dash-tile .dv{color:#fff}
 </footer>
 
 <script>
+/* ══════════════════════════════════════
+   ITINERARY – dynamic, editable per day
+══════════════════════════════════════ */
+const ITINERARY_DEFAULTS = {
+  day1:['נחיתה · הגעה למלון / השארת מזוודות','מנוחה קלה והתרעננות חיונית','סיור רגלי ב-Stephansplatz ורחוב Graben','עצירת חובה לקפה ועוגה ב-Demel המפורסם'],
+  day2:['בוקר במוזיאון הילדים ZOOM','חזרה למלון לשנ״ץ','בערב יציאה ל‑Prater','הגלגל הענק, מתקנים וגלידה'],
+  day3:['בראנץ\' מתגלגל בנאשמרקט ושוק הפשפשים','תמונות משפחתיות מול הקארלסקירכה המרשימה','רוגע עירוני על ספות הענק ברובע המוזיאונים (MQ)','גנים וקיסרים: Burggarten, בית הפרפרים ומתחם Hofburg','קפה, קינוח מסורתי וארוחת ערב בעיר העתיקה'],
+  day4:['יציאה מוקדמת ל-Tiergarten Schönbrunn','סיור במתחמים המודרניים בקצב רגוע','צהריים קליל באחת המסעדות בתוך המתחם','טיול בגנים ההיסטוריים ותצפית מהגלורייט'],
+  day5:['ארוחת בוקר ואריזות אחרונות במלון בווינה','נסיעה לתחנת הרכבת ורכבת לבודפשט בשעה 11:40',"הגעה למלון Marriott Budapest וצ'ק-אין",'מנוחה קצרה במלון','18:30 · סיור EZRaider Budapest למצודת הדייגים','ארוחת ערב'],
+  day6:['ארוחת בוקר','10:00–13:30 · Arena Mall + <strong>Primark!</strong>','צהריים קליל ומהיר במתחם האוכל','חזרה למלון מריוט למנוחה קצרה','אחה"צ: 🎡 Budapest Eye ואחריו 🍦 גלידה','הליכה נעימה בכיכר Erzsébet ובטיילת','ארוחת ערב'],
+  day7:['ארוחת בוקר','RiverRide Budapest — סיור אמפיבי מיוחד ביבשה ובנהר',"בזיליקת סנט אישטוון (St. Stephen's Basilica)",'ארוחת צהריים','הרובע היהודי וחצרות Gozsdu','אריזות לקראת הטיסה','19:30 · ארוחת ערב אחרונה בבודפשט'],
+  day8:['יציאה מוקדמת מהמלון לשדה התעופה','צ׳ק-אין ובידוק ביטחוני','09:20 · טיסה חזרה מבודפשט']
+};
+const ITINERARY_KEY = 'trip2026_itinerary_v1';
+
+function loadItinerary(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(ITINERARY_KEY));
+    if(saved) return saved;
+  }catch(e){}
+  const init = {};
+  Object.keys(ITINERARY_DEFAULTS).forEach(k=>init[k]=[...ITINERARY_DEFAULTS[k]]);
+  localStorage.setItem(ITINERARY_KEY, JSON.stringify(init));
+  return init;
+}
+function saveItinerary(it){ try{ localStorage.setItem(ITINERARY_KEY, JSON.stringify(it)); }catch(e){ showToast('⚠️ שגיאה בשמירת המסלול'); } }
+
+function renderItineraryList(day){
+  const it = loadItinerary();
+  const items = it[day]||[];
+  const badge = (sectionMap[day]==='budapest') ? 'b' : 'v';
+  const ul = document.getElementById('acts-'+day);
+  if(!ul) return;
+  ul.innerHTML = items.length
+    ? items.map(text=>`<li><span class="dot ${badge}"></span>${text}</li>`).join('')
+    : '<li style="color:var(--muted)">אין פעילויות רשומות ליום זה — לחצו על "עריכת מסלול" כדי להוסיף</li>';
+}
+function renderAllItineraries(){ Object.keys(ITINERARY_DEFAULTS).forEach(renderItineraryList); }
+
+let currentItineraryDay = 'day1';
+function openItineraryEditor(day){
+  currentItineraryDay = day;
+  const sel = document.getElementById('itineraryDaySelect');
+  sel.innerHTML = Object.keys(dayLabels).map(d=>
+    `<button class="gday-btn ${d===day?'active':''}" onclick="switchItineraryDay('${d}')">${dayLabels[d].split('–')[0].trim()}</button>`
+  ).join('');
+  renderItineraryEditList();
+  openPopup('itineraryPopup');
+}
+function switchItineraryDay(day){
+  currentItineraryDay = day;
+  document.querySelectorAll('#itineraryDaySelect .gday-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim()===dayLabels[day].split('–')[0].trim());
+  });
+  renderItineraryEditList();
+}
+function renderItineraryEditList(){
+  const it = loadItinerary();
+  const items = it[currentItineraryDay]||[];
+  document.getElementById('itineraryEditList').innerHTML = items.length
+    ? items.map((text,i)=>`
+      <div class="pack-item" style="cursor:default">
+        <span style="flex:1">${text}</span>
+        <button class="pack-del" aria-label="מחיקת פעילות" onclick="removeItineraryItem(${i})"><i class="ph ph-trash"></i></button>
+      </div>`).join('')
+    : `<div class="gallery-empty">אין פעילויות ליום זה — הוסיפו אחת למטה</div>`;
+}
+function addItineraryItem(){
+  const input = document.getElementById('itineraryNewItem');
+  const val = input.value.trim();
+  if(!val) return;
+  const it = loadItinerary();
+  if(!it[currentItineraryDay]) it[currentItineraryDay]=[];
+  it[currentItineraryDay].push(val);
+  saveItinerary(it);
+  input.value='';
+  renderItineraryEditList();
+  renderItineraryList(currentItineraryDay);
+  showToast('✅ הפעילות נוספה למסלול');
+}
+function removeItineraryItem(i){
+  const it = loadItinerary();
+  it[currentItineraryDay].splice(i,1);
+  saveItinerary(it);
+  renderItineraryEditList();
+  renderItineraryList(currentItineraryDay);
+  showToast('🗑️ הפעילות הוסרה');
+}
+function resetItineraryDay(){
+  if(!confirm('לאפס את המסלול של היום הזה חזרה לגרסה המקורית?')) return;
+  const it = loadItinerary();
+  it[currentItineraryDay] = [...ITINERARY_DEFAULTS[currentItineraryDay]];
+  saveItinerary(it);
+  renderItineraryEditList();
+  renderItineraryList(currentItineraryDay);
+  showToast('↺ המסלול אופס למקור');
+}
+
 /* ══════════════════════════════════════
    MISSIONS DATA – 5 per day
 ══════════════════════════════════════ */
@@ -1265,8 +1228,6 @@ const dayOrder=['day1','day2','day3','day4','day5','day6','day7','day8'];
 const sectionMap={day1:'vienna',day2:'vienna',day3:'vienna',day4:'vienna',day5:'budapest',day6:'budapest',day7:'budapest',day8:'budapest'};
 const stripLinks=document.querySelectorAll('.ts');
 const navLinks=document.querySelectorAll('.nav-links a');
-const dpDots=document.querySelectorAll('#dpDots .dp-dot');
-const dpLabel=document.getElementById('dp-current-label');
 const dayLabels={day1:'יום 1 – וינה',day2:'יום 2 – וינה',day3:'יום 3 – וינה',day4:'יום 4 – וינה',day5:'יום 5 – בודפשט',day6:'יום 6 – בודפשט',day7:'יום 7 – בודפשט',day8:'יום 8 – בודפשט'};
 
 let scrollTicking = false;
@@ -1276,9 +1237,6 @@ function updateActive(){
   stripLinks.forEach(a=>{ const h=a.getAttribute('href').replace('#',''); a.classList.toggle('active_sec',h===cur||(h==='budapest'&&cur==='day5')||(h==='vienna'&&cur==='day1')); });
   const cn=sectionMap[cur]||'vienna';
   navLinks.forEach(a=>{ a.classList.toggle('active',a.getAttribute('href')==='#'+cn); });
-  const idx=dayOrder.indexOf(cur);
-  dpDots.forEach((d,i)=>{ d.classList.remove('done','current'); if(i<idx)d.classList.add('done'); else if(i===idx)d.classList.add('current'); });
-  dpLabel.textContent=dayLabels[cur]||'';
 }
 window.addEventListener('scroll',()=>{
   if(!scrollTicking){
@@ -1577,22 +1535,26 @@ function deletePhoto(i){
 }
 
 /* ══════════════════════════════════════
-   INTERACTIVE MAP
+   NEARBY RESTAURANTS (uses the browser's current location)
 ══════════════════════════════════════ */
-const MAP_QUERIES = {
-  day1:'Stephansdom, Vienna', day2:'Wiener Riesenrad, Prater, Vienna', day3:'Naschmarkt, Vienna',
-  day4:'Schonbrunn Palace, Vienna', day5:'Fishermans Bastion, Budapest', day6:'Budapest Eye, Erzsebet ter, Budapest',
-  day7:'St Stephen Basilica, Budapest', day8:'Budapest Airport'
-};
-function openMapForDay(day){
-  const sel = document.getElementById('mapDaySelect');
-  sel.innerHTML = Object.keys(MAP_QUERIES).map(d=>
-    `<button class="gday-btn ${d===day?'active':''}" onclick="openMapForDay('${d}')">${dayLabels[d].split('–')[0].trim()}</button>`
-  ).join('');
-  const q = encodeURIComponent(MAP_QUERIES[day]);
-  document.getElementById('mapFrame').src = `https://www.google.com/maps?q=${q}&output=embed`;
-  document.getElementById('mapOpenLink').href = `https://www.google.com/maps/search/?api=1&query=${q}`;
-  openPopup('mapPopup');
+function findNearbyRestaurants(){
+  if(!navigator.geolocation){
+    showToast('⚠️ הדפדפן לא תומך באיתור מיקום');
+    window.open('https://www.google.com/maps/search/מסעדות/', '_blank');
+    return;
+  }
+  showToast('📍 מאתרים את המיקום שלכם...');
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      const {latitude, longitude} = pos.coords;
+      window.open(`https://www.google.com/maps/search/מסעדות/@${latitude},${longitude},16z`, '_blank');
+    },
+    ()=>{
+      showToast('⚠️ לא הצלחנו לאתר את המיקום - פותחים חיפוש כללי');
+      window.open('https://www.google.com/maps/search/מסעדות/', '_blank');
+    },
+    {enableHighAccuracy:true, timeout:8000}
+  );
 }
 
 /* ══════════════════════════════════════
@@ -1626,6 +1588,7 @@ function toggleDarkMode(){
 if(localStorage.getItem('trip2026_dark')==='1') document.body.classList.add('dark');
 
 /* INIT */
+renderAllItineraries();
 updateAllCardBadges();
 renderScoreStars();
 renderPacking();
