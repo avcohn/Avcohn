@@ -282,6 +282,22 @@ body.dark .hl{background:#1c1708}
 body.dark #budapest{background:var(--bg-b)!important}
 body.dark .dash-tile .dv{color:#fff}
 
+/* ---------- Kids Mode ---------- */
+body.kids-mode .acts,
+body.kids-mode .hl,
+body.kids-mode .cbody>p,
+body.kids-mode .flight-row,
+body.kids-mode .nav-special,
+body.kids-mode .tool-chip.chip-adult,
+body.kids-mode .dash-tile.tile-adult{display:none!important}
+body.kids-mode .cbody h3{font-size:25px;letter-spacing:-.3px}
+body.kids-mode .card{border:2px solid var(--gold-light)}
+body.kids-mode .day-missions-btn{font-size:15.5px;padding:16px 18px}
+body.kids-mode .day-missions-btn .dmb-badge{font-size:12.5px}
+body.kids-mode .tool-chip{font-size:14px;padding:12px 8px}
+body.kids-mode .sec-title{font-size:clamp(32px,7vw,48px)}
+body.kids-mode #kidsModeBtn{background:rgba(74,222,128,.2);color:#86efac;border:1px solid rgba(74,222,128,.35)}
+
 .day-tools-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
 .tool-chip{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 8px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;font-family:inherit;transition:var(--transition);min-width:90px}
 .tool-chip:hover{background:var(--gold-pale);border-color:var(--gold-light)}
@@ -556,6 +572,7 @@ body.dark .dash-tile .dv{color:#fff}
       <button class="nav-special" onclick="openPopup('currencyPopup')"><i class="ph ph-currency-circle-dollar"></i> מטבע</button>
       <button onclick="openGalleryForDay('day1')"><i class="ph ph-images"></i> תמונות</button>
       <button onclick="openAchievementsPopup()"><i class="ph ph-trophy"></i> הישגים</button>
+      <button id="kidsModeBtn" onclick="toggleKidsMode()"><i class="ph ph-baby"></i> מצב ילדות</button>
       <button onclick="toggleDarkMode()" title="מצב לילה" aria-label="החלפת מצב תצוגה בהיר/כהה"><i class="ph ph-moon-stars"></i></button>
     </div>
   </div>
@@ -604,7 +621,7 @@ body.dark .dash-tile .dv{color:#fff}
     <div class="dash-grid">
       <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeatherV">--°</div><div class="dl">וינה עכשיו</div></div>
       <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeatherB">--°</div><div class="dl">בודפשט עכשיו</div></div>
-      <div class="dash-tile"><i class="ph ph-currency-eur"></i><div class="dv" id="dashRate">--</div><div class="dl">1 € בשקלים</div></div>
+      <div class="dash-tile tile-adult"><i class="ph ph-currency-eur"></i><div class="dv" id="dashRate">--</div><div class="dl">1 € בשקלים</div></div>
       <div class="dash-tile"><i class="ph ph-star"></i><div class="dv" id="dashMissions">0/40</div><div class="dl">משימות שהושלמו</div></div>
     </div>
     <div class="dash-countdown" id="dashCountdown"></div>
@@ -638,8 +655,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day1')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day1')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day1')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day1')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -661,8 +679,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day2')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day2')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day2')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day2')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -684,8 +703,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day3')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day3')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day3')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day3')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -707,8 +727,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day4')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day4')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day4')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day4')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -744,8 +765,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day5')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day5')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day5')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day5')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -767,8 +789,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day6')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day6')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day6')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day6')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -790,8 +813,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day7')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day7')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day7')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day7')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -813,8 +837,9 @@ body.dark .dash-tile .dv{color:#fff}
           </button>
           <div class="day-tools-row">
             <button class="tool-chip" onclick="openGalleryForDay('day8')"><i class="ph ph-camera"></i> תמונות מהיום</button>
-            <button class="tool-chip" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
-            <button class="tool-chip" onclick="openItineraryEditor('day8')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="findNearbyRestaurants()"><i class="ph ph-fork-knife"></i> מסעדות קרובות</button>
+            <button class="tool-chip chip-adult" onclick="openItineraryEditor('day8')"><i class="ph ph-pencil-simple"></i> עריכת מסלול</button>
+            <button class="tool-chip chip-adult" onclick="shareDayCard('day8')"><i class="ph ph-share-network"></i> שיתוף</button>
           </div>
           <div class="score-box">
             <span class="score-label">איך היה היום?</span>
@@ -1558,6 +1583,51 @@ function findNearbyRestaurants(){
 }
 
 /* ══════════════════════════════════════
+   SHARE DAY CARD
+══════════════════════════════════════ */
+function shareDayCard(day){
+  const card = document.getElementById(day);
+  if(!card) return;
+  const title = (card.querySelector('h3')?.innerText || dayLabels[day] || day).trim();
+  const dateLine = (card.querySelector('.dtag')?.innerText || '').replace(/\s*\n\s*/g,' · ').trim();
+  const it = loadItinerary();
+  const items = (it[day]||[]).map(t=>'• '+t.replace(/<[^>]*>/g,'')).join('\n');
+  const text = [dateLine, title, '', items].filter(Boolean).join('\n');
+  shareOrCopy(title, text);
+}
+async function shareOrCopy(title, text){
+  if(navigator.share){
+    try{ await navigator.share({title, text}); }
+    catch(e){ /* user cancelled the share sheet - nothing to do */ }
+    return;
+  }
+  try{
+    await navigator.clipboard.writeText(text);
+    showToast('📋 הטקסט הועתק ללוח — אפשר להדביק בוואטסאפ');
+  }catch(e){
+    window.open('https://wa.me/?text='+encodeURIComponent(text), '_blank');
+  }
+}
+
+/* ══════════════════════════════════════
+   KIDS MODE
+══════════════════════════════════════ */
+function toggleKidsMode(){
+  document.body.classList.toggle('kids-mode');
+  const on = document.body.classList.contains('kids-mode');
+  try{ localStorage.setItem('trip2026_kids_mode', on?'1':'0'); }catch(e){}
+  updateKidsModeButton();
+  showToast(on ? '🧸 מצב ילדות הופעל' : '👋 חזרה לתצוגה הרגילה');
+}
+function updateKidsModeButton(){
+  const btn = document.getElementById('kidsModeBtn');
+  if(!btn) return;
+  const on = document.body.classList.contains('kids-mode');
+  btn.innerHTML = on ? '<i class="ph ph-baby"></i> יציאה ממצב ילדות' : '<i class="ph ph-baby"></i> מצב ילדות';
+}
+if(localStorage.getItem('trip2026_kids_mode')==='1') document.body.classList.add('kids-mode');
+
+/* ══════════════════════════════════════
    ACHIEVEMENTS
 ══════════════════════════════════════ */
 const ACHIEVEMENTS = [
@@ -1590,6 +1660,7 @@ if(localStorage.getItem('trip2026_dark')==='1') document.body.classList.add('dar
 /* INIT */
 renderAllItineraries();
 updateAllCardBadges();
+updateKidsModeButton();
 renderScoreStars();
 renderPacking();
 fetchRates();
