@@ -899,7 +899,14 @@ function renderItineraryList(day){
 function renderAllItineraries(){ Object.keys(ITINERARY_DEFAULTS).forEach(renderItineraryList); }
 
 let currentItineraryDay = 'day1';
+const ITINERARY_PIN = '260917';
 function openItineraryEditor(day){
+  const entered = prompt('קוד לעריכת המסלול:');
+  if(entered === null) return;
+  if(entered.trim() !== ITINERARY_PIN){
+    showToast('קוד שגוי ⛔');
+    return;
+  }
   currentItineraryDay = day;
   const sel = document.getElementById('itineraryDaySelect');
   sel.innerHTML = Object.keys(dayLabels).map(d=>
